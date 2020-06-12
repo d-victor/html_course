@@ -129,3 +129,29 @@ h1 {
     top: -84px;
 
 }
+.content-wrapper {
+    position: relative;
+    height: 460px;
+
+}
+.icon_star {
+    
+    display: block;
+    margin: 110px 652px 254px 652px;
+    height: 96px;
+    width: 96px;
+}
+.text_discr {
+    margin-top: 30px;
+    position: absolute;
+    left: 335px;
+    right: 335px;
+    height: 120px;
+    width: 730px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #585757;
+}
