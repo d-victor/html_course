@@ -7,3 +7,94 @@
 html {
     font-family: 'Inter', sans-serif;
 }
+
+h1 {
+    margin-top: 133px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 60px;
+}
+.discr {
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 20px;
+}
+.form {
+    margin-top: 33px;
+
+}
+.form_name {
+    padding-left: 7px;
+    background: #F7F7F7;
+    border-radius: 6px;
+    height: 48px;
+    width: 445px;
+    font-weight: normal;
+    font-size: 20px;
+    
+}
+
+.form_email {
+    padding-left: 7px;
+    margin-top: 10px;
+    background: #F7F7F7;
+    border-radius: 6px;
+    height: 48px;
+    width: 445px;
+    font-weight: normal;
+    font-size: 20px;
+    
+}
+
+.btn {
+    margin-top: 20px;
+    height: 48px;
+    width: 129px;
+    padding: 11px 16px;
+    background: #FF8364;
+    border-radius: 6px;
+    color: white;
+    font-weight: normal;
+    font-size: 20px;
+    
+}
+
+.heading {
+    /* margin: 133px 810px 145px; */
+    height: 137px;
+    width: 445px;
+}
+.form {
+    /* margin: 33px 810px 127px 145px; */
+    width: 445px;
+    height: 230px;
+}
+.form_discr {
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 18px;
+    color: #969696;
+}
+.container_form {
+    width: 445px;
+    position: relative;
+    left: 145px;
+}
+.section_form {
+    position: relative;
+    height: 660px;
+    
+}
+
+.image {
+    position: absolute;
+    left: 710px;
+    top: -84px;
+
+}
