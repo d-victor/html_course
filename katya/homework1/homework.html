@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework1</title>
+</head>
+<body>
+<table>
+    <caption> <strong>Анкета</strong></caption>
+<thead>
+    <tr>
+        <th>Запитання</th>
+        <th>Відповідь</th>
+    </tr>
+</thead>
+<tfoot>
+    <tr>
+        <th>Оцініть наскільки просто вам було відповідати на запитання (від 1 до 5)</th>
+    <th>
+<form action="/" method="POST"> 
+    <select name="rating" >
+        <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+         <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+</form>
+    </th>
+    </tr>
+</tfoot>
+
+<tbody>
+    <tr>
+        <td colspan="2"><strong>Контактна інформація</strong></td>
+    </tr>
+    <tr>
+        <td> <label for="name"> Ім'я</label></td>
+    <td>
+        <form action="/" method="POST">
+     <input id="name" type="text" name="first-name" placeholder="Ім'я">
+</form>
+</td>
+    </tr>
+    <tr>
+        <td><label for="last-name"> Прізвище</label>
+        </td>
+        <td>
+    <form action="/" method="POST">
+    <input id= "last-name" type="text" name="last-name" placeholder="Прізвище">
+        </form>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="address">Адреса</label> </td>
+        <td>
+    <form action="/" method="POST">
+        <input id="address" type="text" name="address" placeholder="Адреса">
+    </form>
+        </td>
+    </tr>
+    <tr>
+        <td> <label for="email">Електронна пошта</label></td> 
+        <td>
+    <form action="/" method="POST">
+        <input id=email type="email" name="email" placeholder="Email" >
+    </form>
+        </td>
+    </tr>
+    <tr>
+        <td> <label for="tel">Телефон</label></td>
+        <td>
+    <form action="/" method="POST">
+        <input id=tel type="tel" name="tel" placeholder="Телефон">
+    </form>
+        </td>
+    </tr>
+    <tr>
+        <td>Стать</td>
+        <td>
+    <form action="/" method="post">
+        <label> <input type="radio" name=sex value="female" checked><small>Ж</small> </label>
+        <label ><input type="radio" name="sex" value="male"><small>Ч</small></label>
+    </form>
+        </td>
+    </tr>
+    <tr>
+        <td> <label for="age"></label> Вік</td>
+        <td>
+    <form action="/" method="post">
+        <select name="age" id="age" autofocus required>
+            <option value="from17-25">Від 17 до 25</option>
+                <option value="from25-30">Від 25 до 30</option>
+                <option value="from30-40">Від 30 до 40</option>
+            <option value="from40-50">Від 40 до 50</option>
+        </select>
+    </form>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"><br><strong>Робота</strong></td>
+    </tr>
+    <tr>
+        <td><label for="work"> Місце роботи</label></td>
+        <td>
+    <form action="/" method="post">
+        <input type="text" name="work" id="work">
+    </form>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="position"> Посада</label></td>
+        <td> 
+    <form action="/" method="post">
+        <input type="text" name="position" id="position" autofocus> 
+    </form>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="time-posit"> Скільки часу працюєте на останньому місці роботи?</label></td>
+        <td> 
+    <form action="/" method="post">
+        <input type="text" name="time_posit" id="time-posit">
+    </form>
+        </td>
+    </tr>
+    <tr>
+        <td> Чи влаштовує вас ваша робота? </td>
+        <td> 
+            <form action="/" method="post"> 
+        <label><input type="radio" name="work" value="yes" checked><small>Так</small></label>
+        <label> <input type="radio" name="work" value="no"><small>Ні</small> </label>
+    </form>
+        </td>
+    </tr>
+    <tr>
+        <td>Чи плануєте змінити найближчим часом?</td>
+        <td> 
+    <form action="/" method="post">
+        <label><input type="radio" name="changeWork" value="yes" checked><small>Так</small> </label>
+            <label> <input type="radio" name="changeWork" value="no"><small>Ні</small> </label>
+    </form>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"> <br><strong>Освіта</strong> </td>
+    </tr>
+    <tr>
+        <td><label for="education">Освіта</label></td> 
+        <td>
+    <form action="/" method="post">
+        <select name="education" id="education">
+            <option value="incompleteAverage">Неповна середня</option>
+                <option value="averedge">Середня</option>
+                <option value="notFullHigher">Неповна вища</option>
+            <option value="higher">Вища</option>
+        </select>
+    </form>
+        </td>
+     </tr>
+     <tr>
+         <td><label for="school">Яку школу закінчили?</label></td>
+         <td>
+ <form action="/" method="post">
+    <input type="text" name="school" id="school">
+</form>
+ </td>
+     </tr>
+     <tr>
+         <td><label for="yearSchool"> В якому році закінчили школу?</label></td>
+         <td>
+             <form action="/" method="post">
+                <input type="date" name="yearSchool" id="yearSchool">
+            </form>
+         </td>
+    </tr>
+    <tr>
+        <td><label for="univer">Який вищий навчальний заклад закінчили?</label></td>
+        <td>
+        <form action="/" method="post">
+            <input type="text" name="univer" id="univer">
+        </form>
+        </td>
+     </tr>
+     <tr>
+         <td><label for="yearsUniver">В якому році закінчили університет?</label></td>
+         <td>
+             <form action="/" method="post">
+            <select name="yearsUniver" id="yearsUniver" multiple>
+                <option value="for2000-2005">2000-2005</option>
+                    <option value="for2005-2010">2005-2010</option>
+                    <option value="for2010-2015">2010-2015</option>
+                <option value="for2015-2020">2015-2020</option>
+            </select>
+        </form>
+        </td>
+     </tr>
+     <tr>
+         <td colspan="2"><strong>Сімейний стан</strong></td>
+     </tr>
+     <tr>
+         <td> Сімейний стан</td>
+         <td>
+             <form action="/" method="post">
+            <select name="status" id="status">
+                <option value="notMarried">Не одружений</option>
+                    <option value="married">Одружений</option>
+                    <option value="divorsed">Розлучений</option>
+                <option value="widower">Вдівець</option>
+            </select>
+        </form></td>
+     </tr>
+     <tr>
+         <td><label for="children">Чи ви маєте дітей?</label> </td>
+         <td> 
+             <form action="/" method="post">
+            <input type="checkbox" name="children" id="children">
+        </form>
+        </td>
+     </tr>
+     <tr>
+         <td> <label for="numberChild"> Скільки у вас дітей? </label></td>
+         <td> 
+             <form action="/" method="post">
+        <input type="number" name="numberChild" id="numberChild" min="1" max="10" step="1">
+    </form>
+        </td>
+     </tr>
+     <tr>
+         <td>Яку релігію ви сповідуєте?</td>
+         <td> <form action="/" method="post">
+            <select name="religion" >
+                <option value="Orthodoxy">Православ'я</option>
+                    <option value="Catholicism">Католицизм</option>
+                    <option value="Judaism">Іудаїзм</option>
+                    <option value="Islam">Іслам</option>
+                <option value="dontBelieve">Я не вірю</option>
+            </select>
+        </form>
+    </td>
+     </tr>
+     <tr>
+         <td> <label for="pet">Чи маєте домашніх тварин?</label></td>
+         <td> <input type="checkbox" name="pet" id="pet"></td>
+     </tr>
+     <tr>
+         <td><label for="hobby">Чи маєте хобі?</label></td>
+        <td> 
+        <form action="/" method="post">
+            <label><input type="radio" name="hobby" id="hobby" value="yes" checked><small>Так</small></label>
+            <label><input type="radio" name="hobby" id="hobby" value="no"> <small>Ні</small></label>
+        </form>
+        </td>
+     </tr>
+     <tr>
+         <td><label for="vacation">Найбільше любите відпочивати?</label></td> 
+         <td>
+             <form action="" method="post">
+                 <select name="vacation" id="vacation">
+                     <option value="sea">Море</option> 
+                     <option value="mountains">Гори</option>
+                     <option value="forest">Ліс</option>
+                     <option value="other">Iнше</option>
+                 </select>
+         </form>
+         </td>
+     </tr>
+     <tr>
+         <td> <label for="coutry">Які країни світу ви відвідали?</label></td>
+         <td>
+             <form action="/" method="post">
+            <input type="text" name="coutry" id="coutry">
+        </form>
+        </td>
+     </tr>
+     <tr> 
+        <td><label for="plan">Які плануєте відвідати?</label></td>
+            <td><form action="/" method="post">
+            <input type="text" name="plan" id="plan">
+        </form> 
+        </td>
+     </tr>
+     <tr>
+         <td><label for="discription">Чому?Oпишіть коротко?</label></td>
+         <td> 
+             <button type="reset">Reset</button>
+                <textarea name="message" id="discription" cols="20" rows="5" autofocus autocomplete="on" required spellcheck>
+             </textarea>
+        </td>
+     </tr>
+     <tr>
+         <td>Чи займаєтесь ви спортом?</td>
+         <td><form action="/" method="post">
+            <label ><input type="radio" name="sport" value="yes" checked><small>Так</small> </label>
+                <label><input type="radio" name="sport" value="no"><small>Ні</small>
+                </label>
+        </form>
+        </td>
+     </tr>
+     <tr> 
+        <td><label for="kindSport"> Якими видами спорту?</label></td>
+        <td>
+            <form action="/" method="post">
+            <input type="text" name="kindSport" id="kindSport">
+        </form>
+        </td>
+    </tr>
+    <tr>
+        <td> <label for="food">Які кухні світу віддаєте перевагу?</label></td>
+        <td>
+            <form action="/" method="post">
+                <input type="text" name="food" id="food">
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td> <label for="dish">Ваша улюблена страва?</label></td>
+        <td>
+            <form action="" method="post">
+            <input type="text" name="dish" id="dish">
+        </form>
+         </td>
+    </tr>
+    <tr>
+        <td> <label for="season">Яку пору року любите найбільше?</label></td>
+        <td> <form action="/" method="post">
+            <select name="season" id="season">
+                <option value="spring">Весна</option>
+                    <option value="summer">Літо</option>
+                    <option value="autumn">Осінь</option>
+                <option value="winter">Зима</option>
+            </select>
+        </form>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="color">Ваш улюблений колір?</label></td>
+        <td>
+            <form action="/" method="post">
+                <input type="text" name="color" id="color">
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="style">Ваш улюблений стиль одягу?</label></td>
+        <td> <form action="/" method="post">
+            <input type="text" name="style" id="style">
+        </form>
+         </td>
+    </tr>
+    <tr>
+        <td><label for="opinion"> Що ви думаєте про автора цієї анкети?</label></td>
+        <td>
+            <label for="opinion"></label>
+            <textarea name="message" id="opinion" cols="20" rows="5" autofocus required=""></textarea>
+    <button type="submit">Submit</button>
+        </td>   
+     </tr>
+        </tbody>
+    </table>
+</body>
+</html>
