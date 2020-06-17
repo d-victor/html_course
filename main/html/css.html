@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .header,
+        div .main {
+        
+        }
+        
+        div .header {
+        
+        }
+        
+        div > .header > p {
+            background-color: red;
+        }
+        
+        .main li {
+            padding: 15px;
+        }
+        
+        /*.main li.select ~ li {
+            background-color: grey;
+        }*/
+
+        /*.main li:hover + li{
+            background-color: red;
+        }
+        .main li::before{
+            content: '';
+            display: block;
+        }*/
+
+        .main li:not(.select){
+            background-color: yellow;
+        }
+        .main{
+            width: 500px;
+            margin: 0 auto;
+            list-style-type: none;
+            border: 1px solid black;
+        }
+        .main li:nth-child(3n + 1){
+            background-color: red;
+        }
+        
+        #two,
+        #one{
+            display: none;
+            margin: 15px;
+        }
+        #two:target,
+        #one:target{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="header">
+        <p>
+            dsfsd
+        </p>
+    </div>
+</div>
+<ul class="main">
+    <li data-text="Title ">s</li>
+    <li class="select">s</li>
+    <li>s</li>
+    <li>s</li>
+    <li>d</li>
+</ul>
+<style>
+    .ch:checked + img{
+        display: none;
+    }
+</style>
+<input type="checkbox" class="ch">
+
+<img src="images/time.svg" width="160">
+
+
+<div class="tab1"></div>
+
+<div class="tab2"></div>
+
+<div class="tab3"></div>
+
+<a href="#two">two</a>
+<a href="#one">one</a>
+
+<p id="two">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+    it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+    typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+    including versions of Lorem Ipsum.</p>
+
+
+
+
+<p id="one">including versions of Lorem Ipsum.</p>
+</body>
+</html>
