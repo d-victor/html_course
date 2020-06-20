@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,
+                   user-scalable=no,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: sans-serif;
+            font-size: 16px;
+        }
+        .wrapper{
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hidden{
+            display: none;
+        }
+        .tab{
+            border: 1px solid black;
+        }
+        .tab > label{
+            display: block;
+            padding: 15px;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+            transition: background-color .5s ease-in-out;
+        }
+        .tab > label:hover{
+            background-color: lightgray;
+        }
+        .tab > label:last-of-type{
+            border-bottom: none;
+        }
+        
+        #tab1:checked ~ .tab1,
+        #tab2:checked ~ .tab2,
+        #tab3:checked ~ .tab3{
+            opacity: 1;
+            height: 49px; /* не нужно так делать!!!! */
+            padding: 15px;
+            visibility: visible;
+        }
+        
+        #tab1:checked ~ label[for=tab1],
+        #tab2:checked ~ label[for=tab2],
+        #tab3:checked ~ label[for=tab3] {
+            background-color: yellow;
+        }
+        .tab .tab-content{
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+            padding: 0;
+            transition: all .5s ease-in-out;
+        }
+        
+        .tab .tab-content{
+            overflow: auto;
+        }
+        
+        .tab .tab-content:not(:last-of-type) {
+            border-bottom: 1px solid black;
+        }
+        
+        .tab .tab-content:last-of-type {
+            border-top: 1px solid black;
+        }
+        
+        nav.main-menu,
+        nav.menu-float,
+        nav.menu-flex{
+            padding: 15px 0 0;
+        }
+
+        nav.main-menu .menu {
+            list-style-type: none;
+            padding: 0;
+            font-size: 0;
+            text-align: justify;
+            display: block;
+        }
+        nav.main-menu .menu > li{
+            display: inline-block;
+            font-size: 16px;
+        }
+        nav.main-menu .menu::after{
+            content: '';
+            display: inline-block;
+            width: 100%;
+        }
+        nav.main-menu .menu > li > a,
+        nav.menu-float .menu > li > a,
+        nav.menu-flex .menu > li > a{
+            display: block;
+            padding: 15px;
+            border: 1px solid black;
+        }
+        .text{
+            text-align: justify;
+        }
+        
+        nav.menu-float .menu,
+        nav.menu-flex .menu,
+        .submenu{
+            list-style-type: none;
+            padding: 0;
+        }
+        nav.menu-float .menu::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        nav.menu-float .menu > li{
+            float: left;
+        }
+
+        nav.menu-flex .menu{
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+        }
+
+        /*nav.menu-flex .menu > li:last-child {
+            align-self: flex-end;
+        }*/
+        nav.menu-flex .menu{
+            position: relative;
+        }
+        
+        nav.menu-flex .menu > li > a{
+            height: 100%;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        nav.menu-flex .menu ul.submenu{
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: lightgray;
+            width: 100%;
+        }
+        nav.menu-flex .menu li:hover > .submenu{
+            display: block;
+        }
+        
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="tab">
+        <input class="hidden" id="tab1" type="radio" name="tab">
+        <input class="hidden" id="tab2" type="radio" name="tab">
+        <input class="hidden" id="tab3" type="radio" name="tab">
+        
+        <label for="tab1">Tab 1</label>
+        
+        <div class="tab-content tab1">
+            <p>tab 1 контент</p>
+            <p>tab 1 контент</p>
+            <p>tab 1 контент</p>
+            <p>tab 1 контент</p>
+            <p>tab 1 контент</p>
+            <p>tab 1 контент</p>
+        </div>
+        
+        <label for="tab2">Tab 2</label>
+        
+        <div class="tab-content tab2">
+            <p>tab 1  контент</p>
+        </div>
+        
+        <label for="tab3">Tab 3</label>
+        
+        <div class="tab-content tab3">
+            <p>tab 1  контент</p>
+        </div>
+    </div>
+    
+    <nav class="main-menu">
+        <ul class="menu">
+            <li>
+                <a href="#">Menu 1</a>
+            </li>
+            <li>
+                <a href="#">Menu 2</a>
+            </li>
+            <li>
+                <a href="#">Menu 3</a>
+            </li>
+            <li>
+                <a href="#">Menu 4</a>
+            </li>
+            <li>
+                <a href="#">Menu 5</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <nav class="menu-float">
+        <ul class="menu">
+            <li>
+                <a href="#">Menu 1</a>
+            </li>
+            <li>
+                <a href="#">Menu 2</a>
+            </li>
+            <li>
+                <a href="#">Menu 3</a>
+            </li>
+            <li>
+                <a href="#">Menu 4</a>
+            </li>
+            <li>
+                <a href="#">Menu 5</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <nav class="menu-flex">
+        <ul class="menu">
+            <li>
+                <a href="#">Menu 1</a>
+            </li>
+            <li>
+                <a href="#">Menu 2<br>dsfgdsfg</a>
+                <ul class="submenu level-1">
+                    <li>
+                        <a href="#">Menu 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Menu 2<br>dsfgdsfg</a>
+                    </li>
+                    <li>
+                        <a href="#">Menu 3</a>
+                        <ul class="submenu level-2">
+                            <li>
+                                <a href="#">Menu 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Menu 2<br>dsfgdsfg</a>
+                            </li>
+                            <li>
+                                <a href="#">Menu 3</a>
+                            </li>
+                            <li>
+                                <a href="#">Menu 4</a>
+                            </li>
+                            <li>
+                                <a href="#">Menu 5</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Menu 4</a>
+                    </li>
+                    <li>
+                        <a href="#">Menu 5</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Menu 3</a>
+            </li>
+            <li>
+                <a href="#">Menu 4</a>
+            </li>
+            <li>
+                <a href="#">Menu 5</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <p class="text">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
+</div>
+</body>
+</html>
