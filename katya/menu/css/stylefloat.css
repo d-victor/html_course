@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: sans-serif;
+    font-size: 14px;
+}
+nav.main-menu .menu-float{
+    padding: 15px 0 0;
+
+}
+nav.main-menu .menu-float {
+    list-style-type: none;
+    padding: 0;
+    background-color: lawngreen;
+
+
+}
+nav.main-menu .menu-float::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+nav.main-menu .menu-float > li {
+    float: left;
+    
+}
+nav.main-menu .menu-float > li > a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color:green;
+    cursor: pointer;
+    text-align: center;
+    
+}
+    
+nav.main-menu .menu-float > li{
+position: relative;
+
+}
+
+nav.main-menu .menu-float ul.sub-menu{
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    transition: all 2s linear;
+    -webkit-transition: all 2s linear;
+    -moz-transition: all 2s linear;
+    -ms-transition: all 2s linear;
+    -o-transition: all 2s linear;
+}
+.menu-float > li:hover > ul.sub-menu {
+    opacity: 1;
+    padding: 15px;
+    visibility: visible;
+    width: 300px;
+    overflow: auto;
+    position: absolute;
+    top:100% ;
+    left: 0;
+    width: 100%;
+    min-height: 200px;
+    background-color: lightgreen;
+   
+
+}
+.sub-menu,
+.sub-menu1,
+.sub-menu2 {
+list-style-type: none;
+}
+.sub-menu > li > a,
+.sub-menu1 > li > a,
+.sub-menu2 > li > a{
+    text-decoration: none;
+    color: green;
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+.sub-menu,
+.sub-menu1{
+    position: relative;
+}
+.sub-menu1 {
+    position: absolute;
+    left: 100%;
+    width: 300px;
+    background-color: rgb(202, 205, 50);
+}
+.menu-float .sub-menu li:hover ul.sub-menu1{
+    background-color: khaki;
+    border-bottom: 1px solid green;
+}
+.menu-float .sub-menu > li:nth-of-type(2) :after{
+    content: '';
+    position: absolute;
+    height: 1px; 
+    border: 5px solid transparent;
+
+}
+.menu-float .sub-menu .sub-menu1 > li:after{
+    content: '';
+    position: absolute;
+    right: 100%;
+    width: 300px;
+    height: 1px; 
+    border: 5px solid transparent;
+}
+.sub-menu2 { 
+    position: absolute;
+    left: 100%;
+    width: 300px;
+    background-color: yellowgreen;
+}

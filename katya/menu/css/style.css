@@ -23,12 +23,10 @@ nav.main-menu .menu-inl-block > li{
     display: inline-block;
     font-size: 14px;
 
-   
 }
 nav.main-menu .menu-inl-block .sub-menu{
     list-style-type: none;
    
-
 }
 nav.main-menu .menu-inl-block::after{
     content: '';
@@ -38,7 +36,6 @@ nav.main-menu .menu-inl-block::after{
 nav.main-menu .menu-inl-block > li > a {
     display: block;
     padding: 15px;
-    /* border: 1px solid black; */
     text-align: center;
     color: white;
     text-decoration: none;
@@ -48,7 +45,6 @@ nav.main-menu .menu-inl-block .sub-menu >li > a{
     color: white;
     padding-left: 15px;
     text-decoration: none;
-   
     
 }
 nav.main-menu .menu-inl-block {
@@ -56,15 +52,29 @@ nav.main-menu .menu-inl-block {
 }
 
 nav.main-menu .menu-inl-block ul.sub-menu{
-    display: none;
+
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    transition: all 1s linear;
     position: absolute;
     top: 100%;
     left: 0;
     background-color:grey;
     width: 100%;
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    -ms-transition: all 1s linear;
+    -o-transition: all 1s linear;
 }
 nav.main-menu .menu-inl-block li:hover > .sub-menu {
-    display: block;
+    opacity: 1;
+    padding: 15px;
+    visibility: visible;
+    width: 100%;
+    overflow: auto;
+    min-height: 180px;
     
 }
 
