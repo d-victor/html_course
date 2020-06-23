@@ -111,6 +111,9 @@ list-style-type: none;
     height: 1px; 
     border: 5px solid transparent;
 }
+.sub-menu{
+    position: relative;
+}
 .sub-menu2 { 
     position: absolute;
     left: 100%;
