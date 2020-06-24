@@ -12,7 +12,7 @@ nav.main-menu .menu-flex {
     justify-content: flex-start;
     align-content: space-around;
     padding: 15px 0 15px ;
-    background-color: blue;
+    background-color:blue;
     
 }
 .menu-flex > li {
@@ -50,8 +50,8 @@ nav.main-menu .menu-flex {
     visibility: hidden;
     width: 300px;
     position: absolute;
-    top: 100%; 
-    transition: all .5s linear;
+    top: 100%;
+    transition: all 1s linear;
     
 }
 .menu-flex > li:hover > ul.sub-menu{
@@ -74,10 +74,7 @@ nav.main-menu .menu-flex {
     left: 50%;
     top: 100%;
     transition: all 5s ease-in-out;
-    -webkit-transition: all 5s ease-in-out;
-    -moz-transition: all 5s ease-in-out;
-    -ms-transition: all 5s ease-in-out;
-    -o-transition: all 5s ease-in-out;
+    
 }
 .sub-menu > li:ntn-of-type(2):hover > ul.sub-menu1 {
    
@@ -115,21 +112,17 @@ nav.main-menu .menu-flex {
     top: 40%;
     left: 120px;
     transition: all .5s ease-in-out;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
+
 }
-.sub-menu1 > li:nth-child(2):hover > ul.sub-menu2 {
+.sub-menu1 > li:nth-of-type(2):hover > ul.sub-menu2 {
     padding: 15px 5px;
     
 }  
  .sub-menu2 {
     opacity: 1;
     visibility: visible;
-    min-height: 200px;
+    max-height: 200px;
     width: 300px;
     position: absolute;
     background-color: blue;
-    z-index: 1;
 }
