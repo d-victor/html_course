@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,
+                   user-scalable=no,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .wrapper{
+            max-width:1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        .menu {
+            display: flex;
+            list-style-type: none;
+        }
+        .menu li{
+            position: relative;
+        }
+        .menu li a {
+            display: block;
+            padding: 10px;
+            transition: all .5s ease-in-out;
+        }
+        .menu li > .sub-menu {
+            visibility: hidden;
+            pointer-events: none;
+            position: absolute;
+            background-color: black;
+            left: 0;
+            right: 0;
+            list-style-type: none;
+            width: 200px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all .5s ease-in-out;
+        }
+        .menu li:hover > .sub-menu{
+            visibility: visible;
+            pointer-events: auto;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .menu li > .sub-menu.level-2,
+        .menu li > .sub-menu.level-3{
+            top:0;
+            left: 100%;
+            width: 100%;
+        }
+        
+        .row {
+            margin: 0 -15px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .col{
+            padding: 15px;
+        }
+        .col-1 {
+            width: calc(100% / 4);
+        }
+        .col-2 {
+            width: 50%;
+        }
+        .col-3 {
+            width: calc(100% / 4 * 3);
+        }
+        .col-4 {
+            width: 100%;
+        }
+        .item-product {
+            border: 1px solid black;
+            border-radius: 2px;
+            padding: 5px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all .5s ease-in-out;
+        }
+        .item-product img{
+            width: 100%;
+        }
+        .item-product:hover{
+            transform: scale(1.1);
+        }
+        .item-product h2{
+            flex-grow: 1;
+            height: 78px;
+            overflow: hidden;
+        }
+        .btn {
+        
+        }
+        @media screen and (max-width: 767px) {
+            .col-2-m {
+                width: 100%;
+            }
+        }
+        .img-box{
+        
+        }
+        .img-wrap{
+            overflow: hidden;
+            position: relative;
+        }
+        .img {
+            position: absolute;
+            width: 1200px;
+            z-index: -1;
+        }
+        
+        .modal-wrap {
+            position: fixed;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #modal-wrap:target{
+            visibility: visible;
+            pointer-events: auto;
+        }
+        .modal-wrap .bg {
+            position: absolute;
+            background-color: rgba(0,0,0,.75);
+            opacity: 0;
+            transition: opacity .5s ease-in-out;
+        }
+
+        #modal-wrap:target .bg{
+            opacity: 1;
+        }
+        
+        #modal-wrap:target,
+        #modal-wrap:target .bg{
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .modal {
+            margin: 10px;
+            position: absolute;
+            top: 50%;
+            left: calc(50% - 10px);
+            max-width: 600px;
+            width: calc(100% - 20px);
+            background-color: white;
+            border-radius: 5px;
+            padding: 15px;
+            transform: scale(.75) translate(-50%, -50%);
+            transition: all .5s ease-in-out;
+            transform-origin: 50% 50%;
+        }
+
+        #modal-wrap:target .modal{
+            transform: scale(1) translate(-50%, -50%);
+            
+        }
+        
+        .modal header{
+            margin: -15px -15px 0 -15px;
+            border-bottom: 1px solid black;
+            padding: 15px;
+        }
+        .modal .content-modal{
+            padding: 15px;
+        }
+        .modal footer{
+        
+        }
+        .aside{
+            position: relative;
+        }
+        .aside-menu {
+            position: sticky;
+            top: 0;
+        }
+        .aside-menu a{
+            display: block;
+            padding: 15px;
+            border-bottom: 1px solid brown;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <ul class="menu">
+        <li><a href="#">Menu 1</a></li>
+        <li>
+            <a href="#">Menu 2</a>
+            <ul class="sub-menu level-1">
+                <li><a href="#">Menu 1</a></li>
+                <li>
+                    <a href="#">Menu 2</a>
+                    <ul class="sub-menu level-2">
+                        <li><a href="#">Menu 1</a></li>
+                        <li>
+                            <a href="#">Menu 2</a>
+                            <ul class="sub-menu level-3">
+                                <li><a href="#">Menu 1</a></li>
+                                <li>
+                                    <a href="#">Menu 2</a>
+                                </li>
+                                <li><a href="#">Menu 3</a></li>
+                                <li><a href="#">Menu 4</a></li>
+                                <li><a href="#">Menu 5</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Menu 3</a></li>
+                        <li><a href="#">Menu 4</a></li>
+                        <li><a href="#">Menu 5</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Menu 3</a></li>
+                <li><a href="#">Menu 4</a></li>
+                <li><a href="#">Menu 5</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Menu 3</a></li>
+        <li><a href="#">Menu 4</a></li>
+        <li><a href="#">Menu 5</a></li>
+    </ul>
+    
+    <div class="wrapper">
+        <div class="row">
+            <div class="col col-1 col-1-m">
+                <div class="item-product">
+                    <img src="images/img_food.jpg" alt="ppp">
+                    <h2>dfls ghsdkj fghkl sdjf</h2>
+                    <p class="price">Price: 100$</p>
+                    <a class="btn" href="#">Add to cart</a>
+                </div>
+            </div>
+            <div class="col col-1 col-1-m">
+                <div class="item-product">
+                    <img src="images/img_food.jpg" alt="ppp">
+                    <h2>dfls ghsdkj fghkl sdjf</h2>
+                    <p class="price">Price: 100$</p>
+                    <a class="btn" href="#">Add to cart</a>
+                </div>
+            </div>
+            <div class="col col-1 col-1-m">
+                <div class="item-product">
+                    <img src="images/img_food.jpg" alt="ppp">
+                    <h2>dfls ghsdkj fghkl sdjf</h2>
+                    <p class="price">Price: 100$</p>
+                    <a class="btn" href="#">Add to cart</a>
+                </div>
+            </div>
+            <div class="col col-1 col-1-m">
+                <div class="item-product">
+                    <img src="images/img_food.jpg" alt="ppp">
+                    <h2>dfls ghsdkj fghkl sdjf dsgs dhgsdf hdrg hjdrrj drj</h2>
+                    <p class="price">Price: 100$</p>
+                    <a class="btn" href="#">Add to cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="img-wrap">
+    <div class="wrapper">
+        <div class="row">
+            <div class="col col-2">
+                <h2>dfls ghsdkj fghkl sdjf dsgs dhgsdf hdrg hjdrrj drj</h2>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <p class="price">Price: 100$</p>
+                <a class="btn" href="#">Add to cart</a>
+            </div>
+            <div class="col col-2 img-box">
+                <img class="img" src="images/img_food.jpg" alt="sdf">
+            </div>
+        </div>
+    </div>
+</section>
+<a href="#modal-wrap">open</a>
+<section class="modal-wrap" id="modal-wrap">
+    <div class="bg"></div>
+    <div class="modal">
+        <header>
+            <h3>Header</h3>
+        </header>
+        <div class="content-modal">
+            <p>sdfsdf sdgf dgfh dreyj rtyuk tyukl tyuk tyukyfuk rf yklty lutygu klty ltyg kygu ktgyuk</p>
+        </div>
+        <footer>
+            <a href="#close" class="close">Close</a>
+            <button type="button">add</button>
+        </footer>
+    </div>
+</section>
+<div class="wrapper">
+    <div class="row">
+        <div class="col col-1 aside">
+            <div class="aside-menu">
+                <a href="#">1</a>
+                <a href="#">1</a>
+                <a href="#">1</a>
+                <a href="#">1</a>
+                <a href="#">1</a>
+                <a href="#">1</a>
+                <a href="#">1</a>
+            </div>
+        </div>
+        <div class="col col-3">
+            <h2>dfls ghsdkj fghkl sdjf dsgs dhgsdf hdrg hjdrrj drj</h2>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <a class="btn" href="#">Add to cart</a>
+            <h2>dfls ghsdkj fghkl sdjf dsgs dhgsdf hdrg hjdrrj drj</h2>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <a class="btn" href="#">Add to cart</a>
+            <h2>dfls ghsdkj fghkl sdjf dsgs dhgsdf hdrg hjdrrj drj</h2>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <a class="btn" href="#">Add to cart</a>
+            <h2>dfls ghsdkj fghkl sdjf dsgs dhgsdf hdrg hjdrrj drj</h2>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <a class="btn" href="#">Add to cart</a>
+            <h2>dfls ghsdkj fghkl sdjf dsgs dhgsdf hdrg hjdrrj drj</h2>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <a class="btn" href="#">Add to cart</a>
+            <h2>dfls ghsdkj fghkl sdjf dsgs dhgsdf hdrg hjdrrj drj</h2>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <a class="btn" href="#">Add to cart</a>
+            <h2>dfls ghsdkj fghkl sdjf dsgs dhgsdf hdrg hjdrrj drj</h2>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <p class="price">Price: 100$</p>
+            <a class="btn" href="#">Add to cart</a>
+            
+        </div>
+    </div>
+</div>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p><p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p><p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p><p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+<p class="price">Price: 100$</p>
+</body>
+</html>
