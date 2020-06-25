@@ -19,11 +19,13 @@ body{
     align-items: baseline;
     list-style-type:none;
     background-color:rgba(235, 238, 206, 0.5);
-    padding: 15px;
+    padding: 15px 15px 0;
+    border-bottom: 2px solid saddlebrown;
+    cursor: pointer;
     
 }
-.menu > li {
-    display: relative;
+.menu li {
+    position: relative;;
 
 }
 
@@ -31,10 +33,10 @@ body{
 .menu > li > a {
     text-decoration: none;
     display: block;
-    /* padding: 2px 0 15px 0; */
+    padding: 5px;
     transition: all .5s .2s ease-in;
-    border-bottom: 2px solid burlywood;
     color: rgb(88, 61, 20);
+    
 }
 
 .submenu > li{
@@ -47,6 +49,7 @@ body{
     padding: 5px;
     transition: all .5s .5s linear;
     color: rgb(88, 61, 20);
+    border-bottom: 1px solid rgba(241, 209, 159, 0.1);
 }
 .menu li > .submenu {
     visibility: hidden;
@@ -55,27 +58,37 @@ body{
     background-color: rgba(210, 214, 175, 0.5);
     left: 0;
     right: 0;
-    /*width: 200px;
-    */opacity: 0;
-    transform: translateY(50px) ;
+    width: 300px;
+    opacity: 0;
     transition: all .5s 1s linear;
-    -webkit-transform: translateY(50px) ;
-    -moz-transform: translateY(50px) ;
-    -ms-transform: translateY(50px) ;
-    -o-transform: translateY(50px) ;
+   
 }
 .menu li:hover > .submenu{
     visibility: visible;
     pointer-events: auto;
     opacity: 1;
-    transform: translateY(0);
+    width: 250px;
+    
     
 }
-
 .menu li > .submenu.level-2,
-.menu li > .submenu.level-3{
+ .menu li >.submenu.level-3{ 
     top: 0;
     left: 100%;
     width: 100%;
 }
-
+a.arrow-1,a.arrow-2{
+    position: relative;
+}
+ 
+ a.arrow-1:hover:after {
+     content: '\232A';
+     position: absolute;
+     left: 240px;
+     
+}
+a.arrow-2:hover:after {
+    content: '\232A';
+    position: absolute;
+    left: 240px;
+}
