@@ -8,6 +8,10 @@ body{
     font-size: 16px;
     line-height: normal;
 }
+.color{
+    background: rgba(235, 238, 206, 0.5);
+    border-bottom: 2px solid saddlebrown;  
+}
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -18,9 +22,7 @@ body{
     justify-content: space-between;
     align-items: baseline;
     list-style-type:none;
-    background-color:rgba(235, 238, 206, 0.5);
     padding: 15px 15px 0;
-    border-bottom: 2px solid saddlebrown;
     cursor: pointer;
     
 }
@@ -34,9 +36,12 @@ body{
     text-decoration: none;
     display: block;
     padding: 5px;
-    transition: all .5s .2s ease-in;
+    transition: all .5s  ease-in;
     color: rgb(88, 61, 20);
-    
+    -webkit-transition: all .5s  ease-in;
+    -moz-transition: all .5s  ease-in;
+    -ms-transition: all .5s  ease-in;
+    -o-transition: all .5s  ease-in;
 }
 
 .submenu > li{
@@ -47,9 +52,13 @@ body{
     text-decoration: none;
     display: block;
     padding: 5px;
-    transition: all .5s .5s linear;
+    transition: all .5s linear;
     color: rgb(88, 61, 20);
     border-bottom: 1px solid rgba(241, 209, 159, 0.1);
+    -webkit-transition: all .5s linear;
+    -moz-transition: all .5s linear;
+    -ms-transition: all .5s linear;
+    -o-transition: all .5s linear;
 }
 .menu li > .submenu {
     visibility: hidden;
@@ -60,8 +69,11 @@ body{
     right: 0;
     width: 300px;
     opacity: 0;
-    transition: all .5s 1s linear;
-   
+    transition: all .5s  linear;
+    -webkit-transition: all .5s  linear;
+    -moz-transition: all .5s  linear;
+    -ms-transition: all .5s  linear;
+    -o-transition: all .5s  linear;
 }
 .menu li:hover > .submenu{
     visibility: visible;
@@ -86,9 +98,4 @@ a.arrow-1,a.arrow-2{
      position: absolute;
      left: 240px;
      
-}
-a.arrow-2:hover:after {
-    content: '\232A';
-    position: absolute;
-    left: 240px;
 }
