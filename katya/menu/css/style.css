@@ -8,22 +8,20 @@ body{
     font-size: 16px;
     line-height: normal;
 }
-.color{
-    background: rgba(235, 238, 206, 0.5);
-    border-bottom: 2px solid saddlebrown;  
-}
+
 .wrapper {
-    max-width: 1200px;
+    max-width: 1140px;
     margin: 0 auto;
     padding: 0 px;
 }
+
  .menu {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     list-style-type:none;
-    padding: 15px 15px 0;
-    cursor: pointer;
+    background: rgba(129, 206, 28, 0.5);
+    border-bottom: 2px solid rgb(12, 27, 5);
     
 }
 .menu li {
@@ -35,13 +33,10 @@ body{
 .menu > li > a {
     text-decoration: none;
     display: block;
-    padding: 5px;
-    transition: all .5s  ease-in;
-    color: rgb(88, 61, 20);
-    -webkit-transition: all .5s  ease-in;
-    -moz-transition: all .5s  ease-in;
-    -ms-transition: all .5s  ease-in;
-    -o-transition: all .5s  ease-in;
+    padding: 15px;
+    transition: all .5s  ease-in ease-in-out;
+    color: rgb(12, 27, 5);
+    
 }
 
 .submenu > li{
@@ -53,7 +48,7 @@ body{
     display: block;
     padding: 5px;
     transition: all .5s linear;
-    color: rgb(88, 61, 20);
+    color: rgb(12, 27, 5);
     border-bottom: 1px solid rgba(241, 209, 159, 0.1);
     -webkit-transition: all .5s linear;
     -moz-transition: all .5s linear;
@@ -64,7 +59,7 @@ body{
     visibility: hidden;
     pointer-events: none;
     position: absolute;
-    background-color: rgba(210, 214, 175, 0.5);
+    background-color: rgba(210, 214, 175, 0.9);
     left: 0;
     right: 0;
     width: 300px;
@@ -93,9 +88,18 @@ a.arrow-1,a.arrow-2{
     position: relative;
 }
  
- a.arrow-1:hover:after {
+ a.arrow-1:after {
      content: '\232A';
      position: absolute;
      left: 240px;
      
+}
+.background-title {
+    height: 500px;
+    background: url('https://www.thebodyshop.ru/media/blog/blog-top4.jpg') center no-repeat;
+    
+}
+.wrapper-content {
+    margin: 0px;
+    padding: 0px;
 }
