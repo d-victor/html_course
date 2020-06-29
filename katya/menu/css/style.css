@@ -13,6 +13,7 @@ body{
     max-width: 1140px;
     margin: 0 auto;
     padding: 0 px;
+
 }
 
  .menu {
@@ -98,9 +99,56 @@ a.arrow-1,a.arrow-2{
 .background-title {
     height: 500px;
     background: url('https://www.thebodyshop.ru/media/blog/blog-top4.jpg') center no-repeat;
+    position: relative;
+}
+.news{
+    position: absolute;
+    width: 1060px;
+    background-color: white;
+    top: 320px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.2;
+    padding: 60px 15px;
+}
+.news h1 {
+    margin: 15px 0;
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.news strong {
+    font-size: 29px;
+    font-weight: 400;
+ 
+}
+.nav ul {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    list-style-type: none;
+    margin: 10px 40px;
+}
+.nav{
+    position: relative;
+   
+}
+.nav li a {
+    display: block;
+    padding: 50px 70px;
+    transition: all .5s ease-in-out;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: black;
+    font-size: 14px;
     
 }
-.wrapper-content {
-    margin: 0px;
-    padding: 0px;
+.blog-item{
+    display: flex;
+    flex-wrap: nowrap;
 }
+.
+
