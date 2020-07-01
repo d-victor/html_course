@@ -390,7 +390,8 @@ a.arrow-1,a.arrow-2{
     color: white;
 }
 .sect-footer{
-    border-top: 1px solid rgba(116, 107, 107, 0.6);
+    border-top: 1px solid rgba(192, 181, 181, 0.6);
+    
 }
 
 .row-footer {
@@ -398,10 +399,11 @@ a.arrow-1,a.arrow-2{
     flex-wrap: nowrap;
     width: 1060px;
     margin: 0 auto;
+    padding-top: 40px;
+
+    
 }
-.col-f {
-  padding: 10px;  
-}
+
 .col-1f{
     width: calc(100% / 3);
 }
@@ -410,4 +412,65 @@ a.arrow-1,a.arrow-2{
 }
 .col-3f{
     width: calc(100% / 3);
+}
+.row-footer .footer h6 {
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 15px;
+}
+ .row-footer .footer > a {
+    text-decoration: none;
+    display: block;
+    color: black;
+    padding: 3px;
+    font-size: 14px;
+    
+}
+.footer-inform h6 {
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 700;
+    font-size: 14px;
+}
+.footer-inform input {
+    border: 1px solid black;
+    color: black;
+    padding: 12px 30px 12px 10px;
+    font-size: 13px;
+
+}
+.footer-inform .btn-footer {
+    margin-left: -5px;
+    background-color:black;
+    padding: 12px 25px 13px;
+    text-decoration: none;
+    color:white;
+    font-size: 15px;
+ 
+}
+.footer-inform p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    color: black;
+    padding: 12px 0 0;
+    
+}
+.support {
+    margin:20px 0;
+}
+.footer-inform a[href*="mailto"] {
+    color: black;
+    font-size: 14px;
+    display: block;
+    padding-top: 10px;
+}
+.social  a {
+    padding-right: 50px;
+}
+.social {
+    padding: 20px 0;
 }
