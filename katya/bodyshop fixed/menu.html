@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,
-     initial-scale=1.0">
+     user-scalable=no,
+     initial-scale=1.0,
+     maximum-scale=1.0,
+     minimum-scale=1.0">
      <link rel="stylesheet" href="css/style.css">
     <title>Body Shop</title>
 </head>
@@ -11,7 +14,12 @@
     <div class="wrapper">
         <section class="color">
         <nav>
-            <ul class="menu menu-active">
+            <div class="hamburger-menu"> 
+                <input id="menu_toggle" type="checkbox"/>
+                <label class="menu_btn" for="menut_toggle">
+                <spa></spa>
+                </label>
+            <ul class="menu menu-active menu_box">
                 <li>
                     <a href="#">Макіяж</a>
                     <ul class="submenu level-1">
@@ -194,10 +202,6 @@
                     </ul>
                 </li>
             </ul>
-            <div class="gamburger">
-                <span></span>
-                <span></span>
-                <span></span>
             </div>
         </nav>
     </section>
@@ -206,8 +210,8 @@
         <div class="news">
                 <h1>ДАЙДЖЕСТ КРАСОТЫ</h1>
                 <strong>Новости о горячих трендах, бьюти-новинках &nbsp и советы по уходу!</strong>
-            </div>
-            </div>
+        </div>
+        </div>
         <div class="nav">
     <nav>
         <ul>
@@ -229,40 +233,39 @@
         </ul>
     </nav>
         </div>
-    <div class="row-blog-content">
+        <div class="row-blog-content">
             <div class="col-blog-content-3">
                 <div class="item_product">
                     <a class= "blog-img" href="#"></a>
-                    <div class="blog-title">
-                      <h3>
-                          <a href="#">ОБЕРЕГ ОТ СУХОСТИ</a>
-                        </h3>
-                    </div>
-                    <div class="blog-text-btn">
+                <div class="blog-title">
+                    <h3>
+                        <a href="#">ОБЕРЕГ ОТ СУХОСТИ</a>
+                    </h3>
+                </div>
+                <div class="blog-text-btn">
                     <p>Обзор бестселлера для тела The Body Shop – питательного масла «Ши» от Анны Шаровой</p>
                     <a class="btn" href="#">Подробнее</a>
-                    </div>
+                </div>
                 </div>
             </div>
             <div class="col-blog-content-3">
                 <div class="item_product">
-                    <a  class="blog-img-1" href="#"></a>
+                    <a class="blog-img-1" href="#"></a>
                 <div class="blog-title">
                     <h3>
                         <a href="#">НАБОРЫ ДЛЯ УХОДА ПОРАДУЙ &nbsp СВОИХ БЛИЗКИХ</a>
                     </h3>
                 </div>
                 <div class="blog-text-btn">
-                    <p>В сложное и неопределенное время нужно делать добро. Подари друзьям, семье и тем, кто просто нуждается во внимании, наши наборы для ухода. И не забудь о себе – мы должны настроиться позитивно, чтобы заботиться о других. Дари своему телу любовь, оно нуждается в этом сейчас, как никогда.</p>
+                    <p>В сложное и неопределенное время нужно делать добро. Подари друзьям, семье и тем, кто просто нуждается во внимании, наши наборы для ухода <br>
+                    И не забудь о себе – мы должны настроиться позитивно, чтобы заботиться о других. Дари своему телу любовь, оно нуждается в этом сейчас, как никогда.</p>
                     <a class="btn" href="#">Подробнее</a>
                 </div>
                 </div> 
             </div>
         </div>
     <article class="brush">
-        <div class="blog-img-brush">
-            <img src="https://www.thebodyshop.ru/media/blog/6614/webimages-make-up-brush-range-increps012-m-r.jpg" alt="brush" height="418">
-        </div>
+        <a href="#" class="blog-img-brush"></a>
         <div class="blog-descr">
             <h4>ИНСТРУМЕНТЫ КРАСОТЫ
             </h4>
@@ -275,7 +278,7 @@
         <div class="row-blog-content-1">
             <div class="col-blog-2">
                 <div class="item-prod-new">
-                    <img src="https://www.thebodyshop.ru/media/blog/6656/about-marula-oil.png" alt="oil">
+                    <a class="blog-img-2" href="#"></a>
                     <h4>БЬЮТИ-ХАК ИЗ АФРИКИ – МАСЛО МАРУЛЫ</h4>
                         <p>Чем этот ингредиент полюбился африканским племенам с древних времен, и почему он содержится во многих косметических средствах The Body Shop – читайте в нашей статье.</p>
                         <a  class="btn-2" href="#">Подробнее</a>
@@ -283,17 +286,17 @@
             </div>
             <div class="col-blog-2">
                 <div class="item-prod-new">
-                    <img src="https://www.thebodyshop.ru/media/wysiwyg/blog/7090/NY-make-top.jpg" alt="makeup">
-                        <h4>СИЯЙ ЯРЧЕ ВСЕХ НА ПРАЗДНИКЕ!</h4>
+                      <a  class="blog-img-3" href="#"></a>
+                        <h4>СИЯЙ ЯРЧЕ ВСЕХ <br> НА ПРАЗДНИКЕ!</h4>
                         <p>Блеск и сияние – главная тема новой праздничной серии. Как сделать идеальный макияж для крутой вечеринки? Читайте в нашем материале.</p>
                         <a class="btn-2" href="#">Подробнее</a>
                 </div>
             </div>
             <div class="col-blog-2">
                 <div class="item-prod-new">
-                    <img src="https://www.thebodyshop.ru/media/blog/6726/maski.png" alt="mask">
+                    <a class="blog-img-4" href="#"></a>
                     <h4>УХОД, КОТОРЫЙ МЫ ЗАСЛУЖИЛИ: ТКАНЕВЫЕ МАСКИ</h4>
-                        <p>Разбираем чудо-продукт родом из Азии - тканевые маски и расслабляемся, когда они работают!</p>
+                        <p>Разбираем чудо-продукт родом из &nbsp; Азии - тканевые маски и расслабляемся, когда они работают!</p>
                         <a class="btn-2" href="#">Подробнее</a>
                 </div>
             </div>
@@ -301,11 +304,13 @@
     </article>
    <article>
         <div class="row-blog-content-2">
-            <div class="item-product-care">
-                <div class="col-blog-care-3">
-                    <img src="https://www.thebodyshop.ru/media/blog/19082019/type_main.jpg" alt="hair" width="520">
+            <div class="col-blog-care-3">
+                <div class="item-product-care">
+                    <a class="blog-img-5" href="#"></a>
                     <div class="blog-title-care">
-                    <a href="#"><h3>КАК УХАЖИВАТЬ ЗА ВОЛОСАМИ И ОПРЕДЕЛИТЬ ИХ ТИП</h3></a>
+                    <h3>
+                        <a href="#">КАК УХАЖИВАТЬ ЗА ВОЛОСАМИ И ОПРЕДЕЛИТЬ ИХ ТИП</a>
+                    </h3>
                     </div>
                     <div class="blog-care-btn">
                     <p>Чтобы правильно подобрать средства для ухода за волосами, нужно прежде всего правильно определить тип своих волос. Как это сделать? Читайте в нашем материале.</p>
@@ -315,9 +320,11 @@
             </div>
             <div class="col-blog-care-3">
                 <div class="item-product-care">
-                    <img src="https://www.thebodyshop.ru/media/blog/6670/1.jpg" alt="skin" width="520">
+                    <a class="blog-img-6" href="#"></a>
                     <div class="blog-title-care">
-                    <a href="#"><h3>БАЛАНСИРУЙ ЭТО: КАК УХАЖИВАТЬ ЗА КОМБИНИРОВАННОЙ КОЖЕЙ</h3></a>
+                    <h3>
+                        <a href="#">БАЛАНСИРУЙ ЭТО: КАК УХАЖИВАТЬ ЗА КОМБИНИРОВАННОЙ КОЖЕЙ</a>
+                    </h3>
                     </div>
                     <div class="blog-care-btn">
                     <p>Разбираемся, как правильно подобрать программу ухода для комбинированной кожи.</p>
@@ -391,11 +398,11 @@
                     <img src="https://www.thebodyshop.ru/skin/frontend/tbs-russia-boost/default/images/social/vk.png" alt="vk">
                 </a>
             </div>
-                    <p class="copyright">© 2020 THE BODY SHOP INTERNATIONAL LIMITED. Все права защищены</p>
-                    <p>"® Зарегистрированная торговая марка The Body Shop Intl. limited.™"</p>
+                <p class="copyright">© 2020 THE BODY SHOP INTERNATIONAL LIMITED. Все права защищены</p>
+                <p>"® Зарегистрированная торговая марка The Body Shop Intl. limited.™"</p>
         </div>
-        </div>
-        </footer>
+    </div>
+</footer>
 </article>
 </div>
 </body>
