@@ -520,6 +520,9 @@ a.arrow-1,a.arrow-2{
 .social {
     padding: 15px 0;
 }
+    .hamburger-menu [type="checkbox"]{
+        display: none;
+    }
     @media screen and (max-width:767px){
         #menu_toggle {
             opacity: 0;
@@ -605,9 +608,8 @@ a.arrow-1,a.arrow-2{
         left: 0;
       }
         .menu li > .submenu.level-2,
-        .menu li >.submenu.level-3{ 
-        
-        left: 0;
+        .menu li > .submenu.level-3{ 
+        top: 0;
         right: 0;
         width: 100%;
         }
@@ -636,6 +638,23 @@ a.arrow-1,a.arrow-2{
         position: absolute;
         right: 0;
         
-   }
-    
+        }
+
+        input.toggleSubmenu:checked ~ ul{
+            display: block;
+            position: relative;
+        }
+        label.toggleSubmenu
+         {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        input.toggleSubmenu:checked ~ a{
+            background-color: rgba(204, 224, 172, 0.3);
+        }
+
     } 
