@@ -1,0 +1,234 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: normal;
+}
+
+.wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 px;
+}
+
+ .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    list-style-type:none;
+    background: rgba(129, 206, 28, 0.5);
+    border-bottom: 2px solid rgb(12, 27, 5);
+    
+}
+.menu li {
+    position: relative;;
+}
+
+
+.menu > li > a {
+    text-decoration: none;
+    display: block;
+    padding: 15px 50px 15px;
+    transition: all .5s ease-in-out;
+    color: rgb(12, 27, 5);
+    
+}
+
+.submenu > li{
+    list-style: none;
+}
+
+.submenu > li > a {
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    transition: all .5s ease-in-out;
+    color: rgb(12, 27, 5);
+    border-bottom: 1px solid rgba(241, 209, 159, 0.1);
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+}
+.menu li > .submenu {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    background-color: rgba(210, 214, 175, 0.9);
+    left: 0;
+    right: 0;
+    width: 300px;
+    opacity: 0;
+    transition: all .5s  ease-in-out;
+        ion: all .5s  ease-in-out;
+    -moz-transition: all .5s  ease-in-out;
+    -ms-transition: all .5s  ease-in-out;
+    -o-transition: all .5s  ease-in-out;
+}
+.menu li:hover > .submenu{
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+    width: 250px;
+    z-index: 1;
+    
+}
+.menu li > .submenu.level-2,
+ .menu li >.submenu.level-3{ 
+    top: 0;
+    left: 100%;
+    width: 100%;
+}
+a.arrow-1,a.arrow-2{
+    position: relative;
+}
+ 
+ a.arrow-1:after {
+     content: '\232A';
+     position: absolute;
+     left: 240px;
+     
+}
+a.arrow-1:hover:after {
+    content: '\232A';
+    position: absolute;
+    left: 93%;
+    transform: rotate(180deg);   
+}
+.hamburger-menu [type="checkbox"]{
+    display: none;
+}
+.background-title {
+    height: 500px;
+    background: url('https://www.thebodyshop.ru/media/blog/blog-top4.jpg') center no-repeat;
+    position: relative;
+}
+.news{
+    position: absolute;
+    width: 1060px;
+    background-color: white;
+    top: 320px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.2;
+    padding: 60px 15px;
+}
+.news h1 {
+    margin: 15px 0;
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.news strong {
+    font-size: 29px;
+    font-weight: 400;
+ 
+}
+.nav ul {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    list-style-type: none;
+    margin: 10px 40px;
+}
+.nav{
+    position: relative;
+   
+}
+.nav li a {
+    display: block;
+    padding: 50px 70px;
+    transition: all .5s ease-in-out;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: black;
+    font-size: 16px;   
+}
+.blog-item{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 1140px;
+    margin: 0 auto;
+    position: relative;
+}
+.blog-item li:nth-child(-n+2){
+    width: 50%;
+    padding: 0 10px 40px;
+    flex-direction: column;
+    align-self: flex-start;
+    
+}
+.blog-img{
+    width: 100%;
+    height: 300px;
+    background: url('https://www.thebodyshop.ru/media/blog/Shea_obzor_top.jpg') center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    padding-top: 54%;
+    
+}
+.blog-img-1{
+    background: url('https://www.thebodyshop.ru/media/blog/top-care.jpg') center center /cover no-repeat;
+    display: block;
+    padding-top: 54%;
+    width: 100%;
+    height: 300px;
+    
+
+}    
+.blog-content h3 {
+    margin-top: -77px;
+    max-height: 77px;
+    background-color: rgba(116, 107, 107, 0.4);
+    width: 100%;
+    color: white;
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 26px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    
+} 
+.blog-content h3 a {
+    text-decoration: none;
+    color: white;
+    
+}
+.blog-item-prod p{
+    display: inline-block;
+    margin: 30px 10px 10px;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 0 7px;
+    width: calc(100% - 180px);
+    
+
+}
+.blog-content a.btn {
+    border: 2px solid black;
+    background-color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: black;
+    width: 150px;
+    font-size: 10px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top; 
+    margin-top: 7%;   
+}
+.blog-content a.btn:hover {
+    background-color: black;
+    color: white;
+} 
