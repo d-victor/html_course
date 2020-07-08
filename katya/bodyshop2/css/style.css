@@ -153,39 +153,31 @@ a.arrow-1:hover:after {
     font-size: 16px;   
 }
 .blog-item{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
     width: 1140px;
     margin: 0 auto;
-    position: relative;
-}
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+    align-self: flex-start; 
+}  
 .blog-item li:nth-child(-n+2){
     width: 50%;
     padding: 0 10px 40px;
-    flex-direction: column;
     align-self: flex-start;
     
 }
-.blog-img{
+ a.blog-img {
+    display: block;
     width: 100%;
     height: 300px;
-    background: url('https://www.thebodyshop.ru/media/blog/Shea_obzor_top.jpg') center center;
-    background-repeat: no-repeat;
+    padding-top: 54%;
+    background: no-repeat;
+    background-position: center;
     background-size: cover;
-    display: block;
-    padding-top: 54%;
-    
+  
 }
-.blog-img-1{
-    background: url('https://www.thebodyshop.ru/media/blog/top-care.jpg') center center /cover no-repeat;
-    display: block;
-    padding-top: 54%;
-    width: 100%;
-    height: 300px;
-    
 
-}    
 .blog-content h3 {
     margin-top: -77px;
     max-height: 77px;
@@ -231,4 +223,17 @@ a.arrow-1:hover:after {
 .blog-content a.btn:hover {
     background-color: black;
     color: white;
+} 
+
+ ul .blog-item-prod:nth-child(3){
+    width: 100%;
+    padding-bottom: 60px;
+    display: block;
+}
+.blog-img-2 {
+    background: url('https://www.thebodyshop.ru/media/blog/6614/webimages-make-up-brush-range-increps012-m-r.jpg') center center/cover no-repeat;
+    display: block;
+    width: 66%; 
+    padding-top: 38%;
+
 } 
