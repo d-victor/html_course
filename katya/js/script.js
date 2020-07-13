@@ -212,4 +212,29 @@ var y = 1;
  }*/
 
  // 9//
+ var number = +prompt( "Enter the number" );
+ console.log(typeof +number, +number, number);
 
+ if (number > 0 && typeof number === Number) { console.log(number);
+ alert("Congratulations!You are entering on the number.")
+
+ } else {
+     confirm('You did not enter a number? Please,enter again or press cancel?');
+ }
+
+ var name = prompt( "What is you name?" );
+ console.log(typeof +name, +name, name);
+ if (Number.isNaN(+name) && typeof +name === "number" ) {
+     console.log(123);
+
+     if (name.length > 3) {
+         console.log("Dfgfjgkgkg");
+     } else if (name.length === 3){
+         console.log("It's ok.But your name have 3 letters. Your name " + name );
+     }else {
+         alert("Not three litters");
+     }
+
+ } else {
+     alert("Not number");
+ }
