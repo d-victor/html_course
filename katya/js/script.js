@@ -178,31 +178,31 @@ var y = 1;
 
 
     //6//
-
-   // for (var i = 1; i <= 4; i++) {
-   //
-   //    if ( i % 2 ) {
-   //      console.log(i + ' Не парне');
-   //      } else {
-   //     console.log(i + 'Парне');
-   //    }
-   //
-   //      for (var j = 1; j <= 4; j++) {
-   //          if (j % 2) {
-   //              console.log(j + ' Не парне');
-   //          } else {
-   //              console.log(j + 'Парне');
-   //          }
-   //          console.log(` ${i},${j} `);
-   //      }
-   // }
+    //
+    // for (var i = 1; i <= 4; i++) {
+    //
+    //    if ( i % 2 ) {
+    //      console.log(i + ' Не парне');
+    //      } else {
+    //     console.log(i + 'Парне');
+    //    }
+    //
+    //      for (var j = 1; j <= 4; j++) {
+    //         if (j % 2) {
+    //              console.log(j + ' Не парне');
+    //          } else {
+    //              console.log(j + 'Парне');
+    //          }
+    //          console.log(` ${i},${j} `);
+    //      }
+    // }
         // 7 //
 
- // var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
- // var i = text.length;
- // for (; i <= 0 ; --i){
- //    console.log(text[i]);
- // }
+  // var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
+  // for (var i = text.lenght - 1; i >= 0 ; i--){
+  //   console.log([i]);
+  // }
+  //
      //8//
  /*var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
  for (var i = 0; i < text.length ; i++) {
@@ -213,11 +213,19 @@ var y = 1;
 
  // 9//
 
-  var num = prompt( "Enter the number" );console.log(num);
-  while (!+num && +num < 0){ console.log();
-   var  numb = confirm('You did not enter a number? Please,enter again or press cancel?');
-      if (num === Number) break;
-  }
 
+ /*let num = prompt("Enter the number");
+    while(+num < 0 ){
+      if (+num > 0){
+          continue;
+      }
+    } confirm('You did not enter a number? Please,enter again or press cancel?');
+*/
+ //10//
 
- // "Congratulations!You are entering on the number."
+/* var a = " ";
+ for (var i = 0; i < 5; i++){
+   a = a + "x";
+   console.log(a + " ");
+ }*/
+
