@@ -229,3 +229,88 @@ var y = 1;
    console.log(a + " ");
  }*/
 
+
+ /// function 1///
+
+/*
+var name1 ="Olia";
+var name2 ="Dasha";
+var name3 ="Masha";
+ function getName(name1,name2,name3) {
+  console.log(name1,name2,name3);
+ }
+ getName(name1,name2,name3);
+
+*/
+
+        //2//
+
+/*function calcNum(num){
+    num *= num;
+    return num;
+}
+ var num = 5;
+console.log(calcNum(num));
+
+        //3//
+
+ function checkString(text1) {
+     var text1 = prompt( "Writing something");
+    if(!text1 === "0") {
+        return true;
+    }else{
+        return false;
+    }
+ }
+ console.log(checkString());
+
+ */
+        //4//
+ /*function getSize() {
+    console.log(arguments);
+    for (var a=0; a<arguments.length;a++){
+        console.log(arguments[a]);
+    }
+ }
+ getSize(38,40,42,44);
+ */
+
+        //5//
+
+ /*function task3(task4) {
+     var k = 0;
+     if (k === task4(f)) {
+      console.log(task4());
+     }
+
+ }
+ function task4() {
+     var f = 2;
+     return f;
+ }
+ */
+       /* // 6 //
+ function makeSomething() {
+
+     var t = 1;
+
+     return function() {
+         return t++;
+     };
+ }*/
+    //7//
+ function getName() {
+    var name = prompt('What is your name?');
+    return name;
+ }
+ function checkName() {
+     if (+name === 'String') {
+         return true;
+     } else {
+         return false;
+     }
+
+    function checkName1() {
+        if 
+    }
+ }
