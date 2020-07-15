@@ -177,32 +177,32 @@ var y = 1;
     }*/
 
 
-    //6//
-    //
-    // for (var i = 1; i <= 4; i++) {
-    //
-    //    if ( i % 2 ) {
-    //      console.log(i + ' Не парне');
-    //      } else {
-    //     console.log(i + 'Парне');
-    //    }
-    //
-    //      for (var j = 1; j <= 4; j++) {
-    //         if (j % 2) {
-    //              console.log(j + ' Не парне');
-    //          } else {
-    //              console.log(j + 'Парне');
-    //          }
-    //          console.log(` ${i},${j} `);
-    //      }
-    // }
+    //6// ??
+
+     for (var i = 1; i <= 4; i++) {
+
+       /* if ( i % 2 ) {
+          console.log(i + ' Не парне');
+          } else {
+         console.log(i + 'Парне');*/
+
+
+          for (var j = 1; j <= 4; j++) {
+            /* if (j % 2) {
+                  console.log(j + ' Не парне');
+              } else {
+                  console.log(j + 'Парне');
+              }*/
+              console.log(` ${i},${j} `);
+         }
+     }
         // 7 //
 
-  // var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
-  // for (var i = text.lenght - 1; i >= 0 ; i--){
-  //   console.log([i]);
-  // }
-  //
+  /* var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
+   for (var i = text.length - 1; i >= 0 ; i--){
+     console.log(text[i]);
+   }
+  */
      //8//
  /*var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
  for (var i = 0; i < text.length ; i++) {
@@ -299,18 +299,34 @@ console.log(calcNum(num));
      };
  }*/
     //7//
+var name;
+ var validName;
  function getName() {
     var name = prompt('What is your name?');
     return name;
+
  }
- function checkName() {
-     if (+name === 'String') {
-         return true;
+  function checkName(name) {
+     if (name === 'String') {
+         validName = true;
+      return true;
      } else {
+         validName = false;
          return false;
+         checkName1();
      }
 
-    function checkName1() {
-        if 
+    function checkName1(validName) {
+        if (validName === true){
+            getName();
+        }else{
+            getMessage();
+        }
     }
  }
+ function getMessage() {
+     console.log('"Welcome" + name');
+ }
+getName();
+ checkName();
+
