@@ -228,7 +228,12 @@ var y = 1;
    a = a + "x";
    console.log(a + " ");
  }*/
+ var a = " ";
+ for (var i = 0; i < 3; i++) {
+     a = (" " + a + "x");
+     console.log(a + " ");
 
+ }
 
  /// function 1///
 
@@ -299,6 +304,7 @@ console.log(calcNum(num));
      };
  }*/
     //7//
+/*
 var name;
  var validName;
  function getName() {
@@ -330,3 +336,4 @@ var name;
 getName();
  checkName();
 
+*/
