@@ -228,6 +228,7 @@ for (var i = 0; i < text.length ; i++) {
    a = a + "x";
    console.log(a);
  }*/
+/*
 function task9(h, variant) {
     console.log(h, variant);
     if (undefined === variant) {
@@ -274,6 +275,7 @@ function getPiramid(h, spacer, space, block, spaceBlock, sp) {
         space = '';
     }
 }
+*/
 
 /*function getPiramidV2(h,spacer,space,block,spaceBlock,sp) {
     for (var i = 1; i <= h; i++){
@@ -290,6 +292,7 @@ function getPiramid(h, spacer, space, block, spaceBlock, sp) {
 
 /// function 1///
 
+
 /*
 var name1 ="Olia";
 var name2 ="Dasha";
@@ -297,7 +300,8 @@ var name3 ="Masha";
  function getName(name1,name2,name3) {
   console.log(name1,name2,name3);
  }
- getName(name1,name2,name3);
+ getName('Olia','Dasha','Masha');
+
 
 */
 
@@ -314,7 +318,7 @@ console.log(calcNum(num));
 
  function checkString(text1) {
      var text1 = prompt( "Writing something");
-    if(!text1 === "0") {
+    if(!text1 === '') {
         return true;
     }else{
         return false;
@@ -366,7 +370,7 @@ var name;
 
  }
   function checkName(name) {
-     if (name === 'String') {
+     if (name === 'String'){
          validName = true;
       return true;
      } else {
@@ -425,7 +429,7 @@ getName();
 
 }*/
 
-function task8() {
+/*function task8() {
     var num = +prompt('Enter number');
     var validateNum = num > 0;
     var isReturn = !validateNum;
@@ -436,7 +440,7 @@ function task8() {
         task8();
         return;
     }
-}
+}*/
 
 /*task8();*/
 
