@@ -1,64 +1,64 @@
- /*var i = 3; /// Виведе 3,2,1
+/*var i = 3; /// Виведе 3,2,1
 
- while (i){
-     console.log( i-- );
- }
- var a = 3;
- do {
-    console.log(a--);
- } while (a);
-
-
-  var c = 0;
-
-  while (c < 5){
-  console.log(c);
-      ++c;
- }                 */    // 1,2,3,4
-
-  /*while (c < 5){
-     console.log(c);
-        // c++;
- }                     // 1,2,3,4,5
-
- do {
-    console.log(c);
-         ++c;
- } while (c < 5);
-*/
- /*do {
-   console.log(c);
-         c++;
- } while (c < 5);
-
- for (c = 0;c < 5;c++){
-     console.log(c);
- }
- for (c = 0;c < 5;c++){
-     console.log(c);
- }
-
- for (var f = 0; f < 5; f++) console.log(f); // Від 0 до 4
-
- for (var f = 0; f < 5; ++f) console.log(f); // Від 0 до 4
-*/
- /*var f = 0;
-
- while(f < 5){
-   console.log(f);
-    ++f;
+while (i){
+    console.log( i-- );
 }
- var xz = 0;
- while(xz < 5){
-   console.log(xz);
-    xz++;
- }
+var a = 3;
+do {
+   console.log(a--);
+} while (a);
 
- var ff = 0;
- do{
-     console.log(ff);
-     ff++;
- } while( ff < 5 );
+
+ var c = 0;
+
+ while (c < 5){
+ console.log(c);
+     ++c;
+}                 */    // 1,2,3,4
+
+/*while (c < 5){
+   console.log(c);
+      // c++;
+}                     // 1,2,3,4,5
+
+do {
+  console.log(c);
+       ++c;
+} while (c < 5);
+*/
+/*do {
+  console.log(c);
+        c++;
+} while (c < 5);
+
+for (c = 0;c < 5;c++){
+    console.log(c);
+}
+for (c = 0;c < 5;c++){
+    console.log(c);
+}
+
+for (var f = 0; f < 5; f++) console.log(f); // Від 0 до 4
+
+for (var f = 0; f < 5; ++f) console.log(f); // Від 0 до 4
+*/
+/*var f = 0;
+
+while(f < 5){
+  console.log(f);
+   ++f;
+}
+var xz = 0;
+while(xz < 5){
+  console.log(xz);
+   xz++;
+}
+
+var ff = 0;
+do{
+    console.log(ff);
+    ff++;
+} while( ff < 5 );
 */
 /* var fff = 0;
 
@@ -113,7 +113,7 @@ label: for (var p = 2; p<= n; p++){
         if (p % s === 0) break label;
      }
     console.log*//*(p);*/
- /*}*/
+/*}*/
 
 /*
  var number = 1;
@@ -122,7 +122,7 @@ label: for (var p = 2; p<= n; p++){
  alert(number);
  }*/
 
-        // 1 //
+// 1 //
 
 /*var result = '';
 var i = 0;
@@ -132,7 +132,7 @@ var i = 0;
 } while (i < 1000);
 document.write(result);*/
 
-        /// 2 ///
+/// 2 ///
 /*
 var y = 1;
  for (y = 1; y < 10;y++){
@@ -145,97 +145,150 @@ var y = 1;
 */
 
 
-        // 3 //
-   /* var i = 0;
-    var ts = 5;
- for (i = 0;ts < i; i++){
-     ts *= ts;
-     console.log(ts);
- }*/
+// 3 //
+/* var i = 0;
+ var ts = 5;
+for (i = 0;ts < i; i++){
+  ts *= ts;
+  console.log(ts);
+}*/
 
-       // 5 //
+// 5 //
 
-     /*   for (var i = 1; i <= 4; i++) {
+/*   for (var i = 1; i <= 4; i++) {
 
-        for (var j = 1; j <= 4; j++) {
+   for (var j = 1; j <= 4; j++) {
 
-          console.log(` ${i},${j}`);
+     console.log(` ${i},${j}`);
 
-        }
-      } */
+   }
+ } */
 
-    //4//
- /*var a = 10;
- var b = 0;
-    while (a !== 0) {
-    a--;
-    console.log(a);
-    }
-    while (b <= 10) {
-    ++b;
-    console.log(b);
-    }*/
+//4//
+/*var a = 10;
+var b = 0;
+   while (a !== 0) {
+   a--;
+   console.log(a);
+   }
+   while (b <= 10) {
+   ++b;
+   console.log(b);
+   }*/
 
 
-    //6// ??
-
+//6// ??
+/*
      for (var i = 1; i <= 4; i++) {
 
-       /* if ( i % 2 ) {
+       /!* if ( i % 2 ) {
           console.log(i + ' Не парне');
           } else {
-         console.log(i + 'Парне');*/
+         console.log(i + 'Парне');*!/
 
 
           for (var j = 1; j <= 4; j++) {
-            /* if (j % 2) {
+            /!* if (j % 2) {
                   console.log(j + ' Не парне');
               } else {
                   console.log(j + 'Парне');
-              }*/
+              }*!/
               console.log(` ${i},${j} `);
          }
-     }
-        // 7 //
+     }*/
+// 7 //
 
-  /* var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
-   for (var i = text.length - 1; i >= 0 ; i--){
-     console.log(text[i]);
-   }
-  */
-     //8//
- /*var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
- for (var i = 0; i < text.length ; i++) {
-     if (i % 3){
-         console.log(text[i]);
-     }
- }*/
-
- // 9//
-
-
- /*let num = prompt("Enter the number");
-    while(+num < 0 ){
-      if (+num > 0){
-          continue;
-      }
-    } confirm('You did not enter a number? Please,enter again or press cancel?');
+/* var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
+ for (var i = text.length - 1; i >= 0 ; i--){
+   console.log(text[i]);
+ }
 */
- //10//
+//8//
+/*var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
+for (var i = 0; i < text.length ; i++) {
+    if (i % 3){
+        console.log(text[i]);
+    }
+}*/
 
-/* var a = " ";
+// 9//
+
+
+/*let num = prompt("Enter the number");
+   while(+num < 0 ){
+     if (+num > 0){
+         continue;
+     }
+   } confirm('You did not enter a number? Please,enter again or press cancel?');
+*/
+//10//
+
+/* var a = "";
  for (var i = 0; i < 5; i++){
    a = a + "x";
-   console.log(a + " ");
+   console.log(a);
  }*/
- var a = " ";
- for (var i = 0; i < 3; i++) {
-     a = (" " + a + "x");
-     console.log(a + " ");
+function task9(h, variant) {
+    console.log(h, variant);
+    if (undefined === variant) {
+        variant = true;
+    }
+    if (undefined === h) {
+        h = 5;
+    }
+    var sp = '--';
+    var spacer = '-';
+    var space = '';
+    var block = '';
+    var spaceBlock = '#';
 
- }
+    if (variant) {
+        getPiramid(h, spacer, space, block, spaceBlock);
+    } else {
+        getPiramidV2(h, spacer, space, block, spaceBlock, sp);
+    }
 
- /// function 1///
+}
+
+task9(5, false);
+
+function getPiramid(h, spacer, space, block, spaceBlock, sp) {
+    var view = '';
+
+    for (var i = 1; i <= h; i++) {
+
+        for (var j = 1; j <= h - i; j++) {
+            space = space + spacer;
+        }
+
+        block = block + spaceBlock;
+
+        if (sp === undefined) {
+            view = space + block;
+        } else {
+            view = space + block + sp + block;
+        }
+
+        console.log(view);
+
+        space = '';
+    }
+}
+
+/*function getPiramidV2(h,spacer,space,block,spaceBlock,sp) {
+    for (var i = 1; i <= h; i++){
+        for (var j = 1; j <= h - i; j++ ){
+            space = space + spacer;
+        }
+        block = block + spaceBlock;
+        console.log( space + block + sp + block );
+        space = '';
+
+    }
+}*/
+
+
+/// function 1///
 
 /*
 var name1 ="Olia";
@@ -248,7 +301,7 @@ var name3 ="Masha";
 
 */
 
-        //2//
+//2//
 
 /*function calcNum(num){
     num *= num;
@@ -270,40 +323,40 @@ console.log(calcNum(num));
  console.log(checkString());
 
  */
-        //4//
- /*function getSize() {
-    console.log(arguments);
-    for (var a=0; a<arguments.length;a++){
-        console.log(arguments[a]);
+//4//
+/*function getSize() {
+   console.log(arguments);
+   for (var a=0; a<arguments.length;a++){
+       console.log(arguments[a]);
+   }
+}
+getSize(38,40,42,44);
+*/
+
+//5//
+
+/*function task3(task4) {
+    var k = 0;
+    if (k === task4(f)) {
+     console.log(task4());
     }
- }
- getSize(38,40,42,44);
- */
 
-        //5//
+}
+function task4() {
+    var f = 2;
+    return f;
+}
+*/
+/* // 6 //
+function makeSomething() {
 
- /*function task3(task4) {
-     var k = 0;
-     if (k === task4(f)) {
-      console.log(task4());
-     }
+var t = 1;
 
- }
- function task4() {
-     var f = 2;
-     return f;
- }
- */
-       /* // 6 //
- function makeSomething() {
-
-     var t = 1;
-
-     return function() {
-         return t++;
-     };
- }*/
-    //7//
+return function() {
+  return t++;
+};
+}*/
+//7//
 /*
 var name;
  var validName;
@@ -337,3 +390,53 @@ getName();
  checkName();
 
 */
+/*1 Пользователь должен ввести данные, promrt
+   положительное число больше нуля. number, > 0
+  2  Нужно реализовать валидацию,
+   если введено не число или же число не соответствует условию, number, > 0
+  3 нужно вывести сообщение,    confirm
+   что введено не число, с возможностью выбора, message
+  4 ввести еще раз return 1
+  5 либо завершить программу.
+
+   */
+
+
+/*do{
+    var num = +prompt('Enter number');
+    var validateNum = num > 0;
+    if (!validateNum){
+        var isReturn = confirm("Error, try again.");
+    }
+}while(isReturn);
+*/
+/*function task8() {
+    var num = +prompt('Enter number');
+    var validateNum = num > 0;
+    var isReturn = !validateNum;
+    if (!validateNum){
+        isReturn = confirm("Error, try again.");
+    }
+    return isReturn;
+}*/
+/* console.log(task8());*/
+
+/*while (task8()){
+
+}*/
+
+function task8() {
+    var num = +prompt('Enter number');
+    var validateNum = num > 0;
+    var isReturn = !validateNum;
+    if (!validateNum) {
+        isReturn = confirm("Error, try again.");
+    }
+    if (isReturn) {
+        task8();
+        return;
+    }
+}
+
+/*task8();*/
+
