@@ -176,26 +176,6 @@ var b = 0;
    console.log(b);
    }*/
 
-
-//6// ??
-/*
-     for (var i = 1; i <= 4; i++) {
-
-       /!* if ( i % 2 ) {
-          console.log(i + ' Не парне');
-          } else {
-         console.log(i + 'Парне');*!/
-
-
-          for (var j = 1; j <= 4; j++) {
-            /!* if (j % 2) {
-                  console.log(j + ' Не парне');
-              } else {
-                  console.log(j + 'Парне');
-              }*!/
-              console.log(` ${i},${j} `);
-         }
-     }*/
 // 7 //
 
 /* var text = 'Цикли пропонують швидкий та легкий спосіб робити щось неодноразово';
@@ -212,15 +192,57 @@ for (var i = 0; i < text.length ; i++) {
 }*/
 
 // 9//
+/*function task8() {
+    var num = +prompt('Enter number');
+    var validateNum = num > 0;
+    var isReturn = !validateNum;
+    if (!validateNum) {
+        isReturn = confirm("Error, try again.");
+    }
+    if (isReturn) {
+        task8();
+        return;
+    }
+}*/
+
+/*task8();*/
+
+/*1 Пользователь должен ввести данные, promrt
+   положительное число больше нуля. number, > 0
+  2  Нужно реализовать валидацию,
+   если введено не число или же число не соответствует условию, number, > 0
+  3 нужно вывести сообщение,    confirm
+   что введено не число, с возможностью выбора, message
+  4 ввести еще раз return 1
+  5 либо завершить программу.
+
+   */
 
 
-/*let num = prompt("Enter the number");
-   while(+num < 0 ){
-     if (+num > 0){
-         continue;
-     }
-   } confirm('You did not enter a number? Please,enter again or press cancel?');
+/*do{
+    var num = +prompt('Enter number');
+    var validateNum = num > 0;
+    if (!validateNum){
+        var isReturn = confirm("Error, try again.");
+    }
+}while(isReturn);
 */
+/*function task8() {
+    var num = +prompt('Enter number');
+    var validateNum = num > 0;
+    var isReturn = !validateNum;
+    if (!validateNum){
+        isReturn = confirm("Error, try again.");
+    }
+    return isReturn;
+}*/
+/* console.log(task8());*/
+
+/*while (task8()){
+
+}*/
+
+
 //10//
 
 /* var a = "";
@@ -289,158 +311,4 @@ function getPiramid(h, spacer, space, block, spaceBlock, sp) {
     }
 }*/
 
-
-/// function 1///
-
-
-/*
-var name1 ="Olia";
-var name2 ="Dasha";
-var name3 ="Masha";
- function getName(name1,name2,name3) {
-  console.log(name1,name2,name3);
- }
- getName('Olia','Dasha','Masha');
-
-
-*/
-
-//2//
-
-/*function calcNum(num){
-    num *= num;
-    return num;
-}
- var num = 5;
-console.log(calcNum(num));
-
-        //3//
-
- function checkString(text1) {
-     var text1 = prompt( "Writing something");
-    if(!text1 === '') {
-        return true;
-    }else{
-        return false;
-    }
- }
- console.log(checkString());
-
- */
-//4//
-/*function getSize() {
-   console.log(arguments);
-   for (var a=0; a<arguments.length;a++){
-       console.log(arguments[a]);
-   }
-}
-getSize(38,40,42,44);
-*/
-
-//5//
-
-/*function task3(task4) {
-    var k = 0;
-    if (k === task4(f)) {
-     console.log(task4());
-    }
-
-}
-function task4() {
-    var f = 2;
-    return f;
-}
-*/
-/* // 6 //
-function makeSomething() {
-
-var t = 1;
-
-return function() {
-  return t++;
-};
-}*/
-//7//
-/*
-var name;
- var validName;
- function getName() {
-    var name = prompt('What is your name?');
-    return name;
-
- }
-  function checkName(name) {
-     if (name === 'String'){
-         validName = true;
-      return true;
-     } else {
-         validName = false;
-         return false;
-         checkName1();
-     }
-
-    function checkName1(validName) {
-        if (validName === true){
-            getName();
-        }else{
-            getMessage();
-        }
-    }
- }
- function getMessage() {
-     console.log('"Welcome" + name');
- }
-getName();
- checkName();
-
-*/
-/*1 Пользователь должен ввести данные, promrt
-   положительное число больше нуля. number, > 0
-  2  Нужно реализовать валидацию,
-   если введено не число или же число не соответствует условию, number, > 0
-  3 нужно вывести сообщение,    confirm
-   что введено не число, с возможностью выбора, message
-  4 ввести еще раз return 1
-  5 либо завершить программу.
-
-   */
-
-
-/*do{
-    var num = +prompt('Enter number');
-    var validateNum = num > 0;
-    if (!validateNum){
-        var isReturn = confirm("Error, try again.");
-    }
-}while(isReturn);
-*/
-/*function task8() {
-    var num = +prompt('Enter number');
-    var validateNum = num > 0;
-    var isReturn = !validateNum;
-    if (!validateNum){
-        isReturn = confirm("Error, try again.");
-    }
-    return isReturn;
-}*/
-/* console.log(task8());*/
-
-/*while (task8()){
-
-}*/
-
-/*function task8() {
-    var num = +prompt('Enter number');
-    var validateNum = num > 0;
-    var isReturn = !validateNum;
-    if (!validateNum) {
-        isReturn = confirm("Error, try again.");
-    }
-    if (isReturn) {
-        task8();
-        return;
-    }
-}*/
-
-/*task8();*/
 
