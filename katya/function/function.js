@@ -1,5 +1,6 @@
 /// function 1///
 
+/*
 var name1;
 var name2;
 var name3;
@@ -10,6 +11,7 @@ function getName(name1, name2, name3) {
 
 getName('Olia', 'Dasha', 'Masha');
 
+*/
 
 //2//
 
@@ -23,17 +25,15 @@ console.log(calcNum(num));
 */
 
 //3//
-
- function checkString(text1) {
-     var text1 = prompt( "Writing something"); console.log(typeof text1);
-    if (text1 === 'String') {
+/*var text;
+function checkText(text) {
+    if (!text) {
+        return false;
+    } else {
         return true;
-    }else {
-       return false;
     }
- }
- console.log(checkString());
-
+}
+    console.log(checkText("Something"));*/
 //4//
 
 /*function getSize() {
@@ -48,28 +48,32 @@ getSize(38,40,42,44);*/
 
 //5//
 
-/*function task3(task4) {
+function task3(task4) {
     var k = 0;
     if (k === task4(f)) {
-     console.log(task4());
+        console.log(task4());
     }
 
 }
+
 function task4() {
     var f = 2;
     return f;
 }
-*/
+
+task4();
 /* // 6 //
 function makeSomething() {
-
 var t = 1;
 
 return function() {
   return t++;
-};
+}
 }*/
+
+
 //7//
+
 /*
 var name;
  var validName;
@@ -99,9 +103,5 @@ var name;
  function getMessage() {
      console.log('"Welcome" + name');
  }
-getName();
- checkName();
-
 */
-
 
