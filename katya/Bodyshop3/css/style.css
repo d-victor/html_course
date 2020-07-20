@@ -1,8 +1,393 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-html{
-    font-family: 'Source Sans Pro', 'Open Sans',sans-serif;
+
+html {
+    font-family: 'Source Sans Pro', 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: normal;
 }
+
+.wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    list-style-type: none;
+    background: rgba(87, 146, 10, 0.5);
+    border-bottom: 2px solid rgb(12, 27, 5);
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu > li > a {
+    text-decoration: none;
+    display: block;
+    padding: 15px 50px 15px;
+    transition: all .5s ease-in-out;
+    color: rgb(12, 27, 5);
+    font-weight: 400;
+}
+
+.submenu > li {
+    list-style: none;
+}
+
+.submenu > li > a {
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    transition: all .5s ease-in-out;
+    color: rgb(12, 27, 5);
+    border-bottom: 1px solid rgba(241, 209, 159, 0.1);
+}
+
+.menu li > .submenu {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    background-color: rgba(210, 214, 175, 0.9);
+    left: 0;
+    right: 0;
+    width: 250px;
+    opacity: 0;
+    transition: all .5s ease-in-out;
+}
+
+.menu li:hover > .submenu {
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+    width: 250px;
+    z-index: 1;
+}
+
+.menu li > .submenu.level-2,
+.menu li > .submenu.level-3 {
+    top: 0;
+    left: 100%;
+    width: 100%;
+}
+
+.menu li > .submenu.level-4 {
+    right: 0;
+    left: -39%;
+    width: 250px;
+}
+
+.menu li > .submenu.level-5 {
+    right: 0;
+    left: -100%;
+    width: 250px;
+}
+
+a.arrow-1, a.arrow-2 {
+    position: relative;
+}
+
+a.arrow-1:after {
+    content: '\232A';
+    position: absolute;
+    left: 240px;
+}
+
+a.arrow-1:hover:after {
+    content: '\232A';
+    position: absolute;
+    left: 90%;
+    transform: rotate(180deg);
+}
+
+.hamburger-menu [type="checkbox"] {
+    display: none;
+}
+
+.blog-title {
+    text-align: center;
+}
+.background-title {
+    height: 518px;
+    background: url('../images/blog-top4.jpg') center no-repeat;
+}
+
+.news {
+    max-width: 1060px;
+    background-color: white;
+    top: 320px;
+    left: 0;
+    right: 0;
+    margin: -200px auto 0;
+    line-height: 1.2;
+    padding: 60px 15px;
+    min-height: 230px;
+    text-align: center;
+
+
+}
+
+.news h1 {
+    margin: 15px 0;
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.news strong {
+    font-size: 26px;
+    font-weight: 500;
+}
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    margin: 10px 40px;
+}
+
+.nav {
+    position: relative;
+
+}
+
+.nav li a {
+    display: block;
+    padding: 0 50px;
+    transition: all .5s ease-in-out;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: black;
+    font-size: 14px;
+}
+
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 992px) {
+    .menu {
+        display: none;
+    }
+
+    .background-title {
+        max-width: 992px;
+    }
+
+    .news {
+        max-width: 992px;
+        margin: -200px 40px 0;
+    }
+
+    .nav li a {
+        padding: 0 10px;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-around;
+
+    }
+}
+@media screen and (max-width: 767px) {
+
+    #menu_toggle {
+        opacity: 0;
+    }
+
+    .menu_btn {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .menu_btn > span {
+        display: block;
+        height: 7px;
+        width: 30px;
+        margin-bottom: 2px;
+        background-color: black;
+        transition: all .5s ease-out;
+
+    }
+
+    .menu_btn > span,
+    .menu_btn > span::before,
+    .menu_btn > span::after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: black;
+        transition-duration: .25s;
+    }
+
+    .menu_btn > span::before {
+        content: '';
+        top: -8px;
+    }
+
+    .menu_btn > span::after {
+        content: '';
+        top: 8px;
+    }
+
+    .menu_box {
+        display: block;
+        position: fixed;
+        visibility: hidden;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        overflow: visible;
+        margin: 0;
+        padding: 80px 0;
+        z-index: 1;
+        text-align: left;
+        transition-duration: .25s;
+        background-color: white;
+    }
+
+    .menu-item {
+        padding: 12px 24px;
+        color: black;
+        font-size: 20px;
+        font-weight: 600;
+        width: 100%;
+        border: 1px solid rgba(210, 214, 175, 0.5);
+        transition-duration: .25s;
+    }
+
+    .menu-item:hover {
+        background-color: rgba(204, 224, 172, 0.3);
+
+    }
+
+    #menu_toggle:checked ~ .menu_btn > span {
+        transform: rotate(45deg);
+    }
+
+    #menu_toggle:checked ~ .menu_btn > span::before {
+        top: 0;
+        transform: rotate(0);
+    }
+
+    #menu_toggle:checked ~ .menu_btn > span::after {
+        top: 0;
+        transform: rotate(90deg);
+    }
+
+    #menu_toggle:checked ~ .menu_box {
+        visibility: visible;
+        left: 0;
+    }
+
+    .menu li {
+        position: relative;
+    }
+
+    .menu li > .submenu.level-2,
+    .menu li > .submenu.level-3 {
+        top: 0;
+        left: 1%;
+        width: 100%;
+        height: 100%;
+        transition: none;
+    }
+
+    .menu li > .submenu {
+        width: 100%;
+        height: 100vh;
+        padding-left: 5%;
+        z-index: 3;
+        overflow: hidden;
+        font-size: 20px;
+        font-weight: 400;
+        background-color: white;
+        transition: all .5s ease-in-out;
+    }
+
+    .menu li:hover > .submenu {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition: all .5s ease-in-out;
+    }
+
+    a.arrow-1, a.arrow-2 {
+        position: relative;
+    }
+
+    .menu-item:after {
+        content: '\232A';
+        position: absolute;
+        right: 2%;
+    }
+
+    a.arrow-1:after {
+        content: '\232A';
+        position: absolute;
+        left: 91%;
+    }
+
+    .menu-item:hover:after {
+        content: '\232A';
+        position: absolute;
+        right: 5%;
+        transform: rotate(180deg);
+
+    }
+
+    a.arrow-1:hover:after {
+        content: '\232A';
+        position: absolute;
+        left: 91%;
+        transform: rotate(180deg);
+    }
+
+    .submenu > li > a {
+        text-decoration: none;
+        display: block;
+        padding: 5px;
+        transition: all .5s ease-in-out;
+        color: rgb(12, 27, 5);
+        border-bottom: 1px solid rgba(241, 209, 159, 0.1);
+    }
+
+    .background-title {
+        max-width: 767px;
+    }
+
+    .news {
+        max-width: 767px;
+        margin: -200px 40px 0;
+    }
+
+    .nav li a {
+        padding: 0 10px;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-around;
+        max-width: 767px;
+    }
+}
+

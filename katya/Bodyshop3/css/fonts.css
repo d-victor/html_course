@@ -7,6 +7,15 @@
 @font-face {
     font-family: 'Source Sans Pro Regular';
     url('../fonts/SourceSansPro-Regular.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DIN Pro Regular';
+    src: url('../fonts/DINPro/DINPro.eot');
+    src: url('../fonts/DINPro/DINPro.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/DINPro/DINPro.woff') format('woff'),
+    url('../fonts/DINPro/DINPro.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
