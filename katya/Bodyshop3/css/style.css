@@ -169,6 +169,89 @@ a.arrow-1:hover:after {
     color: black;
     font-size: 14px;
 }
+.blog_item_list li {
+    list-style-type: none;
+}
+
+.blog_item_list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blog-item li:nth-child(-n+2) {
+    width: 50%;
+    padding: 0 10px 40px;
+    align-self: flex-start;
+    margin-top: 50px;
+}
+
+a.blog-img {
+    display: block;
+    width: 100%;
+    padding-top: 54%;
+    background:url('../images/shea_obzor_top.jpg') center no-repeat;
+    background-size: cover;
+}
+a.blog-img-1 {
+    display: block;
+    width: 100%;
+    padding-top: 54%;
+    background:url("../images/top-care.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.blog-img-tittle {
+    position: relative;
+}
+
+.blog-img-tittle h3 {
+    position: absolute;
+    bottom: 0;
+    height: 77px;
+    background-color: rgba(116, 107, 107, 0.4);
+    width: 100%;
+    color: white;
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 22px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.blog-img-tittle a {
+    text-decoration: none;
+    color: white;
+}
+
+.blog-item-prod p {
+    display: inline-block;
+    margin: 30px 10px 10px;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 0 7px;
+    width: calc(100% - 180px);
+}
+
+.blog-content a.btn {
+    border: 2px solid black;
+    background-color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: black;
+    width: 150px;
+    font-size: 15px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 7%;
+}
+
+.blog-content a.btn:hover {
+    background-color: black;
+    color: white;
+}
+
 
 
 @media screen and (max-width: 1200px) {
