@@ -115,6 +115,7 @@ a.arrow-1:hover:after {
 .blog-title {
     text-align: center;
 }
+
 .background-title {
     height: 518px;
     background: url('../images/blog-top4.jpg') center no-repeat;
@@ -146,6 +147,7 @@ a.arrow-1:hover:after {
     font-size: 26px;
     font-weight: 500;
 }
+
 .nav ul {
     display: flex;
     justify-content: center;
@@ -169,6 +171,7 @@ a.arrow-1:hover:after {
     color: black;
     font-size: 14px;
 }
+
 .blog_item_list li {
     list-style-type: none;
 }
@@ -189,14 +192,15 @@ a.blog-img {
     display: block;
     width: 100%;
     padding-top: 54%;
-    background:url('../images/shea_obzor_top.jpg') center no-repeat;
+    background: url('../images/shea_obzor_top.jpg') center no-repeat;
     background-size: cover;
 }
+
 a.blog-img-1 {
     display: block;
     width: 100%;
     padding-top: 54%;
-    background:url("../images/top-care.jpg") center no-repeat;
+    background: url("../images/top-care.jpg") center no-repeat;
     background-size: cover;
 }
 
@@ -252,6 +256,139 @@ a.blog-img-1 {
     color: white;
 }
 
+ul .blog-item-prod:nth-child(3) {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 60px;
+}
+
+.blog-img-2 {
+    background: url('../images/webimages-make-up-brush-range-increps012-m-r.jpg') center no-repeat;
+    background-size: cover;
+    display: block;
+    width: 100%;
+    padding-top: 37%;
+    flex-grow: 1;
+}
+
+.blog-content-brash {
+    width: 40%;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    padding-left: 20px;
+    justify-content: center;
+
+}
+
+.blog-content-brash h3 {
+    font-size: 24px;
+    padding: 40px 0 10px;
+    font-weight: 600;
+}
+
+.blog-content-brash p {
+    font-size: 18px;
+    line-height: 20px;
+    display: block;
+    width: 300px;
+    margin: 0 0 20px;
+    padding: 0;
+    font-weight: 400;
+
+}
+
+.btn-1 {
+    border: 2px solid black;
+    background-color: white;
+    padding: 12px 31px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.btn-1:hover {
+    background-color: black;
+    color: white;
+}
+
+.blog-item-prod:nth-child(n+4):nth-child(-n+6) {
+    width: 33.33%;
+    padding: 20px 5px 40px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+}
+
+.blog-img-3 {
+    background:url("../images/about-marula-oil.png")center no-repeat;
+    background-size: cover;
+    padding-top: 59%;
+    width: 100%;
+    display: block;
+}
+.blog-img-4 {
+    background:url("../images/ny-make-top.jpg") center no-repeat;
+    background-size: cover;
+    padding-top: 59%;
+    width: 100%;
+    display: block;
+}
+.blog-img-5 {
+    background:url("../images/multi_top_1.jpg") center no-repeat;
+    background-size: cover;
+    padding-top: 59%;
+    width: 100%;
+    display: block;
+}
+
+.blog-content-new h3 {
+    padding: 20px 0;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+    text-transform: uppercase;
+    align-items: center;
+    overflow: hidden;
+}
+
+.blog-content-new h3 a {
+    text-decoration: none;
+    color: black;
+}
+
+.blog-content-new p {
+    margin: 0;
+    padding:0;
+    flex-grow: 1;
+    font-size: 18px;
+    line-height: 1.4;
+    width: 100%;
+    font-weight: 400;
+
+}
+.blog-content-new{
+    flex-grow: 1;
+}
+
+.btn-2 {
+    border: 2px solid black;
+    background-color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: black;
+    width: 150px;
+    margin: 23px auto 0;
+
+}
+
+.btn-2:hover {
+    background-color: black;
+    color: white;
+}
 
 
 @media screen and (max-width: 1200px) {
@@ -282,6 +419,7 @@ a.blog-img-1 {
 
     }
 }
+
 @media screen and (max-width: 767px) {
 
     #menu_toggle {
@@ -461,6 +599,13 @@ a.blog-img-1 {
     .news {
         max-width: 767px;
         margin: -200px 40px 0;
+        padding-bottom: 20px;
+    }
+    .news h1{
+        font-size: 30px;
+    }
+    .news strong{
+        font-size: 20px;
     }
 
     .nav li a {
@@ -469,8 +614,89 @@ a.blog-img-1 {
 
     .nav {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        align-items: center;
         max-width: 767px;
+    }
+
+    .blog_item_list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .blog-item li:first-child {
+        width: 100%;
+        padding: 0 10px 40px;
+        align-self: center;
+        font-size: 16px;
+    }
+
+    .blog-img-tittle h3 {
+        color: black;
+    }
+
+    .blog-img-tittle h3 {
+        background-color: white;
+    }
+
+    .blog-img-tittle a {
+        color: black;
+    }
+
+    .blog-item li:nth-child(2) {
+        width: 100%;
+        padding: 0 10px 40px;
+        align-self: center;
+        font-size: 16px;
+    }
+
+    .blog-item-prod p {
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        padding-top: 5px;
+    }
+
+    .blog-content a.btn {
+        float: right;
+        margin-right: 20px;
+    }
+
+    .blog-item li:nth-child(3) {
+        width: 100%;
+        display: block;
+        padding-bottom: 30px;
+        font-size: 14px;
+    }
+
+    .blog-img-2 {
+        width: 100%;
+    }
+
+    .blog-content-brash {
+        width: 100%;
+    }
+
+    .btn-1 {
+        position: unset;
+        font-size: 16px;
+        margin-right: 20px;
+        float: right;
+    }
+    .blog-item-prod:nth-child(n+4):nth-child(-n+6) {
+        width: 100%;
+        display: block;
+        padding-bottom: 30px;
+    }
+
+    .btn-2,
+    .btn-3 {
+        float: right;
+        margin-right: 20px;
+    }
+
+    .blog-content-new p {
+        padding-bottom: 5px;
     }
 }
 
