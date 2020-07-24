@@ -22,7 +22,7 @@ function setFormatFirstLastName( FirstLastName, pattern) {
 console.log(setFormatFirstLastName("DariaKorobchyk" , 'Aaaaa Aaaaaaaaa'));
 
 
-function countPosition(str,searchStr) {
+/*function countPosition(str,searchStr) {
     var count = 0;
     var position;
 
@@ -36,27 +36,32 @@ function countPosition(str,searchStr) {
     }
 
     return count;
-}
+}*/
 
-
-var returnNumber = '';
-var count = 0;
-
-for (let i=0; i < pattern.length; i++){
-    if (pattern[i] !== 'x'){
-        returnNumber += pattern[i];
-    }else {
-        returnNumber += numberPhone[count];
-        count++;
+var numberPhone = 380670001122;
+function setFormatNumber1( numberPhone, pattern) {
+    if (numberPhone.length !== 12 || countPosition(pattern,'x') !== 12){
+        return false;
     }
+
+    var returnNumber = '';
+    var count = 0;
+
+    for (let i=0; i < pattern.length; i++){
+        if (pattern[i] !== 'x'){
+            returnNumber += pattern[i];
+        }else {
+            returnNumber += numberPhone[count];
+            count++;
+        }
+    }
+
+    return returnNumber;
 }
 
-return returnNumber;
-}
+console.log(setFormatNumber1( numberPhone, '+xx (xxx) xxx xx xx'));
 
-console.log(setFormatNumber1(numberPhone , '+xx (xxx) xx-xx-xxx'));
 
-//////////////////////
 function countPosition(str,searchStr) {
     var count = 0;
     var position;
