@@ -52,7 +52,7 @@ function searchValue(str, value){
 
     while (position !== -1) {
         position = str.indexOf('blue', position + 1);
-        if (position !== -1) {
+        if (position !== -1 ) {
             count++;
         }
         str1 = [str.slice(position, position + 4)]; console.log(str1);
