@@ -127,13 +127,11 @@ a.arrow-1:hover:after {
     top: 320px;
     left: 0;
     right: 0;
-    margin: -200px auto 0;
+    margin: -200px 40px 0;
     line-height: 1.2;
     padding: 60px 15px;
     min-height: 230px;
     text-align: center;
-
-
 }
 
 .news h1 {
@@ -148,20 +146,16 @@ a.arrow-1:hover:after {
     font-weight: 500;
 }
 
-.nav ul {
+.menu_content ul {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     list-style-type: none;
     margin: 10px 40px;
 }
 
-.nav {
-    position: relative;
-
-}
-
-.nav li a {
+.menu_content li a {
     display: block;
     padding: 0 50px;
     transition: all .5s ease-in-out;
@@ -170,6 +164,11 @@ a.arrow-1:hover:after {
     text-transform: uppercase;
     color: black;
     font-size: 14px;
+    list-style: none;
+}
+
+.menu_content li {
+    list-style-type: none;
 }
 
 .blog_item_list li {
@@ -191,7 +190,7 @@ a.arrow-1:hover:after {
 a.blog-img {
     display: block;
     width: 100%;
-    padding-top: 54%;
+    padding-top: 59%;
     background: url('../images/shea_obzor_top.jpg') center no-repeat;
     background-size: cover;
 }
@@ -199,7 +198,7 @@ a.blog-img {
 a.blog-img-1 {
     display: block;
     width: 100%;
-    padding-top: 54%;
+    padding-top: 59%;
     background: url("../images/top-care.jpg") center no-repeat;
     background-size: cover;
 }
@@ -237,7 +236,7 @@ a.blog-img-1 {
     width: calc(100% - 180px);
 }
 
-.blog-content a.btn {
+.btn {
     border: 2px solid black;
     background-color: white;
     padding: 12px 25px;
@@ -251,7 +250,7 @@ a.blog-img-1 {
     margin-top: 7%;
 }
 
-.blog-content a.btn:hover {
+.btn:hover {
     background-color: black;
     color: white;
 }
@@ -279,7 +278,6 @@ ul .blog-item-prod:nth-child(3) {
     line-height: 1.3;
     padding-left: 20px;
     justify-content: center;
-
 }
 
 .blog-content-brash h3 {
@@ -296,7 +294,6 @@ ul .blog-item-prod:nth-child(3) {
     margin: 0 0 20px;
     padding: 0;
     font-weight: 400;
-
 }
 
 .btn-1 {
@@ -316,11 +313,10 @@ ul .blog-item-prod:nth-child(3) {
 
 .blog-item-prod:nth-child(n+4):nth-child(-n+6) {
     width: 33.33%;
-    padding: 20px 5px 40px;
+    padding: 20px 10px 40px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-
 }
 
 .blog-img-3 {
@@ -364,7 +360,7 @@ ul .blog-item-prod:nth-child(3) {
     color: black;
 }
 
-.blog-content-new p {
+.blog-item-prod:nth-child(n+4):nth-child(-n+6) p {
     margin: 0;
     padding: 0;
     flex-grow: 1;
@@ -372,11 +368,6 @@ ul .blog-item-prod:nth-child(3) {
     line-height: 1.4;
     width: 100%;
     font-weight: 400;
-
-}
-
-.blog-content-new {
-    flex-grow: 1;
 }
 
 .btn-2 {
@@ -420,7 +411,6 @@ a.blog-img7 {
 
 footer {
     border-top: 1px solid rgba(192, 181, 181, 0.6);
-
 }
 
 .wrapper {
@@ -438,9 +428,11 @@ footer {
     width: calc(100% / 3);
     padding: 0 20px;
 }
-div.footer-inform{
-    padding-left: 20px;
+
+div.footer-inform {
+    padding: 0 20px;
 }
+
 .row-footer .footer h6 {
     padding-bottom: 10px;
     text-transform: uppercase;
@@ -479,7 +471,12 @@ div.footer-inform{
     color: black;
     padding: 12px 30px 12px 10px;
     font-size: 15px;
+    width: 50%;
 
+}
+
+.footer-inform form {
+    flex-wrap: nowrap;
 }
 
 .footer-inform .btn-footer {
@@ -489,6 +486,7 @@ div.footer-inform{
     text-decoration: none;
     color: white;
     font-size: 14px;
+    width: 130px;
 }
 
 .footer-inform p {
@@ -518,34 +516,26 @@ div.footer-inform{
 .social {
     padding: 15px 0;
 }
-.footer-inform form{
+
+.footer-inform form {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 @media screen and (max-width: 1200px) {
     .background-title {
-        max-width: 1200px;
+        height: 518px;
     }
 
-    .news {
-        max-width: 1200px;
-        margin: -200px 40px 0;
+    div.col-2 {
+        padding: 0 10px;
     }
-
-
-
 }
 
 @media screen and (max-width: 992px) {
 
     .background-title {
-        max-width: 992px;
-    }
-
-    .news {
-        max-width: 992px;
-        margin: -200px 40px 0;
+        height: 451px;
     }
 
     .nav li a {
@@ -555,13 +545,11 @@ div.footer-inform{
     .nav {
         display: flex;
         justify-content: space-around;
-
     }
 
     .menu {
         display: flex;
         justify-content: center;
-        max-width: 992px;
     }
 
     .menu li a {
@@ -575,14 +563,15 @@ div.footer-inform{
     .menu li:hover > .submenu {
         width: 200px;
     }
-    .footer-inform form{
+
+    .footer-inform form {
         display: flex;
-        flex-wrap: wrap;
-    }
-    .col-2{
-        padding: 0;
+        flex-wrap: nowrap;
     }
 
+    .col-2 {
+        padding: 0 10px;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -663,7 +652,6 @@ div.footer-inform{
 
     .menu-item:hover {
         background-color: rgba(204, 224, 172, 0.3);
-
     }
 
     #menu_toggle:checked ~ .menu_btn > span {
@@ -738,7 +726,6 @@ div.footer-inform{
         position: absolute;
         right: 5%;
         transform: rotate(180deg);
-
     }
 
     a.arrow-1:hover:after {
@@ -758,12 +745,10 @@ div.footer-inform{
     }
 
     .background-title {
-        max-width: 767px;
+        height: 348px;
     }
 
     .news {
-        max-width: 767px;
-        margin: -200px 40px 0;
         padding-bottom: 20px;
     }
 
@@ -779,11 +764,26 @@ div.footer-inform{
         padding: 0 10px;
     }
 
-    .nav {
+    .menu_content li a {
+        padding: 10px 40px;
+    }
+
+    .menu_content ul {
         display: flex;
-        justify-content: center;
         align-items: center;
-        max-width: 767px;
+        justify-content: center;
+    }
+
+    .menu_content {
+        text-align: center;
+    }
+
+    .menu_content li:nth-child(n+1):nth-child(-n+2) {
+        width: 50%;
+    }
+
+    .menu_content li:nth-child(n+3):nth-child(-n+4) {
+        width: 50%;
     }
 
     .blog_item_list {
@@ -850,8 +850,9 @@ div.footer-inform{
         margin-right: 20px;
         float: right;
     }
-    .btn-2,
-    .btn-3 {
+
+    .btn,
+    .btn-2 {
         float: right;
         margin-right: 20px;
     }
@@ -866,34 +867,58 @@ div.footer-inform{
         display: block;
         padding-bottom: 30px;
     }
+
     .row-footer {
         display: block;
+        padding: 0;
     }
 
-    .catalog-footer {
-        display: none;
-        position: absolute;
-        background-color: white;
-        max-width: 681px;
-        box-shadow: 0 8px 16px 0 rgba( 0, 0, 0,.2);
-        z-index: 1;
+    .catalog-footer li a {
+        border: 1px solid lightgray;
+        display: block;
+        padding: 15px 10px;
 
+    }
+
+    .footer h6 ~ ul.catalog-footer {
+        visibility: hidden;
+        pointer-events: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        opacity: 0;
+        transition: all .5s ease-in-out;
+    }
+
+    .footer h6 ~ ul.catalog-footer {
+        overflow: hidden;
+        height: 100vh;
+        width: 100%;
+        background-color: white;
+        transition: all .5s ease-in-out;
+    }
+
+    .footer h6:hover ~ ul.catalog-footer {
+        visibility: visible;
+        pointer-events: auto;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: relative;
+        z-index: 1;
     }
 
     .row-footer .footer h6 {
         border: 1px solid lightgray;
-        display: block;
         padding: 15px 10px;
+        width: 100%;
     }
 
     div.col-2 {
         width: 100%;
-        padding-right: 0;
-    }
-
-    .footer:hover .catalog-footer{
-        display: block;
-        width: 100%;
+        padding: 0;
     }
 
     .catalog-footer li > a {
@@ -901,15 +926,14 @@ div.footer-inform{
         padding: 5px;
     }
 
-    .catalog-footer li {
-        display: block;
-        padding: 10px 0 10px;
-    }
-
-    .footer-inform {
+    div .footer-inform {
         display: block;
         margin-left: 20px;
-        padding-top: 20px;
+        padding: 20px 5px 0;
+    }
+
+    .footer-inform h6 {
+        padding-top: 10px;
     }
 
     footer {
@@ -919,8 +943,13 @@ div.footer-inform{
     div.row-footer {
         padding-top: 0;
     }
-    div.footer-inform{
+
+    div.footer-inform {
         margin: 0;
+    }
+
+    .footer-inform input {
+        width: 80%;
     }
 }
 
