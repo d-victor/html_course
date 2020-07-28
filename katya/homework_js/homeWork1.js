@@ -12,7 +12,7 @@ function setFormatFirstLastName(FirstLastName, pattern) {
             returnFirstLastName += pattern[i];
         }else if (FirstLastName[count] === undefined){ continue;
         } else {
-            returnFirstLastName += FirstLastName[count]; console.log(FirstLastName[count]);
+            returnFirstLastName += FirstLastName[count];
             count++;
 
         }
@@ -21,7 +21,7 @@ function setFormatFirstLastName(FirstLastName, pattern) {
     return returnFirstLastName;
 }
 
-console.log(setFormatFirstLastName('Daria Korobchyk ', 'Mis xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'));
+console.log(setFormatFirstLastName('Daria Korobchyk ', 'Mis xxxxxxxxxxxxxxxxxxxxx'));
 
 
 function countPosition(str, searchStr) {
@@ -46,18 +46,19 @@ function countPosition(str, searchStr) {
 function searchValue(str, value){
     var count = 0;
     var position;
-    var str1;
-    var mainStr;
-
+    var str1 = [];
 
     while (position !== -1) {
-        position = str.indexOf('blue', position + 1);
+        position = str.indexOf(value, position + 1);
+        /*console.log(position);*/
+        if (position === -1) {
+            break;
+        }
         if (position !== -1 ) {
             count++;
         }
-        str1 = [str.slice(position, position + 4)]; console.log(str1);
-        mainStr = str1.push('blue');
-
+        str1 = [str.slice(position)];console.log(str1);
+        str1.push([position,value]);
     }
 
     return str1;
