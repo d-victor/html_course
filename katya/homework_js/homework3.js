@@ -36,20 +36,18 @@ console.log(getPropertyNum(newArray));
 
 /*Порівнює суму чисел масиву з заданим значенням*/
 
-function checkSumArr(newArray) {
-    var checkNum = 14;
-    var sumArr;
+// function checkSumArr(newArray, checkNum) {
+//     var sumArr;
+//     return newArray.filter(function (elem) {
+//         sumArr = elem[0] + elem[1] + elem[3];
 
-    for (var i = 0; i > 3; i++){
-        sumArr += newArray[i];
-        if (sumArr > checkNum){
-            return newArray;
-        }else{
-            return -1;
-        }
-    }
+//         return sumArr === checkNum;
+//     });
 
-}
 
-console.log(checkSumArr(newArray));
+// }
+
+// console.log(checkSumArr(newArray, 14));
+
+
 
