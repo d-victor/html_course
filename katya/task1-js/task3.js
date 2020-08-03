@@ -69,9 +69,28 @@ function arrayToString(arr,separator){
 var nameCollectionList = changePosName(stringToArray(nameList,', '),[['Olya','Daria'],['Ira','Inna']])
 function changePosName(nameCollectionList, changeNameList) {
     console.log(nameCollectionList, changeNameList);
-    nameCollectionList.filter(function (item) {
-       var a = nameCollectionList.indexOf(changeNameList);
-        console.log(a);
-    })
- return a;
+    
+    var indexName1 = nameCollectionList.indexOf(changeNameList[0][0]);
+    var indexName2 = nameCollectionList.indexOf(changeNameList[0][1]);
+    var indexName3 = nameCollectionList.indexOf(changeNameList[1][0]);
+    var indexName4 = nameCollectionList.indexOf(changeNameList[1][1]);
+
+    
+    nameCollectionList = nameCollectionList.slice(0);
+    var temp = nameCollectionList[indexName4];
+    nameCollectionList[indexName4] = nameCollectionList[indexName1];
+    nameCollectionList[indexName1] = temp;
+    
+
+    return nameCollectionList;
+    
 }
+console.log(nameCollectionList);
+
+function findIndexName(arr, possition) {
+    var indexName = arr.indexOf(possition);
+    return indexName;
+ }
+
+
+
