@@ -97,3 +97,17 @@ function findDelItem(fruitsList,fruit) {
 }
 console.log(findDelItem(['Orange','Peach','Banana','Apple','Lemon'],'Lemon'));
 
+function checkSumArr(newArray, checkNum) {
+    var sumArr;
+    sumArr = newArray.reduce(function (sum, current) {
+        return  sum + current;
+
+        if (sumArr === checkNum){
+            return newArray;
+        }
+
+    },0);
+    return sumArr;
+
+ }
+ console.log(checkSumArr([[1, 2 ,1],[2, 2, 2],[3, 3, 3],[4, 4, 4],[5, 5, 5]], 15));
