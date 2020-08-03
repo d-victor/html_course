@@ -32,16 +32,16 @@ function nameConsoleLog(nameList) {
 nameConsoleLog(finalName);
 
 function setPrefixName(nameList, prefix) {
-    if(!nameList || !prefix){
+    if (!nameList || !prefix) {
         return false;
     }
 
     nameList = nameList.map(function (elem) {
-          return prefix + elem
+        return prefix + elem
     })
     return nameList;
 
-
+}
 var finalPrefixNameList = setPrefixName(finalName, 'mis ');
 
 
@@ -95,5 +95,5 @@ function findDelItem(fruitsList,fruit) {
 
     return fruitsList;
 }
-console.log(findDelItem(['Orange','Peach','Banana','Apple','Lemon'],'Lemon'))
+console.log(findDelItem(['Orange','Peach','Banana','Apple','Lemon'],'Lemon'));
 
