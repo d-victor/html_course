@@ -99,15 +99,12 @@ console.log(findDelItem(['Orange','Peach','Banana','Apple','Lemon'],'Lemon'));
 
 function checkSumArr(newArray, checkNum) {
     var sumArr;
-    sumArr = newArray.reduce(function (sum, current) {
-        return  sum + current;
+     return newArray.reduce(function (sum, current) {
+         sumArr =  sum + current;
+         console.log(sumArr)
+         return sumArr === checkNum;
 
-        if (sumArr === checkNum){
-            return newArray;
-        }
-
-    },0);
-    return sumArr;
+    });
 
  }
- console.log(checkSumArr([[1, 2 ,1],[2, 2, 2],[3, 3, 3],[4, 4, 4],[5, 5, 5]], 15));
+ console.log(checkSumArr([[1, 2 ,1],[2, 2, 2],[3, 3, 3],[4, 4, 4],[5, 5, 5]], 12));
