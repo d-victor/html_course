@@ -6,4 +6,11 @@
 body{
     font-family: 'Oswald', sans-serif;
     line-height: 23px;
+    font-size: 14px;
 }
+.wrapper{
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+
