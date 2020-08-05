@@ -9,8 +9,82 @@ body{
     font-size: 14px;
 }
 .wrapper{
-    max-width: 1600px;
+    max-width: 1200px;
     margin: 0 auto;
 }
+.main-header{
+    display: flex;
+    justify-content: flex-end;
+    background-color: black;
+}
+.main-header li{
+   list-style-type: none;
+    padding: 10px;
+}
+.main-header li a{
+    text-decoration: none;
+    color: white;
+    padding: 10px 10px;
+}
 
+.main-header li:nth-child(1):before {
+    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANCAYAAACdKY9CAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADTSURBVHgBvZHNDYJAEIXfjHrXCuRo/MVEI0ftxE6ECtQOtBOPxHgwRBNv2IEUIDvCYhAwMXDxXfZv3psvO4SCpG/NweEIilp48o5u7j37TrniobWCiJ1LILHJOzpfBulYBhriR7sAwluwPBIzNSHhgi6nQ1xXT5Pqaqn9ihy6uhsd0psRGGuA59FRGzgDZyRreE7vWAUoSHeQ7tSMKtsJW82U/uTNyaaGJmrHyPEH0Ie9hEI15qiHgbJiaTIq6h8GxUEVg560DKwlRBm/o9knz92/ALNbRUTU6UCwAAAAAElFTkSuQmCC');
+    position: absolute;
+    top: 10px;
+    left: 64%;
+}
+.main-header li:nth-child(2):before{
+    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABASURBVHgB7cyhEQAQAIXhxxiqIVQjmEe2ghF0STWVILHAi+6U99f/7jPw9YAUg8NsiS2sXLD7oM/icQIFCvwCXisJCGg2Ed1nAAAAAElFTkSuQmCC');
+    position: absolute;
+    right: 19%;
+}
+.main-header li:nth-child(3):after{
+    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACASURBVHgBTY6xDYAgFEQFFnAERzDAAFrauYE2EEai003UHohu4AiWNiQeRhJ/cvmXy/uXz4wxFed8EULc3vuj+EYpNUkpa2QbjTE2yGpo1loPGSCEjLBJBQsh7Ggh8Anucf1u6KSUts65iyUSlesPrDJgrT3fpvzDDywBdBlI8wC+GS4zXRBbTgAAAABJRU5ErkJggg==');
+}
+.main-header li:nth-child(3){
+    padding-right: 100px;
+}
+.main-header li:nth-child(2){
+    padding: 10px 20px;
+}
+ .logo{
+     padding-top: 30px;
+ }
+.subHeader input {
+    padding-left: 50px;
+    width: 500px;
+}
+.subHeader .searchBtn{
+    background: red no-repeat center;
+    width: 50px;
+    height: 51px;
+    padding: 10px;
+}
+.wishlist{
+    display: block;
+    height: 51px;
+    padding-left: 50px;
 
+}
+.subHeader{
+    display: flex;
+    justify-content: center;
+    padding-left: 200px;
+}
+.cart{
+    border: 1px solid gainsboro;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    margin-left: 60px;
+}
+.cart p{
+    float: right;
+    padding-top: 15px;
+
+}
+.item-basket{
+    width: 51px;
+}
