@@ -15,12 +15,24 @@
 </head>
 <body>
 <header>
-    <ul class="main-header">
-        <li><a href="#">Sign In / Create an Account </a></li>
-        <li><a href="#">French</a></li>
-        <li>
-            <a href="#">USD</a></li>
-    </ul>
+    <div class="background-header">
+        <div class="main-header">
+            <p><a href="#">Sign In</a></p>
+            <span class="sign">/</span>
+            <p><a class="item-header" href="#">Create an Account</a></p>
+            <span class="sign2">|</span>
+            <p class="lang"><a href="#">FRENCH</a></p>
+            <span>|</span>
+            <label for="currency">
+                <select name="currency" id="currency">
+                    <option value="USD">USD</option>
+                    <option value="EURO">EURO</option>
+                    <option value="UAH">UAH</option>
+                    <option value="RUR">RUR</option>
+                </select>
+            </label>
+        </div>
+    </div>
     <div class="wrapper">
         <img class="logo" src="img/image%201.png" alt="logo">
         <div class="subHeader">
