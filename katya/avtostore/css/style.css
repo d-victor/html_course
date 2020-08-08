@@ -66,51 +66,82 @@ select{
 .background-header{
     background-color: black;
 }
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    max-width: 1200px;
+}
+.col{
+    padding: 15px;
+}
+.col-1{
+    width: calc(100% / 4);
+}
+.col-3{
+    width: 75%;
+}
+.allCategories li a {
+    text-decoration: none;
+    color: white;
+}
+.allCategories li {
+    list-style-type: none;
+    background-color: red;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+}
+
+.allCategories {
+    padding-top: 35px;
+}
 
 .logo {
-    padding-top: 30px;
+ padding-top: 20px;
 }
 
 .subHeader input {
     padding-left: 50px;
-    width: 500px;
-    font-size: 14px;
+    width: 515px;
 }
-
-.subHeader .searchBtn {
+form{
+    display: flex;
+    flex-wrap: nowrap;
+    /*height: 44px;*/
+    width: 500px;
+    padding-top: 40px;
+}
+form div {
     background: red no-repeat center;
-    width: 50px;
-    padding: 10px;
-    border-radius: 0 10px 10px 0;
+    width: 44px;
+    border-radius: 0 5px 5px 0;
+}
+.subHeader {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .wishlist {
     display: block;
-    height: 51px;
-    padding-left: 50px;
-
-}
-
-.subHeader {
-    display: flex;
-    justify-content: center;
-    padding-left: 200px;
+    padding-left: 30px;
+    padding-top: 40px;
 }
 
 .cart {
+   margin-top: 40px;
     border: 1px solid gainsboro;
     border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    margin-left: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 65px;
     position: relative;
+    width: 160px;
 }
 
 .cart p {
-    float: right;
-    padding: 15px 5px 0;
+    padding: 10px 1px 0 20px;
 }
 
 .cart p span {
@@ -118,9 +149,11 @@ select{
 }
 
 .item-basket {
-    width: 51px;
+ padding: 10px 1px 0 10px;
 }
-
+.searchBtn{
+    padding: 15px 12px 10px;
+}
 .count {
     background: red center;
     width: 20px;
@@ -182,15 +215,16 @@ nav.main-menu .menu ul.submenu {
     visibility: visible;
     overflow: auto;
     min-height: 500px;
-    width: 100%;
     background-color: white;
     border: #cccccc;
     box-shadow: 2px 4px 10px lightgray;
+    text-align: left;
+    position: absolute;
+    top: 80%;
+    left: 0;
+    right: 0;
 }
-.menu > li:nth-child(1){
-    background-color: red;
-    border-radius: 10px 10px 0 0;
-}
+
 
 
 
