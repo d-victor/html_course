@@ -1,3 +1,21 @@
+/*var workerList = [];
+function addWorker(workerList, name, age, stag, skillList) {
+    workerList = workerList.slice();
+    var worker = {
+        name: name,
+        age: age,
+        stag: stag,
+        skillList: skillList.slice(),
+    }
+    workerList.push(worker);
+    return workerList;
+}
+workerList = addWorker(workerList,'Olya',25, 3,['html','css','js']);
+workerList = addWorker(workerList,'Masha',27, 5,['html','css','js','git']);
+workerList = addWorker(workerList,'Dasha',30, 8,['html','css','js','git','php','nodeJs']);
+// console.log(workerList);*/
+
+
 function getSkills(list) {
     list = list.slice();
     var skillList = [];
