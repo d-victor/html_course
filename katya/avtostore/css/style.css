@@ -24,18 +24,21 @@ body {
     margin: 0 auto;
 }
 
-select{
+select {
     background-color: black;
     color: white;
 
 }
-.main-header span{
+
+.main-header span {
     color: white;
     padding: 0 20px;
 }
+
 .main-header .sign2 {
     padding: 0 40px 20px 0;
 }
+
 .main-header .sign {
     padding: 0 7px;
 }
@@ -45,12 +48,15 @@ select{
     color: white;
     padding: 10px 1px;
 }
-.main-header a:hover{
-   color: red;
+
+.main-header a:hover {
+    color: red;
 }
+
 .main-header .item-header {
     padding-right: 20px;
 }
+
 .main-header p:nth-child(1):before {
     content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANCAYAAACdKY9CAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADTSURBVHgBvZHNDYJAEIXfjHrXCuRo/MVEI0ftxE6ECtQOtBOPxHgwRBNv2IEUIDvCYhAwMXDxXfZv3psvO4SCpG/NweEIilp48o5u7j37TrniobWCiJ1LILHJOzpfBulYBhriR7sAwluwPBIzNSHhgi6nQ1xXT5Pqaqn9ihy6uhsd0psRGGuA59FRGzgDZyRreE7vWAUoSHeQ7tSMKtsJW82U/uTNyaaGJmrHyPEH0Ie9hEI15qiHgbJiaTIq6h8GxUEVg560DKwlRBm/o9knz92/ALNbRUTU6UCwAAAAAElFTkSuQmCC');
     position: absolute;
@@ -63,28 +69,35 @@ select{
     position: absolute;
     right: 20%;
 }
-.background-header{
+
+.background-header {
     background-color: black;
 }
-.row{
+
+.row {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -15px;
     max-width: 1200px;
 }
-.col{
+
+.col {
     padding: 15px;
 }
-.col-1{
+
+.col-1 {
     width: calc(100% / 4);
 }
-.col-3{
+
+.col-3 {
     width: 75%;
 }
+
 .allCategories li a {
     text-decoration: none;
     color: white;
 }
+
 .allCategories li {
     list-style-type: none;
     background-color: red;
@@ -97,25 +110,28 @@ select{
 }
 
 .logo {
- padding-top: 20px;
+    padding-top: 20px;
 }
 
 .subHeader input {
     padding-left: 50px;
     width: 515px;
 }
-form{
+
+form {
     display: flex;
     flex-wrap: nowrap;
     /*height: 44px;*/
     width: 500px;
     padding-top: 40px;
 }
+
 form div {
     background: red no-repeat center;
     width: 44px;
     border-radius: 0 5px 5px 0;
 }
+
 .subHeader {
     display: flex;
     flex-direction: row;
@@ -129,7 +145,7 @@ form div {
 }
 
 .cart {
-   margin-top: 40px;
+    margin-top: 40px;
     border: 1px solid gainsboro;
     border-radius: 3px;
     display: flex;
@@ -149,11 +165,13 @@ form div {
 }
 
 .item-basket {
- padding: 10px 1px 0 10px;
+    padding: 10px 1px 0 10px;
 }
-.searchBtn{
+
+.searchBtn {
     padding: 15px 12px 10px;
 }
+
 .count {
     background: red center;
     width: 20px;
@@ -164,9 +182,10 @@ form div {
     right: 61%;
 }
 
-.ellipse{
+.ellipse {
     padding: 5px 6px 2px;
 }
+
 nav.main-menu .menu {
     display: flex;
     justify-content: space-around;
@@ -179,6 +198,7 @@ nav.main-menu .menu li {
     list-style-type: none;
     padding: 0;
 }
+
 nav.main-menu .menu > li > a {
     text-decoration: none;
     display: block;
@@ -187,6 +207,7 @@ nav.main-menu .menu > li > a {
     color: black;
     cursor: pointer;
 }
+
 .menu .submenu > li > a {
     text-decoration: none;
     display: block;
@@ -199,6 +220,7 @@ nav.main-menu .menu > li > a {
 nav.main-menu .menu {
     position: relative;
 }
+
 nav.main-menu .menu ul.submenu {
     opacity: 0;
     visibility: hidden;
@@ -209,6 +231,7 @@ nav.main-menu .menu ul.submenu {
     top: 100%;
     width: 100%;
 }
+
 .menu > li:hover > ul.submenu {
     opacity: 1;
     padding: 15px;
