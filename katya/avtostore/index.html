@@ -17,29 +17,70 @@
 <header>
     <div class="background-header">
         <div class="main-header">
-            <p><a href="#">Sign In</a></p>
+            <div><img src="img/lock.png" alt="lock">
+                <a href="#">Sign In</a></div>
             <span class="sign">/</span>
             <p><a class="item-header" href="#">Create an Account</a></p>
             <span class="sign2">|</span>
-            <p class="lang"><a href="#">FRENCH</a></p>
+            <div class="tabLang">
+                <input type="radio" id="lang" name="lang">
+                <label for="lang">
+                    <img src="img/Group.png" alt="lock">
+                    <a href="#">FRENCH</a></label>
+                <div class="tab-otherLang lang ">
+                    <p><img src="img/frameEnglish.png" alt="lock">
+                        <a href="#">ENGLISH</a>
+                    </p>
+                    <p>
+                        <img src="img/frameGerman.png" alt="lock">
+                        <a href="#">GERMAN</a>
+                    </p>
+                    <p>
+                        <img src="img/frameBelgium.png" alt="lock">
+                        <a href="#">BELGIUM</a>
+                    </p>
+                    <p>
+                        <img src="img/frameArgentina.png" alt="lock">
+                        <a href="#">ARGENTINA</a>
+                    </p>
+                </div>
+            </div>
             <span>|</span>
-            <label for="currency">
-                <select name="currency" id="currency">
-                    <option value="USD">USD</option>
-                    <option value="EURO">EURO</option>
-                    <option value="UAH">UAH</option>
-                    <option value="RUR">RUR</option>
-                </select>
-            </label>
+            <div class="tab-currency">
+                <input type="checkbox" id="currency" name="currency">
+                <label for="currency">
+                    <p>
+                        <a href="#">USD</a></p></label>
+                <div class="currencyList currency">
+                    <p><a href="#">EURO</a></p>
+                    <p><a href="#">UAH</a></p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="wrapper">
         <div class="row">
-            <div class="col col-1 aside">
+            <div class="col col-1 ">
                 <img class="logo" src="img/image%201.png" alt="logo">
-                <ul class="allCategories">
-                    <li><a href="#">ALL CATEGORIES</a></li>
-                </ul>
+                <nav class="main-menu1">
+                    <ul class="allCategories">
+                        <li class="first">
+                            <a href="#">ALL CATEGORIES</a>
+                            <ul class="submenu1">
+                                <li><a href="#">Homepage 1</a></li>
+                                <li><a href="#">Homepage 2</a></li>
+                                <li><a href="#">Homepage 3</a></li>
+                                <li><a href="#">Homepage 4</a></li>
+                                <li><a href="#">Homepage 5</a></li>
+                                <li><a href="#">Homepage 6</a></li>
+                                <li><a href="#">Homepage 7</a></li>
+                                <li><a href="#">Homepage 8</a></li>
+                                <li><a href="#">Homepage 9</a></li>
+                                <li><a href="#">Homepage 10</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
             </div>
             <div class="col col-3">
                 <div class="subHeader">
@@ -65,193 +106,237 @@
                         <p>My Cart <span>$250.00</span></p>
                     </div>
                 </div>
+                <div class="row">
+                    <nav class="main-menu">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">HOME</a>
+                                <div class="submenu">
+                                    <ul>
+                                        <li><a href="#">Homepage Style 1</a></li>
+                                        <li><a href="#">Homepage Style 2</a></li>
+                                        <li><a href="#">Homepage Style 3</a></li>
+                                        <li><a href="#">Homepage Style 4</a></li>
+                                        <li><a href="#">Homepage Style 5</a></li>
+                                        <li><a href="#">Homepage Style 6</a></li>
+                                        <li><a href="#">Homepage Style 7</a></li>
+                                        <li><a href="#">Homepage Style 8</a></li>
+                                        <div class="submenu2">
+                                            <li><a href="#">Homepage Style 9</a></li>
+                                            <li><a href="#">Homepage Style 10</a></li>
+                                            <li><a href="#">Homepage Style 11</a></li>
+                                            <li><a href="#">Homepage Style 12</a></li>
+                                            <li><a href="#">Homepage Style 13</a></li>
+                                            <li><a href="#">Homepage Style 14</a></li>
+                                        </div>
+                                        <div class="submenu3">
+                                            <li><a href="#">Homepage Style 15</a></li>
+                                            <li><a href="#">Homepage Style 16</a></li>
+                                            <li><a href="#">Homepage Style 17</a></li>
+                                            <li><a href="#">Homepage Style 18</a></li>
+                                            <li><a href="#">Homepage Style 19</a></li>
+                                            <li><a href="#">Homepage Style 20</a></li>
+                                            <li><a href="#">Homepage Style 21</a></li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">DEALS</a>
+                                <div class="submenu">
+                                    <ul>
+                                        <li><a href="#">Homepage Style 1</a></li>
+                                        <li><a href="#">Homepage Style 2</a></li>
+                                        <li><a href="#">Homepage Style 3</a></li>
+                                        <li><a href="#">Homepage Style 4</a></li>
+                                        <li><a href="#">Homepage Style 5</a></li>
+                                        <li><a href="#">Homepage Style 6</a></li>
+                                        <li><a href="#">Homepage Style 7</a></li>
+                                        <li><a href="#">Homepage Style 8</a></li>
+                                        <div class="submenu2">
+                                            <li><a href="#">Homepage Style 9</a></li>
+                                            <li><a href="#">Homepage Style 10</a></li>
+                                            <li><a href="#">Homepage Style 11</a></li>
+                                            <li><a href="#">Homepage Style 12</a></li>
+                                            <li><a href="#">Homepage Style 13</a></li>
+                                        </div>
+                                        <div class="submenu3">
+                                            <li><a href="#">Homepage Style 14</a></li>
+                                            <li><a href="#">Homepage Style 15</a></li>
+                                            <li><a href="#">Homepage Style 16</a></li>
+                                            <li><a href="#">Homepage Style 17</a></li>
+                                            <li><a href="#">Homepage Style 18</a></li>
+                                            <li><a href="#">Homepage Style 19</a></li>
+                                            <li><a href="#">Homepage Style 20</a></li>
+                                            <li><a href="#">Homepage Style 21</a></li>
+                                        </div>
+                                    </ul>
+                                </div>
 
-                <nav class="main-menu">
-                    <ul class="menu">
-                        <li>
-                            <a href="#">HOME</a>
-                            <ul class="submenu">
-                                <li><a href="#">Homepage Style 1</a></li>
-                                <li><a href="#">Homepage Style 2</a></li>
-                                <li><a href="#">Homepage Style 3</a></li>
-                                <li><a href="#">Homepage Style 4</a></li>
-                                <li><a href="#">Homepage Style 5</a></li>
-                                <li><a href="#">Homepage Style 6</a></li>
-                                <li><a href="#">Homepage Style 7</a></li>
-                                <li><a href="#">Homepage Style 8</a></li>
-                                <li><a href="#">Homepage Style 9</a></li>
-                                <li><a href="#">Homepage Style 10</a></li>
-                                <li><a href="#">Homepage Style 11</a></li>
-                                <li><a href="#">Homepage Style 12</a></li>
-                                <li><a href="#">Homepage Style 13</a></li>
-                                <li><a href="#">Homepage Style 14</a></li>
-                                <li><a href="#">Homepage Style 15</a></li>
-                                <li><a href="#">Homepage Style 16</a></li>
-                                <li><a href="#">Homepage Style 17</a></li>
-                                <li><a href="#">Homepage Style 18</a></li>
-                                <li><a href="#">Homepage Style 19</a></li>
-                                <li><a href="#">Homepage Style 20</a></li>
-                                <li><a href="#">Homepage Style 21</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">DEALS</a>
-                            <ul class="submenu">
-                                <li><a href="#">Homepage Style 1</a></li>
-                                <li><a href="#">Homepage Style 2</a></li>
-                                <li><a href="#">Homepage Style 3</a></li>
-                                <li><a href="#">Homepage Style 4</a></li>
-                                <li><a href="#">Homepage Style 5</a></li>
-                                <li><a href="#">Homepage Style 6</a></li>
-                                <li><a href="#">Homepage Style 7</a></li>
-                                <li><a href="#">Homepage Style 8</a></li>
-                                <li><a href="#">Homepage Style 9</a></li>
-                                <li><a href="#">Homepage Style 10</a></li>
-                                <li><a href="#">Homepage Style 11</a></li>
-                                <li><a href="#">Homepage Style 12</a></li>
-                                <li><a href="#">Homepage Style 13</a></li>
-                                <li><a href="#">Homepage Style 14</a></li>
-                                <li><a href="#">Homepage Style 15</a></li>
-                                <li><a href="#">Homepage Style 16</a></li>
-                                <li><a href="#">Homepage Style 17</a></li>
-                                <li><a href="#">Homepage Style 18</a></li>
-                                <li><a href="#">Homepage Style 19</a></li>
-                                <li><a href="#">Homepage Style 20</a></li>
-                                <li><a href="#">Homepage Style 21</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">UNDER $100</a>
-                            <ul class="submenu">
-                                <li><a href="#">Homepage Style 1</a></li>
-                                <li><a href="#">Homepage Style 2</a></li>
-                                <li><a href="#">Homepage Style 3</a></li>
-                                <li><a href="#">Homepage Style 4</a></li>
-                                <li><a href="#">Homepage Style 5</a></li>
-                                <li><a href="#">Homepage Style 6</a></li>
-                                <li><a href="#">Homepage Style 7</a></li>
-                                <li><a href="#">Homepage Style 8</a></li>
-                                <li><a href="#">Homepage Style 9</a></li>
-                                <li><a href="#">Homepage Style 10</a></li>
-                                <li><a href="#">Homepage Style 11</a></li>
-                                <li><a href="#">Homepage Style 12</a></li>
-                                <li><a href="#">Homepage Style 13</a></li>
-                                <li><a href="#">Homepage Style 14</a></li>
-                                <li><a href="#">Homepage Style 15</a></li>
-                                <li><a href="#">Homepage Style 16</a></li>
-                                <li><a href="#">Homepage Style 17</a></li>
-                                <li><a href="#">Homepage Style 18</a></li>
-                                <li><a href="#">Homepage Style 19</a></li>
-                                <li><a href="#">Homepage Style 20</a></li>
-                                <li><a href="#">Homepage Style 21</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">NEW ARRIVALS</a>
-                            <ul class="submenu">
-                                <li><a href="#">Homepage Style 1</a></li>
-                                <li><a href="#">Homepage Style 2</a></li>
-                                <li><a href="#">Homepage Style 3</a></li>
-                                <li><a href="#">Homepage Style 4</a></li>
-                                <li><a href="#">Homepage Style 5</a></li>
-                                <li><a href="#">Homepage Style 6</a></li>
-                                <li><a href="#">Homepage Style 7</a></li>
-                                <li><a href="#">Homepage Style 8</a></li>
-                                <li><a href="#">Homepage Style 9</a></li>
-                                <li><a href="#">Homepage Style 10</a></li>
-                                <li><a href="#">Homepage Style 11</a></li>
-                                <li><a href="#">Homepage Style 12</a></li>
-                                <li><a href="#">Homepage Style 13</a></li>
-                                <li><a href="#">Homepage Style 14</a></li>
-                                <li><a href="#">Homepage Style 15</a></li>
-                                <li><a href="#">Homepage Style 16</a></li>
-                                <li><a href="#">Homepage Style 17</a></li>
-                                <li><a href="#">Homepage Style 18</a></li>
-                                <li><a href="#">Homepage Style 19</a></li>
-                                <li><a href="#">Homepage Style 20</a></li>
-                                <li><a href="#">Homepage Style 21</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">BLOG</a>
-                            <ul class="submenu">
-                                <li><a href="#">Homepage Style 1</a></li>
-                                <li><a href="#">Homepage Style 2</a></li>
-                                <li><a href="#">Homepage Style 3</a></li>
-                                <li><a href="#">Homepage Style 4</a></li>
-                                <li><a href="#">Homepage Style 5</a></li>
-                                <li><a href="#">Homepage Style 6</a></li>
-                                <li><a href="#">Homepage Style 7</a></li>
-                                <li><a href="#">Homepage Style 8</a></li>
-                                <li><a href="#">Homepage Style 9</a></li>
-                                <li><a href="#">Homepage Style 10</a></li>
-                                <li><a href="#">Homepage Style 11</a></li>
-                                <li><a href="#">Homepage Style 12</a></li>
-                                <li><a href="#">Homepage Style 13</a></li>
-                                <li><a href="#">Homepage Style 14</a></li>
-                                <li><a href="#">Homepage Style 15</a></li>
-                                <li><a href="#">Homepage Style 16</a></li>
-                                <li><a href="#">Homepage Style 17</a></li>
-                                <li><a href="#">Homepage Style 18</a></li>
-                                <li><a href="#">Homepage Style 19</a></li>
-                                <li><a href="#">Homepage Style 20</a></li>
-                                <li><a href="#">Homepage Style 21</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">ABOUT US</a>
-                            <ul class="submenu">
-                                <li><a href="#">Homepage Style 1</a></li>
-                                <li><a href="#">Homepage Style 2</a></li>
-                                <li><a href="#">Homepage Style 3</a></li>
-                                <li><a href="#">Homepage Style 4</a></li>
-                                <li><a href="#">Homepage Style 5</a></li>
-                                <li><a href="#">Homepage Style 6</a></li>
-                                <li><a href="#">Homepage Style 7</a></li>
-                                <li><a href="#">Homepage Style 8</a></li>
-                                <li><a href="#">Homepage Style 9</a></li>
-                                <li><a href="#">Homepage Style 10</a></li>
-                                <li><a href="#">Homepage Style 11</a></li>
-                                <li><a href="#">Homepage Style 12</a></li>
-                                <li><a href="#">Homepage Style 13</a></li>
-                                <li><a href="#">Homepage Style 14</a></li>
-                                <li><a href="#">Homepage Style 15</a></li>
-                                <li><a href="#">Homepage Style 16</a></li>
-                                <li><a href="#">Homepage Style 17</a></li>
-                                <li><a href="#">Homepage Style 18</a></li>
-                                <li><a href="#">Homepage Style 19</a></li>
-                                <li><a href="#">Homepage Style 20</a></li>
-                                <li><a href="#">Homepage Style 21</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">CONTACT US</a>
-                            <ul class="submenu">
-                                <li><a href="#">Homepage Style 1</a></li>
-                                <li><a href="#">Homepage Style 2</a></li>
-                                <li><a href="#">Homepage Style 3</a></li>
-                                <li><a href="#">Homepage Style 4</a></li>
-                                <li><a href="#">Homepage Style 5</a></li>
-                                <li><a href="#">Homepage Style 6</a></li>
-                                <li><a href="#">Homepage Style 7</a></li>
-                                <li><a href="#">Homepage Style 8</a></li>
-                                <li><a href="#">Homepage Style 9</a></li>
-                                <li><a href="#">Homepage Style 10</a></li>
-                                <li><a href="#">Homepage Style 11</a></li>
-                                <li><a href="#">Homepage Style 12</a></li>
-                                <li><a href="#">Homepage Style 13</a></li>
-                                <li><a href="#">Homepage Style 14</a></li>
-                                <li><a href="#">Homepage Style 15</a></li>
-                                <li><a href="#">Homepage Style 16</a></li>
-                                <li><a href="#">Homepage Style 17</a></li>
-                                <li><a href="#">Homepage Style 18</a></li>
-                                <li><a href="#">Homepage Style 19</a></li>
-                                <li><a href="#">Homepage Style 20</a></li>
-                                <li><a href="#">Homepage Style 21</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
+                            </li>
+                            <li>
+                                <a href="#">UNDER $100</a>
+                                <div class="submenu">
+                                    <ul>
+                                        <li><a href="#">Homepage Style 1</a></li>
+                                        <li><a href="#">Homepage Style 2</a></li>
+                                        <li><a href="#">Homepage Style 3</a></li>
+                                        <li><a href="#">Homepage Style 4</a></li>
+                                        <li><a href="#">Homepage Style 5</a></li>
+                                        <li><a href="#">Homepage Style 6</a></li>
+                                        <li><a href="#">Homepage Style 7</a></li>
+                                        <li><a href="#">Homepage Style 8</a></li>
+                                        <div class="submenu2">
+                                            <li><a href="#">Homepage Style 9</a></li>
+                                            <li><a href="#">Homepage Style 10</a></li>
+                                            <li><a href="#">Homepage Style 11</a></li>
+                                            <li><a href="#">Homepage Style 12</a></li>
+                                            <li><a href="#">Homepage Style 13</a></li>
+                                        </div>
+                                        <div class="submenu3">
+                                            <li><a href="#">Homepage Style 14</a></li>
+                                            <li><a href="#">Homepage Style 15</a></li>
+                                            <li><a href="#">Homepage Style 16</a></li>
+                                            <li><a href="#">Homepage Style 17</a></li>
+                                            <li><a href="#">Homepage Style 18</a></li>
+                                            <li><a href="#">Homepage Style 19</a></li>
+                                            <li><a href="#">Homepage Style 20</a></li>
+                                            <li><a href="#">Homepage Style 21</a></li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">NEW ARRIVALS</a>
+                                <div class="submenu">
+                                    <ul>
+                                        <li><a href="#">Homepage Style 1</a></li>
+                                        <li><a href="#">Homepage Style 2</a></li>
+                                        <li><a href="#">Homepage Style 3</a></li>
+                                        <li><a href="#">Homepage Style 4</a></li>
+                                        <li><a href="#">Homepage Style 5</a></li>
+                                        <li><a href="#">Homepage Style 6</a></li>
+                                        <li><a href="#">Homepage Style 7</a></li>
+                                        <li><a href="#">Homepage Style 8</a></li>
+                                        <div class="submenu2">
+                                            <li><a href="#">Homepage Style 9</a></li>
+                                            <li><a href="#">Homepage Style 10</a></li>
+                                            <li><a href="#">Homepage Style 11</a></li>
+                                            <li><a href="#">Homepage Style 12</a></li>
+                                            <li><a href="#">Homepage Style 13</a></li>
+                                        </div>
+                                        <div class="submenu3">
+                                            <li><a href="#">Homepage Style 14</a></li>
+                                            <li><a href="#">Homepage Style 15</a></li>
+                                            <li><a href="#">Homepage Style 16</a></li>
+                                            <li><a href="#">Homepage Style 17</a></li>
+                                            <li><a href="#">Homepage Style 18</a></li>
+                                            <li><a href="#">Homepage Style 19</a></li>
+                                            <li><a href="#">Homepage Style 20</a></li>
+                                            <li><a href="#">Homepage Style 21</a></li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">BLOG</a>
+                                <div class="submenu">
+                                    <ul>
+                                        <li><a href="#">Homepage Style 1</a></li>
+                                        <li><a href="#">Homepage Style 2</a></li>
+                                        <li><a href="#">Homepage Style 3</a></li>
+                                        <li><a href="#">Homepage Style 4</a></li>
+                                        <li><a href="#">Homepage Style 5</a></li>
+                                        <li><a href="#">Homepage Style 6</a></li>
+                                        <li><a href="#">Homepage Style 7</a></li>
+                                        <li><a href="#">Homepage Style 8</a></li>
+                                        <div class="submenu2">
+                                            <li><a href="#">Homepage Style 9</a></li>
+                                            <li><a href="#">Homepage Style 10</a></li>
+                                            <li><a href="#">Homepage Style 11</a></li>
+                                            <li><a href="#">Homepage Style 12</a></li>
+                                            <li><a href="#">Homepage Style 13</a></li>
+                                        </div>
+                                        <div class="submenu3">
+                                            <li><a href="#">Homepage Style 14</a></li>
+                                            <li><a href="#">Homepage Style 15</a></li>
+                                            <li><a href="#">Homepage Style 16</a></li>
+                                            <li><a href="#">Homepage Style 17</a></li>
+                                            <li><a href="#">Homepage Style 18</a></li>
+                                            <li><a href="#">Homepage Style 19</a></li>
+                                            <li><a href="#">Homepage Style 20</a></li>
+                                            <li><a href="#">Homepage Style 21</a></li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">ABOUT US</a>
+                                <div class="submenu">
+                                    <ul>
+                                        <li><a href="#">Homepage Style 1</a></li>
+                                        <li><a href="#">Homepage Style 2</a></li>
+                                        <li><a href="#">Homepage Style 3</a></li>
+                                        <li><a href="#">Homepage Style 4</a></li>
+                                        <li><a href="#">Homepage Style 5</a></li>
+                                        <li><a href="#">Homepage Style 6</a></li>
+                                        <li><a href="#">Homepage Style 7</a></li>
+                                        <li><a href="#">Homepage Style 8</a></li>
+                                        <div class="submenu2">
+                                            <li><a href="#">Homepage Style 9</a></li>
+                                            <li><a href="#">Homepage Style 10</a></li>
+                                            <li><a href="#">Homepage Style 11</a></li>
+                                            <li><a href="#">Homepage Style 12</a></li>
+                                            <li><a href="#">Homepage Style 13</a></li>
+                                        </div>
+                                        <div class="submenu3">
+                                            <li><a href="#">Homepage Style 14</a></li>
+                                            <li><a href="#">Homepage Style 15</a></li>
+                                            <li><a href="#">Homepage Style 16</a></li>
+                                            <li><a href="#">Homepage Style 17</a></li>
+                                            <li><a href="#">Homepage Style 18</a></li>
+                                            <li><a href="#">Homepage Style 19</a></li>
+                                            <li><a href="#">Homepage Style 20</a></li>
+                                            <li><a href="#">Homepage Style 21</a></li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">CONTACT US</a>
+                                <div class="submenu">
+                                    <ul>
+                                        <li><a href="#">Homepage Style 1</a></li>
+                                        <li><a href="#">Homepage Style 2</a></li>
+                                        <li><a href="#">Homepage Style 3</a></li>
+                                        <li><a href="#">Homepage Style 4</a></li>
+                                        <li><a href="#">Homepage Style 5</a></li>
+                                        <li><a href="#">Homepage Style 6</a></li>
+                                        <li><a href="#">Homepage Style 7</a></li>
+                                        <li><a href="#">Homepage Style 8</a></li>
+                                        <div class="submenu2">
+                                            <li><a href="#">Homepage Style 9</a></li>
+                                            <li><a href="#">Homepage Style 10</a></li>
+                                            <li><a href="#">Homepage Style 11</a></li>
+                                            <li><a href="#">Homepage Style 12</a></li>
+                                            <li><a href="#">Homepage Style 13</a></li>
+                                        </div>
+                                        <div class="submenu3">
+                                            <li><a href="#">Homepage Style 14</a></li>
+                                            <li><a href="#">Homepage Style 15</a></li>
+                                            <li><a href="#">Homepage Style 16</a></li>
+                                            <li><a href="#">Homepage Style 17</a></li>
+                                            <li><a href="#">Homepage Style 18</a></li>
+                                            <li><a href="#">Homepage Style 19</a></li>
+                                            <li><a href="#">Homepage Style 20</a></li>
+                                            <li><a href="#">Homepage Style 21</a></li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>

@@ -24,29 +24,104 @@ body {
     margin: 0 auto;
 }
 
-select {
-    background-color: black;
-    color: white;
+.tabLang{
+    position: relative;
+}
+.tabLang > label{
+    display: block;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.tab-currency > label{
+    display: block;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.tabLang input,
+.tab-currency input {
+    display: none;
+}
+.tabLang .tab-otherLang{
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    transition: all .5s ease-in-out;
+}
+.tab-currency .currencyList{
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    transition: all .5s ease-in-out;
+}
+.tab-otherLang{
+    overflow: visible;
+}
 
+#lang:checked ~ .lang{
+    opacity: 1;
+    height: 100px;
+    padding: 5px;
+    visibility: visible;
+}
+.tabLang .tab-otherLang{
+    position: absolute;
+    top: 100%;
+    left: 5%;
+    background-color: white;
+    display: block;
+    border: 1px solid lightgray;
+    box-shadow: 1px 1px 1px 1px lightgray ;
+    z-index: 1;
+}
+
+.currencyList{
+    overflow: visible;
+}
+#currency:checked ~ .currency {
+    opacity: 1;
+    height: 60px;
+    padding: 5px;
+    visibility: visible;
+}
+
+.tab-currency{
+    position: relative;
+}
+.currencyList{
+    background-color: white;
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 20%;
+    border: 1px solid lightgray;
+    box-shadow: 1px 1px 1px 1px lightgray ;
+    z-index: 1;
+
+}
+ .tabLang .tab-otherLang a,
+ .tab-currency .currencyList a{
+    background-color: lightgrey;
+    padding: 1px;
+}
+.currencyList{
+    padding: 1px 10px 1px;
 }
 
 .main-header span {
     color: white;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .main-header .sign2 {
-    padding: 0 40px 20px 0;
-}
-
-.main-header .sign {
-    padding: 0 7px;
+    padding: 0 10px 10px 0;
 }
 
 .main-header a {
     text-decoration: none;
     color: white;
-    padding: 10px 1px;
+    padding: 10px 12px;
 }
 
 .main-header a:hover {
@@ -55,19 +130,6 @@ select {
 
 .main-header .item-header {
     padding-right: 20px;
-}
-
-.main-header p:nth-child(1):before {
-    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANCAYAAACdKY9CAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADTSURBVHgBvZHNDYJAEIXfjHrXCuRo/MVEI0ftxE6ECtQOtBOPxHgwRBNv2IEUIDvCYhAwMXDxXfZv3psvO4SCpG/NweEIilp48o5u7j37TrniobWCiJ1LILHJOzpfBulYBhriR7sAwluwPBIzNSHhgi6nQ1xXT5Pqaqn9ihy6uhsd0psRGGuA59FRGzgDZyRreE7vWAUoSHeQ7tSMKtsJW82U/uTNyaaGJmrHyPEH0Ie9hEI15qiHgbJiaTIq6h8GxUEVg560DKwlRBm/o9knz92/ALNbRUTU6UCwAAAAAElFTkSuQmCC');
-    position: absolute;
-    top: 12px;
-    right: 37%;
-}
-
-.main-header .lang:before {
-    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABASURBVHgB7cyhEQAQAIXhxxiqIVQjmEe2ghF0STWVILHAi+6U99f/7jPw9YAUg8NsiS2sXLD7oM/icQIFCvwCXisJCGg2Ed1nAAAAAElFTkSuQmCC');
-    position: absolute;
-    right: 20%;
 }
 
 .background-header {
@@ -79,6 +141,7 @@ select {
     flex-wrap: wrap;
     margin: 0 -15px;
     max-width: 1200px;
+    justify-content: left;
 }
 
 .col {
@@ -98,19 +161,20 @@ select {
     color: white;
 }
 
-.allCategories li {
+.first {
     list-style-type: none;
     background-color: red;
     padding: 15px;
     border-radius: 8px 8px 0 0;
 }
-
-.allCategories {
-    padding-top: 35px;
+.main-menu1 .allCategories >li > a:nth-child(1){
+    padding: 15px 80px 5px 30px;
 }
-
+.main-menu1{
+    margin-left: -15%;
+}
 .logo {
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
 .subHeader input {
@@ -151,7 +215,7 @@ form div {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-left: 65px;
+    margin-left: 120px;
     position: relative;
     width: 160px;
 }
@@ -186,29 +250,38 @@ form div {
     padding: 5px 6px 2px;
 }
 
-nav.main-menu .menu {
+
+nav.main-menu .menu,
+nav.main-menu1 .allCategories{
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: white;
-    padding: 15px 0 0;
+    padding: 30px 0 0;
 }
 
-nav.main-menu .menu li {
+nav.main-menu .menu li,
+nav.main-menu1 .allCategories li {
     list-style-type: none;
     padding: 0;
 }
+div.submenu > ul > li > a{
+    text-decoration: none;
+    color: black;
+}
 
-nav.main-menu .menu > li > a {
+nav.main-menu .menu > li > a,
+nav.main-menu1 .allCategories > li > a{
     text-decoration: none;
     display: block;
-    padding: 15px;
+    padding: 15px 20px 5px 20px;
     border: 1px solid transparent;
     color: black;
     cursor: pointer;
 }
 
-.menu .submenu > li > a {
+.menu .submenu > li > a,
+.allCategories .submenu1 > li > a{
     text-decoration: none;
     display: block;
     border: 5px solid transparent;
@@ -217,11 +290,22 @@ nav.main-menu .menu > li > a {
     color: black;
 }
 
-nav.main-menu .menu {
+nav.main-menu .menu,
+nav.main-menu1 .allCategories{
     position: relative;
 }
 
-nav.main-menu .menu ul.submenu {
+nav.main-menu1 .allCategories ul.submenu1{
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    transition: all 0.5s ease-out;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+}
+nav.main-menu .menu div.submenu{
     opacity: 0;
     visibility: hidden;
     height: 0;
@@ -232,7 +316,22 @@ nav.main-menu .menu ul.submenu {
     width: 100%;
 }
 
-.menu > li:hover > ul.submenu {
+.menu > li:hover > div.submenu{
+    opacity: 1;
+    padding: 15px;
+    visibility: visible;
+    overflow: auto;
+    min-height: 300px;
+    background-color: white;
+    border: #cccccc;
+    box-shadow: 2px 4px 10px lightgray;
+    text-align: left;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+.allCategories > li:hover > ul.submenu1{
     opacity: 1;
     padding: 15px;
     visibility: visible;
@@ -243,11 +342,27 @@ nav.main-menu .menu ul.submenu {
     box-shadow: 2px 4px 10px lightgray;
     text-align: left;
     position: absolute;
-    top: 80%;
+    top: 100%;
     left: 0;
     right: 0;
 }
+div.submenu div.submenu2{
+    position: absolute;
+    right: 55%;
+    top: 40%;
+}
 
+div.submenu div.submenu3{
+    position: absolute;
+    right: 30%;
+    top: 10%;
+}
+
+div.submenu div.submenu2 > li > a,
+div.submenu div.submenu3 > li > a{
+    text-decoration: none;
+    color: black;
+}
 
 
 
