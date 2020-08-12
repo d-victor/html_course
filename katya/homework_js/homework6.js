@@ -63,8 +63,8 @@ function sortOfValue(list, searchKey) {
 
     return list;
 }
-var newSortWorklist = sortOfValue(workerList,'stag',true);
-console.log(newSortWorklist);
+var sortWorklist = sortOfValue(workerList,'stag',true);
+console.log(sortWorklist);
 
 
 function reverseOfValue(list, searchKey) {
@@ -77,5 +77,5 @@ function reverseOfValue(list, searchKey) {
 
     return list;
 }
-var reverseNewList = reverseOfValue(newSortWorklist,'stag');
-console.log(reverseNewList);
+var reverseList = reverseOfValue(sortWorklist,'stag');
+console.log(reverseList);
