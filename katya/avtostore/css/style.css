@@ -11,7 +11,7 @@ body {
 }
 
 .wrapper {
-    max-width: 1200px;
+    max-width: 1165px;
     margin: 0 auto;
 }
 
@@ -24,61 +24,73 @@ body {
     margin: 0 auto;
 }
 
-.tabLang{
+header {
+    border-bottom: 2px solid red;
+}
+
+.tabLang {
     position: relative;
 }
-.tabLang > label{
+
+.tabLang > label {
     display: block;
     padding: 0 10px;
     cursor: pointer;
 }
-.tab-currency > label{
+
+.tab-currency > label {
     display: block;
     padding: 0 10px;
     cursor: pointer;
 }
+
 .tabLang input,
 .tab-currency input {
     display: none;
 }
-.tabLang .tab-otherLang{
+
+.tabLang .tab-otherLang {
     opacity: 0;
     visibility: hidden;
     height: 0;
     padding: 0;
     transition: all .5s ease-in-out;
 }
-.tab-currency .currencyList{
+
+.tab-currency .currencyList {
     opacity: 0;
     visibility: hidden;
     height: 0;
     padding: 0;
     transition: all .5s ease-in-out;
 }
-.tab-otherLang{
+
+.tab-otherLang {
     overflow: visible;
 }
 
-#lang:checked ~ .lang{
+#lang:checked ~ .lang {
     opacity: 1;
     height: 100px;
     padding: 5px;
     visibility: visible;
 }
-.tabLang .tab-otherLang{
+
+.tabLang .tab-otherLang {
     position: absolute;
     top: 100%;
     left: 5%;
     background-color: white;
     display: block;
     border: 1px solid lightgray;
-    box-shadow: 1px 1px 1px 1px lightgray ;
+    box-shadow: 1px 1px 1px 1px lightgray;
     z-index: 1;
 }
 
-.currencyList{
+.currencyList {
     overflow: visible;
 }
+
 #currency:checked ~ .currency {
     opacity: 1;
     height: 60px;
@@ -86,26 +98,29 @@ body {
     visibility: visible;
 }
 
-.tab-currency{
+.tab-currency {
     position: relative;
 }
-.currencyList{
+
+.currencyList {
     background-color: white;
     display: block;
     position: absolute;
     top: 100%;
     left: 20%;
     border: 1px solid lightgray;
-    box-shadow: 1px 1px 1px 1px lightgray ;
+    box-shadow: 1px 1px 1px 1px lightgray;
     z-index: 1;
 
 }
- .tabLang .tab-otherLang a,
- .tab-currency .currencyList a{
+
+.tabLang .tab-otherLang a,
+.tab-currency .currencyList a {
     background-color: lightgrey;
     padding: 1px;
 }
-.currencyList{
+
+.currencyList {
     padding: 1px 10px 1px;
 }
 
@@ -140,12 +155,12 @@ body {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -15px;
-    max-width: 1200px;
+    max-width: 1165px;
     justify-content: left;
 }
 
 .col {
-    padding: 15px;
+    padding: 15px 15px 0 15px;
 }
 
 .col-1 {
@@ -164,15 +179,19 @@ body {
 .first {
     list-style-type: none;
     background-color: red;
-    padding: 15px;
+    margin-left: 40px;
     border-radius: 8px 8px 0 0;
 }
-.main-menu1 .allCategories >li > a:nth-child(1){
-    padding: 15px 80px 5px 30px;
+
+.main-menu1 .allCategories > li > a:nth-child(1) {
+    padding: 15px 110px 5px 30px;
+    color: white;
 }
-.main-menu1{
+
+.main-menu1 {
     margin-left: -15%;
 }
+
 .logo {
     padding-top: 30px;
 }
@@ -215,7 +234,7 @@ form div {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-left: 120px;
+    margin-left: 100px;
     position: relative;
     width: 160px;
 }
@@ -252,7 +271,7 @@ form div {
 
 
 nav.main-menu .menu,
-nav.main-menu1 .allCategories{
+nav.main-menu1 .allCategories {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -265,13 +284,14 @@ nav.main-menu1 .allCategories li {
     list-style-type: none;
     padding: 0;
 }
-div.submenu > ul > li > a{
+
+div.submenu > ul > li > a {
     text-decoration: none;
     color: black;
 }
 
 nav.main-menu .menu > li > a,
-nav.main-menu1 .allCategories > li > a{
+nav.main-menu1 .allCategories > li > a {
     text-decoration: none;
     display: block;
     padding: 15px 20px 5px 20px;
@@ -281,7 +301,7 @@ nav.main-menu1 .allCategories > li > a{
 }
 
 .menu .submenu > li > a,
-.allCategories .submenu1 > li > a{
+.allCategories .submenu1 > li > a {
     text-decoration: none;
     display: block;
     border: 5px solid transparent;
@@ -291,21 +311,11 @@ nav.main-menu1 .allCategories > li > a{
 }
 
 nav.main-menu .menu,
-nav.main-menu1 .allCategories{
+nav.main-menu1 .allCategories {
     position: relative;
 }
 
-nav.main-menu1 .allCategories ul.submenu1{
-    opacity: 0;
-    visibility: hidden;
-    height: 0;
-    padding: 0;
-    transition: all 0.5s ease-out;
-    position: absolute;
-    top: 100%;
-    width: 100%;
-}
-nav.main-menu .menu div.submenu{
+nav.main-menu1 .allCategories ul.submenu1 {
     opacity: 0;
     visibility: hidden;
     height: 0;
@@ -316,7 +326,18 @@ nav.main-menu .menu div.submenu{
     width: 100%;
 }
 
-.menu > li:hover > div.submenu{
+nav.main-menu .menu div.submenu {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    transition: all 0.5s ease-out;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+}
+
+.menu > li:hover > div.submenu {
     opacity: 1;
     padding: 15px;
     visibility: visible;
@@ -331,7 +352,8 @@ nav.main-menu .menu div.submenu{
     left: 0;
     right: 0;
 }
-.allCategories > li:hover > ul.submenu1{
+
+.allCategories > li:hover > ul.submenu1 {
     opacity: 1;
     padding: 15px;
     visibility: visible;
@@ -346,32 +368,228 @@ nav.main-menu .menu div.submenu{
     left: 0;
     right: 0;
 }
-div.submenu div.submenu2{
+
+div.submenu div.submenu2 {
     position: absolute;
     right: 55%;
     top: 40%;
 }
 
-div.submenu div.submenu3{
+div.submenu div.submenu3 {
     position: absolute;
     right: 30%;
     top: 10%;
 }
 
 div.submenu div.submenu2 > li > a,
-div.submenu div.submenu3 > li > a{
+div.submenu div.submenu3 > li > a {
     text-decoration: none;
     color: black;
 }
-.breadCramp{
+
+.breadCramp {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
 }
-.breadCramp p{
-    padding: 0 5px;
+
+.breadCramp p {
+    padding: 0 5px 35px;
     color: #999999;
 }
 
+.buttonShop,
+.titleCompareProd {
+    background-color: red;
+    padding: 15px 40px 5px 20px;
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
 
+.color {
+    padding: 15px 0 0 15px;
+}
 
+.checkColor div {
+    width: 30px;
+    height: 30px;
+    border: 1px solid lightgrey;
+    margin: 0 5px 10px 0;
+
+}
+
+.checkColor {
+    padding: 10px 2px 3px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.checkColor div:nth-child(2) {
+    background-color: saddlebrown;
+}
+
+.checkColor div:nth-child(1) {
+    background-color: black;
+}
+
+.checkColor div:nth-child(3) {
+    background-color: grey;
+}
+
+.checkColor div:nth-child(4) {
+    background-color: green;
+}
+
+.checkColor div:nth-child(5) {
+    background-color: orange;
+}
+
+.checkColor div:nth-child(6) {
+    background-color: purple;
+}
+
+.checkColor div:nth-child(7) {
+    background-color: red;
+}
+
+.checkColor div:nth-child(8) {
+    background-color: white;
+}
+
+.checkColor div:nth-child(9) {
+    background-color: yellow;
+}
+
+.firstSection {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 70px;
+}
+
+.aside {
+    border: 1px solid #cccccc;
+    width: 272px;
+    margin-left: 15px;
+    border-radius: 8px 8px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.price p {
+    padding: 15px 0 0 15px;
+}
+
+.indicator {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 15px;
+}
+
+.indicator div:nth-child(1) {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid black;
+    position: absolute;
+    top: 29%;
+    left: 4%;
+}
+
+.indicator div:nth-child(2) {
+    border-bottom: 2px solid red;
+    width: 218px;
+    margin-left: 10px;
+}
+
+.indicator div:nth-child(3) {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid black;
+    position: absolute;
+    top: 29%;
+    left: 90%;
+}
+
+.rangePrice {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.rangePrice p:nth-child(2),
+.rangePrice p:nth-child(4),
+.selectModel p,
+.selectYear p {
+    border: 1px solid lightgrey;
+    padding: 10px 10px 0;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.rangePrice p:nth-child(1),
+.rangePrice p:nth-child(3) {
+    padding: 10px 5px 0;
+}
+
+.price {
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 70px;
+}
+
+.listBrand,
+.selectModel {
+    padding: 15px 0 65px 15px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.listBrand p {
+    padding: 8px 0;
+}
+
+.selectModel,
+.selectYear {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px 15px 65px;
+}
+
+.selectModel p,
+.selectYear p {
+    margin: 3px 3px;
+}
+
+.titlePartAside {
+    padding: 15px 0 0 15px;
+    font-weight: bold;
+}
+
+.compareProd p:nth-child(2),
+.compareProd p:nth-child(3) {
+    border-bottom: 1px solid lightgrey;
+    padding: 15px;
+}
+
+.compareBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 15px;
+}
+
+.compareBtn button {
+    color: white;
+    background-color: red;
+    width: 100px;
+    height: 26px;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.compareProd .compareBtn p {
+    border-bottom: none;
+    padding: 0;
+    margin-left: 70px;
+}
