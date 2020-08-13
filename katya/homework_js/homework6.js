@@ -79,3 +79,16 @@ function reverseOfValue(list, searchKey) {
 }
 var reverseList = reverseOfValue(sortWorklist,'stag');
 console.log(reverseList);
+
+function reverseSortOfValue(list, searchKey) {
+
+    list = list.slice();
+
+    list.sort(function (a,b) {
+
+        return b[searchKey] > a[searchKey];
+    });
+    return list;
+}
+var reverseSortList = reverseSortOfValue(workerList,'age')
+console.log(reverseSortList);
