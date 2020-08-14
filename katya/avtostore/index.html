@@ -10,6 +10,7 @@
              minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/all.min.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <title>AvtoStore</title>
 </head>
@@ -23,38 +24,33 @@
             <p><a class="item-header" href="#">Create an Account</a></p>
             <span class="sign2">|</span>
             <div class="tabLang">
-                <input type="radio" id="lang" name="lang">
+                <input type="checkbox" id="lang" name="lang">
                 <label for="lang">
                     <img src="img/Group.png" alt="lock">
-                    <a href="#">FRENCH</a></label>
-                <div class="tab-otherLang lang ">
-                    <p><img src="img/frameEnglish.png" alt="lock">
-                        <a href="#">ENGLISH</a>
-                    </p>
-                    <p>
-                        <img src="img/frameGerman.png" alt="lock">
-                        <a href="#">GERMAN</a>
-                    </p>
-                    <p>
-                        <img src="img/frameBelgium.png" alt="lock">
-                        <a href="#">BELGIUM</a>
-                    </p>
-                    <p>
-                        <img src="img/frameArgentina.png" alt="lock">
-                        <a href="#">ARGENTINA</a>
-                    </p>
-                </div>
+                    <span>FRENCH</span></label>
+                <ul class="tab-otherLang lang ">
+                   <!-- <img src="img/frameEnglish.png" alt="lock">-->
+                        <li><a href="#">ENGLISH</a></li>
+                        <!--<img src="img/frameGerman.png" alt="lock">-->
+                        <li><a href="#">GERMAN</a></li>
+                        <!--<img src="img/frameBelgium.png" alt="lock">-->
+                        <li><a href="#">BELGIUM</a></li>
+
+                        <!--<img src="img/frameArgentina.png" alt="lock">-->
+                        <li><a href="#">ARGENTINA</a></li>
+
+                </ul>
             </div>
             <span>|</span>
             <div class="tab-currency">
-                <input type="radio" id="currency" name="currency">
+                <input type="checkbox" id="currency" name="currency">
                 <label for="currency">
-                    <p>
-                        <a href="#">USD</a></p></label>
-                <div class="currencyList currency">
-                    <p><a href="#">EURO</a></p>
-                    <p><a href="#">UAH</a></p>
-                </div>
+                    <span>USD</span>
+                        </label>
+                <ul class="currencyList currency">
+                    <li><a href="#">EURO</a></li>
+                    <li><a href="#">UAH</a></li>
+                </ul>
             </div>
         </div>
     </div>

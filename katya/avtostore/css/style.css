@@ -18,7 +18,7 @@ body {
 .main-header {
     display: flex;
     justify-content: flex-end;
-    height: 43px;
+    height: 45px;
     max-width: 1200px;
     padding-top: 10px;
     margin: 0 auto;
@@ -67,6 +67,16 @@ header {
 
 .tab-otherLang {
     overflow: visible;
+    position: relative;
+}
+.tab-otherLang li {
+    list-style-type: none;
+}
+.tab-otherLang > li > a:before:nth-child(1){
+    content: url("/img/frameEnglish.png");
+    position: absolute;
+    top: 100%;
+    left: 0;
 }
 
 #lang:checked ~ .lang {
@@ -193,7 +203,7 @@ header {
 }
 
 .logo {
-    padding-top: 30px;
+   padding-top: 14px;
 }
 
 .subHeader input {
@@ -206,7 +216,7 @@ form {
     flex-wrap: nowrap;
     /*height: 44px;*/
     width: 500px;
-    padding-top: 40px;
+    padding-top: 22px;
 }
 
 form div {
@@ -224,7 +234,7 @@ form div {
 .wishlist {
     display: block;
     padding-left: 30px;
-    padding-top: 40px;
+    padding-top: 15px;
 }
 
 .cart {
