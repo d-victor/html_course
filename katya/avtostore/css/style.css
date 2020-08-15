@@ -11,7 +11,7 @@ body {
 }
 
 .wrapper {
-    max-width: 1165px;
+    max-width: 1170px;
     margin: 0 auto;
 }
 
@@ -19,13 +19,36 @@ body {
     display: flex;
     justify-content: flex-end;
     height: 45px;
-    max-width: 1200px;
-    padding-top: 10px;
+    max-width: 1170px;
+    padding-top: 15px;
     margin: 0 auto;
+    font-size: 13px;
+    line-height: 15px;
+    font-weight: normal;
+    position: relative;
+}
+.navHeader{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    position: absolute;
+    top: 33%;
+    left:65%;
 }
 
 header {
     border-bottom: 2px solid red;
+}
+.fa-lock:before{
+    content: "\f023";
+    color: white;
+    position: absolute;
+    left:-3%;
+    top: 0;
+}
+.fa-lock a {
+    margin-left: 20px;
 }
 
 .tabLang {
@@ -34,13 +57,11 @@ header {
 
 .tabLang > label {
     display: block;
-    padding: 0 10px;
     cursor: pointer;
 }
 
 .tab-currency > label {
     display: block;
-    padding: 0 10px;
     cursor: pointer;
 }
 
@@ -72,17 +93,54 @@ header {
 .tab-otherLang li {
     list-style-type: none;
 }
-.tab-otherLang > li > a:before:nth-child(1){
-    content: url("/img/frameEnglish.png");
+.tabLang span:before{
+    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABASURBVHgB7cyhEQAQAIXhxxiqIVQjmEe2ghF0STWVILHAi+6U99f/7jPw9YAUg8NsiS2sXLD7oM/icQIFCvwCXisJCGg2Ed1nAAAAAElFTkSuQmCC");
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 5%;
+    left: 9%;
+}
+.tabLang span:after{
+    content: "\f107";
+    position: absolute;
+    top: 0;
+    right: 6%;
+}
+.tabLang span:nth-child(1){
+    margin-left: 35px;
+    margin-right: 15px;
+    font-size: 13px;
+    line-height: 15px;
+}
+.tab-otherLang a:nth-child(1):before {
+    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI3SURBVHgBlZNdSFNhGMf/57iwpvtgEWTrwxamlkmGljBbpd1EU/oUklJaN64F1kWkQ+nCypEXu8m6ytTogyhqZXXRF+goIVErcU1oWmYLItHZrGBjve+THzuKR/zDczic533/7+99+B/h0/HKiP6MFX4xFrmHnOgfHEK0hpss8OQfo/fUR1ehLa6X9LdtSULNmhjEtbjBfcShRAN8tir64Gs9B2flAWjVizCX+BpHiRGXf3UjIfyHDhtYnQRx85W3uL42G6PudiIp3ZmCjmY7SvZnz2rGqZ6YV2HXCxdRaSpO4HxDCzLMF6DgCxz3O3F7+WK4bIVkuqSoANdqrdjONk4Xp8pvfwlVfBaWMiq3xw+LuQb9X39SX3j1xhuJ3rA1NQHBD17ErlxGFRgnn5hhjEYFBSveGw78RlfPgORAocdsiciMCqGRUYyxA7jiNiSToZyENm26rOF8pVAbM2UXhAJThMq0ZLqunNgMeyWEG9fpWSSUbI4feRthduXoGapzMvH3yzcqJRuB2/NdSphb5KSXRL0O9bXFiI+E8dl+EcH3XjRn7UBpXopkQ+O9NorUj5sPKb+6ipPYU9c6+UOI/HG2bDc6HtuxKTRCNH5xIWyqNJQ3vp5xpaOnm2BhFTp8kIgX3LiD5+kCyvdm/CfsZCFer9dg0HGJqJ7mFbBcdrFIjGE2NTDKB8/eEUgZM+W0R265sM+aA3FFXy+6TYUSKjmzCfEMnqq+C4OpCkGTEYa6auj6fPgHaHXaemZEN7AAAAAASUVORK5CYII=');
+    position: absolute;
+    top: 5%;
+    left: 1%;
+}
+.tab-otherLang .secondElem:before {
+    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA3SURBVHgB7dIxEQAgEAPBC/MFgtCMHByg5RFBCmb4FZAmJyAxapi9PxgTL+3vTok+sFKuCvvSAb6LBqUr9Pg8AAAAAElFTkSuQmCC");
+    position: absolute;
+    top: 29%;
+    left: 1%;
+}
+.tab-otherLang .thirdElem:before {
+    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA9SURBVHgB7cw7DQAgFMXQggK0MLEhC0t4wAViSBj4GHgjCcvt2uQ44GCUU6DVaC1Gmay+zed5nECBAr+AF//iCGhUs9r+AAAAAElFTkSuQmCC");
+    position: absolute;
+    top: 53%;
+    left: 1%;
+}
+
+.tab-otherLang .fourElem:before {
+content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABDSURBVHgB5dKxCQAgDETRi2RkpxI30REEsRVLwTI6xBUB3wBXfE5i7gaiADL/g9LmoTYUe0Dkv6GWscGkqS4wfXjsC0gOD9RMwzg+AAAAAElFTkSuQmCC");
+    position: absolute;
+    top: 76%;
+    left: 1%;
 }
 
 #lang:checked ~ .lang {
     opacity: 1;
     height: 100px;
-    padding: 5px;
+    padding: 5px 10px 7px 25px;
     visibility: visible;
 }
 
@@ -100,6 +158,9 @@ header {
 .currencyList {
     overflow: visible;
 }
+.currencyList li {
+    list-style-type: none;
+}
 
 #currency:checked ~ .currency {
     opacity: 1;
@@ -111,6 +172,18 @@ header {
 .tab-currency {
     position: relative;
 }
+.tab-currency span{
+    margin-left: 12px;
+}
+.tab-currency span:after{
+    content: "\f107";
+    position: absolute;
+    top: 0;
+    right: -17%;
+}
+.tab-otherLang a {
+    padding: 10px 5px 10px 18px;
+}
 
 .currencyList {
     background-color: white;
@@ -121,7 +194,6 @@ header {
     border: 1px solid lightgray;
     box-shadow: 1px 1px 1px 1px lightgray;
     z-index: 1;
-
 }
 
 .tabLang .tab-otherLang a,
@@ -136,29 +208,33 @@ header {
 
 .main-header span {
     color: white;
-    padding: 0 10px;
+    padding: 0 2px 0 4px;
 }
 
 .main-header .sign2 {
-    padding: 0 10px 10px 0;
+   padding: 0 10px 10px 0;
+    margin-left: 10px;
 }
 
 .main-header a {
     text-decoration: none;
     color: white;
-    padding: 10px 12px;
+    padding: 10px 5px 10px 18px;
+}
+.navHeader .item-header{
+    padding: 10px 10px 10px 1px;
+}
+.tabLang .tab-otherLang > li > a{
+    margin-bottom: 10px;
 }
 
 .main-header a:hover {
     color: red;
 }
 
-.main-header .item-header {
-    padding-right: 20px;
-}
-
 .background-header {
     background-color: black;
+    position: relative;
 }
 
 .row {
@@ -209,14 +285,15 @@ header {
 .subHeader input {
     padding-left: 50px;
     width: 515px;
+    margin-left: 10px;
 }
 
 form {
     display: flex;
     flex-wrap: nowrap;
     /*height: 44px;*/
-    width: 500px;
-    padding-top: 22px;
+    width: 602px;
+    padding-top: 21px;
 }
 
 form div {
@@ -233,24 +310,25 @@ form div {
 
 .wishlist {
     display: block;
-    padding-left: 30px;
-    padding-top: 15px;
+    padding-left: 34px;
+    padding-top: 18px;
 }
 
 .cart {
-    margin-top: 40px;
+    margin-top: 18px;
     border: 1px solid gainsboro;
     border-radius: 3px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-left: 100px;
+    margin-left: 55px;
     position: relative;
     width: 160px;
 }
 
 .cart p {
-    padding: 10px 1px 0 20px;
+    padding: 10px 1px 0 10px;
+    font-size: 13px;
 }
 
 .cart p span {
@@ -258,7 +336,7 @@ form div {
 }
 
 .item-basket {
-    padding: 10px 1px 0 10px;
+    padding: 10px 1px 0 5px;
 }
 
 .searchBtn {
@@ -286,7 +364,7 @@ nav.main-menu1 .allCategories {
     justify-content: space-around;
     align-items: center;
     background-color: white;
-    padding: 30px 0 0;
+    margin-top: 30px;
 }
 
 nav.main-menu .menu li,
@@ -341,7 +419,7 @@ nav.main-menu .menu div.submenu {
     visibility: hidden;
     height: 0;
     padding: 0;
-    transition: all 0.5s ease-out;
+    transition: all .5s ease-in;
     position: absolute;
     top: 100%;
     width: 100%;
@@ -379,20 +457,20 @@ nav.main-menu .menu div.submenu {
     right: 0;
 }
 
-div.submenu div.submenu2 {
+div.submenu ul.submenu2 {
     position: absolute;
     right: 55%;
     top: 40%;
 }
 
-div.submenu div.submenu3 {
+div.submenu ul.submenu3 {
     position: absolute;
     right: 30%;
     top: 10%;
 }
 
-div.submenu div.submenu2 > li > a,
-div.submenu div.submenu3 > li > a {
+div.submenu ul.submenu2 > li > a,
+div.submenu ul.submenu3 > li > a {
     text-decoration: none;
     color: black;
 }
@@ -548,10 +626,21 @@ div.submenu div.submenu3 > li > a {
     padding-bottom: 70px;
 }
 
-.listBrand,
-.selectModel {
+.listBrand {
     padding: 15px 0 65px 15px;
     border-bottom: 1px solid lightgrey;
+}
+.selectModel > li > a,
+/*.selectYear >li > a */{
+    padding: 15px 0 65px 15px;
+    border-bottom: 1px solid lightgrey;
+}
+.selectModel li,
+/*.selectYear li*/{
+    text-decoration: none;
+}
+.selectModel li a {
+  list-style-type: none;
 }
 
 .listBrand p {
@@ -567,8 +656,8 @@ div.submenu div.submenu3 > li > a {
     padding: 10px 15px 65px;
 }
 
-.selectModel p,
-.selectYear p {
+.selectModel li,
+.selectYear li {
     margin: 3px 3px;
 }
 
