@@ -631,16 +631,16 @@ div.submenu ul.submenu3 > li > a {
     border-bottom: 1px solid lightgrey;
 }
 .selectModel > li > a,
-/*.selectYear >li > a */{
-    padding: 15px 0 65px 15px;
-    border-bottom: 1px solid lightgrey;
+.selectYear >li > a {
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    text-decoration: none;
+    color: black;
 }
 .selectModel li,
-/*.selectYear li*/{
-    text-decoration: none;
-}
-.selectModel li a {
-  list-style-type: none;
+.selectYear li{
+    list-style-type: none;
 }
 
 .listBrand p {
@@ -654,11 +654,12 @@ div.submenu ul.submenu3 > li > a {
     justify-content: flex-start;
     flex-wrap: wrap;
     padding: 10px 15px 65px;
+    border-bottom: 1px solid lightgrey;
 }
 
 .selectModel li,
 .selectYear li {
-    margin: 3px 3px;
+    margin: 10px 2px;
 }
 
 .titlePartAside {
