@@ -8,3 +8,263 @@ body {
     max-width: 1170px;
     margin: 0 auto;
 }
+
+.background-header {
+    background-color: black;
+}
+
+.main-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 30px;
+    max-width: 1170px;
+    padding-top: 15px;
+    margin: 0 auto;
+    font-size: 13px;
+    line-height: 15px;
+    font-weight: 400;
+    position: relative;
+}
+
+.main-header a {
+    text-decoration: none;
+    color: white;
+}
+
+.main-header span {
+    color: white;
+    padding: 0 5px;
+}
+
+.fa-lock {
+    color: white;
+    position: absolute;
+    top: 37%;
+    left: 64.1%;
+}
+
+.fa-lock:hover {
+    color: red;
+}
+
+.elemHeader {
+    display: block;
+    position: absolute;
+    top: 36%;
+    right: 29.8%;
+}
+
+.sign {
+    position: absolute;
+    top: 36%;
+    right: 28.4%;
+}
+
+.elemHeader2 {
+    display: block;
+    position: absolute;
+    top: 36%;
+    right: 18.9%;
+}
+
+.sign2 {
+    position: absolute;
+    top: 36%;
+    right: 16.5%;
+}
+
+.sign3 {
+    position: absolute;
+    top: 36%;
+    right: 5.4%;
+}
+
+.angle-down1 {
+    padding-right: 68px;
+}
+
+.elemHeader4 {
+    position: absolute;
+    top: 0;
+    margin-left: -37px;
+}
+
+.elemHeader4:hover {
+    color: red;
+}
+
+.elemHeader3 {
+    position: absolute;
+    top: 4%;
+    right: 100%;
+}
+
+.elemHeader3:hover {
+    color: red;
+}
+
+.angle-down2 {
+    margin-right: 12px;
+}
+
+.tabLang span,
+.tab-currency span,
+.fa-angle-down {
+    color: white;
+}
+
+.tabLang {
+    position: relative;
+}
+
+.tabLang > label {
+    display: block;
+    cursor: pointer;
+}
+
+.tabLang input,
+.tab-currency input {
+    display: none;
+}
+
+.tabLang .tab-otherLang {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    transition: opacity .5s ease-in-out;
+}
+
+.tab-otherLang {
+    overflow: visible;
+}
+
+.tab-otherLang li {
+    list-style-type: none;
+}
+
+.tabLang span:before {
+    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABASURBVHgB7cyhEQAQAIXhxxiqIVQjmEe2ghF0STWVILHAi+6U99f/7jPw9YAUg8NsiS2sXLD7oM/icQIFCvwCXisJCGg2Ed1nAAAAAElFTkSuQmCC");
+    position: absolute;
+    top: 0;
+    left: -39%;
+}
+
+.tab-otherLang a:nth-child(1):before {
+    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI3SURBVHgBlZNdSFNhGMf/57iwpvtgEWTrwxamlkmGljBbpd1EU/oUklJaN64F1kWkQ+nCypEXu8m6ytTogyhqZXXRF+goIVErcU1oWmYLItHZrGBjve+THzuKR/zDczic533/7+99+B/h0/HKiP6MFX4xFrmHnOgfHEK0hpss8OQfo/fUR1ehLa6X9LdtSULNmhjEtbjBfcShRAN8tir64Gs9B2flAWjVizCX+BpHiRGXf3UjIfyHDhtYnQRx85W3uL42G6PudiIp3ZmCjmY7SvZnz2rGqZ6YV2HXCxdRaSpO4HxDCzLMF6DgCxz3O3F7+WK4bIVkuqSoANdqrdjONk4Xp8pvfwlVfBaWMiq3xw+LuQb9X39SX3j1xhuJ3rA1NQHBD17ErlxGFRgnn5hhjEYFBSveGw78RlfPgORAocdsiciMCqGRUYyxA7jiNiSToZyENm26rOF8pVAbM2UXhAJThMq0ZLqunNgMeyWEG9fpWSSUbI4feRthduXoGapzMvH3yzcqJRuB2/NdSphb5KSXRL0O9bXFiI+E8dl+EcH3XjRn7UBpXopkQ+O9NorUj5sPKb+6ipPYU9c6+UOI/HG2bDc6HtuxKTRCNH5xIWyqNJQ3vp5xpaOnm2BhFTp8kIgX3LiD5+kCyvdm/CfsZCFer9dg0HGJqJ7mFbBcdrFIjGE2NTDKB8/eEUgZM+W0R265sM+aA3FFXy+6TYUSKjmzCfEMnqq+C4OpCkGTEYa6auj6fPgHaHXaemZEN7AAAAAASUVORK5CYII=');
+    position: absolute;
+    top: 7%;
+    left: 4%;
+}
+
+.tab-otherLang .secondElem:before {
+    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA3SURBVHgB7dIxEQAgEAPBC/MFgtCMHByg5RFBCmb4FZAmJyAxapi9PxgTL+3vTok+sFKuCvvSAb6LBqUr9Pg8AAAAAElFTkSuQmCC");
+    position: absolute;
+    top: 28%;
+    left: 4%;
+}
+
+.tab-otherLang .thirdElem:before {
+    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA9SURBVHgB7cw7DQAgFMXQggK0MLEhC0t4wAViSBj4GHgjCcvt2uQ44GCUU6DVaC1Gmay+zed5nECBAr+AF//iCGhUs9r+AAAAAElFTkSuQmCC");
+    position: absolute;
+    top: 50%;
+    left: 4%;
+}
+
+.tab-otherLang .fourElem:before {
+    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABDSURBVHgB5dKxCQAgDETRi2RkpxI30REEsRVLwTI6xBUB3wBXfE5i7gaiADL/g9LmoTYUe0Dkv6GWscGkqS4wfXjsC0gOD9RMwzg+AAAAAElFTkSuQmCC");
+    position: absolute;
+    top: 73%;
+    left: 4%;
+}
+
+#lang:checked ~ .lang {
+    opacity: 1;
+    height: 80px;
+    padding: 5px 10px 7px 25px;
+    visibility: visible;
+}
+
+.tabLang .tab-otherLang {
+    position: absolute;
+    top: 55%;
+    right: 80%;
+    background-color: white;
+    display: block;
+    box-shadow: 2px 3px 4px 2px lightgrey;
+    z-index: 1;
+}
+
+.tab-currency > label {
+    display: block;
+    cursor: pointer;
+}
+
+.tab-currency .currencyList {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    transition: opacity .5s ease-in-out;
+}
+
+.currencyList {
+    overflow: visible;
+}
+
+.currencyList li {
+    list-style-type: none;
+}
+
+#currency:checked ~ .currency {
+    opacity: 1;
+    height: 40px;
+    width: 90px;
+    padding: 5px;
+    visibility: visible;
+}
+
+.tab-currency {
+    position: relative;
+}
+
+.currencyList {
+    background-color: white;
+    display: block;
+    position: absolute;
+    top: 55%;
+    right: 85%;
+    box-shadow: 2px 3px 4px 2px lightgrey;
+    z-index: 1;
+}
+
+.tabLang .tab-otherLang a,
+.tab-currency .currencyList a {
+    background-color: lightgrey;
+    padding: 1px;
+}
+
+.main-header a:hover {
+    color: red;
+}
+
+.tab-otherLang a,
+.currencyList a {
+    display: block;
+    padding: 5px 0;
+    margin-left: 1px;
+}
+
+.tab-otherLang li,
+.currencyList li {
+    margin-bottom: 3px;
+}
+
+.tab-otherLang a:hover,
+.currencyList a:hover {
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+}
+
