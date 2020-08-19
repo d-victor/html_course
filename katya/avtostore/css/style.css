@@ -7,6 +7,7 @@ body {
 .wrapper {
     max-width: 1170px;
     margin: 0 auto;
+    position: relative;
 }
 
 .background-header {
@@ -267,26 +268,100 @@ body {
     border: 1px solid red;
     color: red;
 }
+
+.logo {
+    margin-top: 30px;
+}
+
+form {
+    width: 602px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+form input {
+    height: 38px;
+    width: 43%;
+    border: 2px solid lightgrey;
+    border-radius: 4px;
+    padding-left: 8px;
+    position: absolute;
+    top: 8%;
+    right: 30.5%;
+    border-right: none;
+}
+
+.btnSearch {
+    position: absolute;
+    top: 8%;
+    right: 26.2%;
+    height: 42px;
+    width: 4.5%;
+    background-color: red;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid red;
+}
+
+.fa-search {
+    color: white;
+    font-size: 11px;
+    padding: 15px 14px 16px 20px;
+}
+
+.wishList {
+    border-radius: 4px;
+    border: 2px solid lightgrey;
+    padding: 10px 11px 6px;
+    position: absolute;
+    top: 8.3%;
+    right: 20%;
+}
+
+.fa-heart {
+    font-size: 18px;
+    color: black;
+}
+
+.cart {
+    display: inline-block;
+    position: absolute;
+    top: 10%;
+    right: 6%;
+}
+
+.cartValue {
+    display: inline-block;
+}
+
+.count {
+    position: absolute;
+    top: 6%;
+    right: 10%;
+}
+
 @media screen and (max-width: 1200px) {
 
 }
 
-@media screen and (max-width: 992px)  {
+@media screen and (max-width: 992px) {
     .fa-lock {
         position: absolute;
         top: 37%;
         left: 59%;
     }
+
     .elemHeader {
         position: absolute;
         top: 36%;
         right: 34.5%;
     }
+
     .sign {
         position: absolute;
         top: 36%;
         right: 33%;
     }
+
     .elemHeader2 {
         display: block;
         position: absolute;
@@ -299,6 +374,7 @@ body {
         top: 36%;
         right: 19.5%;
     }
+
     .sign3 {
         position: absolute;
         top: 36%;
@@ -314,16 +390,19 @@ body {
         top: 37%;
         left: 47%;
     }
+
     .elemHeader {
         position: absolute;
         top: 36%;
         right: 44.5%;
     }
+
     .sign {
         position: absolute;
         top: 36%;
         right: 42.5%;
     }
+
     .elemHeader2 {
         display: block;
         position: absolute;
@@ -336,6 +415,7 @@ body {
         top: 36%;
         right: 25%;
     }
+
     .sign3 {
         position: absolute;
         top: 36%;
@@ -349,16 +429,19 @@ body {
         top: 37%;
         left: 22%;
     }
+
     .elemHeader {
         position: absolute;
         top: 36%;
         right: 65%;
     }
+
     .sign {
         position: absolute;
         top: 36%;
         right: 62%;
     }
+
     .elemHeader2 {
         display: block;
         position: absolute;
@@ -371,17 +454,20 @@ body {
         top: 36%;
         right: 35%;
     }
+
     .sign3 {
         position: absolute;
         top: 36%;
         right: 11%;
     }
+
     .elemHeader3 {
         position: absolute;
         top: 4%;
         right: 99%;
     }
-    .angle-down1{
+
+    .angle-down1 {
         padding-right: 50px;
     }
 
