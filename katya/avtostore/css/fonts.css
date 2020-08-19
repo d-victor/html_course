@@ -26,6 +26,13 @@
     font-style: normal;
 }
 @font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-2/Rubik-Light.ttf');
+    url('../fonts/Rubik-2/Rubik-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
     font-family: 'Font Awesome';
     src: url('/css/webfonts/fa-brands-400.svg');
     src: url('/css/webfonts/fa-solid-900.svg');
