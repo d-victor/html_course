@@ -4,6 +4,11 @@ function Cars(options) {
     this.year = options.year;
     this.driverOwner = null;
     this.driverList = [];
+
+    this.idInterval = setInterval(function (driver) {
+        this.sayAboutDrive(driver);
+    }.bind(this),1000);
+
 }
 
 function Driver(options) {
@@ -15,11 +20,12 @@ function Driver(options) {
 Cars.prototype.setDriver = setDriver;
 Cars.prototype.addOwnerCar = addOwnerCar;
 Cars.prototype.addDriverAccess = addDriverAccess;
+Cars.prototype.removeOwner = removeOwner;
+Cars.prototype.checkForSomeoneThere = checkForSomeoneThere;
 Cars.prototype.sayAboutCar = sayAboutCar;
 Cars.prototype.changeColor = changeColor;
 Cars.prototype.sayAboutDrive = sayAboutDrive;
 Cars.prototype.stop = stop;
-
 Driver.prototype.sayDriver = sayDriver;
 
 var carVolvo = new Cars({
@@ -98,22 +104,31 @@ function sayDriver(driver) {
 }
 
 function sayAboutDrive(driver) {
-    return this.sayDriver() + ' car is drive... ' + this.sayAboutCar();
+    return sayDriver() + ' car is drive... ' + this.sayAboutCar();
 }
 
-this.idInterval = setInterval(function (driver) {
-    this.sayAboutDrive(driver);
-}.bind(this),1000);
-
-function stop(interval) {
-    clearInterval(interval);
+function stop(idInterval) {
+    clearInterval(this.idinterval);
 }
+
+function checkForSomeoneThere(indexDriver) {
+
+    if (this.driverOwner === null) {
+        confirm('There is no owner,we put someone?');
+    }else {
+       confirm('Driver behind the wheel');
+    }
+
+    return this.driverOwner;
+}
+
+console.log(carNissan.checkForSomeoneThere(0));
 
 function setDriver(driver) {
-    console.log(driver, driver.name, this.driverOwner);
     if(driver.name && !this.driverOwner){
         this.driverOwner = driver;
     }
+
     return this.driverOwner;
 }
 
@@ -132,19 +147,24 @@ carVolvo.addOwnerCar(driverVadim);
 carVolvo.addOwnerCar(driverRoman);
 carVolvo.addOwnerCar(driverOleksandr);
 
-
 function addDriverAccess(driver) {
     if(this.driverList.includes(driver)){
         this.setDriver(driver);
     }else{
-        confirm('Access is denied! We change the owner? ');
+        confirm('Access is denied!');
     }
 
     return driver;
 }
-function removeOwner(driver){
 
+function removeOwner(driver){
+ for (var i = 0; i < this.driverList.length; i++){
+     if(this.driverList[i] === driver)
+         delete this.driverList[i];
+ }
+
+ return this.driverList;
 }
 
-console.log(carVolvo.addDriverAccess(driverOleg));
+console.log(carVolvo.removeOwner(driverVadim));
 
