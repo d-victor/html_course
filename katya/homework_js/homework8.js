@@ -108,7 +108,7 @@ function sayAboutDrive(driver) {
 }
 
 function stop(idInterval) {
-    clearInterval(this.idinterval);
+    clearInterval(this.idInterval);
 }
 
 function checkForSomeoneThere(indexDriver) {
