@@ -5,9 +5,6 @@ function Cars(options) {
     this.driverOwner = null;
     this.driverList = [];
 
-    this.idInterval = setInterval(function (driver) {
-        this.sayAboutDrive(driver);
-    }.bind(this),1000);
 }
 
 function Driver(options) {
@@ -20,14 +17,15 @@ Cars.prototype.setDriver = setDriver;
 Cars.prototype.addOwnerCar = addOwnerCar;
 Cars.prototype.addDriverAccess = addDriverAccess;
 Cars.prototype.removeOwner = removeOwner;
+Cars.prototype.getSitName = getSitName;
 Cars.prototype.checkForSomeoneThere = checkForSomeoneThere;
 Cars.prototype.sayAboutCar = sayAboutCar;
 Cars.prototype.changeColor = changeColor;
+Cars.prototype.interval = interval;
 Cars.prototype.stop = stop;
-Cars.prototype.sayAboutCar = sayAboutCar;
-Cars.prototype.changeColor = changeColor;
-Cars.prototype.sayAboutDrive = sayAboutDrive;
 Driver.prototype.sayDriver = sayDriver;
+Driver.prototype.sayAboutDrive = sayAboutDrive;
+
 
 var carVolvo = new Cars({
     model: 'Volvo',
@@ -61,7 +59,6 @@ var driverMarina = new Driver({
     age: 34,
     drivingExperience: 10,
 });
-
 var driverKarina = new Driver({
     name: 'Karina',
     age: 26,
@@ -93,9 +90,7 @@ var driverVadim = new Driver({
     drivingExperience: 1,
 });
 
-Cars.prototype.addAcsses = addAcsses;
-
-function sayAboutCar() {
+function sayAboutCar(driver) {
     return ' The model ' + this.model + ' is released ' + this.year + ' and it has color ' + this.color;
 }
 
@@ -107,34 +102,34 @@ function sayDriver(driver) {
     return 'The driver name is ' + this.name + ' my age is ' + this.age + ' and  I has ' + this.drivingExperience + ' years driving experience.'
 }
 
-function sayAboutDrive(driver) {
-    return sayDriver() + ' car is drive... ' + this.sayAboutCar();
+function sayAboutDrive(car) {
+    return this.sayDriver() + ' car is drive... ' + car.sayAboutCar();
+}
+function interval() {
+    this.idInterval = setInterval(function (driver) {
+        this.driverOwner.sayAboutDrive(driver);
+    }.bind(this),1000);
 }
 
-function stop(idInterval) {
+function stop() {
     clearInterval(this.idInterval);
 }
 
-function checkForSomeoneThere(indexDriver) {
+function getSitName() {
+    return this.driverOwner && this.driverOwner.name ? this.driverOwner.name : -1;
+}
+
+function checkForSomeoneThere(index) {
 
     if (this.driverOwner === null) {
         confirm('There is no owner');
-    } else {
+    }else {
         confirm('Driver behind the wheel');
     }
-}
-function getSitName() {
-    return this.voditel && this.voditel.name ? this.voditel.name : -1;
+    return this.driverOwner;
 }
 
-function sayDriver() {
-    return 'The driver name is ' + this.name + ' she is ' + this.age + ' years old and has ' + this.drivingExperience + ' years driving experience.'
-}
-
-function sayAboutDrive(car) {
-    console.log(this.sayDriver() + ' Car is drive ' + car.sayAboutCar() + ' .');
-}
-
+console.log(carNissan.checkForSomeoneThere(0));
 
 function setDriver(driver) {
     if(driver.name && !this.driverOwner){
@@ -170,56 +165,13 @@ function addDriverAccess(driver) {
 }
 
 function removeOwner(driver){
- for (var i = 0; i < this.driverList.length; i++){
-     if(this.driverList[i] === driver)
-         delete this.driverList[i];
- }
+    for (var i = 0; i < this.driverList.length; i++){
+        if(this.driverList[i] === driver)
+            delete this.driverList[i];
+    }
 
- return this.driverList;
+    return this.driverList;
 }
 
 console.log(carVolvo.removeOwner(driverVadim));
 
-function letGoDrive(driver) {
-    if (this.getSitName() === -1) {
-        this.voditel = driver;
-    } else if (confirm('Уже занято, поменять водителя?')) {
-        this.voditel = driver;
-    }
-}
-
-function go(interval) {
-    var driverName = this.getSitName();
-    if (driverName === -1) {
-        this.letGoDrive(getDriver(prompt('Кого садить ответ 1, 2, 3')));
-        if (this.getSitName()  === -1) return;
-    }
-
-    inter.call(this, interval);
-}
-
-function inter(interval) {
-    this.idInterval = setInterval(function () {
-        this.voditel.sayAboutDrive(this);
-    }.bind(this), interval);
-}
-
-function stop() {
-    clearInterval(this.idInterval);
-}
-
-function getDriver(indexDriver){
-    if (!indexDriver) return null;
-    indexDriver = +indexDriver;
-
-    if (indexDriver === 1) return driver1;
-    if (indexDriver === 2) return driver2;
-    if (indexDriver === 3) return driver3;
-
-    return null
-}
-
-/*car1.letGoDrive(driver3);*/
-/*car1.letGoDrive(driver1);*/
-//car1.go(1000);
-/*car2.go(500);*/
