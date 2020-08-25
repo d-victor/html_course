@@ -12,6 +12,7 @@
     <title>AutoStore</title>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -19,34 +20,31 @@
     <div class="header_bg">
         <div class="wrapper">
             <ul class="header_nav">
-                <li><i class="fas fa-lock"></i>
+                <li>
+                    <i class="fas fa-lock"></i>
                     <a class="elemHeader" href="#">Sign In</a>
                     <span class="sign">/</span>
                     <a class="elemHeader2" href="#">Create an Account</a>
                 </li>
-                <li>
-                    <div class="tabLang">
+                <li class="tabLang">
                     <span class="elemHeader3">
-                        <a href="#">FRENCH</a></span>
-                        <i class="fas fa-angle-down angle-down1"></i>
-                        <div class="tabLang_list">
-                            <p><a href="#">ENGLISH</a></p>
-                            <p class="secondElem"><a href="#">GERMAN</a></p>
-                            <p class="thirdElem"><a href="#">BELGIUM</a></p>
-                            <p class="fourElem"><a href="#">ARGENTINA</a></p>
-                        </div>
-                    </div>
+                        <a class="tabLang_tittle" href="#">FRENCH<i
+                                class="fas fa-angle-down angle-down1"></i></a></span>
+                    <ul class="tabLang_list">
+                        <li><a href="#">ENGLISH</a></li>
+                        <li class="secondElem"><a href="#">GERMAN</a></li>
+                        <li class="thirdElem"><a href="#">BELGIUM</a></li>
+                        <li class="fourElem"><a href="#">ARGENTINA</a></li>
+                    </ul>
                 </li>
-                <li>
-                    <div class="currency">
-                        <span class="elemHeader4"><a href="#">USD</a>
-                            <i class="fas fa-angle-down angle-down2"></i>
+                <li class="currency">
+                        <span class="elemHeader4"><a class="currency_tittle" href="#">USD<i
+                                class="fas fa-angle-down angle-down2"></i></a>
                         </span>
-                        <div class="currency_list">
-                            <p><a href="#">EUR - Euro</a></p>
-                            <p><a href="#">GBP - Pound</a></p>
-                        </div>
-                    </div>
+                    <ul class="currency_list">
+                        <li><a href="#">EUR - Euro</a></li>
+                        <li><a href="#">GBP - Pound</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -67,7 +65,7 @@
                 <div class="cart">
                     <span class="shopping-basket"><i class="fas fa-shopping-basket"></i></span>
                     <div class="count"><img class='ellipse' src="img/0.png" alt="ellipse"></div>
-                    <span class="cartValue">My Cart <span>$250.00</span></span>
+                    <span class="cartValue">My Cart <span class="cartValue_sum">$250.00</span></span>
                     <div class="miniCart">
                         <div>
                             <img class="miniCart_img" src="img/wheels.png" alt="wheels">
@@ -81,7 +79,7 @@
                             </div>
                             <div class="miniCart_price">
                                 <strong>Qty:</strong>
-                                <div>1</div>
+                                <input type="number">
                                 <button>Update</button>
                                 <span>$205.00</span>
                             </div>
@@ -99,6 +97,32 @@
             </div>
         </div>
     </div>
+    <div class="wrapper">
+        <div class="row">
+            <div class="col col-1">
+                <nav class="main-menu1">
+                    <ul class="allCategories">
+                        <li class="first">
+                            <a href="#">ALL&nbspCATEGORIES</a>
+                            <ul class="submenu1">
+                                <li><a href="#">Homepage 1</a></li>
+                                <li><a href="#">Homepage 2</a></li>
+                                <li><a href="#">Homepage 3</a></li>
+                                <li><a href="#">Homepage 4</a></li>
+                                <li><a href="#">Homepage 5</a></li>
+                                <li><a href="#">Homepage 6</a></li>
+                                <li><a href="#">Homepage 7</a></li>
+                                <li><a href="#">Homepage 8</a></li>
+                                <li><a href="#">Homepage 9</a></li>
+                                <li><a href="#">Homepage 10</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
 </header>
 <main>
 
