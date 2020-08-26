@@ -475,13 +475,7 @@ input:focus{
     border-radius: 6px;
     color: white;
 }
-.wrapper{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    max-width: 1200px;
 
-}
 .row {
     display: flex;
     flex-wrap: nowrap;
