@@ -475,25 +475,23 @@ input:focus{
     border-radius: 6px;
     color: white;
 }
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: 1200px;
+
+}
 .row {
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: row;
+    flex-direction: column;
     margin: 0 -15px;
-    max-width: 1200px;
-    justify-content: left;
+    justify-content: space-between;
 }
 
 .col {
     padding: 15px;
-}
-
-.col-1 {
-    width: calc(100% / 4);
-}
-
-.col-3 {
-    width: 75%;
 }
 
 
