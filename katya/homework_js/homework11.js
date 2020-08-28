@@ -26,6 +26,7 @@ function setClass( elem, className) {
 }
 
 function setAttr (elem, attr) {
+
     if (!elem && !attr) return;
 
     for ( var key in attr) {
@@ -182,7 +183,7 @@ var element = setHtmlElement({
     },
 });
 document.body.append(element);
-//console.log(element);
+console.log(element);
 
 var element2 = setHtmlElement({
     elem: 'nav',
