@@ -67,10 +67,6 @@ header {
     padding-right: 17px;
 }
 
-.fa-lock:hover {
-    color: red;
-}
-
 .angle-down2 {
     padding-left: 5px;
 }
@@ -149,7 +145,6 @@ header {
 
 .tabLang .tabLang_list li {
     margin: 0 0 9px 0;
-    /*padding: 9px 9px 9px 40px;*/
     border: 1px solid transparent;
 }
 
@@ -189,7 +184,6 @@ header {
 
 .currency .currency_list li {
     margin: 0 0 9px 0;
-    /*padding: 9px 9px;*/
     border: 1px solid transparent;
 }
 
@@ -482,6 +476,8 @@ input:focus{
     flex-direction: column;
     margin: 0 -15px;
     justify-content: space-between;
+    max-width: 1200px;
+
 }
 
 .col {
@@ -496,7 +492,7 @@ input:focus{
     }
 
     form input {
-        width: 400px;
+       max-width: 400px;
     }
     .cart{
         margin-left: 20px;
@@ -511,7 +507,7 @@ input:focus{
     }
 
     form input {
-        width: 210px;
+       max-width: 210px;
     }
 
 }
@@ -521,12 +517,13 @@ input:focus{
         padding-right: 10px;
     }
     .logo img {
-        width: 110px;
-        height: 40px;
+        width: 140px;
+        height: 45px;
     }
     .logo{
         margin-top: 10px;
-        margin-left: 10px;
+        margin-left: 20px;
+        flex-grow: 1;
     }
 
     .subHeader_wishList {
@@ -536,21 +533,22 @@ input:focus{
     .subHeader_search {
         margin-top: 10px;
         margin-left: 5px;
+
     }
     .cart{
         margin-top: 10px;
-        height: 40px;
+        height: 45px;
     }
 
     form input {
         display: none;
         position: absolute;
         top: 50px;
-        left: -50px;
-        width: 250px;
-        border-radius: 4px;
+        left: -50%;
+        width: 400px;
+        border-radius: 20px;
         border-right: 2px solid lightgrey;
-        height: 40px;
+        height: 35px;
     }
 
     .subHeader_search{
@@ -570,22 +568,22 @@ input:focus{
         left: -30%;
     }
     .subHeader_btn {
-        height: 40px;
-        width: 40px;
+        height: 45px;
+        width: 45px;
         background-color: white;
         border-radius: 5px;
         border: 2px solid lightgray;
-        margin-left: 10px;
+
     }
     .fa-search {
         color: grey;
         font-size: 18px;
-        padding: 8px 5px 5px 8px;
+        padding: 11px 5px 5px 12px;
     }
     .wishList {
         margin-top: 10px;
-        height: 40px;
-        width: 40px;
+        height: 45px;
+        width: 45px;
         border-radius: 5px;
         border: 2px solid lightgrey;
         margin-left: 5px;
@@ -594,7 +592,7 @@ input:focus{
     .fa-heart {
         font-size: 18px;
         color: black;
-        padding: 9px 5px 5px 8px;
+        padding: 11px 10px 12px 12px;
     }
     .cartValue,
     .count {
@@ -603,11 +601,11 @@ input:focus{
     .cart .shopping-basket{
         border-right: none;
         width: 40px;
-        height: 40px;
-
+        height: 45px;
     }
     .cart{
         margin-left: 10px;
+        margin-right: 20px;
     }
     .subHeader_btn:hover {
         background: white;
@@ -616,7 +614,7 @@ input:focus{
     }
     .miniCart {
         top: 43px;
-        right: -50px;
+        right: 0;
         padding: 25px;
         width: 360px;
     }
