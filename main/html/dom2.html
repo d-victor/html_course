@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<button id="go" type="button"><span>Go</span></button>
+<a href="#">sdfgdsgdfg</a>
+<script>
+    var btn = document.querySelector('#go');
+    document.body.onclick = function(e){
+        console.log(e);
+    }
+    /*btn.addEventListener('click', function (e) {
+        console.log(this, e);
+    });
+    
+    btn.addEventListener('click', function (e) {
+        console.log('sdfdsf');
+    });*/
+    
+    btn.addEventListener('click', ff);
+
+    function ff(e) {
+        console.log(e.target, e.currentTarget);
+        btn.removeEventListener('click', ff);
+    }
+    
+    /*btn.onclick = function (event) {
+        console.log(this, event);
+    };
+    
+    btn.onclick = function (e) {
+        console.log('sdfasdfasdf')
+    };*/
+    
+    var a  = document.querySelector('a');
+    
+    /*a.onclick = function (e) {
+        e.preventDefault();
+        
+        if (confirm('А вы уверены')) {
+            window.location = this.getAttribute('href');
+        }
+    }*/
+    
+</script>
+</body>
+</html>
