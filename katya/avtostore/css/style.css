@@ -472,18 +472,24 @@ input:focus{
 
 .row {
     display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
+    flex-wrap: wrap;
     margin: 0 -15px;
-    justify-content: space-between;
-    max-width: 1200px;
-
 }
 
 .col {
     padding: 15px;
 }
-
+.col-1 {
+    width: calc(100% / 4);
+}
+.col-3 {
+    width: calc(100% / 4 * 3);
+}
+.col-3{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
 
 @media screen and (max-width: 1200px) {
 
