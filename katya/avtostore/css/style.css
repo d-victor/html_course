@@ -12,7 +12,8 @@ body {
 }
 
 header {
-    height: 218px;
+    height: 203px;
+    border-bottom: 2px solid red;
 }
 
 .header_bg {
@@ -21,7 +22,7 @@ header {
 }
 
 .wrapper {
-    max-width: 1200px;
+    max-width: 1170px;
     margin: 0 auto;
 }
 
@@ -64,7 +65,7 @@ header {
 
 .fa-lock {
     color: white;
-    padding-right: 17px;
+    padding-right: 19px;
 }
 
 .angle-down2 {
@@ -85,7 +86,8 @@ header {
     display: inline-block;
     text-align: center;
 }
-.tabLang_tittle{
+
+.tabLang_tittle {
     display: block;
     padding-top: 14px;
     padding-right: 37px;
@@ -153,10 +155,11 @@ header {
     position: relative;
     display: inline-block;
 }
-.currency_tittle{
+
+.currency_tittle {
     display: block;
     padding-top: 14px;
-    padding-right: 27px;
+    padding-right: 12px;
 }
 
 .currency_list {
@@ -198,8 +201,9 @@ header {
     display: block;
     padding: 9px 9px 9px 40px;
 }
-.currency_list a{
-  display: block;
+
+.currency_list a {
+    display: block;
     padding: 9px 9px;
 }
 
@@ -211,7 +215,6 @@ header {
 
 .logo {
     margin-top: 30px;
-    padding-left: 16px;
 }
 
 .subHeader {
@@ -245,11 +248,13 @@ form input {
     border-radius: 0 5px 5px 0;
     border: 2px solid red;
 }
+
 .subHeader_btn:hover {
     background: red;
     box-shadow: 0 2px 10px 3px;
     color: lightpink;
 }
+
 .subHeader_btn:active {
     background-color: darkred;
 }
@@ -282,7 +287,8 @@ form input {
     color: black;
     padding: 11px 10px 11px 10px;
 }
-.fa-heart:hover{
+
+.fa-heart:hover {
     color: red;
 }
 
@@ -293,7 +299,7 @@ form input {
     border-radius: 4px;
     height: 45px;
     margin-top: 32px;
-    margin-left: 54px;
+    margin-left: 55px;
     font-size: 13px;
     font-weight: 400;
     position: relative;
@@ -309,7 +315,8 @@ form input {
     display: inline-block;
     padding: 10px 5px 11px 16px;
 }
-.cartValue_sum{
+
+.cartValue_sum {
     padding-left: 4px;
 }
 
@@ -392,7 +399,8 @@ form input {
     margin-right: 15px;
     margin-left: 15px;
 }
-.miniCart_price input{
+
+.miniCart_price input {
     width: 75px;
     height: 27px;
     margin-right: 15px;
@@ -401,7 +409,8 @@ form input {
     border-radius: 4px;
     border: 1px lightgrey solid;
 }
-input:focus{
+
+input:focus {
     outline: none;
     border-color: lightgray;
 }
@@ -415,19 +424,22 @@ input:focus{
     border: none;
     margin-right: 20px;
 }
+
 .miniCart_price button,
-.miniCart_total_btn button{
+.miniCart_total_btn button {
     border: none;
 }
+
 .miniCart_price button:hover,
-.miniCart_total_btn button:hover{
+.miniCart_total_btn button:hover {
     background: red;
     box-shadow: 0 2px 10px 3px;
     color: lightpink;
 }
+
 .miniCart_price button:visited,
-.miniCart_total_btn button:visited{
-   background-color: darkred;
+.miniCart_total_btn button:visited {
+    background-color: darkred;
 }
 
 .miniCart_price span {
@@ -473,22 +485,131 @@ input:focus{
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -15px;
+    margin: -6px -15px 0;
 }
 
 .col {
     padding: 15px;
 }
+
 .col-1 {
     width: calc(100% / 4);
 }
+
 .col-3 {
     width: calc(100% / 4 * 3);
 }
-.col-3{
+
+.menu {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    list-style-type: none;
+    position: relative;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    display: block;
+    padding: 17px 21px 17px 16px;
+}
+
+.angle-down3 {
+    padding-left: 8px;
+}
+
+.allCategories {
+    list-style-type: none;
+}
+
+.first {
+    position: relative;
+    height: 55px;
+    cursor: pointer;
+}
+
+.allCategories li a {
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    display: block;
+    padding: 18px 0 15px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    border-radius: 8px 8px 0 0;
+}
+
+.submenu1 {
+    list-style-type: none;
+}
+
+.submenu1 li a {
+    background-color: white;
+    list-style-type: none;
+    color: black;
+    line-height: 23px;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 15px;
+    border-radius: 0;
+}
+
+.submenu1 {
+    display: none;
+    position: absolute;
+    top: 51px;
+    left: 0;
+    right: 0;
+}
+
+.first:hover .submenu1 {
+    display: block;
+    background: white;
+    box-shadow: 0 2px 10px 3px;
+    color: lightgrey;
+}
+
+.submenu1 li a:hover,
+.submenu li a:hover {
+    background-color: lavenderblush;
+}
+
+.submenu li a,
+.submenu2 li a,
+.submenu3 li a {
+    list-style-type: none;
+    color: black;
+    line-height: 23px;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 15px;
+}
+
+.submenu li,
+.submenu2 li,
+.submenu3 li {
+    list-style-type: none;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 51px;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.menu:hover .submenu {
+    display: block;
+    background: white;
+    box-shadow: 0 2px 10px 3px;
+    color: lightgrey;
 }
 
 @media screen and (max-width: 1200px) {
@@ -498,9 +619,10 @@ input:focus{
     }
 
     form input {
-       max-width: 400px;
+        max-width: 400px;
     }
-    .cart{
+
+    .cart {
         margin-left: 20px;
     }
 
@@ -513,20 +635,22 @@ input:focus{
     }
 
     form input {
-       max-width: 210px;
+        max-width: 210px;
     }
 
 }
 
 @media screen and (max-width: 767px) {
-    .tabLang_tittle{
+    .tabLang_tittle {
         padding-right: 10px;
     }
+
     .logo img {
         width: 140px;
         height: 45px;
     }
-    .logo{
+
+    .logo {
         margin-top: 10px;
         margin-left: 20px;
         flex-grow: 1;
@@ -541,7 +665,8 @@ input:focus{
         margin-left: 5px;
 
     }
-    .cart{
+
+    .cart {
         margin-top: 10px;
         height: 45px;
     }
@@ -557,22 +682,27 @@ input:focus{
         height: 35px;
     }
 
-    .subHeader_search{
+    .subHeader_search {
         position: relative;
     }
-    .subHeader_search:hover input{
+
+    .subHeader_search:hover input {
         display: block;
     }
+
     .elemHeader2 {
         padding-right: 38px;
     }
-    .currency_tittle{
+
+    .currency_tittle {
         padding-right: 20px;
     }
+
     .tabLang span:before {
         top: 14px;
         left: -30%;
     }
+
     .subHeader_btn {
         height: 45px;
         width: 45px;
@@ -581,11 +711,13 @@ input:focus{
         border: 2px solid lightgray;
 
     }
+
     .fa-search {
         color: grey;
         font-size: 18px;
         padding: 11px 5px 5px 12px;
     }
+
     .wishList {
         margin-top: 10px;
         height: 45px;
@@ -600,24 +732,29 @@ input:focus{
         color: black;
         padding: 11px 10px 12px 12px;
     }
+
     .cartValue,
     .count {
         display: none;
     }
-    .cart .shopping-basket{
+
+    .cart .shopping-basket {
         border-right: none;
         width: 40px;
         height: 45px;
     }
-    .cart{
+
+    .cart {
         margin-left: 10px;
         margin-right: 20px;
     }
+
     .subHeader_btn:hover {
         background: white;
         box-shadow: 0 2px 10px 3px;
         color: lightgrey;
     }
+
     .miniCart {
         top: 43px;
         right: 0;
@@ -628,7 +765,6 @@ input:focus{
 }
 
 @media screen and (max-width: 480px) {
-
 
 
 }
