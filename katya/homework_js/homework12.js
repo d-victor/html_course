@@ -176,26 +176,79 @@ var element3 = setHtmlElement({
 });
 document.body.append(element3);
 console.log(element3);
-
+var ul = element3.querySelector('.list');
 var imgs = element3.querySelectorAll('[name="pic"]');
-var elem = element3.querySelector('.list');
+var elem = ul.querySelectorAll('li');
 
-elem.addEventListener('click', transition);
+ul.addEventListener('click', transition1);
+
+elem = Array.prototype.slice.call(elem);
+console.log(elem)
+//elem.addEventListener('click', transition);
+var imgSrc = [];
+elem.forEach(function (li, index) {
+    li.dataset.index = index;
+    imgSrc.push(li.querySelector('img').getAttribute('src'));
+});
+
+var originSrc = imgSrc.slice(0);
+var isChange = false;
 
 function transition(event) {
-
-    var firstElem = elem.firstChild;
-    var lastElem = elem.lastChild;
-    var imgfirst = firstElem.querySelector('img');
-    var imglast = lastElem.querySelector('img');
-
-    if (firstElem || lastElem){
-        var temp;
-        temp = imgfirst.src;
-        imgfirst.src = imglast.src;
-        imglast.src = temp;
+    isChange = true;
+    var index = +this.dataset.index;
+    
+    var tmp = '';
+    
+    if (elem.length - 1 === index) {
+        changeElem(0, elem.length);
+    } else {
+        changeElem(index);
     }
-    initial.isChanged = true;
+    
+    function changeElem(index, lastIndex) {
+        if (lastIndex === undefined) lastIndex = index + 1;
+        else lastIndex = lastIndex - 1;
+        elem[index].querySelector('img').setAttribute('src', imgSrc[lastIndex]);
+        elem[lastIndex].querySelector('img').setAttribute('src', imgSrc[index]);
+        tmp = imgSrc[index];
+        imgSrc[index] = imgSrc[lastIndex];
+        imgSrc[lastIndex] = tmp;
+    }
+}
+
+function getIndex(elem, attr) {
+    if (elem.getAttribute(attr)) {
+        return +elem.getAttribute(attr);
+    } else {
+        return getIndex(elem.parentElement, attr);
+    }
+}
+
+function transition1(event) {
+    if (event.target === event.currentTarget) return;
+    console.log(event.target, event.currentTarget, this);
+    
+    isChange = true;
+    var index = getIndex(event.target, 'data-index');
+    
+    var tmp = '';
+    
+    if (elem.length - 1 === index) {
+        changeElem(0, elem.length);
+    } else {
+        changeElem(index);
+    }
+    
+    function changeElem(index, lastIndex) {
+        if (lastIndex === undefined) lastIndex = index + 1;
+        else lastIndex = lastIndex - 1;
+        elem[index].querySelector('img').setAttribute('src', imgSrc[lastIndex]);
+        elem[lastIndex].querySelector('img').setAttribute('src', imgSrc[index]);
+        tmp = imgSrc[index];
+        imgSrc[index] = imgSrc[lastIndex];
+        imgSrc[lastIndex] = tmp;
+    }
 }
 
 
@@ -209,10 +262,19 @@ btn.setAttribute('type', 'button');
 btn.textContent = 'reset';
 btn.addEventListener("click", reset);
 
-function reset(event) {
-    if (initial.isChanged) {
-
-    }
+function reset() {
+    if (!isChange) return;
+    
+    elem.forEach(function (li, index) {
+        li.querySelector('img').setAttribute('src', originSrc[index]);
+    });
+    
+    isChange = false;
 }
 document.body.append(btn);
+var d ='ds';
 
+(function () {
+    var d = '1';
+    console.log(window.d)
+})();
