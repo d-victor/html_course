@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            font-family: sans-serif;
+            font-size: 14px;
+            line-height: 1.3;
+        }
+        .overlay{
+            background-color: rgba(0,0,0,.8);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+        }
+        .overlay.active{
+            display: block;
+        }
+        .modal{
+            background-color: white;
+            position: absolute;
+            max-width: 650px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+
+        }
+        .modal > div {
+            padding: 15px;
+        }
+        .main{
+            border-bottom: 1px solid lightgray;
+            border-top: 1px solid lightgray;
+        }
+        .modal button {
+            float: right;
+        }
+        .modal .header::after,
+        .modal .footer::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="overlay">
+    <div class="modal">
+        <div class="header">
+            <button class="close">close</button>
+        </div>
+        <div class="main"> <p>Lochfhfh fvjnfjnfvjn fjhfgjh fgjhfg fhfh fhfjfjf </p></div>
+        <div class="footer"><button class="ok"> Ok</button></div>
+    </div>
+</div>
+<p>hfhfhgvhnghng jfgjgbjg</p>
+<button class="openModal">Open Modal</button>
+<script>
+    (function () {
+
+        var modal = document.querySelector('.overlay');
+        var button = document.querySelector('.openModal');
+
+        button.addEventListener('click',function () {
+            modal.classList.add('active');
+        });
+
+        var buttonClose = modal.querySelectorAll('.close, .ok');
+
+        buttonClose.forEach(function (elem) {
+            elem.addEventListener('click', closeModal);
+        });
+
+        modal.addEventListener('click', closeModal);
+
+        /*function closeModal(event) {
+            modal.classList.remove('active');
+            var target = event.target.matches('button');
+            if (target) return;
+        }*/
+
+        function closeModal(event) {
+            modal.classList.remove('active');
+            var target = event.target.matches('button');
+            if (target){
+                event.stopPropagation();
+            }
+        }
+
+    })();
+</script>
+</body>
+</html>
