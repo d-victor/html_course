@@ -67,7 +67,7 @@
             <button class="close">close</button>
         </div>
         <div class="main"> <p>Lochfhfh fvjnfjnfvjn fjhfgjh fgjhfg fhfh fhfjfjf </p></div>
-        <div class="footer"><button class="ok"> Ok</button></div>
+        <div class="footer"><button class="ok"><span>Ok</span></button></div>
     </div>
 </div>
 <p>hfhfhgvhnghng jfgjgbjg</p>
@@ -77,6 +77,7 @@
 
         var modal = document.querySelector('.overlay');
         var button = document.querySelector('.openModal');
+        var modalWindow = modal.querySelector('.modal');
 
         button.addEventListener('click',function () {
             modal.classList.add('active');
@@ -88,7 +89,11 @@
             elem.addEventListener('click', closeModal);
         });
 
-        modal.addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) {
+            if (e.target !== e.currentTarget) return;
+    
+            closeModal(e);
+        });
 
         /*function closeModal(event) {
             modal.classList.remove('active');
@@ -98,10 +103,6 @@
 
         function closeModal(event) {
             modal.classList.remove('active');
-            var target = event.target.matches('button');
-            if (target){
-                event.stopPropagation();
-            }
         }
 
     })();
