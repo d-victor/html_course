@@ -1,14 +1,13 @@
 * {
     box-sizing: border-box;
     padding: 0;
-    margin-left: 0;
+    margin: 0;
 }
 
 body {
     font-family: 'Rubik', Arial, Helvetica, sans-serif;
     line-height: 23px;
     font-size: 14px;
-    margin: 0;
 }
 
 header {
@@ -554,7 +553,7 @@ input:focus {
     line-height: 23px;
     font-weight: 400;
     font-size: 14px;
-    padding: 15px;
+    padding: 10px;
     border-radius: 0;
 }
 
@@ -582,15 +581,20 @@ input:focus {
     background-color: lavenderblush;
 }
 
-.submenu li a,
-div.submenu2 a,
-div.submenu3 a {
+main-menu.submenu li a,
+.submenu2 li a,
+.submenu3 li a,
+.submenu4 li a,
+.submenu5 li a{
     list-style-type: none;
     color: black;
     line-height: 23px;
     font-weight: 400;
     font-size: 14px;
-    padding: 15px;
+    padding: 10px;
+}
+.main-menu .submenu li a {
+   padding: 10px;
 }
 
 .submenu li{
@@ -599,9 +603,9 @@ div.submenu3 a {
 div.submenu{
     display: flex;
     flex-direction: row;
-    max-height: 350px;
+    flex-wrap: wrap;
     overflow: auto;
-    justify-content: space-between;
+    height: 100vh;
 }
 
 .submenu {
@@ -612,15 +616,19 @@ div.submenu{
     left: 0;
     right: 0;
     cursor: pointer;
-
 }
-
-.menu:hover .submenu {
+.submenu > ul{
+    width: 50%;
+}
+.submenu h4 {
+    padding: 5px 15px;
+    margin: 5px 0;
+}
+.menu li:hover .submenu {
     visibility: visible;
     opacity: 1;
     background: white;
-    box-shadow: 0 2px 10px 3px;
-    color: lightgrey;
+    box-shadow: 0 2px 10px 3px lightgray;
 }
 .main-menu{
   margin-top: -22px;
@@ -784,7 +792,7 @@ div.submenu{
         position: absolute;
         width: 100%;
         height: 2px;
-        background-color: white;
+        background-color: grey;
     }
     .menu_btn > span::before {
         content: "";
@@ -795,7 +803,16 @@ div.submenu{
         top: 8px;
     }
     .menu{
-        display: block;
+        position: fixed;
+        flex-direction: column;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        padding: 30px 15px;
+        background-color: white;
+    }
+    /*.menu{
         position: fixed;
         visibility: hidden;
         top: 0;
@@ -809,7 +826,7 @@ div.submenu{
         text-align: center;
         background-color: white;
         box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
-    }
+    }*/
     #menu_toggle:checked ~ .menu_btn > span {
         transform: rotate(45deg);
     }
@@ -821,12 +838,11 @@ div.submenu{
         top: 0;
         transform: rotate(90deg);
     }
-    #menu_toggle:checked ~ .menu {
-        visibility: visible;
+    /*#menu_toggle:checked ~ .menu {
         left: 0;
-    }
+    }*/
 
-    .menu li > .submenu {
+    /*.menu li > .submenu {
         width: 100%;
         height: 100vh;
         padding-left: 5%;
@@ -843,8 +859,7 @@ div.submenu{
         width: 100%;
         height: 100%;
         transition: all .5s ease-in-out;
-    }
-
+    }*/
 
     .row {
         margin: 2px -15px 0;
