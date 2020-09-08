@@ -211,7 +211,7 @@ header {
 }
 
 .logo {
- margin-top: 32px;
+ margin-top: 39px;
 }
 
 .subHeader {
@@ -221,14 +221,14 @@ header {
 .subHeader_search {
     display: flex;
     flex-wrap: nowrap;
-    margin-top: 36px;
+    margin-top: 44px;
 }
 
 form input {
     height: 45px;
     border: 2px solid lightgrey;
     border-radius: 4px;
-    padding-left: 8px;
+    padding-left: 6px;
     border-right: none;
     font-family: inherit;
     font-size: 14px;
@@ -266,7 +266,7 @@ form input {
 }
 
 .subHeader_wishList {
-    margin-top: 36px;
+    margin-top: 44px;
     display: flex;
     flex-direction: row;
 }
@@ -308,7 +308,6 @@ form input {
 .cartValue {
     display: inline-block;
     padding: 10px 5px 11px 16px;
-    /*width: 124px;*/
 }
 
 .cartValue_sum {
@@ -480,7 +479,7 @@ input:focus {
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin: -19px -15px 0;
+    margin: -27px -15px 0;
 }
 
 .col {
@@ -513,7 +512,7 @@ input:focus {
     font-weight: 700;
     line-height: 17px;
     display: block;
-    padding: 17px 21px 17px 16px;
+    padding: 18px 20px 17px 17px;
 }
 
 .angle-down3 {
@@ -528,6 +527,7 @@ input:focus {
     position: relative;
     height: 55px;
     cursor: pointer;
+    margin-top: 22px;
 }
 
 .allCategories li a {
@@ -541,7 +541,29 @@ input:focus {
     line-height: 17px;
     border-radius: 8px 8px 0 0;
 }
-
+.allCategories span,
+.allCategories span:before,
+.allCategories span:after {
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background-color: white;
+    display: inline-block;
+}
+.allCategories span:after {
+    content: "";
+    top: 4px;
+    right: 0;
+}
+.allCategories span{
+    right: 22px;
+    top: 25px;
+}
+.allCategories span:before {
+    content: "";
+    top: -4px;
+    right: 0;
+}
 .submenu1 {
     list-style-type: none;
 }
@@ -575,10 +597,9 @@ input:focus {
     overflow: auto;
 }
 
-
 .submenu1 li a:hover,
 .submenu li a:hover {
-    background-color: lavenderblush;
+    color: red;
 }
 
 main-menu.submenu li a,
@@ -606,6 +627,7 @@ div.submenu{
     flex-wrap: wrap;
     overflow: auto;
     height: 100vh;
+    padding: 15px;
 }
 
 .submenu {
@@ -619,9 +641,10 @@ div.submenu{
 }
 .submenu > ul{
     width: 50%;
+    margin-top: 10px;
 }
 .submenu h4 {
-    padding: 5px 15px;
+    padding: 5px 25px;
     margin: 5px 0;
 }
 .menu li:hover .submenu {
@@ -637,6 +660,24 @@ div.submenu{
 #menu_toggle{
     opacity: 0;
 }
+.breadCramp {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.breadCramp-list {
+    padding: 15px 7px 35px;
+    color: #999999;
+}
+.breadCramp-list:nth-of-type(2){
+    padding-left: 9px;
+}
+.breadCramp-img {
+    display: block;
+    padding: 20px 0 0 5px;
+}
+
 @media screen and (max-width: 1200px) {
 
     .cart {
@@ -660,6 +701,11 @@ div.submenu{
     .menu li a{
         padding: 17px 5px 17px;
     }
+
+    .allCategories span{
+        right: 10px;
+    }
+
 }
 
 @media screen and (max-width: 767px) {
@@ -773,6 +819,9 @@ div.submenu{
         padding: 25px;
         width: 360px;
     }
+    .allCategories span{
+        top: 16px;
+    }
 
     .menu_btn {
         display: flex;
@@ -783,7 +832,7 @@ div.submenu{
         width: 26px;
         height: 26px;
         cursor: pointer;
-        z-index: 1;
+        z-index: 2;
     }
     .menu_btn > span,
     .menu_btn > span::before,
@@ -792,7 +841,7 @@ div.submenu{
         position: absolute;
         width: 100%;
         height: 2px;
-        background-color: grey;
+        background-color: lightgrey;
     }
     .menu_btn > span::before {
         content: "";
@@ -802,17 +851,9 @@ div.submenu{
         content: "";
         top: 8px;
     }
-    .menu{
-        position: fixed;
-        flex-direction: column;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100vh;
-        padding: 30px 15px;
-        background-color: white;
-    }
-    /*.menu{
+
+    .menu {
+        display: block;
         position: fixed;
         visibility: hidden;
         top: 0;
@@ -821,12 +862,21 @@ div.submenu{
         height: 100vh;
         overflow: visible;
         margin: 0;
-        padding: 80px 0;
-        z-index: 2;
-        text-align: center;
-        background-color: white;
+        padding: 50px 0;
+        text-align: left;
+        background-color:white;
         box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
-    }*/
+    }
+    .menu-item {
+        padding: 12px 24px;
+        color: black;
+        font-size: 20px;
+        font-weight: 600;
+        width: 100%;
+    }
+    .menu li a {
+        padding: 15px 25px;
+    }
     #menu_toggle:checked ~ .menu_btn > span {
         transform: rotate(45deg);
     }
@@ -838,28 +888,28 @@ div.submenu{
         top: 0;
         transform: rotate(90deg);
     }
-    /*#menu_toggle:checked ~ .menu {
+    #menu_toggle:checked ~ .menu {
+        visibility: visible;
         left: 0;
-    }*/
+    }
 
-    /*.menu li > .submenu {
+    .menu li > .submenu {
         width: 100%;
         height: 100vh;
         padding-left: 5%;
         z-index: 3;
-        overflow: hidden;
+        overflow: auto;
         font-size: 20px;
         font-weight: 400;
         background-color: white;
-        transition: all .5s ease-in-out;
     }
-    .menu li:hover > .submenu,
-    .menu li:hover > .submenu2,
-    .menu li:hover > .submenu3 {
+
+    .menu li:hover > .submenu {
+        top: 0;
         width: 100%;
         height: 100%;
-        transition: all .5s ease-in-out;
-    }*/
+        padding-top: 30px;
+    }
 
     .row {
         margin: 2px -15px 0;
@@ -875,12 +925,44 @@ div.submenu{
     }
     .submenu1 {
         top: 34px;
-
+    }
+    .submenu h4 {
+        font-size: 16px;
+    }
+    .submenu li a {
+        padding: 7px 25px;
+    }
+    .first {
+        margin-top: 15px;
+    }
+    .first .menu-item {
+        font-size: 12px;
+    }
+    .allCategories span {
+        visibility: hidden;
     }
 
 }
 
 @media screen and (max-width: 480px) {
+    .fa-lock {
+        padding-right: 5px;
+    }
 
+    .logo {
+        margin-left: 10px;
+    }
+
+    button.subHeader_btn{
+      margin-left: 40px;
+    }
+
+    .submenu > ul {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .wishList {
+        margin-left: -50px;
+    }
 
 }
