@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    /*    * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select {
+            border: 1px solid grey;
+            border-radius: 5px;
+            max-width: 150px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .select-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 38px;
+            background-color: lightgray;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .select-btn:before {
+            content: "";
+            border: 1px solid #666666;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            width: 10px;
+            height: 10px;
+            display: block;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: all .5s ease-in-out;
+
+        }
+
+        .select-wrapper.open .select-btn:before {
+            top: 55%;
+            transform: translate(-50%, -50%) rotate(225deg);
+        }
+
+        .options-list {
+            list-style-type: none;
+            border: 1px solid grey;
+            position: absolute;
+            top: 37px;
+            max-width: 150px;
+            width: 100%;
+            display: none;
+        }
+
+        .options-list li {
+            padding: 10px;
+            border-bottom: 1px solid grey;
+        }
+
+        .options-list li:last-child {
+            border-bottom: none;
+        }
+
+        .select-wrapper.open .options-list {
+            display: block;
+        }
+
+        .select-wrapper .marker {
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+*/
+    </style>
+</head>
+<body>
+<select name="colors" id="colors">
+    <option value="white">white</option>
+    <option value="blue">blue</option>
+    <option value="red">red</option>
+    <option value="black" selected>black</option>
+    <option value="grey" disabled>grey</option>
+
+</select>
+<!--<div class="select-wrapper">
+   <div class="select">
+       <span class="marker"></span>
+       <span class="selected-option">white</span>
+       <span class="select-btn"></span>
+   </div>
+    <ul class="options-list">
+        <li class="option"><span class="marker"></span><span class="option-text">white</span></li>
+        <li class="option"><span class="marker"></span><span class="option-text">blue</span></li>
+        <li class="option"><span class="marker"></span><span class="option-text">red</span></li>
+        <li class="option"><span class="marker"></span><span class="option-text">black</span></li>
+        <li class="option"><span class="marker"></span><span class="option-text">grey</span></li>
+    </ul>
+</div>-->
+<script>
+    function CustomSelect(options) {
+        console.log(options.elemWrapper, options.classSelector);
+        this.options = {
+            select: options.select,
+            optionsList: options.select.children,
+        }
+
+        this.init = function () {
+            console.log(this.options.optionsList)
+        }
+        this.init();
+
+        this.setClass = function () {
+            options.elemWrapper.classList.add(options.classSelector);
+        }
+        this.setClass();
+
+        /*this.setSelectElement = function () {
+
+            if (!options.elemSelect) return;
+            options.elemSelect.forEach(function (item) {
+                var select1 = document.createElement(item.elem);
+                select1.classList.add(item.className);
+                console.log(select1);
+            });
+
+            console.log();
+        }*/
+
+        /*this.listener = function () {
+           options.select.addEventListener('click',function (event) {
+               if(event.target.hasAttribute('value')){
+                   var itemSelect = event.target.getAttribute('value');
+                   event.target.options.select.textContent = itemSelect;
+                   options.select.classList.remove(options.classToggle);
+
+               }else if (event.target.hasAttribute('select-wrapper') {
+                   options.elemWrapper.classList.toggle(options.classToggle)
+               }
+
+           });
+        }*/
+    }
+
+    CustomSelect.prototype.setHtmlElement = setHtmlElement;
+    CustomSelect.prototype.setContent = setContent;
+    CustomSelect.prototype.setClass = setClass;
+
+    function setHtmlElement(options) {
+        if (!options || !options.elem) return;
+
+        var elem = document.createElement(options.elem);
+
+        if (options.className) {
+            setClass(elem, options.className);
+        }
+
+        if (options.content) {
+            setContent(elem, options.content);
+        }
+
+        return elem;
+    }
+    function setClass( elem, className) {
+
+        if (!elem && !className) return;
+        className.split(" ").forEach(function (classItemName) {
+            elem.classList.add(classItemName);
+        });
+    }
+    function setContent( elem, content) {
+
+        if(typeof content === 'string'){
+            elem.textContent = content;
+        }else if ( "elem" in content){
+            elem.append((setHtmlElement(content)))
+        }else if (content.nodeType === 1 || content.nodeType === 11){
+            elem.append(content);
+        }else if ( Array.isArray(content)) {
+            content.forEach(function (itemElem) {
+                if(typeof itemElem === 'string') elem.textContent = itemElem;
+                if('elem' in itemElem) elem.append(setHtmlElement(itemElem));
+                if((itemElem.nodeType === 1 || itemElem.nodeType === 11)) elem.append(itemElem);
+            });
+        }
+    }
+    var selectList = setHtmlElement( {
+        elem: 'ul',
+        className: 'options-list',
+        content:[
+            {
+                elem: 'li',
+                content: [
+                    {
+                        elem: 'span',
+                        className: 'marker'
+                    },
+                    {
+                        elem: 'span',
+                        className: 'option-text',
+                    }
+                ]
+            },
+            {
+                elem: 'li',
+                content: [
+                    {
+                        elem: 'span',
+                        className: 'marker'
+                    },
+                    {
+                        elem: 'span',
+                        className: 'option-text',
+                    }
+                ]
+            },
+            {
+                elem: 'li',
+                content: [
+                    {
+                        elem: 'span',
+                        className: 'marker'
+                    },
+                    {
+                        elem: 'span',
+                        className: 'option-text',
+                    }
+                ]
+            },
+            {
+                elem: 'li',
+                content: [
+                    {
+                        elem: 'span',
+                        className: 'marker'
+                    },
+                    {
+                        elem: 'span',
+                        className: 'option-text',
+                    }
+                ]
+            },
+            {
+                elem: 'li',
+                content: [
+                    {
+                        elem: 'span',
+                        className: 'marker'
+                    },
+                    {
+                        elem: 'span',
+                        className: 'option-text',
+                    }
+                ]
+            },
+        ]
+    });
+    var optionsList = setHtmlElement({
+        elem: 'div',
+        className: 'select',
+        content: [
+            {
+                elem: 'span',
+                className: 'marker',
+            },
+            {
+                elem: 'span',
+                className: 'selected-option',
+            },
+            {
+                elem: 'span',
+                className: 'select-btn'
+            }
+        ]
+    });
+    console.log(selectList,optionsList);
+
+
+    var colorSelect = new CustomSelect({
+        select: document.querySelector('#colors'),
+        elemWrapper: document.createElement('div'),
+        classSelector: "select-wrapper",
+        classToggle: "open",
+    });
+
+</script>
+</body>
+</html>
