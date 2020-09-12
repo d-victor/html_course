@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-    /*    * {
+        * {
             box-sizing: border-box;
             padding: 0;
             margin: 0;
@@ -88,7 +88,7 @@
             display: inline-block;
             margin-right: 10px;
         }
-*/
+
     </style>
 </head>
 <body>
@@ -116,47 +116,148 @@
 </div>-->
 <script>
     function CustomSelect(options) {
-        console.log(options.elemWrapper, options.classSelector);
+
         this.options = {
             select: options.select,
-            optionsList: options.select.children,
+            optionsList: Array.prototype.slice.call(options.select.children),
+            defaultSelectClass: 'select-wrapper',
+            selectClass: 'select',
+            markerClass: 'marker',
+            selectOptions: 'selected-option',
+            selectBtn: 'select-btn',
+            optionsListClass: 'options-list',
+            optionClass: 'option',
+            selectedOptionClass: 'active',
+            disabledOptionClass: 'disabled',
+            optionText: 'option-text',
+            classSwich: 'open',
         }
 
         this.init = function () {
-            console.log(this.options.optionsList)
+            this.wrapperSelect = this.setHtmlTemplate();
+        }
+
+        this.setFirstElement = function (selectWrapper) {
+            var selectedOptionText = selectWrapper.querySelector('.' + this.options.selectOptions);
+            selectedOptionText.textContent = selectWrapper.querySelector('.' + this.options.optionsListClass).firstChild.textContent;
+
+        }
+
+        this.addListener = function (selectWrapper) {
+            var selectElement = document.querySelector('.' + this.options.defaultSelectClass);
+
+            selectElement.addEventListener('click', function (event) {
+
+                if (event.target.hasAttribute('data-value')) {
+                    var itemTitle = event.target.getAttribute('data-value');
+                    this.querySelector('.selected-option').textContent = itemTitle;
+                    this.classList.remove('open');
+                } else {
+                    this.classList.toggle('open');
+                }
+
+            });
+
+            document.addEventListener('click', function (event) {
+                var selectElement = document.querySelector('select-wrapper');
+                var targetElement = event.target;
+                targetElement = targetElement.parentNode;
+                if (targetElement) {
+                    selectElement.classList.remove('open');
+                }
+            });
+
+        }
+
+        this.setHtmlTemplate = function () {
+            var op = this.options;
+            var selectAttributes = this.getAttribute(op.select);
+            delete selectAttributes.id;
+
+            var selectWrapper = this.setHtmlElement({
+                elem: 'div',
+                className: op.defaultSelectClass,
+                content: [{
+                    elem: 'div',
+                    className: op.selectClass,
+                    attr: selectAttributes,
+                    content: [{
+                        elem: 'span',
+                        className: op.markerClass,
+                    }, {
+                        elem: 'span',
+                        className: op.selectOptions,
+                    }, {
+                        elem: 'span',
+                        className: op.selectBtn,
+                    }]
+                }, {
+                    elem: 'ul',
+                    className: op.optionsListClass,
+                }]
+            });
+
+            var optionList = selectWrapper.querySelector("." + op.optionsListClass);
+            console.log(optionList);
+            this.setOptions(optionList);
+            document.body.append(selectWrapper);
+            this.setFirstElement(selectWrapper);
+            console.log(selectWrapper);
+            this.addListener(selectWrapper);
+        }
+
+        this.setOptions = function (optionList) {
+            var op = this.options;
+
+            op.optionsList.forEach(function (option) {
+                var optionAttr = this.getAttribute(option);
+                var liObj = {
+                    elem: 'li',
+                    className: op.optionClass,
+                    attr: {},
+                }
+                var spanMarker = {
+                    elem: 'span',
+                    className: op.markerClass,
+                }
+                var spanText = {
+                    elem: 'span',
+                    className: op.optionText,
+                    content: option.textContent,
+                }
+
+                if (optionAttr.hasOwnProperty('selected')) {
+                    liObj.className += " " + op.selectedOptionClass;
+                }
+                if (optionAttr.hasOwnProperty('disabled')) {
+                    liObj.className += " " + op.disabledOptionClass;
+                }
+                for (var key in optionAttr) {
+                    liObj.attr["data-" + key] = optionAttr[key];
+                }
+
+                var li = this.setHtmlElement(liObj);
+
+                if (li.classList.contains(options.markerClass)) return;
+
+                li.append(this.setHtmlElement(spanMarker));
+                li.append(this.setHtmlElement(spanText));
+                optionList.append(li);
+
+            }, this);
+
+        }
+
+        this.getAttribute = function (elem) {
+            var request = {};
+            var attr = elem.attributes;
+            for (var i = 0; i < attr.length; i++) {
+                request[attr[i].name] = attr[i].value;
+            }
+            return request;
         }
         this.init();
 
-        this.setClass = function () {
-            options.elemWrapper.classList.add(options.classSelector);
-        }
-        this.setClass();
-
-        /*this.setSelectElement = function () {
-
-            if (!options.elemSelect) return;
-            options.elemSelect.forEach(function (item) {
-                var select1 = document.createElement(item.elem);
-                select1.classList.add(item.className);
-                console.log(select1);
-            });
-
-            console.log();
-        }*/
-
-        /*this.listener = function () {
-           options.select.addEventListener('click',function (event) {
-               if(event.target.hasAttribute('value')){
-                   var itemSelect = event.target.getAttribute('value');
-                   event.target.options.select.textContent = itemSelect;
-                   options.select.classList.remove(options.classToggle);
-
-               }else if (event.target.hasAttribute('select-wrapper') {
-                   options.elemWrapper.classList.toggle(options.classToggle)
-               }
-
-           });
-        }*/
     }
 
     CustomSelect.prototype.setHtmlElement = setHtmlElement;
@@ -171,127 +272,48 @@
         if (options.className) {
             setClass(elem, options.className);
         }
-
+        if (options.attr) {
+            setAttr(elem, options.attr);
+        }
         if (options.content) {
             setContent(elem, options.content);
         }
 
         return elem;
     }
-    function setClass( elem, className) {
+
+    function setClass(elem, className) {
 
         if (!elem && !className) return;
         className.split(" ").forEach(function (classItemName) {
             elem.classList.add(classItemName);
         });
     }
-    function setContent( elem, content) {
 
-        if(typeof content === 'string'){
+    function setAttr(elem, attr) {
+        if (!elem && !attr) return;
+
+        for (var key in attr) {
+            elem.setAttribute(key, attr[key]);
+        }
+    }
+
+    function setContent(elem, content) {
+
+        if (typeof content === 'string') {
             elem.textContent = content;
-        }else if ( "elem" in content){
+        } else if ("elem" in content) {
             elem.append((setHtmlElement(content)))
-        }else if (content.nodeType === 1 || content.nodeType === 11){
+        } else if (content.nodeType === 1 || content.nodeType === 11) {
             elem.append(content);
-        }else if ( Array.isArray(content)) {
+        } else if (Array.isArray(content)) {
             content.forEach(function (itemElem) {
-                if(typeof itemElem === 'string') elem.textContent = itemElem;
-                if('elem' in itemElem) elem.append(setHtmlElement(itemElem));
-                if((itemElem.nodeType === 1 || itemElem.nodeType === 11)) elem.append(itemElem);
+                if (typeof itemElem === 'string') elem.textContent = itemElem;
+                if ('elem' in itemElem) elem.append(setHtmlElement(itemElem));
+                if ((itemElem.nodeType === 1 || itemElem.nodeType === 11)) elem.append(itemElem);
             });
         }
     }
-    var selectList = setHtmlElement( {
-        elem: 'ul',
-        className: 'options-list',
-        content:[
-            {
-                elem: 'li',
-                content: [
-                    {
-                        elem: 'span',
-                        className: 'marker'
-                    },
-                    {
-                        elem: 'span',
-                        className: 'option-text',
-                    }
-                ]
-            },
-            {
-                elem: 'li',
-                content: [
-                    {
-                        elem: 'span',
-                        className: 'marker'
-                    },
-                    {
-                        elem: 'span',
-                        className: 'option-text',
-                    }
-                ]
-            },
-            {
-                elem: 'li',
-                content: [
-                    {
-                        elem: 'span',
-                        className: 'marker'
-                    },
-                    {
-                        elem: 'span',
-                        className: 'option-text',
-                    }
-                ]
-            },
-            {
-                elem: 'li',
-                content: [
-                    {
-                        elem: 'span',
-                        className: 'marker'
-                    },
-                    {
-                        elem: 'span',
-                        className: 'option-text',
-                    }
-                ]
-            },
-            {
-                elem: 'li',
-                content: [
-                    {
-                        elem: 'span',
-                        className: 'marker'
-                    },
-                    {
-                        elem: 'span',
-                        className: 'option-text',
-                    }
-                ]
-            },
-        ]
-    });
-    var optionsList = setHtmlElement({
-        elem: 'div',
-        className: 'select',
-        content: [
-            {
-                elem: 'span',
-                className: 'marker',
-            },
-            {
-                elem: 'span',
-                className: 'selected-option',
-            },
-            {
-                elem: 'span',
-                className: 'select-btn'
-            }
-        ]
-    });
-    console.log(selectList,optionsList);
-
 
     var colorSelect = new CustomSelect({
         select: document.querySelector('#colors'),
