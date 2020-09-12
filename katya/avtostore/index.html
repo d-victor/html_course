@@ -20,7 +20,7 @@
     <div class="header_bg">
         <div class="wrapper">
             <ul class="header_nav">
-                <li>
+                <li id="signElem">
                     <a class="elemHeader" href="#"><i class="fas fa-lock fa-lock1"></i>Sign In</a>
                     <span class="sign">/</span>
                     <a class="elemHeader2" href="#">Create an Account</a>
@@ -460,16 +460,33 @@
                         <p class="buttonShop">SHOP BY</p>
                         <p class="color titlePartAside">COLOR</p>
                         <div class="checkColor">
-                            <div></div>
-                            <input type="">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
+                            <label class="color1">
+                                <input type="checkbox" value="black">
+                            </label>
+                            <label class="color2">
+                                <input type="checkbox" value="brown">
+                            </label>
+                            <label class="color3">
+                                <input type="checkbox" value="grey">
+                            </label>
+                            <label class="color4">
+                                <input type="checkbox" value="green">
+                            </label>
+                            <label class="color5">
+                                <input type="checkbox" value="orange">
+                            </label>
+                            <label class="color6">
+                                <input type="checkbox" value="pink">
+                            </label>
+                            <label class="color7">
+                                <input type="checkbox" value="red">
+                            </label>
+                            <label class="color8">
+                                <input type="checkbox" value="white">
+                            </label>
+                            <label class="color9">
+                                <input type="checkbox" value="yellow">
+                            </label>
                         </div>
                     </div>
                     <div class="price">
@@ -483,37 +500,46 @@
                             <p>$ </p>
                             <input type="number">
                             <p>- $ </p>
-                            <input type="number">
+                            <input class="range-input" type="number">
                         </div>
                     </div>
                     <div class="listBrand">
                         <p class="titlePartAside">BRAND</p>
-                        <p>Toyota(4)</p>
-                        <p>Mercedes(4)</p>
-                        <p>Kia(2)</p>
-                        <p>Audi(4)</p>
+                        <label>
+                            <input type="checkbox"><a href="#">Toyota (4)</a>
+                        </label><label>
+                        <input type="checkbox"><a href="#">Mercedes (4)</a>
+                    </label><label>
+                        <input type="checkbox"><a href="#">Kia (2)</a>
+                    </label><label>
+                        <input type="checkbox"><a href="#">Audi (4)</a>
+                    </label>
                     </div>
-                    <p class="titlePartAside">MODEL</p>
-                    <ul class="selectModel">
-                        <li><a href="#">Camry</a></li>
-                        <li><a href="#">Fortune</a></li>
-                        <li><a href="#">Vios</a></li>
-                        <li><a href="#">C300</a></li>
-                        <li><a href="#">E250</a></li>
-                        <li><a href="#">S500</a></li>
-                        <li><a href="#">Sorento</a></li>
-                        <li><a href="#">Optima</a></li>
-                        <li><a href="#">A4</a></li>
-                        <li><a href="#">A8</a></li>
-                    </ul>
-                    <p class="titlePartAside">YEAR</p>
-                    <ul class="selectYear">
-                        <li><a href="#">2011</a></li>
-                        <li><a href="#">2013</a></li>
-                        <li><a href="#">2015</a></li>
-                        <li><a href="#">2017</a></li>
-                        <li><a href="#">2018</a></li>
-                    </ul>
+                    <div class="selectModel-tittle">
+                        <p class="titlePartAside">MODEL</p>
+                        <ul class="selectModel">
+                            <li><input type="checkbox"><a href="#">Camry</a></li>
+                            <li><input type="checkbox"><a href="#">Fortune</a></li>
+                            <li><input type="checkbox"><a href="#">Vios</a></li>
+                            <li><input type="checkbox"><a href="#">C300</a></li>
+                            <li><input type="checkbox"><a href="#">E250</a></li>
+                            <li><input type="checkbox"><a href="#">S500</a></li>
+                            <li><input type="checkbox"><a href="#">Sorento</a></li>
+                            <li><input type="checkbox"><a href="#">Optima</a></li>
+                            <li><input type="checkbox"><a href="#">A4</a></li>
+                            <li><input type="checkbox"><a href="#">A8</a></li>
+                        </ul>
+                    </div>
+                    <div class="selectYear-tittle">
+                        <p class="titlePartAside">YEAR</p>
+                        <ul class="selectYear">
+                            <li><input type="checkbox"><a href="#">2011</a></li>
+                            <li><input type="checkbox"><a href="#">2013</a></li>
+                            <li><input type="checkbox"><a href="#">2015</a></li>
+                            <li><input type="checkbox"><a href="#">2017</a></li>
+                            <li><input type="checkbox"><a href="#">2018</a></li>
+                        </ul>
+                    </div>
                     <div class="compareProd">
                         <p class="titleCompareProd">COMPARE PRODUCTS</p>
                         <p>Radio Transmitter Adapter</p>
@@ -527,6 +553,7 @@
                 </div>
             </div>
         </aside>
+    </div>
 </main>
 </body>
 </html>

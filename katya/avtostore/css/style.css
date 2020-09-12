@@ -49,7 +49,7 @@ header {
 .elemHeader:hover,
 .elemHeader2:hover,
 .elemHeader3:hover,
-.elemHeader4:hover{
+.elemHeader4:hover {
     color: red;
 }
 
@@ -66,7 +66,8 @@ header {
     color: white;
     padding-right: 19px;
 }
-.fa-lock1:hover{
+
+.fa-lock1:hover {
     color: red;
 }
 
@@ -211,7 +212,7 @@ header {
 }
 
 .logo {
- margin-top: 39px;
+    margin-top: 39px;
 }
 
 .subHeader {
@@ -489,6 +490,7 @@ input:focus {
 .col-1 {
     width: calc(100% / 4);
 }
+
 .col-2 {
     width: calc(100% / 4 * 2 - 7px);
 }
@@ -541,6 +543,7 @@ input:focus {
     line-height: 17px;
     border-radius: 8px 8px 0 0;
 }
+
 .allCategories span,
 .allCategories span:before,
 .allCategories span:after {
@@ -550,20 +553,24 @@ input:focus {
     background-color: white;
     display: inline-block;
 }
+
 .allCategories span:after {
     content: "";
     top: 4px;
     right: 0;
 }
-.allCategories span{
+
+.allCategories span {
     right: 22px;
     top: 25px;
 }
+
 .allCategories span:before {
     content: "";
     top: -4px;
     right: 0;
 }
+
 .submenu1 {
     list-style-type: none;
 }
@@ -595,6 +602,7 @@ input:focus {
     box-shadow: 0 2px 10px 3px;
     color: lightgrey;
     overflow: auto;
+    max-height: 608px;
 }
 
 .submenu1 li a:hover,
@@ -606,28 +614,33 @@ main-menu.submenu li a,
 .submenu2 li a,
 .submenu3 li a,
 .submenu4 li a,
-.submenu5 li a{
+.submenu5 li a {
     list-style-type: none;
     color: black;
-    line-height: 23px;
     font-weight: 400;
-    font-size: 14px;
-    padding: 10px;
-}
-.main-menu .submenu li a {
-   padding: 10px;
+    font-size: 12px;
+    line-height: 14px;
+    padding: 8px;
 }
 
-.submenu li{
+.main-menu .submenu li a {
+    padding: 10px;
+}
+
+.submenu li {
     list-style-type: none;
 }
-div.submenu{
+
+div.submenu {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     overflow: auto;
-    height: 100vh;
+    max-height: 608px;
     padding: 15px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
 }
 
 .submenu {
@@ -639,43 +652,336 @@ div.submenu{
     right: 0;
     cursor: pointer;
 }
-.submenu > ul{
+
+.submenu > ul {
     width: 50%;
     margin-top: 10px;
 }
+
 .submenu h4 {
     padding: 5px 25px;
     margin: 5px 0;
 }
+
 .menu li:hover .submenu {
     visibility: visible;
     opacity: 1;
     background: white;
     box-shadow: 0 2px 10px 3px lightgray;
 }
-.main-menu{
-  margin-top: -22px;
+
+.main-menu {
+    margin-top: -22px;
 }
 
-#menu_toggle{
+#menu_toggle {
     opacity: 0;
 }
+
 .breadCramp {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    margin-bottom: 8px;
 }
 
 .breadCramp-list {
     padding: 15px 7px 35px;
     color: #999999;
 }
-.breadCramp-list:nth-of-type(2){
+
+.breadCramp-list:nth-of-type(2) {
     padding-left: 9px;
 }
+
 .breadCramp-img {
     display: block;
     padding: 20px 0 0 5px;
+}
+
+.buttonShop,
+.titleCompareProd {
+    background-color: red;
+    padding: 13px 40px 9px 18px;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.color {
+    padding: 18px 0 0 22px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+}
+
+.checkColor label {
+    width: 30px;
+    height: 30px;
+    border: 1px solid lightgrey;
+    margin: 0 6px 8px 0;
+}
+
+.checkColor {
+    padding: 15px 2px 3px 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.color1 {
+    background-color: black;
+}
+
+.color2 {
+    background-color: brown;
+}
+
+.color3 {
+    background-color: grey;
+}
+
+.color4 {
+    background-color: green;
+}
+
+.color5 {
+    background-color: orange;
+}
+
+.color6 {
+    background-color: purple;
+}
+
+.color7 {
+    background-color: red;
+}
+
+.color8 {
+    background-color: white;
+}
+
+.color9 {
+    background-color: yellow;
+}
+
+.checkColor input {
+    opacity: 0;
+}
+
+.firstSection {
+    border: 1px solid #cccccc;
+    padding-bottom: 20px;
+    border-radius: 8px 8px 0 0;
+}
+
+.price p {
+    padding: 17px 0 0 22px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.indicator {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 15px;
+}
+
+.indicator div:nth-child(1) {
+    width: 17px;
+    height: 17px;
+    border-radius: 100%;
+    border: 3px solid black;
+    position: absolute;
+    top: 55%;
+    left: 8%;
+}
+
+.indicator div:nth-child(2) {
+    position: absolute;
+    top: 77%;
+    border-bottom: 5px solid red;
+    width: 199px;
+    margin-left: 22px;
+}
+
+.indicator div:nth-child(3) {
+    width: 17px;
+    height: 17px;
+    border-radius: 100%;
+    border: 3px solid black;
+    position: absolute;
+    top: 55%;
+    left: 87%;
+}
+
+.rangePrice {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.rangePrice input {
+    margin-right: 2px;
+    width: 50px;
+    height: 35px;
+    border: 1px solid lightgrey;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.rangePrice .range-input {
+    margin-right: 15px;
+}
+
+.titlePartAside {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.rangePrice p:nth-child(1),
+.rangePrice p:nth-child(3) {
+    padding: 10px 5px 0;
+}
+
+.price {
+    padding-bottom: 30px;
+    border: 1px solid #cccccc;
+    border-top: none;
+}
+
+.listBrand {
+    padding: 15px 0 20px 15px;
+    border: 1px solid lightgrey;
+    border-bottom: none;
+}
+
+.listBrand {
+    border-top: none;
+    text-align: left;
+}
+
+.listBrand p {
+    padding: 2px 0 15px 6px;
+}
+
+.listBrand label {
+    display: block;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    padding: 7px 0;
+}
+
+.listBrand a {
+    text-decoration: none;
+    color: black;
+    margin-left: -7px;
+}
+
+.listBrand a:hover {
+    color: red;
+}
+
+.listBrand input,
+.selectModel input,
+.selectYear input {
+    opacity: 0;
+}
+
+.selectYear a,
+.selectModel a {
+    text-decoration: none;
+    color: black;
+}
+
+.selectModel-tittle,
+.selectYear-tittle {
+    border: 1px solid lightgrey;
+    border-bottom: none;
+}
+
+.selectModel-tittle p,
+.selectYear-tittle p {
+    padding: 17px 0 18px 22px;
+}
+
+.selectModel > li,
+.selectYear > li {
+    padding: 3px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    text-decoration: none;
+    color: black;
+}
+
+.selectModel li,
+.selectYear li {
+    list-style-type: none;
+}
+
+.selectModel,
+.selectYear {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px 15px 65px;
+}
+
+.selectModel li,
+.selectYear li {
+    margin: 10px 2px;
+}
+
+.selectYear li:hover,
+.selectModel li:hover {
+    background-color: red;
+}
+
+.selectYear a:hover,
+.selectModel a:hover {
+    color: white;
+}
+
+.compareProd p:nth-child(2),
+.compareProd p:nth-child(3) {
+    border-bottom: 1px solid lightgrey;
+    padding: 15px;
+}
+
+.compareProd {
+    border: 1px solid lightgrey;
+    border-top: none;
+}
+
+.compareBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 15px;
+}
+
+.compareBtn button {
+    color: white;
+    background-color: red;
+    width: 100px;
+    height: 26px;
+    border-radius: 8px 8px 8px 8px;
+    border: none;
+}
+
+.compareProd .compareBtn p {
+    border-bottom: none;
+    padding: 0;
+    margin-left: 70px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -691,18 +997,21 @@ div.submenu{
     .subHeader_search {
         padding-left: 20px;
     }
+
     .cartValue,
     .count {
         display: none;
     }
-    .shopping-basket{
+
+    .shopping-basket {
         border-right: none;
     }
-    .menu li a{
+
+    .menu li a {
         padding: 17px 5px 17px;
     }
 
-    .allCategories span{
+    .allCategories span {
         right: 10px;
     }
 
@@ -739,7 +1048,8 @@ div.submenu{
         border-right: 2px solid lightgrey;
         height: 35px;
     }
-    .subHeader{
+
+    .subHeader {
         position: relative;
     }
 
@@ -768,6 +1078,7 @@ div.submenu{
         border: 2px solid lightgray;
         flex-grow: 0;
         margin-left: 100px;
+
     }
 
     .fa-search {
@@ -819,7 +1130,8 @@ div.submenu{
         padding: 25px;
         width: 360px;
     }
-    .allCategories span{
+
+    .allCategories span {
         top: 16px;
     }
 
@@ -834,6 +1146,7 @@ div.submenu{
         cursor: pointer;
         z-index: 2;
     }
+
     .menu_btn > span,
     .menu_btn > span::before,
     .menu_btn > span::after {
@@ -843,13 +1156,24 @@ div.submenu{
         height: 2px;
         background-color: lightgrey;
     }
+
     .menu_btn > span::before {
         content: "";
         top: -8px;
     }
+
     .menu_btn > span::after {
         content: "";
         top: 8px;
+    }
+
+    .header_nav li:first-child {
+        display: block;
+        position: fixed;
+        visibility: hidden;
+        top: 0;
+        left: -100%;
+        width: 100%;
     }
 
     .menu {
@@ -860,13 +1184,14 @@ div.submenu{
         left: -100%;
         width: 100%;
         height: 100vh;
-        overflow: visible;
+        overflow: auto;
         margin: 0;
         padding: 50px 0;
         text-align: left;
-        background-color:white;
+        background-color: white;
         box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
     }
+
     .menu-item {
         padding: 12px 24px;
         color: black;
@@ -874,23 +1199,44 @@ div.submenu{
         font-weight: 600;
         width: 100%;
     }
+
     .menu li a {
         padding: 15px 25px;
     }
+
     #menu_toggle:checked ~ .menu_btn > span {
         transform: rotate(45deg);
     }
+
     #menu_toggle:checked ~ .menu_btn > span::before {
         top: 0;
         transform: rotate(0);
     }
+
     #menu_toggle:checked ~ .menu_btn > span::after {
         top: 0;
         transform: rotate(90deg);
     }
+
     #menu_toggle:checked ~ .menu {
         visibility: visible;
         left: 0;
+    }
+
+    #menu_toggle:checked > #signElem {
+        visibility: visible;
+        left: 0;
+    }
+
+    #signElem {
+        z-index: 4;
+        top: 50px;
+        left: 0;
+        visibility: visible;
+    }
+
+    .header_nav li:first-child a {
+        color: black;
     }
 
     .menu li > .submenu {
@@ -914,30 +1260,39 @@ div.submenu{
     .row {
         margin: 2px -15px 0;
     }
-    .allCategories li a{
+
+    .allCategories li a {
         padding: 8px 0 8px 5px;
     }
-    .subHeader_wishList{
+
+    .subHeader_wishList {
         margin-top: 15px;
     }
-    .subHeader_search{
+
+    .subHeader_search {
         margin-top: 15px;
     }
+
     .submenu1 {
         top: 34px;
     }
+
     .submenu h4 {
         font-size: 16px;
     }
+
     .submenu li a {
         padding: 7px 25px;
     }
+
     .first {
         margin-top: 15px;
     }
+
     .first .menu-item {
         font-size: 12px;
     }
+
     .allCategories span {
         visibility: hidden;
     }
@@ -953,16 +1308,18 @@ div.submenu{
         margin-left: 10px;
     }
 
-    button.subHeader_btn{
-      margin-left: 40px;
+    button.subHeader_btn {
+        margin-left: 40px;
     }
 
     .submenu > ul {
         width: 100%;
         margin-top: 10px;
     }
+
     .wishList {
         margin-left: -50px;
     }
 
 }
+
