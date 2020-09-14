@@ -1012,10 +1012,61 @@ div.submenu {
     margin-left: 79px;
     cursor: pointer;
 }
-.sidebar_img{
+/*.sidebar_img{
+    background: url("/img/item-sidebar.jpg") center center /cover no-repeat;
+    display: block;
     height: 420px;
-    background:url("/img/item-sidebar.jpg") no-repeat center;
-    background-size: cover;
+    width: 100%;
+}*/
+
+.wrapper_nav{
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    border: 1px solid darkgrey;
+    border-radius: 4px;
+    background-color: lightgray;
+    height: 44px;
+    text-align: center;
+}
+.site_nav h4 {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    /*margin-bottom: 30px;*/
+}
+.icon_th_btn {
+    display: inline-block;
+    width: 34px;
+    height: 33px;
+    font-size: 18px;
+    background-color: red;
+    border-radius: 5px;
+    margin-left: 8px;
+}
+
+.icon-th {
+    color: white;
+    padding: 8px;
+}
+
+.icon_list_btn {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: -1px;
+}
+.icon-list{
+    color: black;
+    padding: 7px 8px 8px 8px;
+}
+.list-items{
+    display: inline-block;
+   margin: 0 0 9px 2px;
 }
 
 @media screen and (max-width: 1200px) {
