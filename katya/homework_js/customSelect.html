@@ -87,6 +87,7 @@
             height: 10px;
             display: inline-block;
             margin-right: 10px;
+            border: 1px solid lightgray;
         }
 
     </style>
@@ -95,8 +96,8 @@
 <select name="colors" id="colors">
     <option value="white">white</option>
     <option value="blue">blue</option>
-    <option value="red">red</option>
-    <option value="black" selected>black</option>
+    <option value="red" selected>red</option>
+    <option value="black">black</option>
     <option value="grey" disabled>grey</option>
 
 </select>
@@ -116,6 +117,7 @@
 </div>-->
 <script>
     function CustomSelect(options) {
+        var self = this;
 
         this.options = {
             select: options.select,
@@ -130,7 +132,7 @@
             selectedOptionClass: 'active',
             disabledOptionClass: 'disabled',
             optionText: 'option-text',
-            classSwich: 'open',
+            classSwitch: 'open',
         }
 
         this.init = function () {
@@ -138,35 +140,82 @@
         }
 
         this.setFirstElement = function (selectWrapper) {
-            var selectedOptionText = selectWrapper.querySelector('.' + this.options.selectOptions);
-            selectedOptionText.textContent = selectWrapper.querySelector('.' + this.options.optionsListClass).firstChild.textContent;
+            this.selectedMarker = selectWrapper.querySelector('.' + this.options.selectClass + ' .' + this.options.markerClass);
+            this.selectedText = selectWrapper.querySelector('.' + this.options.selectClass + ' .' + this.options.selectOptions);
+            this.selectedMarker.style.backgroundColor = this.selectedOptions.value;
+            this.selectedText.textContent = this.selectedOptions.textContent;
+        }
+
+        this.setHandlers = function () {
+            var select = this.selectWrapper.querySelector('.' + this.options.selectClass);
+
+            select.addEventListener('click', this.toggleOpen.bind(this));
+            var listLi = this.selectWrapper.querySelectorAll('.' + this.options.optionClass);
+            listLi.forEach(function (li) {
+                li.addEventListener('click', this.selectOption.bind(this));
+            }, this);
 
         }
 
-        this.addListener = function (selectWrapper) {
-            var selectElement = document.querySelector('.' + this.options.defaultSelectClass);
+        this.selectOption = function (event) {
+            var nativeSelect = this.options.optionsList;
+            var hasDisabledAttr = event.currentTarget.classList.contains(this.options.disabledOptionClass);
+            var hasSelectedAttr = event.currentTarget.classList.contains(this.options.selectedOptionClass);
 
-            selectElement.addEventListener('click', function (event) {
+            if (!hasDisabledAttr && !hasSelectedAttr) {
+                this.selectedMarker.style.backgroundColor = event.currentTarget.dataset.value;
+                this.selectedText.textContent = event.currentTarget.dataset.value;
+                var liList = this.selectWrapper.querySelectorAll('.' + this.options.optionClass);
+                liList.forEach(function (li) {
+                    li.classList.remove(this.options.selectedOptionClass);
+                }, this);
+                event.currentTarget.classList.add(this.options.selectedOptionClass);
+            } else {
+                return;
+            }
 
-                if (event.target.hasAttribute('data-value')) {
-                    var itemTitle = event.target.getAttribute('data-value');
-                    this.querySelector('.selected-option').textContent = itemTitle;
-                    this.classList.remove('open');
-                } else {
-                    this.classList.toggle('open');
+            nativeSelect.forEach(function (option) {
+                var select = this.options.select;
+                var spanText = event.currentTarget.querySelector('.' + this.options.optionText);
+                option.removeAttribute('selected');
+                if (option.textContent === spanText.textContent) {
+                    select.value = spanText.textContent;
+                    option.setAttribute('selected', '');
                 }
 
-            });
+            }, this);
+        }
 
-            document.addEventListener('click', function (event) {
-                var selectElement = document.querySelector('select-wrapper');
-                var targetElement = event.target;
-                targetElement = targetElement.parentNode;
-                if (targetElement) {
-                    selectElement.classList.remove('open');
+        this.setMarker = function (selectWrapper) {
+            var spanList = this.selectWrapper.querySelectorAll('.' + this.options.markerClass);
+
+            spanList.forEach(function (span) {
+                if (!span.closest('.' + this.options.selectClass)) {
+                    span.style.backgroundColor = span.closest('.' + this.options.optionClass).dataset.value;
                 }
-            });
 
+            }, this);
+
+        }
+
+        this.toggleOpen = function () {
+            var close = this.close.bind(this);
+            if (!this.selectWrapper.classList.contains(this.options.classSwitch)) {
+                setTimeout(function () {
+                    document.addEventListener('click', this.close);
+                }.bind(this), 50);
+            } else {
+                document.removeEventListener('click', this.close);
+            }
+            this.selectWrapper.classList.toggle(this.options.classSwitch);
+
+        }
+        this.close = function () {
+            if (self.selectWrapper.classList.contains(self.options.classSwitch)) {
+                self.toggleOpen();
+                /*document.removeEventListener('click', self.close);
+                console.log('remove')*/
+            }
         }
 
         this.setHtmlTemplate = function () {
@@ -174,7 +223,7 @@
             var selectAttributes = this.getAttribute(op.select);
             delete selectAttributes.id;
 
-            var selectWrapper = this.setHtmlElement({
+            this.selectWrapper = this.setHtmlElement({
                 elem: 'div',
                 className: op.defaultSelectClass,
                 content: [{
@@ -197,20 +246,22 @@
                 }]
             });
 
-            var optionList = selectWrapper.querySelector("." + op.optionsListClass);
-            console.log(optionList);
+            var optionList = this.selectWrapper.querySelector("." + op.optionsListClass);
             this.setOptions(optionList);
-            document.body.append(selectWrapper);
-            this.setFirstElement(selectWrapper);
-            console.log(selectWrapper);
-            this.addListener(selectWrapper);
+            document.body.append(this.selectWrapper);
+            this.setFirstElement(this.selectWrapper);
+            this.setHandlers();
+            this.setMarker(this.selectWrapper);
         }
 
         this.setOptions = function (optionList) {
             var op = this.options;
+            var isSelectedOption = false;
 
             op.optionsList.forEach(function (option) {
+
                 var optionAttr = this.getAttribute(option);
+
                 var liObj = {
                     elem: 'li',
                     className: op.optionClass,
@@ -244,8 +295,16 @@
                 li.append(this.setHtmlElement(spanText));
                 optionList.append(li);
 
-            }, this);
+                if (option.selected) {
+                    this.selectedOptions = option;
+                    isSelectedOption = true;
+                    li.classList.add(op.selectedOptionClass);
+                }
 
+            }, this);
+            if (!isSelectedOption) {
+                this.selectedOptions = op.optionsList[0];
+            }
         }
 
         this.getAttribute = function (elem) {
@@ -314,6 +373,7 @@
             });
         }
     }
+
 
     var colorSelect = new CustomSelect({
         select: document.querySelector('#colors'),
