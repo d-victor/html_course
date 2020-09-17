@@ -505,7 +505,7 @@ input:focus {
 }
 
 .col-3 {
-    width: calc(100% / 4 * 3);
+    width: calc(100% / 4 * 3 - 9px);
 }
 
 .menu {
@@ -1020,20 +1020,21 @@ div.submenu {
 }*/
 
 .wrapper_nav{
+    display: flex;
     font-weight: 400;
     font-size: 13px;
     line-height: 15px;
-    border: 1px solid darkgrey;
+    border: 1px solid rgb(192, 191, 191);
     border-radius: 4px;
-    background-color: lightgray;
-    height: 44px;
-    text-align: center;
+    background-color: rgb(241, 241, 241);
+    height: 53px;
+    padding: 9px 15px 10px 7px;
 }
 .site_nav h4 {
     font-weight: 400;
     font-size: 30px;
     line-height: 36px;
-    /*margin-bottom: 30px;*/
+    margin-bottom: 22px;
 }
 .icon_th_btn {
     display: inline-block;
@@ -1042,7 +1043,6 @@ div.submenu {
     font-size: 18px;
     background-color: red;
     border-radius: 5px;
-    margin-left: 8px;
 }
 
 .icon-th {
@@ -1058,15 +1058,44 @@ div.submenu {
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
-    margin-left: -1px;
+    margin-left: 2px;
 }
-.icon-list{
+.icon-list {
     color: black;
     padding: 7px 8px 8px 8px;
 }
-.list-items{
-    display: inline-block;
-   margin: 0 0 9px 2px;
+
+.list-items {
+   margin: 9px 0 9px 18px;
+    flex-grow: 1;
+}
+
+input.check_page {
+  width: 50px;
+    height: 32px;
+    border-radius: 4px;
+    font-family: inherit;
+    border: 1px solid rgb(192, 191, 191);
+    padding: 5px;
+    margin-left: 5px;
+}
+.check_page ~ span {
+    margin-right: 52px;
+}
+
+input.sort_item {
+    width: 120px;
+    height: 31px;
+    border-radius: 4px;
+    font-family: inherit;
+    border: 1px solid rgb(192, 191, 191);
+    padding: 5px;
+    margin-right: 6px;
+    margin-left: 4px;
+}
+.long-arrow{
+    font-size: 18px;
+    margin-top: 6px;
 }
 
 @media screen and (max-width: 1200px) {
