@@ -1155,7 +1155,7 @@ div.submenu {
         overflow: hidden;
     }
 
-    .subHeader_btn-mobile.open > .search {
+    .header_row.open .search {
         display: block;
     }
 
