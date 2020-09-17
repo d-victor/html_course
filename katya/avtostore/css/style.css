@@ -1122,7 +1122,7 @@ div.submenu {
         height: 45px;
     }
 
-    form input {
+    .search {
         display: none;
         position: absolute;
         top: 130px;
@@ -1137,7 +1137,7 @@ div.submenu {
     .subHeader {
         position: relative;
     }
-    .subHeader_btn-mobile{
+    .subHeader_btn-mobile {
         visibility: visible;
         height: 45px;
         width: 45px;
@@ -1147,7 +1147,7 @@ div.submenu {
         flex-grow: 0;
         margin-left: -45px;
     }
-    .subHeader_btn-mobile input{
+    .subHeader_btn-mobile input {
         visibility: hidden;
         position: absolute;
         width: 0;
@@ -1155,7 +1155,7 @@ div.submenu {
         overflow: hidden;
     }
 
-    .subHeader_search:hover input {
+    .subHeader_btn-mobile.open > .search {
         display: block;
     }
 
