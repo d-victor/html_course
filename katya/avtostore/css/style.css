@@ -1093,9 +1093,21 @@ input.sort_item {
     margin-right: 6px;
     margin-left: 4px;
 }
-.long-arrow{
+.long-arrow {
     font-size: 18px;
     margin-top: 6px;
+}
+.row_item_product {
+    margin-top: 30px;
+    margin-left: 0;
+}
+.item-product {
+    padding: 0 15px;
+}
+.img-product{
+    background: url("/img/car_kit_hands_free_calling_2 1.png")center center /cover no-repeat;
+    display: block;
+    height: 275px;
 }
 
 @media screen and (max-width: 1200px) {
