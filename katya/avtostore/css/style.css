@@ -267,6 +267,7 @@ form input {
     font-size: 11px;
     padding: 15px 17px 16px 20px;
 }
+
 .subHeader_btn-mobile {
     visibility: hidden;
     position: absolute;
@@ -274,6 +275,7 @@ form input {
     height: 0;
     overflow: hidden;
 }
+
 .subHeader_wishList {
     margin-top: 44px;
     display: flex;
@@ -515,6 +517,7 @@ input:focus {
     list-style-type: none;
     position: relative;
 }
+
 .signElem {
     visibility: hidden;
     position: absolute;
@@ -907,6 +910,7 @@ div.submenu {
 .listBrand label:hover {
     color: red;
 }
+
 .selectModel,
 .selectYear {
     display: flex;
@@ -915,7 +919,8 @@ div.submenu {
     flex-wrap: wrap;
     padding: 0 15px 28px;
 }
-.selectYear{
+
+.selectYear {
     padding: 0 15px 27px;
 }
 
@@ -941,7 +946,7 @@ div.submenu {
 }
 
 .selectModel label,
-.selectYear label{
+.selectYear label {
     display: inline-block;
     padding: 10px 12px;
     margin-left: 1px;
@@ -959,8 +964,8 @@ div.submenu {
     cursor: pointer;
 }
 
-.selectYear li:hover,
-.selectModel li:hover {
+.selectYear label:hover,
+.selectModel label:hover {
     background-color: red;
 }
 
@@ -982,9 +987,11 @@ div.submenu {
     border: 1px solid lightgrey;
     border-top: none;
 }
-.fa-times1{
+
+.fa-times1 {
     margin-left: 61px;
 }
+
 .compareBtn {
     display: flex;
     flex-direction: row;
@@ -1012,14 +1019,15 @@ div.submenu {
     margin-left: 79px;
     cursor: pointer;
 }
-/*.sidebar_img{
-    background: url("/img/item-sidebar.jpg") center center /cover no-repeat;
+
+.sidebar_img {
+    background: url("../img/item-sidebar.jpg") center center /cover no-repeat;
     display: block;
     height: 420px;
     width: 100%;
-}*/
+}
 
-.wrapper_nav{
+.wrapper_nav {
     display: flex;
     font-weight: 400;
     font-size: 13px;
@@ -1030,12 +1038,14 @@ div.submenu {
     height: 53px;
     padding: 9px 15px 10px 7px;
 }
+
 .site_nav h4 {
     font-weight: 400;
     font-size: 30px;
     line-height: 36px;
     margin-bottom: 22px;
 }
+
 .icon_th_btn {
     display: inline-block;
     width: 34px;
@@ -1060,18 +1070,19 @@ div.submenu {
     border-radius: 5px;
     margin-left: 2px;
 }
+
 .icon-list {
     color: black;
     padding: 7px 8px 8px 8px;
 }
 
 .list-items {
-   margin: 9px 0 9px 18px;
+    margin: 9px 0 9px 18px;
     flex-grow: 1;
 }
 
 input.check_page {
-  width: 50px;
+    width: 50px;
     height: 32px;
     border-radius: 4px;
     font-family: inherit;
@@ -1079,6 +1090,7 @@ input.check_page {
     padding: 5px;
     margin-left: 5px;
 }
+
 .check_page ~ span {
     margin-right: 52px;
 }
@@ -1093,22 +1105,127 @@ input.sort_item {
     margin-right: 6px;
     margin-left: 4px;
 }
+
 .long-arrow {
     font-size: 18px;
     margin-top: 6px;
 }
+
 .row_item_product {
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 30px;
-    margin-left: 0;
+    margin-left: -5px;
 }
+
 .item-product {
-    padding: 0 15px;
+    margin: 0 10px 15px;
+    width: 270px;
+    border: 1px solid #E5E5E5;
+    transition: all .5s ease-in-out;
+    position: relative;
 }
-.img-product{
-    background: url("/img/car_kit_hands_free_calling_2 1.png")center center /cover no-repeat;
+
+.img-product {
+    background: url('../img/car_kit_hands_free_calling_2 1.png') center center /cover no-repeat;
     display: block;
     height: 275px;
+    width: 100%;
+    border-bottom: 1px solid #E5E5E5;
 }
+
+.item-product:hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+    background-color: white;
+}
+
+.img-product2 {
+    background: url('../img/design_in-car_fm_radio_3 1.png') center center /cover no-repeat;
+    display: block;
+    height: 275px;
+    width: 100%;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.product-sale {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 25px 0 30px;
+}
+
+.item-product del {
+    display: inline-block;
+    color: grey;
+    margin-left: 20px;
+}
+
+.new_prise {
+    color: red;
+}
+
+.item-star {
+    padding: 15px;
+}
+
+.flag_sale {
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: -8px;
+    top: 15px;
+    background: red;
+    color: white;
+    text-align: center;
+}
+
+.flag_sale:before, .flag_sale:after {
+    content: "";
+    position: absolute;
+}
+
+.flag_sale:before {
+    height: 0;
+    width: 0;
+    bottom: -9px;
+    left: 0.1px;
+    border-bottom: 9px solid transparent;
+    border-right: 9px solid #950C20;
+}
+
+.flag_new,
+.flag_new1 {
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    right: -8px;
+    top: 15px;
+    background: #3599FF;
+    color: white;
+    text-align: center;
+}
+
+.flag_new:before, .flag_new:after,
+.flag_new1:before, .flag_new1:after {
+    content: "";
+    position: absolute;
+}
+
+.flag_new:before,
+.flag_new1:before {
+    height: 0;
+    width: 0;
+    bottom: -9px;
+    right: 0.1px;
+    border-left: 9px solid #0055AC;
+    border-bottom: 9px solid transparent;
+}
+
 
 @media screen and (max-width: 1200px) {
 
@@ -1178,6 +1295,7 @@ input.sort_item {
     .subHeader {
         position: relative;
     }
+
     .subHeader_btn-mobile {
         visibility: visible;
         height: 45px;
@@ -1188,6 +1306,7 @@ input.sort_item {
         flex-grow: 0;
         margin-left: -45px;
     }
+
     .subHeader_btn-mobile input {
         visibility: hidden;
         position: absolute;
@@ -1214,7 +1333,7 @@ input.sort_item {
     }
 
     button.subHeader_btn {
-       display: none;
+        display: none;
     }
 
     .fa-search {
@@ -1368,22 +1487,26 @@ input.sort_item {
         top: 10%;
         right: 0;
     }
-    .elemHeader{
+
+    .elemHeader {
         position: absolute;
         top: 0;
         right: 15%;
     }
-    .sign{
+
+    .sign {
         position: absolute;
         top: 4%;
         right: 10%;
     }
-    .elemHeader2{
+
+    .elemHeader2 {
         position: absolute;
         top: 5%;
         right: 5%;
     }
-    .fa-lock1{
+
+    .fa-lock1 {
         color: black;
     }
 
