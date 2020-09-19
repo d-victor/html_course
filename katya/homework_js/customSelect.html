@@ -161,33 +161,37 @@
         }
 
         this.selectOption = function (event) {
+            var elem = event.currentTarget;
+            var hasDisabledAttr = elem.classList.contains(this.options.disabledOptionClass);
+            var hasSelectedAttr = elem.classList.contains(this.options.selectedOptionClass);
+
+            if (hasDisabledAttr && hasSelectedAttr) return;
+            
             var nativeSelect = this.options.optionsList;
-            var hasDisabledAttr = event.currentTarget.classList.contains(this.options.disabledOptionClass);
-            var hasSelectedAttr = event.currentTarget.classList.contains(this.options.selectedOptionClass);
-
-            if (!hasDisabledAttr && !hasSelectedAttr) {
-                this.selectedMarker.style.backgroundColor = event.currentTarget.dataset.value;
-                this.selectedText.textContent = event.currentTarget.dataset.value;
-                var liList = this.selectWrapper.querySelectorAll('.' + this.options.optionClass);
-                liList.forEach(function (li) {
-                    li.classList.remove(this.options.selectedOptionClass);
-                }, this);
-                event.currentTarget.classList.add(this.options.selectedOptionClass);
-            } else {
-                return;
-            }
-
+            
+            var value = event.currentTarget.dataset.value;
+            
+            this.selectedMarker.style.backgroundColor = value;
+            this.selectedText.textContent = elem.querySelector('span.' + this.options.optionText).textContent;
+            
+            var liList = this.selectWrapper.querySelector('.' + this.options.optionClass + '.' + this.options.selectedOptionClass);
+            liList.classList.remove(this.options.selectedOptionClass);
+            event.currentTarget.classList.add(this.options.selectedOptionClass);
+            
+            var selectedElem = this.options.select.querySelector('[selected]');
+            
+            if (selectedElem) selectedElem.removeAttribute('selected');
+            
+            this.options.select.value = value;
+            
             nativeSelect.forEach(function (option) {
-                var select = this.options.select;
-                var spanText = event.currentTarget.querySelector('.' + this.options.optionText);
-                option.removeAttribute('selected');
-                if (option.textContent === spanText.textContent) {
-                    select.value = spanText.textContent;
-                    option.setAttribute('selected', '');
+                if (option.value === value) {
+                    this.selectedOptions = option;
                 }
-
+    
             }, this);
-        }
+            
+        };
 
         this.setMarker = function (selectWrapper) {
             var spanList = this.selectWrapper.querySelectorAll('.' + this.options.markerClass);
