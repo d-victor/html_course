@@ -92,6 +92,14 @@
         [data-disabled]{
            color: lightgrey;
         }
+        .hidden {
+            width: 0;
+            height: 0;
+            position: absolute;
+            visibility: hidden;
+            overflow: hidden;
+            z-index: -1;
+        }
 
     </style>
 </head>
@@ -102,8 +110,13 @@
     <option value="red" selected>red</option>
     <option value="black">black</option>
     <option value="grey" disabled>grey</option>
-
 </select>
+<form>
+<label>Text<input class="text" type="text"></label>
+<label>Value<input class="value" type="text"></label>
+<button class="add" type="button">Add</button>
+</form>
+<button class="remove" type="button">Remove</button>
 <!--<div class="select-wrapper">
    <div class="select">
        <span class="marker"></span>
@@ -136,10 +149,37 @@
             disabledOptionClass: 'disabled',
             optionText: 'option-text',
             classSwitch: 'open',
+            hiddenClass: 'hidden',
+            distroyed: false,
         }
+        this.afterChange = options.afterChange;
+        this.beforeChange = options.beforeChange;
+        this.addOption = function (value, text) {
+           console.log(value,text);
+           if (value && text) {
+               this.destroy();
+            var option = document.createElement('option');
+            option.setAttribute('value',value);
+            option.textContent = text;
+            this.options.select.append(option);
+               this.optionsList = Array.prototype.slice.call(options.select.children);
+               console.log(this.optionsList);
+           }
+
+        };
+
+
+        this.destroy = function () {
+            if (this.options.distroyed) return;
+           this.selectWrapper.remove();
+            this.options.select.classList.remove(this.options.hiddenClass);
+            this.options.distroyed = true;
+        };
 
         this.init = function () {
-            this.wrapperSelect = this.setHtmlTemplate();
+            this.setHtmlTemplate();
+            this.customChange = new Event('customChange');
+            this.options.select.classList.add(this.options.hiddenClass);
         }
 
         this.setFirstElement = function (selectWrapper) {
@@ -161,36 +201,40 @@
         }
 
         this.selectOption = function (event) {
+
             var elem = event.currentTarget;
             var hasDisabledAttr = elem.classList.contains(this.options.disabledOptionClass);
             var hasSelectedAttr = elem.classList.contains(this.options.selectedOptionClass);
 
             if (hasDisabledAttr && hasSelectedAttr) return;
-            
+            this.beforeChange && this.beforeChange();
+
             var nativeSelect = this.options.optionsList;
-            
+
             var value = event.currentTarget.dataset.value;
-            
+
             this.selectedMarker.style.backgroundColor = value;
             this.selectedText.textContent = elem.querySelector('span.' + this.options.optionText).textContent;
-            
+
             var liList = this.selectWrapper.querySelector('.' + this.options.optionClass + '.' + this.options.selectedOptionClass);
             liList.classList.remove(this.options.selectedOptionClass);
             event.currentTarget.classList.add(this.options.selectedOptionClass);
-            
+
             var selectedElem = this.options.select.querySelector('[selected]');
-            
+
             if (selectedElem) selectedElem.removeAttribute('selected');
-            
+
             this.options.select.value = value;
-            
+
             nativeSelect.forEach(function (option) {
                 if (option.value === value) {
                     this.selectedOptions = option;
                 }
-    
+
             }, this);
-            
+            this.afterChange && this.afterChange();
+            this.customChange.customSelect = this;
+            this.selectWrapper.dispatchEvent(this.customChange);
         };
 
         this.setMarker = function (selectWrapper) {
@@ -266,7 +310,6 @@
             var isSelectedOption = false;
 
             op.optionsList.forEach(function (option) {
-
                 var optionAttr = this.getAttribute(option);
 
                 var liObj = {
@@ -300,7 +343,7 @@
 
                 li.append(this.setHtmlElement(spanMarker));
                 li.append(this.setHtmlElement(spanText));
-                optionList.append(li);
+                optionList.append(li)
 
                 if (option.selected) {
                     this.selectedOptions = option;
@@ -382,12 +425,33 @@
     }
 
 
-    var colorSelect = new CustomSelect({
+   var colorSelect = new CustomSelect({
         select: document.querySelector('#colors'),
         elemWrapper: document.createElement('div'),
         classSelector: "select-wrapper",
         classToggle: "open",
+      /*  afterChange: function () {
+            console.log(this,'afterChange');
+        },
+        beforeChange: function () {
+            console.log(this, 'beforeChange');
+        }*/
     });
+
+    colorSelect.selectWrapper.addEventListener('customChange', function (event) {
+        console.log('customChange',event);
+    });
+
+     var btn = document.querySelector('.remove');
+     var btnAdd = document.querySelector('.add');
+
+    btnAdd.addEventListener('click', getData);
+    function getData() {
+        var text = document.querySelector('.text').value;
+        var value = document.querySelector('.value').value;
+        colorSelect.addOption(value,text);
+    }
+     btn.addEventListener('click', colorSelect.destroy.bind(colorSelect));
 
 </script>
 </body>
