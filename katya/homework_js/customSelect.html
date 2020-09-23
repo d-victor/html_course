@@ -152,6 +152,7 @@
             hiddenClass: 'hidden',
             distroyed: false,
         }
+
         this.afterChange = options.afterChange;
         this.beforeChange = options.beforeChange;
         this.addOption = function (value, text) {
@@ -162,12 +163,12 @@
             option.setAttribute('value',value);
             option.textContent = text;
             this.options.select.append(option);
-               this.optionsList = Array.prototype.slice.call(options.select.children);
-               console.log(this.optionsList);
+            this.options.optionsList = Array.prototype.slice.call(options.select.children);
+               //this.setHtmlTemplate();
+               console.log();
            }
 
         };
-
 
         this.destroy = function () {
             if (this.options.distroyed) return;
@@ -311,7 +312,7 @@
 
             op.optionsList.forEach(function (option) {
                 var optionAttr = this.getAttribute(option);
-
+                console.log(option);
                 var liObj = {
                     elem: 'li',
                     className: op.optionClass,
@@ -449,7 +450,7 @@
     function getData() {
         var text = document.querySelector('.text').value;
         var value = document.querySelector('.value').value;
-        colorSelect.addOption(value,text);
+        colorSelect.addOption(value, text);
     }
      btn.addEventListener('click', colorSelect.destroy.bind(colorSelect));
 
