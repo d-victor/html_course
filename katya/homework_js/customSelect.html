@@ -132,6 +132,17 @@
     </ul>
 </div>-->
 <script>
+    function setOptionOfClick (event) {
+
+        var elem = event.currentTarget;
+        var hasDisabledAttr = elem.classList.contains(this.options.disabledOptionClass);
+        var hasSelectedAttr = elem.classList.contains(this.options.selectedOptionClass);
+        if (hasDisabledAttr && hasSelectedAttr) return;
+        var value = event.currentTarget.dataset.value;
+        this.setOption(value);
+
+    }
+
     function CustomSelect(options) {
         var self = this;
 
@@ -163,9 +174,9 @@
             option.setAttribute('value',value);
             option.textContent = text;
             this.options.select.append(option);
-            this.options.optionsList = Array.prototype.slice.call(options.select.children);
-               //this.setHtmlTemplate();
-               console.log();
+            this.options.optionsList.push(option);
+            this.init();
+
            }
 
         };
@@ -178,9 +189,10 @@
         };
 
         this.init = function () {
-            this.setHtmlTemplate();
+            setHtmlTemplate.call(this);
             this.customChange = new Event('customChange');
             this.options.select.classList.add(this.options.hiddenClass);
+            if (this.options.distroyed) this.options.distroyed = false;
         }
 
         this.setFirstElement = function (selectWrapper) {
@@ -189,37 +201,21 @@
             this.selectedMarker.style.backgroundColor = this.selectedOptions.value;
             this.selectedText.textContent = this.selectedOptions.textContent;
         }
+        this.setOption = function (value) {
+            var selectedLi = this.getOptionLi(value);
+            if (!value || !selectedLi) return;
 
-        this.setHandlers = function () {
-            var select = this.selectWrapper.querySelector('.' + this.options.selectClass);
-
-            select.addEventListener('click', this.toggleOpen.bind(this));
-            var listLi = this.selectWrapper.querySelectorAll('.' + this.options.optionClass);
-            listLi.forEach(function (li) {
-                li.addEventListener('click', this.selectOption.bind(this));
-            }, this);
-
-        }
-
-        this.selectOption = function (event) {
-
-            var elem = event.currentTarget;
-            var hasDisabledAttr = elem.classList.contains(this.options.disabledOptionClass);
-            var hasSelectedAttr = elem.classList.contains(this.options.selectedOptionClass);
-
-            if (hasDisabledAttr && hasSelectedAttr) return;
             this.beforeChange && this.beforeChange();
 
             var nativeSelect = this.options.optionsList;
 
-            var value = event.currentTarget.dataset.value;
-
             this.selectedMarker.style.backgroundColor = value;
-            this.selectedText.textContent = elem.querySelector('span.' + this.options.optionText).textContent;
+            this.selectedText.textContent = selectedLi.textContent;
 
             var liList = this.selectWrapper.querySelector('.' + this.options.optionClass + '.' + this.options.selectedOptionClass);
             liList.classList.remove(this.options.selectedOptionClass);
-            event.currentTarget.classList.add(this.options.selectedOptionClass);
+            selectedLi.classList.add(this.options.selectedOptionClass);
+
 
             var selectedElem = this.options.select.querySelector('[selected]');
 
@@ -233,9 +229,32 @@
                 }
 
             }, this);
+
             this.afterChange && this.afterChange();
             this.customChange.customSelect = this;
             this.selectWrapper.dispatchEvent(this.customChange);
+        };
+        this.getOptionLi = function (value) {
+            if (!value) return;
+            return this.selectWrapper.querySelector('[data-value="' + value + '"]');
+        };
+
+        this.removeOption = function (value) {
+           var liOption = this.getOptionLi(value);
+           if (!liOption || !value) return;
+
+           liOption.remove();
+        };
+
+        this.setHandlers = function () {
+            var select = this.selectWrapper.querySelector('.' + this.options.selectClass);
+
+            select.addEventListener('click', this.toggleOpen.bind(this));
+            var listLi = this.selectWrapper.querySelectorAll('.' + this.options.optionClass);
+            listLi.forEach(function (li) {
+                li.addEventListener('click', setOptionOfClick.bind(this));
+            }, this);
+
         };
 
         this.setMarker = function (selectWrapper) {
@@ -270,9 +289,10 @@
             }
         }
 
-        this.setHtmlTemplate = function () {
+         function setHtmlTemplate () {
             var op = this.options;
             var selectAttributes = this.getAttribute(op.select);
+            if (selectAttributes.hasOwnProperty('class')) delete selectAttributes.class;
             delete selectAttributes.id;
 
             this.selectWrapper = this.setHtmlElement({
@@ -438,6 +458,15 @@
             console.log(this, 'beforeChange');
         }*/
     });
+    var inputText = document.querySelector('.text');
+    var inputValue = document.querySelector('.value');
+
+    function getData() {
+       var text = inputText.value;
+        var value = inputValue.value;
+        if (!value && !text) return;
+        colorSelect.addOption(value, text);
+    }
 
     colorSelect.selectWrapper.addEventListener('customChange', function (event) {
         console.log('customChange',event);
@@ -447,13 +476,9 @@
      var btnAdd = document.querySelector('.add');
 
     btnAdd.addEventListener('click', getData);
-    function getData() {
-        var text = document.querySelector('.text').value;
-        var value = document.querySelector('.value').value;
-        colorSelect.addOption(value, text);
-    }
-     btn.addEventListener('click', colorSelect.destroy.bind(colorSelect));
 
+     btn.addEventListener('click', colorSelect.destroy.bind(colorSelect));
+    colorSelect.setOption('aasss');
 </script>
 </body>
 </html>
