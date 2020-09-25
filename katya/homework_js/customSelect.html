@@ -142,6 +142,75 @@
         this.setOption(value);
 
     }
+    function setFirstElement() {
+
+        var selectWrapper = document.querySelector('.' + this.options.defaultSelectClass);
+        this.selectedMarker = selectWrapper.querySelector('.' + this.options.selectClass + ' .' + this.options.markerClass);
+        this.selectedText = selectWrapper.querySelector('.' + this.options.selectClass + ' .' + this.options.selectOptions);
+        this.selectedMarker.style.backgroundColor = this.selectedOptions.value;
+        this.selectedText.textContent = this.selectedOptions.textContent;
+       console.log(this.options.defaultSelectClass);
+
+    }
+    function setHtmlTemplate () {
+        var op = this.options;
+        var selectAttributes = this.getAttribute(op.select);
+        if (selectAttributes.hasOwnProperty('class')) delete selectAttributes.class;
+        delete selectAttributes.id;
+
+        this.selectWrapper = this.setHtmlElement({
+            elem: 'div',
+            className: op.defaultSelectClass,
+            content: [{
+                elem: 'div',
+                className: op.selectClass,
+                attr: selectAttributes,
+                content: [{
+                    elem: 'span',
+                    className: op.markerClass,
+                }, {
+                    elem: 'span',
+                    className: op.selectOptions,
+                }, {
+                    elem: 'span',
+                    className: op.selectBtn,
+                }]
+            }, {
+                elem: 'ul',
+                className: op.optionsListClass,
+            }]
+        });
+
+        var optionList = this.selectWrapper.querySelector("." + op.optionsListClass);
+        this.setOptions(optionList);
+        document.body.append(this.selectWrapper);
+        setFirstElement.call(this);
+        this.setHandlers();
+        this.setMarker(this.selectWrapper);
+    }
+     /*function toggleOpen () {
+         var selectWrapper = document.querySelector('.' + this.options.defaultSelectClass);
+        var close = this.close.bind(this);
+         console.log(this.options.classSwitch)
+        if (selectWrapper.classList.contains(this.options.classSwitch)) {
+            setTimeout(function () {
+                document.addEventListener('click', this.close);
+            }.bind(this), 50);
+        } else {
+            document.removeEventListener('click', this.close);
+        }
+        selectWrapper.classList.toggle(this.options.classSwitch);
+
+    }
+     function close () {
+         var selectWrapper = document.querySelector('.' + this.options.defaultSelectClass);
+        if (selectWrapper.classList.contains(this.options.classSwitch)) {
+           /!* this.toggleOpen();*!/
+            document.removeEventListener('click', this.close);
+            console.log('remove')
+        }
+    }*/
+
 
     function CustomSelect(options) {
         var self = this;
@@ -162,7 +231,7 @@
             classSwitch: 'open',
             hiddenClass: 'hidden',
             distroyed: false,
-        }
+        };
 
         this.afterChange = options.afterChange;
         this.beforeChange = options.beforeChange;
@@ -193,14 +262,8 @@
             this.customChange = new Event('customChange');
             this.options.select.classList.add(this.options.hiddenClass);
             if (this.options.distroyed) this.options.distroyed = false;
-        }
+        };
 
-        this.setFirstElement = function (selectWrapper) {
-            this.selectedMarker = selectWrapper.querySelector('.' + this.options.selectClass + ' .' + this.options.markerClass);
-            this.selectedText = selectWrapper.querySelector('.' + this.options.selectClass + ' .' + this.options.selectOptions);
-            this.selectedMarker.style.backgroundColor = this.selectedOptions.value;
-            this.selectedText.textContent = this.selectedOptions.textContent;
-        }
         this.setOption = function (value) {
             var selectedLi = this.getOptionLi(value);
             if (!value || !selectedLi) return;
@@ -213,15 +276,16 @@
             this.selectedText.textContent = selectedLi.textContent;
 
             var liList = this.selectWrapper.querySelector('.' + this.options.optionClass + '.' + this.options.selectedOptionClass);
-            liList.classList.remove(this.options.selectedOptionClass);
-            selectedLi.classList.add(this.options.selectedOptionClass);
 
+            selectedLi.classList.add(this.options.selectedOptionClass);
+            liList.classList.remove(this.options.selectedOptionClass);
 
             var selectedElem = this.options.select.querySelector('[selected]');
 
             if (selectedElem) selectedElem.removeAttribute('selected');
 
             this.options.select.value = value;
+            console.log(this.options.select.value);
 
             nativeSelect.forEach(function (option) {
                 if (option.value === value) {
@@ -234,6 +298,7 @@
             this.customChange.customSelect = this;
             this.selectWrapper.dispatchEvent(this.customChange);
         };
+
         this.getOptionLi = function (value) {
             if (!value) return;
             return this.selectWrapper.querySelector('[data-value="' + value + '"]');
@@ -241,9 +306,31 @@
 
         this.removeOption = function (value) {
            var liOption = this.getOptionLi(value);
+           var optionSelect = this.options.select.querySelector('[value = "' + value +'"]');
+            console.log(optionSelect);
+
            if (!liOption || !value) return;
+            if (liOption.classList.contains(this.options.disabledOptionClass)) return;
+
+           // var list = this.selectWrapper.querySelector('.' + this.options.optionsListClass);
+
+            if (liOption.classList.contains(this.options.selectedOptionClass)) {
+                var selectedElem = this.options.select.querySelector('[selected]');
+                 selectedElem.removeAttribute('selected');
+                this.option = this.options.select.firstElementChild;
+                this.option.selected = true;
+                this.option.setAttribute('selected', '');
+                setFirstElement.call(this);
+            } else if (optionSelect === this.option) {
+              this.secondOption = this.option.nextElementSibling;
+                this.secondOption.selected = true;
+                this.secondOption.setAttribute('selected', '');
+                setFirstElement.call(this);
+            }
 
            liOption.remove();
+           optionSelect.remove();
+
         };
 
         this.setHandlers = function () {
@@ -267,9 +354,9 @@
 
             }, this);
 
-        }
+        };
 
-        this.toggleOpen = function () {
+       this.toggleOpen = function () {
             var close = this.close.bind(this);
             if (!this.selectWrapper.classList.contains(this.options.classSwitch)) {
                 setTimeout(function () {
@@ -280,51 +367,15 @@
             }
             this.selectWrapper.classList.toggle(this.options.classSwitch);
 
-        }
-        this.close = function () {
+        };
+
+       this.close = function () {
             if (self.selectWrapper.classList.contains(self.options.classSwitch)) {
                 self.toggleOpen();
-                /*document.removeEventListener('click', self.close);
-                console.log('remove')*/
+               document.removeEventListener('click', self.close);
+                console.log('remove')
             }
-        }
-
-         function setHtmlTemplate () {
-            var op = this.options;
-            var selectAttributes = this.getAttribute(op.select);
-            if (selectAttributes.hasOwnProperty('class')) delete selectAttributes.class;
-            delete selectAttributes.id;
-
-            this.selectWrapper = this.setHtmlElement({
-                elem: 'div',
-                className: op.defaultSelectClass,
-                content: [{
-                    elem: 'div',
-                    className: op.selectClass,
-                    attr: selectAttributes,
-                    content: [{
-                        elem: 'span',
-                        className: op.markerClass,
-                    }, {
-                        elem: 'span',
-                        className: op.selectOptions,
-                    }, {
-                        elem: 'span',
-                        className: op.selectBtn,
-                    }]
-                }, {
-                    elem: 'ul',
-                    className: op.optionsListClass,
-                }]
-            });
-
-            var optionList = this.selectWrapper.querySelector("." + op.optionsListClass);
-            this.setOptions(optionList);
-            document.body.append(this.selectWrapper);
-            this.setFirstElement(this.selectWrapper);
-            this.setHandlers();
-            this.setMarker(this.selectWrapper);
-        }
+        };
 
         this.setOptions = function (optionList) {
             var op = this.options;
@@ -332,7 +383,6 @@
 
             op.optionsList.forEach(function (option) {
                 var optionAttr = this.getAttribute(option);
-                console.log(option);
                 var liObj = {
                     elem: 'li',
                     className: op.optionClass,
@@ -376,7 +426,7 @@
             if (!isSelectedOption) {
                 this.selectedOptions = op.optionsList[0];
             }
-        }
+        };
 
         this.getAttribute = function (elem) {
             var request = {};
@@ -479,6 +529,7 @@
 
      btn.addEventListener('click', colorSelect.destroy.bind(colorSelect));
     colorSelect.setOption('aasss');
+    colorSelect.removeOption('white');
 </script>
 </body>
 </html>
