@@ -106,10 +106,10 @@
 <body>
 <select name="colors" id="colors">
     <option value="white">white</option>
-    <option value="blue">blue</option>
+    <option value="blue" >blue</option>
     <option value="red" selected>red</option>
     <option value="black">black</option>
-    <option value="grey" disabled>grey</option>
+    <option value="grey"disabled>grey</option>
 </select>
 <form>
 <label>Text<input class="text" type="text"></label>
@@ -209,7 +209,22 @@
             console.log('remove')
         }
     }*/
+        function getOptionNotActiveDisabled(value) {
+            var optionList = this.options.optionsList;
+            var index = 0;
+            var requestOption = optionList[index];
 
+            while (true){
+                if (requestOption.disabled || requestOption.selected || requestOption.value === value) {
+                    requestOption = optionList[++index];
+                } else {
+                    break;
+                }
+
+            }
+            //console.log(requestOption.disabled,requestOption.selected,requestOption.value);
+            return requestOption;
+        }
 
     function CustomSelect(options) {
         var self = this;
@@ -266,7 +281,7 @@
         this.setOption = function (value) {
             var selectedLi = this.getOptionLi(value);
             if (!value || !selectedLi) return;
-
+            console.log(selectedLi)
             this.beforeChange && this.beforeChange();
 
             var nativeSelect = this.options.optionsList;
@@ -275,7 +290,8 @@
             this.selectedText.textContent = selectedLi.textContent;
 
             var liList = this.selectWrapper.querySelector('.' + this.options.optionClass + '.' + this.options.selectedOptionClass);
-
+            this.customSelectedOption(value);
+            console.log(liList,this.options.optionClass,this.options.selectedOptionClass);
             selectedLi.classList.add(this.options.selectedOptionClass);
             liList.classList.remove(this.options.selectedOptionClass);
 
@@ -288,6 +304,8 @@
             nativeSelect.forEach(function (option) {
                 if (option.value === value) {
                     this.selectedOptions = option;
+                    //option.setAttribute('selected','');
+                    console.log(this.selectedOptions,option,value,nativeSelect)
                 }
 
             }, this);
@@ -295,6 +313,17 @@
             this.afterChange && this.afterChange();
             this.customChange.customSelect = this;
             this.selectWrapper.dispatchEvent(this.customChange);
+        };
+
+        this.customSelectedOption = function (value) {
+            this.selectedLi = this.getOptionLi(value);
+            var optionLi = this.listCustomLi.querySelector('[data-value="' + value + '"]')
+            if (optionLi) {
+                this.selectedLi = optionLi;
+                optionLi.setAttribute('data-selected', '');
+            }
+
+
         };
 
         this.getOptionLi = function (value) {
@@ -307,29 +336,15 @@
            var optionSelect = this.options.select.querySelector('[value = "' + value +'"]');
 
            if (!liOption || !value) return;
-            if (liOption.classList.contains(this.options.disabledOptionClass)) return;
-
-           var listLi = this.selectWrapper.querySelector('.' + this.options.optionsListClass);
-           var firstLi = listLi.firstChild;
-
-            if (liOption.classList.contains(this.options.selectedOptionClass)) {
-                var selectedElem = this.options.select.querySelector('[selected]');
-                 selectedElem.removeAttribute('selected');
-                this.option = this.options.select.firstElementChild;
-                this.option.selected = true;
-               this.option.setAttribute('selected', '');
-                console.log(this.option)
-
-            } else if (liOption === firstLi && liOption.classList.contains(this.options.selectedOptionClass)) {
-              this.secondOption = this.option.nextElementSibling;
-                this.secondOption.selected = true;
-               this.secondOption.setAttribute('selected', '');
-            }
-
-           liOption.remove();
-           optionSelect.remove();
+           //var listLi = this.selectWrapper.querySelector('.' + this.options.optionsListClass);
+           var nextActiveOption = getOptionNotActiveDisabled.call(this,value);
+            var selectedElemValue =this.selectedOptions.value;
+            liOption.remove();
+            optionSelect.remove();
+            this.setOption(nextActiveOption.value);
 
         };
+
 
         this.setHandlers = function () {
             var select = this.selectWrapper.querySelector('.' + this.options.selectClass);
@@ -378,6 +393,7 @@
         this.setOptions = function (optionList) {
             var op = this.options;
             var isSelectedOption = false;
+            this.listCustomLi = this.selectWrapper.querySelector('.' + this.options.optionsListClass);
 
             op.optionsList.forEach(function (option) {
                 var optionAttr = this.getAttribute(option);
@@ -424,6 +440,7 @@
             if (!isSelectedOption) {
                 this.selectedOptions = op.optionsList[0];
             }
+
         };
 
         this.getAttribute = function (elem) {
@@ -517,7 +534,7 @@
     }
 
     colorSelect.selectWrapper.addEventListener('customChange', function (event) {
-        console.log('customChange',event);
+       // console.log('customChange',event);
     });
 
      var btn = document.querySelector('.remove');
@@ -527,7 +544,7 @@
 
      btn.addEventListener('click', colorSelect.destroy.bind(colorSelect));
     colorSelect.setOption('aasss');
-    colorSelect.removeOption('red');
+    //colorSelect.removeOption('white');
 </script>
 </body>
 </html>
