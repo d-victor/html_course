@@ -149,7 +149,6 @@
         this.selectedText = selectWrapper.querySelector('.' + this.options.selectClass + ' .' + this.options.selectOptions);
         this.selectedMarker.style.backgroundColor = this.selectedOptions.value;
         this.selectedText.textContent = this.selectedOptions.textContent;
-       console.log(this.options.defaultSelectClass);
 
     }
     function setHtmlTemplate () {
@@ -285,7 +284,6 @@
             if (selectedElem) selectedElem.removeAttribute('selected');
 
             this.options.select.value = value;
-            console.log(this.options.select.value);
 
             nativeSelect.forEach(function (option) {
                 if (option.value === value) {
@@ -307,25 +305,25 @@
         this.removeOption = function (value) {
            var liOption = this.getOptionLi(value);
            var optionSelect = this.options.select.querySelector('[value = "' + value +'"]');
-            console.log(optionSelect);
 
            if (!liOption || !value) return;
             if (liOption.classList.contains(this.options.disabledOptionClass)) return;
 
-           // var list = this.selectWrapper.querySelector('.' + this.options.optionsListClass);
+           var listLi = this.selectWrapper.querySelector('.' + this.options.optionsListClass);
+           var firstLi = listLi.firstChild;
 
             if (liOption.classList.contains(this.options.selectedOptionClass)) {
                 var selectedElem = this.options.select.querySelector('[selected]');
                  selectedElem.removeAttribute('selected');
                 this.option = this.options.select.firstElementChild;
                 this.option.selected = true;
-                this.option.setAttribute('selected', '');
-                setFirstElement.call(this);
-            } else if (optionSelect === this.option) {
+               this.option.setAttribute('selected', '');
+                console.log(this.option)
+
+            } else if (liOption === firstLi && liOption.classList.contains(this.options.selectedOptionClass)) {
               this.secondOption = this.option.nextElementSibling;
                 this.secondOption.selected = true;
-                this.secondOption.setAttribute('selected', '');
-                setFirstElement.call(this);
+               this.secondOption.setAttribute('selected', '');
             }
 
            liOption.remove();
@@ -373,7 +371,7 @@
             if (self.selectWrapper.classList.contains(self.options.classSwitch)) {
                 self.toggleOpen();
                document.removeEventListener('click', self.close);
-                console.log('remove')
+
             }
         };
 
@@ -529,7 +527,7 @@
 
      btn.addEventListener('click', colorSelect.destroy.bind(colorSelect));
     colorSelect.setOption('aasss');
-    colorSelect.removeOption('white');
+    colorSelect.removeOption('red');
 </script>
 </body>
 </html>
