@@ -137,10 +137,9 @@
         var elem = event.currentTarget;
         var hasDisabledAttr = elem.classList.contains(this.options.disabledOptionClass);
         var hasSelectedAttr = elem.classList.contains(this.options.selectedOptionClass);
-        if (hasDisabledAttr && hasSelectedAttr) return;
+        if (hasDisabledAttr || hasSelectedAttr) return;
         var value = event.currentTarget.dataset.value;
         this.setOption(value);
-
     }
     function setFirstElement() {
 
@@ -187,28 +186,7 @@
         this.setHandlers();
         this.setMarker(this.selectWrapper);
     }
-     /*function toggleOpen () {
-         var selectWrapper = document.querySelector('.' + this.options.defaultSelectClass);
-        var close = this.close.bind(this);
-         console.log(this.options.classSwitch)
-        if (selectWrapper.classList.contains(this.options.classSwitch)) {
-            setTimeout(function () {
-                document.addEventListener('click', this.close);
-            }.bind(this), 50);
-        } else {
-            document.removeEventListener('click', this.close);
-        }
-        selectWrapper.classList.toggle(this.options.classSwitch);
 
-    }
-     function close () {
-         var selectWrapper = document.querySelector('.' + this.options.defaultSelectClass);
-        if (selectWrapper.classList.contains(this.options.classSwitch)) {
-           /!* this.toggleOpen();*!/
-            document.removeEventListener('click', this.close);
-            console.log('remove')
-        }
-    }*/
         function getOptionNotActiveDisabled(value) {
             var optionList = this.options.optionsList;
             var index = 0;
@@ -222,7 +200,7 @@
                 }
 
             }
-            //console.log(requestOption.disabled,requestOption.selected,requestOption.value);
+            console.log(requestOption);
             return requestOption;
         }
 
@@ -281,7 +259,7 @@
         this.setOption = function (value) {
             var selectedLi = this.getOptionLi(value);
             if (!value || !selectedLi) return;
-            console.log(selectedLi)
+
             this.beforeChange && this.beforeChange();
 
             var nativeSelect = this.options.optionsList;
@@ -290,14 +268,12 @@
             this.selectedText.textContent = selectedLi.textContent;
 
             var liList = this.selectWrapper.querySelector('.' + this.options.optionClass + '.' + this.options.selectedOptionClass);
-            this.customSelectedOption(value);
-            console.log(liList,this.options.optionClass,this.options.selectedOptionClass);
-            selectedLi.classList.add(this.options.selectedOptionClass);
+
             liList.classList.remove(this.options.selectedOptionClass);
+            selectedLi.classList.add(this.options.selectedOptionClass);
+            liList.removeAttribute('data-selected');
 
-            var selectedElem = this.options.select.querySelector('[selected]');
-
-            if (selectedElem) selectedElem.removeAttribute('selected');
+            this.customSelectedOption(value);
 
             this.options.select.value = value;
 
@@ -305,7 +281,6 @@
                 if (option.value === value) {
                     this.selectedOptions = option;
                     //option.setAttribute('selected','');
-                    console.log(this.selectedOptions,option,value,nativeSelect)
                 }
 
             }, this);
@@ -322,9 +297,8 @@
                 this.selectedLi = optionLi;
                 optionLi.setAttribute('data-selected', '');
             }
-
-
         };
+
 
         this.getOptionLi = function (value) {
             if (!value) return;
@@ -334,7 +308,6 @@
         this.removeOption = function (value) {
            var liOption = this.getOptionLi(value);
            var optionSelect = this.options.select.querySelector('[value = "' + value +'"]');
-
            if (!liOption || !value) return;
            //var listLi = this.selectWrapper.querySelector('.' + this.options.optionsListClass);
            var nextActiveOption = getOptionNotActiveDisabled.call(this,value);
@@ -342,7 +315,7 @@
             liOption.remove();
             optionSelect.remove();
             this.setOption(nextActiveOption.value);
-
+            //console.log(nextActiveOption.value);
         };
 
 
@@ -543,8 +516,8 @@
     btnAdd.addEventListener('click', getData);
 
      btn.addEventListener('click', colorSelect.destroy.bind(colorSelect));
-    colorSelect.setOption('aasss');
-    //colorSelect.removeOption('white');
+    //colorSelect.setOption('pink');
+    colorSelect.removeOption('blue');
 </script>
 </body>
 </html>
