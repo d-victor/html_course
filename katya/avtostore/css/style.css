@@ -1134,36 +1134,21 @@ input.sort_item {
     flex-wrap: wrap;
     margin-top: 30px;
 }
+.row_item_product li {
+    list-style-type: none;
+}
 
 .item-product {
-    margin: 0 13px 15px;
+    margin: 15px 13px;
     width: 270px;
     border: 1px solid #E5E5E5;
-    transition: all .5s ease-in-out;
-    position: relative;
-    cursor: pointer;
-    height: 100%;
 }
 
 .img-product {
-    background: url('../img/car_kit_hands_free_calling_2 1.png') center center /cover no-repeat;
-    display: block;
-    height: 275px;
     width: 100%;
-    border-bottom: 1px solid #E5E5E5;
-}
-
-.item-product:hover {
-    box-shadow: 1px 0 6px rgba(0, 0, 0, .2);
-    background-color: white;
-}
-
-.img-product2 {
-    background: url('../img/design_in-car_fm_radio_3 1.png') center center /cover no-repeat;
+    height: 277px;
     display: block;
-    height: 275px;
-    width: 100%;
-   border-bottom: 1px solid #E5E5E5;
+    border-bottom: 1px solid lightgray;
 }
 
 .product-sale {
@@ -1172,7 +1157,7 @@ input.sort_item {
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    padding: 25px 0 30px;
+    padding: 65px 0 30px;
     height: 100%;
 }
 
@@ -1268,7 +1253,7 @@ input.sort_item {
 }
 
 .hidden-content{
-    max-width: 270px;
+    width: 270px;
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -1312,16 +1297,13 @@ input.sort_item {
 }
 .item-product {
     position: relative;
-    z-index: 1;
-    overflow: hidden;
 }
 
 .hidden-content {
-    width: 0;
-    height: 0;
-    visibility:hidden;
-    overflow: hidden;
-    z-index: 0;
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all .5s ease-in-out;
 }
 
 .item-product:before {
@@ -1332,24 +1314,29 @@ input.sort_item {
     right: 0;
     bottom: 0;
     z-index: -1;
-    width: 100%;
-    height: 100%;
     opacity: 0;
+    box-shadow: 1px 0 6px rgba(0, 0, 0, .2);
 }
 
 .item-product:hover .hidden-content {
-    z-index: 5;
-    max-height: none;
-    width: 100%;
-    height: 100%;
-    visibility:visible;
-    overflow: visible;
+    visibility: visible;
+    pointer-events: visible;
+    transition: .2s all ease-in;
 }
-.item-product:hover {
-    z-index: 10;
-    overflow: visible;
-    position: relative;
+
+.item-product:before:hover {
+    opacity: 1;
 }
+
+.product-sale {
+   transform: translateY(-40px);
+    transition: 0.5s ease-in-out;
+}
+.item-product:hover .product-sale {
+    transform: translateY(0px);
+}
+
+
 
 @media screen and (max-width: 1200px) {
 
