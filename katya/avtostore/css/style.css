@@ -239,6 +239,9 @@ form input {
     width: 100%;
     cursor: pointer;
 }
+form input:checked {
+    cursor: none;
+}
 
 .subHeader_btn {
     height: 45px;
@@ -342,7 +345,7 @@ form input {
     display: none;
     position: absolute;
     top: 43px;
-    right: 10%;
+    right: 0;
     background-color: white;
     min-width: 300px;
     box-shadow: 2px 3px 4px 2px lightgrey;
@@ -430,11 +433,13 @@ input:focus {
     color: white;
     border: none;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .miniCart_price button,
 .miniCart_total_btn button {
     border: none;
+    cursor: pointer;
 }
 
 .miniCart_price button:hover,
@@ -648,7 +653,7 @@ input:focus {
     color: red;
 }
 
-main-menu.submenu li a,
+.main-menu.submenu li a,
 .submenu2 li a,
 .submenu3 li a,
 .submenu4 li a,
@@ -681,7 +686,7 @@ div.submenu {
     font-size: 12px;
     line-height: 14px;
     cursor: pointer;
-    z-index: 1;
+    z-index: 3;
 }
 
 .submenu {
@@ -1149,6 +1154,7 @@ input.sort_item {
     height: 265px;
     display: block;
     border-bottom: 1px solid lightgray;
+    padding: 20px;
 }
 
 .product-sale {
@@ -1354,13 +1360,34 @@ input.sort_item {
 
 .row_item_product.grid .card {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: stretch;
 }
+
 .row_item_product.grid .product-sale {
   display: flex;
-    justify-content: center;
+    flex-direction: column;
+    transform: none;
+    transition: none;
+    padding: 69px 100px 20px 262px;
 }
+
+.row_item_product.grid .item-product {
+    width: 100%;
+}
+
+.row_item_product.grid .img-product {
+    width: 270px;
+    border-bottom: none;
+}
+
+.row_item_product.grid .hidden-content {
+    visibility: visible;
+    bottom: 1%;
+    right: 8%;
+}
+
 .footer-content {
     display: flex;
     flex-direction: row;

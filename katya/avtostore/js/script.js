@@ -14,7 +14,17 @@
     var parentGrid = document.querySelector('.row_item_product');
     console.log(btnGrid);
     btnGrid.addEventListener('click', function (event) {
-        parentGrid.classList.toggle('grid');
+        parentGrid.classList.add('grid');
         console.log('click');
+    });
+})();
+
+(function () {
+    var btnGridTh = document.querySelector('.icon_th_grid');
+    var parentGrid = document.querySelector('.row_item_product');
+    console.log(btnGridTh);
+    btnGridTh.addEventListener('click', function (event) {
+        parentGrid.classList.remove('grid');
+        console.log('click2');
     });
 })();
