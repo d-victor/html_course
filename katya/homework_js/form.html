@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial,sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        label {
+            display: block;
+        }
+        input,
+        textarea {
+            margin: 5px 5px;
+        }
+        [type|=email] {
+            margin-left: 35px;
+        }
+        button {
+           padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<form  class="contact-form" action="#" method="post">
+    <label>First name <input type="text" name="firstName" data-requer="1"></label>
+    <label>Last name <input type="text" name="lastName" data-requer="1"></label>
+    <label>Email <input type="email" name="email" data-requer="1"></label>
+    <label><textarea name="message" cols="30" rows="10" data-max="300"></textarea></label>
+    <!--<span>max <span class="current-letters">0</span> / <span class="max-letters">300 letters</span></span>-->
+    <button type="submit">Send</button>
+</form>
+<script>
+    function FormValidation(option) {
+       this.options = {
+           form: option.form,
+            dataValidateRules: ['requer','max'],
+       }
+       this.submit = function (event){
+          event.preventDefault();
+       };
+
+       this.init = function (){
+           console.dir(this.options.form);
+         this.options.form.addEventListener('submit', this.submit)
+           this.formData = new FormData(this.options.form);
+         this.setFormElemList();
+         for (var i=0; i < this.options.form.length; i++) {
+             this.options.dataValidateRules.forEach(function (validateRule){
+                 console.log(this.options.form[i].dataset[validateRule]);
+                 if (this.options.form[i].dataset[validateRule]){
+                     if (validateRule === 'max') {
+                        this.formElemList[validateRule].push(this.options.form[i]);
+                     } else if(validateRule === 'requer'){
+                        this.formElemList[validateRule].push(this.options.form[i].getAttribute('name'));
+                     }
+                 }
+             },this);
+             console.log(this);
+         }
+
+
+       };
+
+       this.setFormElemList = function (){
+           this.formElemList = {};
+           this.options.dataValidateRules.forEach(function (validateRule){
+               this.formElemList[validateRule] = [];
+           },this);
+       }
+        this.init();
+    }
+
+    var contactForm = new FormValidation({
+        form: document.querySelector('.contact-form'),
+    });
+</script>
+</body>
+</html>

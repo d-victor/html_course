@@ -267,16 +267,14 @@
             this.selectedMarker.style.backgroundColor = value;
             this.selectedText.textContent = selectedLi.textContent;
 
-            var liList = this.selectWrapper.querySelector('.' + this.options.optionClass + '.' + this.options.selectedOptionClass);
+            var liList = this.customSelectedLi;
 
             liList.classList.remove(this.options.selectedOptionClass);
             selectedLi.classList.add(this.options.selectedOptionClass);
             liList.removeAttribute('data-selected');
 
-            this.customSelectedOption(value);
-
             this.options.select.value = value;
-
+            this.customSelectedLi =selectedLi;
             nativeSelect.forEach(function (option) {
                 if (option.value === value) {
                     this.selectedOptions = option;
@@ -290,19 +288,14 @@
             this.selectWrapper.dispatchEvent(this.customChange);
         };
 
-        this.customSelectedOption = function (value) {
-            this.selectedLi = this.getOptionLi(value);
-            var optionLi = this.listCustomLi.querySelector('[data-value="' + value + '"]')
-            if (optionLi) {
-                this.selectedLi = optionLi;
-                optionLi.setAttribute('data-selected', '');
-            }
-        };
-
 
         this.getOptionLi = function (value) {
             if (!value) return;
-            return this.selectWrapper.querySelector('[data-value="' + value + '"]');
+            return this.customOptionList.find(function (customLi){
+                return customLi.dataset.value === value;
+            });
+
+           // return this.selectWrapper.querySelector('[data-value="' + value + '"]');
         };
 
         this.removeOption = function (value) {
@@ -367,6 +360,7 @@
             var op = this.options;
             var isSelectedOption = false;
             this.listCustomLi = this.selectWrapper.querySelector('.' + this.options.optionsListClass);
+            this.customOptionList = [];
 
             op.optionsList.forEach(function (option) {
                 var optionAttr = this.getAttribute(option);
@@ -401,9 +395,11 @@
 
                 li.append(this.setHtmlElement(spanMarker));
                 li.append(this.setHtmlElement(spanText));
+                this.customOptionList.push(li);
                 optionList.append(li)
 
                 if (option.selected) {
+                    this.customSelectedLi = li;
                     this.selectedOptions = option;
                     isSelectedOption = true;
                     li.classList.add(op.selectedOptionClass);
