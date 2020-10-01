@@ -10,21 +10,16 @@
 })();
 
 (function () {
-    var btnGrid = document.querySelector('.icon_list_btn');
+    var parent = document.querySelector('.product-list');
     var parentGrid = document.querySelector('.row_item_product');
-    console.log(btnGrid);
-    btnGrid.addEventListener('click', function (event) {
-        parentGrid.classList.add('grid');
-        console.log('click');
-    });
-})();
 
-(function () {
-    var btnGridTh = document.querySelector('.icon_th_grid');
-    var parentGrid = document.querySelector('.row_item_product');
-    console.log(btnGridTh);
-    btnGridTh.addEventListener('click', function (event) {
-        parentGrid.classList.remove('grid');
-        console.log('click2');
-    });
+    function switchGridList(event) {
+        if (event.target.dataset.list){
+            parentGrid.classList.add('grid');
+        }else if(event.target.dataset.grid) {
+            parentGrid.classList.remove('grid');
+        }
+    }
+    parent.addEventListener('click', switchGridList);
+
 })();
