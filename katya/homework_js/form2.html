@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+        }
+
+        input,
+        textarea {
+            margin: 5px 5px;
+        }
+
+        [type|=email] {
+            margin-left: 35px;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+
+        label.textarea.error textarea {
+            border: 2px solid red;
+        }
+
+        label.textarea.error {
+            color: red;
+        }
+
+        .textError {
+            display: block;
+        }
+
+        .wrap {
+            display: block;
+            padding-left: 60px;
+        }
+
+    </style>
+</head>
+<body>
+<form class="contact-form" action="#" method="post">
+    <label>First name <input type="text" name="firstName" data-require="1"></label>
+    <label>Last name <input type="text" name="lastName" data-require="1"></label>
+    <label>Email <input type="email" name="email" data-require="1"></label>
+    <label class="textarea"><textarea name="message" cols="30" rows="10" data-max="300"></textarea></label>
+    <!--<span class="error">You have reached the maximum number of characters!
+        <span class="current-letters"> 0</span> / <span class="max-letters">300 letters</span></span>-->
+    <button type="submit">Send</button>
+</form>
+
+<script>
+    function validateForm() {
+        var form = document.querySelector('.contact-form');
+        var dataValidateRules = ['require', 'max'];
+        var formElemList = {};
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+        });
+
+        dataValidateRules.forEach(function (validateRule) {
+            formElemList[validateRule] = [];
+        });
+
+        for (var i = 0; i < form.length; i++) {
+            dataValidateRules.forEach(function (validateRule) {
+                if (form[i].dataset[validateRule]) {
+                    if (validateRule === 'max') {
+                        formElemList[validateRule].push(form[i]);
+                    } else if (validateRule === 'require') {
+                        formElemList[validateRule].push(form[i].getAttribute('name'));
+                    }
+                }
+            },this);
+        }
+        var spanWrap = document.createElement('span');
+        var spanCurrent = document.createElement('span');
+        var spanMaxLetters = document.createElement('span');
+        var spanError = document.createElement('span');
+        var textarea = form.querySelector('textarea');
+        var labelTextarea = form.querySelector('.textarea');
+
+        spanWrap.classList.add('wrap');
+        spanCurrent.classList.add('current-letters');
+        spanMaxLetters.classList.add('max-letters');
+        spanError.classList.add('textError');
+        spanMaxLetters.textContent = ' / ' + textarea.dataset.max + ' ' + 'letters';
+        spanWrap.append(spanCurrent, spanMaxLetters);
+        labelTextarea.after(spanWrap);
+        labelTextarea.append(spanError);
+
+        var spanCurrent1 = form.querySelector('.' + 'current-letters');
+        var spanError1 = form.querySelector('.' + 'textError');
+
+        textarea.addEventListener('input', function (event) {
+            spanCurrent1.textContent = textarea.value.length;
+            if (textarea.value.length > textarea.dataset.max) {
+                labelTextarea.classList.add('error');
+                spanError1.textContent = 'You have reached the maximum number of characters!';
+            }
+        });
+    }
+ var form = validateForm();
+</script>
+</body>
+</html>

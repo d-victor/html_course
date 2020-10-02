@@ -8,72 +8,140 @@
     <title>Document</title>
     <style>
         body {
-            font-family: Arial,sans-serif;
+            font-family: Arial, sans-serif;
             font-size: 14px;
             line-height: 1.5;
         }
+
         label {
             display: block;
         }
+
         input,
         textarea {
             margin: 5px 5px;
         }
+
         [type|=email] {
             margin-left: 35px;
         }
+
         button {
-           padding: 5px;
+            padding: 5px 10px;
         }
+
+        label.textarea.error textarea {
+            border: 2px solid red;
+        }
+
+        label.textarea.error {
+            color: red;
+        }
+
+        .textError {
+            display: block;
+        }
+
+        .wrap {
+            display: block;
+            padding-left: 60px;
+        }
+
     </style>
 </head>
 <body>
-<form  class="contact-form" action="#" method="post">
-    <label>First name <input type="text" name="firstName" data-requer="1"></label>
-    <label>Last name <input type="text" name="lastName" data-requer="1"></label>
-    <label>Email <input type="email" name="email" data-requer="1"></label>
-    <label><textarea name="message" cols="30" rows="10" data-max="300"></textarea></label>
-    <!--<span>max <span class="current-letters">0</span> / <span class="max-letters">300 letters</span></span>-->
+<form class="contact-form" action="#" method="post">
+    <label>First name <input type="text" name="firstName" data-require="1"></label>
+    <label>Last name <input type="text" name="lastName" data-require="1"></label>
+    <label>Email <input type="email" name="email" data-require="1"></label>
+    <label class="textarea"><textarea name="message" cols="30" rows="10" data-max="300"></textarea></label>
+    <!--<span class="error">You have reached the maximum number of characters!
+        <span class="current-letters"> 0</span> / <span class="max-letters">300 letters</span></span>-->
     <button type="submit">Send</button>
 </form>
+<script src="methodCreateElem.js"></script>
 <script>
     function FormValidation(option) {
-       this.options = {
-           form: option.form,
-            dataValidateRules: ['requer','max'],
-       }
-       this.submit = function (event){
-          event.preventDefault();
-       };
+        this.options = {
+            form: option.form,
+            dataValidateRules: ['require', 'max'],
+            classSpanWrap: 'wrap',
+            classSpanCurrent: 'current-letters',
+            classSpanMaxLetters: 'max-letters',
+            classSpanTextError: 'textError',
+        }
 
-       this.init = function (){
-           console.dir(this.options.form);
-         this.options.form.addEventListener('submit', this.submit)
-           this.formData = new FormData(this.options.form);
-         this.setFormElemList();
-         for (var i=0; i < this.options.form.length; i++) {
-             this.options.dataValidateRules.forEach(function (validateRule){
-                 console.log(this.options.form[i].dataset[validateRule]);
-                 if (this.options.form[i].dataset[validateRule]){
-                     if (validateRule === 'max') {
-                        this.formElemList[validateRule].push(this.options.form[i]);
-                     } else if(validateRule === 'requer'){
-                        this.formElemList[validateRule].push(this.options.form[i].getAttribute('name'));
-                     }
-                 }
-             },this);
-             console.log(this);
-         }
+        this.submit = function (event) {
+            event.preventDefault();
+        };
 
+        this.init = function () {
+            this.options.form.addEventListener('submit', this.submit)
+            this.formData = new FormData(this.options.form);
+            this.setFormElemList();
+            for (var i = 0; i < this.options.form.length; i++) {
+                this.options.dataValidateRules.forEach(function (validateRule) {
+                    if (this.options.form[i].dataset[validateRule]) {
+                        if (validateRule === 'max') {
+                            this.formElemList[validateRule].push(this.options.form[i]);
+                        } else if (validateRule === 'require') {
+                            this.formElemList[validateRule].push(this.options.form[i].getAttribute('name'));
+                        }
+                    }
+                }, this);
+            }
+            this.createElemError();
+            this.counterLetters();
+        };
 
-       };
+        this.createElemError = function () {
 
-       this.setFormElemList = function (){
-           this.formElemList = {};
-           this.options.dataValidateRules.forEach(function (validateRule){
-               this.formElemList[validateRule] = [];
-           },this);
-       }
+            this.spanCount = setHtmlElement({
+                elem: 'span',
+                className: this.options.classSpanWrap,
+                content: [{
+                    elem: 'span',
+                    className: this.options.classSpanCurrent,
+                },
+                    {
+                        elem: 'span',
+                        className: this.options.classSpanMaxLetters,
+                    }]
+            });
+            var labelTextarea = this.options.form.querySelector('.textarea');
+            labelTextarea.after(this.spanCount);
+            var spanError = document.createElement('span');
+            spanError.classList.add(this.options.classSpanTextError);
+            var spanMaxLetters = this.options.form.querySelector('.' + this.options.classSpanMaxLetters);
+            var textarea = this.options.form.querySelector('textarea');
+            spanMaxLetters.textContent = ' / ' + textarea.dataset.max + ' ' + 'letters';
+            labelTextarea.append(spanError);
+        };
+
+        this.counterLetters = function () {
+            this.textarea = this.options.form.querySelector('textarea');
+            var spanCurrent = this.options.form.querySelector('.' + 'current-letters')
+            this.textarea.addEventListener('input', function (event) {
+                spanCurrent.textContent = this.textarea.value.length;
+                if (this.textarea.value.length > this.textarea.dataset.max) this.showError();
+            }.bind(this));
+
+        };
+
+        this.showError = function () {
+            var labelTextarea = this.options.form.querySelector('.textarea');
+            var spanError = this.options.form.querySelector('.' + 'textError');
+            labelTextarea.classList.add('error');
+            spanError.textContent = 'You have reached the maximum number of characters!';
+        };
+
+        this.setFormElemList = function () {
+            this.formElemList = {};
+            this.options.dataValidateRules.forEach(function (validateRule) {
+                this.formElemList[validateRule] = [];
+                console.log(this.formElemList)
+            }, this);
+        }
         this.init();
     }
 
@@ -83,3 +151,4 @@
 </script>
 </body>
 </html>
+
