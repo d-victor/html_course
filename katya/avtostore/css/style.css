@@ -1311,6 +1311,7 @@ input.sort_item {
 .card {
     border: 1px solid #E5E5E5;
     position: relative;
+    z-index: 1;
 }
 
 .card:before {
