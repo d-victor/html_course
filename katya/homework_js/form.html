@@ -52,7 +52,7 @@
 </head>
 <body>
 <form class="contact-form" action="#" method="post">
-    <label>First name <input type="text" name="firstName" data-require="1"></label>
+    <label>First name <input type="text" name="firstName" data-require="1" data-max="20"></label>
     <label>Last name <input type="text" name="lastName" data-require="1"></label>
     <label>Email <input type="email" name="email" data-require="1"></label>
     <label class="textarea"><textarea name="message" cols="30" rows="10" data-max="300"></textarea></label>
@@ -70,6 +70,9 @@
             classSpanCurrent: 'current-letters',
             classSpanMaxLetters: 'max-letters',
             classSpanTextError: 'textError',
+            requireMessageError: option.requireMessageError,
+            maxMessageError: option.maxMessageError,
+            maxTemplateMessage: option.maxTemplateMessage,
         }
 
         this.submit = function (event) {
@@ -85,38 +88,49 @@
                     if (this.options.form[i].dataset[validateRule]) {
                         if (validateRule === 'max') {
                             this.formElemList[validateRule].push(this.options.form[i]);
+                            this.createElemError(this.options.form[i]);
+                            this.setMaxCountElem(this.options.form[i]);
                         } else if (validateRule === 'require') {
                             this.formElemList[validateRule].push(this.options.form[i].getAttribute('name'));
+                            this.createElemError(this.options.form[i]);
                         }
                     }
                 }, this);
             }
-            this.createElemError();
+
             this.counterLetters();
         };
 
-        this.createElemError = function () {
-
-            this.spanCount = setHtmlElement({
-                elem: 'span',
-                className: this.options.classSpanWrap,
-                content: [{
-                    elem: 'span',
-                    className: this.options.classSpanCurrent,
-                },
-                    {
-                        elem: 'span',
-                        className: this.options.classSpanMaxLetters,
-                    }]
-            });
-            var labelTextarea = this.options.form.querySelector('.textarea');
-            labelTextarea.after(this.spanCount);
+        this.createElemError = function (elementForm) {
             var spanError = document.createElement('span');
             spanError.classList.add(this.options.classSpanTextError);
+            elementForm.after(spanError);
+        };
+
+        this.setMaxCountElem = function (elementForm) {
+
+            var currentCountSpan = '<span class="' + this.options.classSpanCurrent + '">0</span>';
+
+            var maxCountSpan = '<span class="' + this.options.classSpanMaxLetters + '">'+ elementForm.dataset.max +'</span>';
+
+            var spanCount = setHtmlElement({
+                elem: 'span',
+                className: this.options.classSpanWrap,
+            });
+            spanCount.insertAdjacentHTML('beforeend',this.setMaxMessage(currentCountSpan,maxCountSpan));
+            elementForm.after(spanCount);
+
+
+            /*labelTextarea.after(this.spanCount);
             var spanMaxLetters = this.options.form.querySelector('.' + this.options.classSpanMaxLetters);
             var textarea = this.options.form.querySelector('textarea');
-            spanMaxLetters.textContent = ' / ' + textarea.dataset.max + ' ' + 'letters';
-            labelTextarea.append(spanError);
+            spanMaxLetters.textContent = ' / ' + textarea.dataset.max + ' ' ;*/
+        };
+
+        this.setMaxMessage = function (currentCountSpan,maxCountSpan) {
+            var maxMessage = this.options.maxTemplateMessage.replace('|maxCurrent|', currentCountSpan);
+            maxMessage = maxMessage.replace('|max|',maxCountSpan);
+            return maxMessage;
         };
 
         this.counterLetters = function () {
@@ -133,7 +147,7 @@
             var labelTextarea = this.options.form.querySelector('.textarea');
             var spanError = this.options.form.querySelector('.' + 'textError');
             labelTextarea.classList.add('error');
-            spanError.textContent = 'You have reached the maximum number of characters!';
+            spanError.textContent = '';
         };
 
         this.setFormElemList = function () {
@@ -147,6 +161,9 @@
 
     var contactForm = new FormValidation({
         form: document.querySelector('.contact-form'),
+        requireMessageError: 'This field is require!',
+        maxMessageError: 'You have reached the maximum number of characters!',
+        maxTemplateMessage: ' |maxCurrent| / |max| letters',
     });
 </script>
 </body>
