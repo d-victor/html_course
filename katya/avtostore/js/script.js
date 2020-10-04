@@ -10,16 +10,38 @@
 })();
 
 (function () {
-    var parent = document.querySelector('.product-list');
+    var btnGrid = document.querySelector('.button-grid');
+    var btnList = document.querySelector('.button-list');
     var parentGrid = document.querySelector('.row_item_product');
 
     function switchGridList(event) {
-        if (event.target.dataset.list){
+        if (event.currentTarget.dataset.list){
             parentGrid.classList.add('grid');
-        }else if(event.target.dataset.grid) {
+        }else if(event.currentTarget.dataset.grid) {
             parentGrid.classList.remove('grid');
         }
     }
-    parent.addEventListener('click', switchGridList);
+    btnGrid.addEventListener('click', switchGridList);
+    btnList.addEventListener('click', switchGridList);
 
+})();
+
+(function (){
+    var tabLangList = document.querySelector('.tabLang_list');
+    var tabLangTittle = document.querySelector('.tabLang_tittle');
+
+    tabLangList.addEventListener('click',function (e){
+        tabLangTittle.textContent = e.target.textContent;
+    });
+})();
+
+(function (){
+  var currencyList = document.querySelector('.currency_list');
+  var currencyTittle = document.querySelector('.currency_tittle');
+
+    currencyList.addEventListener('click',function (e){
+        var contentCurrent = e.target.textContent;
+        var contentCurrentList = contentCurrent.split('-');
+        currencyTittle.textContent = contentCurrentList[0];
+    });
 })();

@@ -978,6 +978,7 @@ div.submenu {
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
+    transition: all 0.5s ease-in-out;
 }
 
 .selectModel li,
@@ -1009,6 +1010,7 @@ div.submenu {
 .compareProd {
     border: 1px solid lightgrey;
     border-top: none;
+    border-radius: 0 0 6px 6px;
 }
 
 .fa-times1 {
@@ -1069,13 +1071,14 @@ div.submenu {
     margin-bottom: 22px;
 }
 
-.icon_th_btn {
+.button-grid {
     display: inline-block;
     width: 34px;
     height: 33px;
     font-size: 18px;
     background-color: red;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .icon-th {
@@ -1083,7 +1086,7 @@ div.submenu {
     padding: 8px;
 }
 
-.icon_list_btn {
+.button-list {
     display: inline-block;
     width: 34px;
     height: 34px;
@@ -1092,6 +1095,7 @@ div.submenu {
     border: 1px solid black;
     border-radius: 5px;
     margin-left: 2px;
+    cursor: pointer;
 }
 
 .icon-list {
@@ -1143,6 +1147,10 @@ input.sort_item {
     list-style-type: none;
 }
 
+.row_item_product li:hover {
+    z-index: 111;
+}
+
 .item-product {
     width: calc(100% / 3);
     padding: 15px;
@@ -1166,7 +1174,7 @@ input.sort_item {
 .item-product del {
     display: inline-block;
     color: grey;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .new_prise {
@@ -1325,11 +1333,12 @@ input.sort_item {
     z-index: -1;
     opacity: 0;
     box-shadow: 1px 0 6px rgba(0, 0, 0, .2);
+    background-color: white;
+    transition: all .5s ease-in-out;
 }
 .item-product:hover .card:before {
     bottom: -40px;
     opacity: 1;
-    z-index: 2;
 }
 .item-product:hover .card {
     border: none;
@@ -1338,12 +1347,13 @@ input.sort_item {
 .item-product:hover .hidden-content {
     visibility: visible;
     pointer-events: visible;
-    transition: 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 .hidden-wish:hover,
 .hidden-add-cart:hover,
 .hidden-refresh:hover {
     background-color: red;
+    transition: all 0.5s ease-in-out;
 }
 
 .product-sale {
@@ -1359,6 +1369,12 @@ input.sort_item {
 .row_item_product.grid {
     display: block;
     width: 100%;
+    padding-right: 0;
+}
+
+.row_item_product.grid .item-product {
+    width: 100%;
+    padding-right: 0;
 }
 
 .row_item_product.grid .card {
@@ -1366,6 +1382,7 @@ input.sort_item {
     flex-direction: row;
     justify-content: start;
     align-items: start;
+    padding: 15px;
 }
 
 .row_item_product.grid .product-sale {
@@ -1373,33 +1390,50 @@ input.sort_item {
     flex-direction: column;
     transform: none;
     transition: none;
-    padding: 69px 10px 10px 10px;
+    padding: 30px 10px 120px 10px;
+    order: 1;
+    align-items: flex-start;
+    flex-grow: 1;
+
 }
 
-.row_item_product.grid .item-product {
-   width: 100%;
+.row_item_product.grid .wrapper-sale {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .row_item_product.grid .img-product {
     border-bottom: none;
-    width: 30%;
+    width: 50%;
 }
 .row_item_product.grid .card:before {
+   display: none;
     bottom: 0;
+}
+.row_item_product.grid .item-product:not(.card):hover .card {
+    border: 1px solid #E5E5E5;
 }
 
 .row_item_product.grid .hidden-content {
+    display: flex;
+    flex-direction: row;
+    order: 2;
     visibility: visible;
-    bottom: 1%;
-    right: 52%;
-    width: auto;
+    position: static;
+    padding-left: 20px;
 }
 .row_item_product.grid .hidden-add-cart {
-    position: absolute;
-    bottom: 1%;
-    right: -400px;
     padding: 10px 20px;
+    order: 2;
+    margin-left: 200px;
+    flex-grow: 0;
 }
+.row_item_product.grid .hidden-refresh {
+    padding: 13px 13px;
+    order: 1;
+}
+
 
 .footer-content {
     display: flex;
@@ -1409,7 +1443,7 @@ input.sort_item {
     justify-content: space-between;
     font-size: 14px;
     line-height: 23px;
-    padding: 73px 10px 15px 5px;
+    padding: 73px 10px 15px 10px;
 }
 
 .footer-location span,
@@ -1453,7 +1487,7 @@ footer {
     margin-top: 15px;
     background-color:rgba(10, 9, 9, 0.932);
     color: #DDDDDD;
-    height: 480px;
+    /*height: 480px;*/
 }
 
 .payment-footer {
@@ -1462,22 +1496,21 @@ footer {
     margin-top: 40px;
     height: 84px;
     background-color: rgba(10, 9, 9, 0.979);
+    padding: 25px 0 0 28px
 }
 
 .payments-icons img{
-    width: 60px;
     border: 1px solid #DDDDDD;
     margin-right: 10px;
 }
 
 .payments-icons {
+    display: flex;
+    flex-wrap: nowrap;
     flex-grow: 1;
-    padding: 25px 0 0 28px;
 }
 
 .copyright {
-    padding-top: 30px;
-    padding-right: 30px;
     text-align: center;
     font-weight: 400;
     font-size: 13px;
@@ -1495,6 +1528,9 @@ footer {
     }
     .compareProd .compareBtn p {
     margin-left: 60px;
+    }
+    .row_item_product.grid .hidden-add-cart {
+        margin-left: 170px;
     }
 
 }
@@ -1527,6 +1563,13 @@ footer {
     .check_page ~ span {
         margin-right: 17px;
     }
+    .row_item_product.grid .hidden-add-cart {
+        margin-left: 2px;
+    }
+    .payments-icons img{
+        margin-right: 5px;
+    }
+
 
 }
 
@@ -1858,7 +1901,7 @@ footer {
         width: 20px;
         height: 40px;
         cursor: pointer;
-        z-index: 1;
+        z-index: 2;
         background-color: rgba(248, 8, 8, 0.945);
         border: 1px solid transparent;
         border-radius: 0 4px 4px 0;
@@ -1956,7 +1999,48 @@ footer {
     .check_page ~ span {
         margin-right: 5px;
     }
-
+    .row_item_product.grid .product-sale {
+        padding-bottom: 80px;
+    }
+    .row_item_product.grid .hidden-add-cart {
+       padding: 10px 10px;
+    }
+    .row_item_product.grid .hidden-content {
+        padding-left: 0;
+        margin-left: 20px;
+    }
+    .row_item_product.grid .product-sale {
+        align-items: center;
+    }
+    .hidden-content .hidden-heart {
+        color: white;
+    }
+    .payment-footer {
+        margin-top: 0;
+        padding: 10px 5px 0 5px;
+    }
+    .footer-content h5 {
+        font-size: 15px;
+        line-height: 20px;
+    }
+    .footer-content{
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .footer-contact span,
+    .footer-custom-service span,
+    .footer-inform span,
+    .footer-location span {
+        padding-bottom: 10px;
+    }
+    .footer-location,
+    .footer-custom-service {
+        padding-right: 20px;
+    }
+    .copyright {
+        font-size: 10px;
+        line-height: 18px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -1992,6 +2076,19 @@ footer {
     }
     .site_nav h4 {
         font-size: 24px;
+    }
+    .row_item_product.grid .hidden-content {
+        margin-left: -60px;
+    }
+    .payment-footer {
+        flex-direction: column;
+    }
+    .payments-icons {
+        width: 100%;
+    }
+    .copyright {
+        font-size: 10px;
+        line-height: 14px;
     }
 }
 
