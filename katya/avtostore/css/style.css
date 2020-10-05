@@ -23,13 +23,13 @@ header {
 .wrapper {
     max-width: 1170px;
     margin: 0 auto;
+    padding: 15px;
 }
 
 .header_nav {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: center;
     font-size: 13px;
     line-height: 15px;
     font-weight: 400;
@@ -72,7 +72,14 @@ header {
 }
 
 .angle-down1 {
-    padding-left: 6px;
+    position: absolute;
+    top: 2%;
+    right: 23%;
+}
+.angle-down2 {
+    position: absolute;
+    top: 2%;
+    right: 0;
 }
 
 .fa-angle-down {
@@ -88,7 +95,6 @@ header {
 
 .tabLang_tittle {
     display: block;
-    padding-top: 14px;
     padding-right: 37px;
 }
 
@@ -96,7 +102,7 @@ header {
     list-style-type: none;
     display: none;
     position: absolute;
-    top: 100%;
+    top: 70%;
     right: 20%;
     min-width: 132px;
     box-shadow: 2px 3px 4px 2px lightgrey;
@@ -112,7 +118,7 @@ header {
 .tabLang span:before {
     content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABASURBVHgB7cyhEQAQAIXhxxiqIVQjmEe2ghF0STWVILHAi+6U99f/7jPw9YAUg8NsiS2sXLD7oM/icQIFCvwCXisJCGg2Ed1nAAAAAElFTkSuQmCC");
     position: absolute;
-    top: 14px;
+    top: 0;
     left: -25%;
 }
 
@@ -157,7 +163,6 @@ header {
 
 .currency_tittle {
     display: block;
-    padding-top: 14px;
     padding-right: 14px;
 }
 
@@ -165,7 +170,7 @@ header {
     list-style-type: none;
     display: none;
     position: absolute;
-    top: 100%;
+    top: 70%;
     right: 10%;
     background-color: white;
     min-width: 132px;
@@ -323,7 +328,7 @@ form input:checked {
 
 .cartValue {
     display: inline-block;
-    padding: 10px 5px 11px 16px;
+    padding: 10px 5px 11px 10px;
 }
 
 .cartValue_sum {
@@ -522,6 +527,7 @@ input:focus {
     align-items: stretch;
     list-style-type: none;
     position: relative;
+    margin-top: -45px;
 }
 
 .signElem {
@@ -569,7 +575,7 @@ input:focus {
     position: relative;
     height: 55px;
     cursor: pointer;
-    margin-top: 22px;
+    margin-top: -22px;
 }
 
 .allCategories li a {
@@ -732,7 +738,7 @@ div.submenu {
 }
 
 .breadCramp-list {
-    padding: 15px 7px 35px;
+    padding: 0 7px 35px;
     color: #999999;
 }
 
@@ -742,7 +748,7 @@ div.submenu {
 
 .breadCramp-img {
     display: block;
-    padding: 20px 0 0 5px;
+    padding: 6px 0 0 5px;
 }
 
 .buttonShop,
@@ -1021,7 +1027,7 @@ div.submenu {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding: 21px 0 20px 20px;
+    padding: 21px 5px 20px 5px;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -1061,7 +1067,7 @@ div.submenu {
     border-radius: 4px;
     background-color: rgb(241, 241, 241);
     height: 53px;
-    padding: 9px 5px 10px 7px;
+    padding: 10px 5px 10px 7px;
 }
 
 .site_nav h4 {
@@ -1490,7 +1496,6 @@ footer {
     margin-top: 15px;
     background-color:rgba(10, 9, 9, 0.932);
     color: #DDDDDD;
-    /*height: 480px;*/
 }
 
 .payment-footer {
@@ -1499,7 +1504,7 @@ footer {
     margin-top: 40px;
     height: 84px;
     background-color: rgba(10, 9, 9, 0.979);
-    padding: 25px 0 0 28px
+    padding: 25px 10px 0 28px
 }
 
 .payments-icons img{
@@ -1559,6 +1564,9 @@ footer {
 
     .allCategories span {
         right: 10px;
+    }
+    .rangePrice .range-input {
+        margin-right: 0;
     }
     .compareProd .compareBtn p {
         margin-left: 30px;
@@ -1643,7 +1651,7 @@ footer {
     }
 
     .tabLang span:before {
-        top: 14px;
+        top: 0;
         left: -30%;
     }
 
@@ -1741,15 +1749,6 @@ footer {
         top: 8px;
     }
 
-    .header_nav li:first-child {
-        display: block;
-        position: fixed;
-        visibility: hidden;
-        top: 0;
-        left: -100%;
-        width: 100%;
-    }
-
     .menu {
         display: block;
         position: fixed;
@@ -1833,6 +1832,10 @@ footer {
     .header_nav li:first-child a {
         color: black;
     }
+    .header_nav span {
+         color: transparent;
+     }
+
 
     .menu li > .submenu {
         width: 100%;
@@ -1853,8 +1856,7 @@ footer {
     }
 
     .header_row {
-        margin: 2px -15px 0;
-        padding: 15px;
+        margin: -10px -15px 0;
     }
 
     .allCategories li a {
@@ -1883,7 +1885,7 @@ footer {
     }
 
     .first {
-        margin-top: 13px;
+        margin-top: 11px;
         margin-left: 15px;
     }
 
@@ -1997,16 +1999,13 @@ footer {
         width: 100%;
     }
 
-    .row_item_product {
-        padding: 0 15px;
-    }
-
     .item-product {
         width: calc(100% / 2);
     }
 
     input.sort_item {
         width: 80px;
+        height: auto;
     }
 
     .list-items {
@@ -2014,7 +2013,8 @@ footer {
     }
 
     input.check_page {
-        width: 30px;
+        width: 20px;
+        height: auto;
     }
 
     .check_page ~ span {
@@ -2106,6 +2106,7 @@ footer {
         z-index: 1;
     }
 
+
 }
 
 @media screen and (max-width: 480px) {
@@ -2142,6 +2143,7 @@ footer {
     .site_nav h4 {
         font-size: 24px;
     }
+
     .row_item_product.grid .hidden-content {
         margin-left: -60px;
     }
