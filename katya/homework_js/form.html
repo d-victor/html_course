@@ -30,17 +30,15 @@
             padding: 5px 10px;
         }
 
-        label.textarea.error textarea {
-            border: 2px solid red;
+        textarea,
+        input {
             outline: none;
-        }
-
-        label.textarea.error {
-            color: red;
+            border: 1px solid;
         }
 
         .textError {
             display: block;
+            color: red;
         }
 
         .wrap {
@@ -56,8 +54,6 @@
     <label>Last name <input type="text" name="lastName" data-require="1"></label>
     <label>Email <input type="email" name="email" data-require="1"></label>
     <label class="textarea"><textarea name="message" cols="30" rows="10" data-max="300"></textarea></label>
-    <!--<span class="error">You have reached the maximum number of characters!
-        <span class="current-letters"> 0</span> / <span class="max-letters">300 letters</span></span>-->
     <button type="submit">Send</button>
 </form>
 <script src="methodCreateElem.js"></script>
@@ -84,21 +80,24 @@
             this.formData = new FormData(this.options.form);
             this.setFormElemList();
             for (var i = 0; i < this.options.form.length; i++) {
+                this.errorSpan = false;
                 this.options.dataValidateRules.forEach(function (validateRule) {
                     if (this.options.form[i].dataset[validateRule]) {
-                        if (validateRule === 'max') {
-                            this.formElemList[validateRule].push(this.options.form[i]);
-                            this.createElemError(this.options.form[i]);
-                            this.setMaxCountElem(this.options.form[i]);
-                        } else if (validateRule === 'require') {
+                        if (validateRule === 'require') {
                             this.formElemList[validateRule].push(this.options.form[i].getAttribute('name'));
-                            this.createElemError(this.options.form[i]);
+                            if (!this.errorSpan) this.createElemError(this.options.form[i]);
+                            this.errorSpan = true;
+                            this.showErrorRequire(this.options.form[i]);
+                        } else if (validateRule === 'max') {
+                            this.formElemList[validateRule].push(this.options.form[i]);
+                            if (!this.errorSpan) this.createElemError(this.options.form[i]);
+                            this.setMaxCountElem(this.options.form[i]);
+                            this.counterLetters(this.options.form[i]);
                         }
                     }
-                }, this);
+                },this);
             }
 
-            this.counterLetters();
         };
 
         this.createElemError = function (elementForm) {
@@ -120,35 +119,43 @@
             spanCount.insertAdjacentHTML('beforeend',this.setMaxMessage(currentCountSpan,maxCountSpan));
             elementForm.after(spanCount);
 
-
-            /*labelTextarea.after(this.spanCount);
-            var spanMaxLetters = this.options.form.querySelector('.' + this.options.classSpanMaxLetters);
-            var textarea = this.options.form.querySelector('textarea');
-            spanMaxLetters.textContent = ' / ' + textarea.dataset.max + ' ' ;*/
         };
 
         this.setMaxMessage = function (currentCountSpan,maxCountSpan) {
-            var maxMessage = this.options.maxTemplateMessage.replace('|maxCurrent|', currentCountSpan);
-            maxMessage = maxMessage.replace('|max|',maxCountSpan);
+            var maxMessage = this.options.maxTemplateMessage.replace('[^\\s]+', currentCountSpan);
+            maxMessage = maxMessage.replace('[^\\s]+',maxCountSpan);
             return maxMessage;
-        };
-
-        this.counterLetters = function () {
-            this.textarea = this.options.form.querySelector('textarea');
-            var spanCurrent = this.options.form.querySelector('.' + 'current-letters')
-            this.textarea.addEventListener('input', function (event) {
-                spanCurrent.textContent = this.textarea.value.length;
-                if (this.textarea.value.length > this.textarea.dataset.max) this.showError();
-            }.bind(this));
 
         };
 
-        this.showError = function () {
-            var labelTextarea = this.options.form.querySelector('.textarea');
-            var spanError = this.options.form.querySelector('.' + 'textError');
-            labelTextarea.classList.add('error');
-            spanError.textContent = '';
+        this.counterLetters = function (elemForm) {
+            var spanCurrent = elemForm.nextSibling.firstChild;
+           elemForm.addEventListener('input', counter.bind(this));
+           function counter(e) {
+               spanCurrent.textContent = elemForm.value.length;
+              if (elemForm.value.length > elemForm.dataset.max) {
+                  this.showError.call(this,elemForm);
+              }
+           }
         };
+
+        this.showError = function (elemForm) {
+            var spanError = elemForm.nextSibling.nextSibling;
+            spanError.innerHTML = this.options.maxMessageError;
+            elemForm.style.borderColor = 'red';
+        };
+
+        this.showErrorRequire = function (elemForm) {
+            var spanError = elemForm.nextSibling;
+            console.log(elemForm.value.length);
+            elemForm.addEventListener('focus', checkField.bind(this));
+            function checkField (e) {
+              if (elemForm.value.length === 0){
+                  spanError.innerHTML = this.options.requireMessageError;
+                  elemForm.style.borderColor = 'red';
+              }
+            }
+        }
 
         this.setFormElemList = function () {
             this.formElemList = {};
@@ -163,7 +170,9 @@
         form: document.querySelector('.contact-form'),
         requireMessageError: 'This field is require!',
         maxMessageError: 'You have reached the maximum number of characters!',
-        maxTemplateMessage: ' |maxCurrent| / |max| letters',
+       // maxTemplateMessage: '|maxCurrent| / |max| letters',
+        maxTemplateMessage: '[^\\s]+ / [^\\s]+ letters',
+
     });
 </script>
 </body>
