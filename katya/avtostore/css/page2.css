@@ -1,0 +1,21 @@
+
+.description-product-block {
+    display: flex;
+    flex-direction: row;
+}
+
+.description-product-block__img{
+    width: 50%;
+    padding: 15px;
+}
+.description-product-block__inform {
+    width: 50%;
+    padding: 15px;
+}
+.title {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26px;
+    text-transform: uppercase;
+    color: #282828;
+}

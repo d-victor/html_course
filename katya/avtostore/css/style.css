@@ -76,6 +76,7 @@ header {
     top: 2%;
     right: 23%;
 }
+
 .angle-down2 {
     position: absolute;
     top: 2%;
@@ -244,6 +245,7 @@ form input {
     width: 100%;
     cursor: pointer;
 }
+
 form input:checked {
     cursor: none;
 }
@@ -563,6 +565,7 @@ input:focus {
     overflow: hidden;
     opacity: 0;
 }
+
 .btn-aside-mob {
     width: 0;
     height: 0;
@@ -1076,6 +1079,7 @@ div.submenu {
     line-height: 36px;
     margin-bottom: 22px;
 }
+
 .site_nav {
     padding: 15px;
     margin: 0 -15px;
@@ -1152,6 +1156,7 @@ input.sort_item {
     flex-wrap: wrap;
     margin: 20px 0 15px 0;
 }
+
 .row_item_product li {
     list-style-type: none;
 }
@@ -1192,39 +1197,47 @@ input.sort_item {
     font-size: 18px;
     line-height: 23px;
 }
+
 .product-sale h5 {
     font-weight: 400;
     font-size: 14px;
     line-height: 23px;
 }
-.review_stars_wrap{
+
+.review_stars_wrap {
     overflow: hidden;
 }
+
 .review_stars {
     overflow: hidden;
     position: relative;
     float: left;
     padding: 5px 0 10px;
 }
+
 .review_stars input {
     opacity: 0;
     position: absolute;
     top: 0;
     z-index: 0;
 }
-.review_stars input ~ label i{
+
+.review_stars input ~ label i {
     color: lightgray;
 }
-.review_stars input:checked ~ label i{
+
+.review_stars input:checked ~ label i {
     color: orange;
 }
+
 .review_stars label {
     float: right;
     cursor: pointer;
     position: relative;
     z-index: 1;
 }
-.review_stars label:hover i, .review_stars label:hover ~ label i{
+
+.review_stars label:hover i, .review_stars label:hover ~ label i {
     color: orange;
 }
 
@@ -1281,7 +1294,7 @@ input.sort_item {
     border-bottom: 9px solid transparent;
 }
 
-.hidden-content{
+.hidden-content {
     width: 100%;
     height: 40px;
     display: flex;
@@ -1308,6 +1321,7 @@ input.sort_item {
     padding: 12px;
     color: white;
 }
+
 .hidden-heart:hover {
     color: white;
 }
@@ -1325,6 +1339,7 @@ input.sort_item {
     visibility: hidden;
     pointer-events: none;
 }
+
 .card {
     border: 1px solid #E5E5E5;
     position: relative;
@@ -1345,10 +1360,12 @@ input.sort_item {
     background-color: white;
     transition: all .5s ease-in-out;
 }
+
 .item-product:hover .card:before {
     bottom: -40px;
     opacity: 1;
 }
+
 .item-product:hover .card {
     border: none;
 }
@@ -1358,6 +1375,7 @@ input.sort_item {
     pointer-events: visible;
     transition: all 0.5s ease-in-out;
 }
+
 .hidden-wish:hover,
 .hidden-add-cart:hover,
 .hidden-refresh:hover {
@@ -1366,7 +1384,7 @@ input.sort_item {
 }
 
 .product-sale {
-   transform: translateY(0);
+    transform: translateY(0);
     transition: 0.5s ease-in-out;
 }
 
@@ -1383,7 +1401,6 @@ input.sort_item {
 
 .row_item_product.grid .item-product {
     width: 100%;
-    padding-right: 0;
 }
 
 .row_item_product.grid .card {
@@ -1395,7 +1412,7 @@ input.sort_item {
 }
 
 .row_item_product.grid .product-sale {
-  display: flex;
+    display: flex;
     flex-direction: column;
     transform: none;
     transition: none;
@@ -1416,10 +1433,12 @@ input.sort_item {
     border-bottom: none;
     width: 50%;
 }
+
 .row_item_product.grid .card:before {
-   display: none;
+    display: none;
     bottom: 0;
 }
+
 .row_item_product.grid .item-product:not(.card):hover .card {
     border: 1px solid #E5E5E5;
 }
@@ -1432,12 +1451,14 @@ input.sort_item {
     position: static;
     padding-left: 20px;
 }
+
 .row_item_product.grid .hidden-add-cart {
     padding: 10px 20px;
     order: 2;
     margin-left: 200px;
     flex-grow: 0;
 }
+
 .row_item_product.grid .hidden-refresh {
     padding: 13px 13px;
     order: 1;
@@ -1457,11 +1478,12 @@ input.sort_item {
 
 .footer-location span,
 .footer-custom-service span,
-.footer-inform span{
+.footer-inform span {
     display: block;
     padding-bottom: 12px;
 }
-.footer-contact  span {
+
+.footer-contact span {
     display: block;
     padding-bottom: 24px;
 }
@@ -1469,17 +1491,21 @@ input.sort_item {
 .footer-location {
     padding-right: 86px;
 }
+
 .footer-custom-service {
     padding-right: 53px;
 }
+
 .footer-inform {
-   padding-right: 13px;
+    padding-right: 13px;
 }
+
 .footer-contact i {
     padding-right: 13px;
     color: red;
     font-size: 22px;
 }
+
 .footer-contact .wrap {
     padding-left: 24px;
     padding-bottom: 0;
@@ -1494,7 +1520,7 @@ input.sort_item {
 
 footer {
     margin-top: 15px;
-    background-color:rgba(10, 9, 9, 0.932);
+    background-color: rgba(10, 9, 9, 0.932);
     color: #DDDDDD;
 }
 
@@ -1507,7 +1533,7 @@ footer {
     padding: 25px 10px 0 28px
 }
 
-.payments-icons img{
+.payments-icons img {
     border: 1px solid #DDDDDD;
     margin-right: 10px;
 }
@@ -1531,12 +1557,15 @@ footer {
     .cart {
         margin-left: 10px;
     }
+
     .fa-times1 {
-       display: none;
+        display: none;
     }
+
     .compareProd .compareBtn p {
-    margin-left: 60px;
+        margin-left: 60px;
     }
+
     .row_item_product.grid .hidden-add-cart {
         margin-left: 170px;
     }
@@ -1565,19 +1594,24 @@ footer {
     .allCategories span {
         right: 10px;
     }
+
     .rangePrice .range-input {
         margin-right: 0;
     }
+
     .compareProd .compareBtn p {
         margin-left: 30px;
     }
+
     .check_page ~ span {
         margin-right: 17px;
     }
+
     .row_item_product.grid .hidden-add-cart {
         margin-left: 2px;
     }
-    .payments-icons img{
+
+    .payments-icons img {
         margin-right: 5px;
     }
 
@@ -1832,9 +1866,10 @@ footer {
     .header_nav li:first-child a {
         color: black;
     }
+
     .header_nav span {
-         color: transparent;
-     }
+        color: transparent;
+    }
 
 
     .menu li > .submenu {
@@ -2131,15 +2166,19 @@ footer {
     .wishList {
         margin-left: -30px;
     }
+
     .item-product {
         width: 100%;
     }
+
     input.sort_item {
         width: 40px;
     }
+
     .list-items {
         display: none;
     }
+
     .site_nav h4 {
         font-size: 24px;
     }
@@ -2147,15 +2186,19 @@ footer {
     .row_item_product.grid .hidden-content {
         margin-left: -60px;
     }
+
     .payment-footer {
         flex-direction: column;
     }
+
     .payments-icons {
         width: 100%;
     }
+
     .payments-icons img {
-    margin-right: 2px;
+        margin-right: 2px;
     }
+
     .copyright {
         font-size: 10px;
         line-height: 14px;
