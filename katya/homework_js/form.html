@@ -122,8 +122,9 @@
         };
 
         this.setMaxMessage = function (currentCountSpan,maxCountSpan) {
-            var maxMessage = this.options.maxTemplateMessage.replace('[^\\s]+', currentCountSpan);
-            maxMessage = maxMessage.replace('[^\\s]+',maxCountSpan);
+            var maxMessage = this.options.maxTemplateMessage.replace('|maxCurrent|', currentCountSpan);
+            maxMessage = maxMessage.replace('|max|', maxCountSpan);
+            console.log(maxMessage);
             return maxMessage;
 
         };
@@ -170,8 +171,8 @@
         form: document.querySelector('.contact-form'),
         requireMessageError: 'This field is require!',
         maxMessageError: 'You have reached the maximum number of characters!',
-       // maxTemplateMessage: '|maxCurrent| / |max| letters',
-        maxTemplateMessage: '[^\\s]+ / [^\\s]+ letters',
+        maxTemplateMessage: '|maxCurrent| / |max| letters',
+
 
     });
 </script>
