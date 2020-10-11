@@ -46,6 +46,11 @@
             padding-left: 60px;
         }
 
+        .error input,
+        .error textarea {
+            border-color: red;
+        }
+
     </style>
 </head>
 <body>
@@ -58,6 +63,20 @@
 </form>
 <script src="methodCreateElem.js"></script>
 <script>
+    function counter(e, spanCurrent) {
+        var elemForm = e.currentTarget;
+        var inputLenght = elemForm.value.length;
+        var parentElem = elemForm.parentElement;
+        var spanError = parentElem.querySelector('.' + this.options.classSpanTextError);
+        var hasShowedError = parentElem.classList.contains(this.options.errorClass);
+        spanCurrent.textContent = inputLenght;
+        if (inputLenght > elemForm.dataset.max && !hasShowedError) {
+            this.showError(elemForm, spanError, this.options.maxMessageError);
+        } else if (inputLenght <= elemForm.dataset.max && hasShowedError) {
+            this.hiddenError(elemForm, spanError);
+        }
+    }
+
     function FormValidation(option) {
         this.options = {
             form: option.form,
@@ -69,14 +88,31 @@
             requireMessageError: option.requireMessageError,
             maxMessageError: option.maxMessageError,
             maxTemplateMessage: option.maxTemplateMessage,
-        }
+            errorClass: 'error',
+        };
 
         this.submit = function (event) {
             event.preventDefault();
+            for (var i = 0; i < this.options.form.length; i++) {
+                var elementForm = this.options.form[i];
+                var parentElem = elementForm.parentElement;
+                var spanError = parentElem.querySelector('.' + this.options.classSpanTextError);
+                for (let elemRule in this.formElemList) {
+                    if (elementForm.dataset[elemRule]) {
+                        if (elemRule === 'require' && elementForm.value.length === 0) {
+                            this.showError(elementForm, spanError, this.options.requireMessageError);
+                            this.checkInputLetters(elementForm, spanError);
+                        }
+                        if (elementForm.value.length > 0 && !parentElem.classList.contains(this.options.errorClass)) {
+                            this.options.form.submit();
+                        }
+                    }
+                }
+            }
         };
 
         this.init = function () {
-            this.options.form.addEventListener('submit', this.submit)
+            this.options.form.addEventListener('submit', this.submit.bind(this));
             this.formData = new FormData(this.options.form);
             this.setFormElemList();
             for (var i = 0; i < this.options.form.length; i++) {
@@ -85,19 +121,30 @@
                     if (this.options.form[i].dataset[validateRule]) {
                         if (validateRule === 'require') {
                             this.formElemList[validateRule].push(this.options.form[i].getAttribute('name'));
-                            if (!this.errorSpan) this.createElemError(this.options.form[i]);
-                            this.errorSpan = true;
-                            this.showErrorRequire(this.options.form[i]);
+                            if (!this.errorSpan) {
+                                this.createElemError(this.options.form[i]);
+                                this.errorSpan = true;
+                            }
                         } else if (validateRule === 'max') {
                             this.formElemList[validateRule].push(this.options.form[i]);
-                            if (!this.errorSpan) this.createElemError(this.options.form[i]);
+                            if (!this.errorSpan) {
+                                this.createElemError(this.options.form[i]);
+                                this.errorSpan = true;
+                            }
                             this.setMaxCountElem(this.options.form[i]);
-                            this.counterLetters(this.options.form[i]);
                         }
                     }
-                },this);
+                }, this);
             }
 
+        };
+
+        this.checkInputLetters = function (elementForm, spanError) {
+            elementForm.addEventListener('input', function (e) {
+                if (elementForm.value.length > 0 && !elementForm.dataset.max) {
+                    this.hiddenError(elementForm, spanError);
+                }
+            }.bind(this));
         };
 
         this.createElemError = function (elementForm) {
@@ -110,53 +157,46 @@
 
             var currentCountSpan = '<span class="' + this.options.classSpanCurrent + '">0</span>';
 
-            var maxCountSpan = '<span class="' + this.options.classSpanMaxLetters + '">'+ elementForm.dataset.max +'</span>';
+            var maxCountSpan = '<span class="' + this.options.classSpanMaxLetters + '">' + elementForm.dataset.max + '</span>';
 
             var spanCount = setHtmlElement({
                 elem: 'span',
                 className: this.options.classSpanWrap,
             });
-            spanCount.insertAdjacentHTML('beforeend',this.setMaxMessage(currentCountSpan,maxCountSpan));
+            spanCount.insertAdjacentHTML('beforeend', this.setMaxMessage(currentCountSpan, maxCountSpan));
             elementForm.after(spanCount);
-
+            this.counterLetters(elementForm, spanCount.querySelector('.' + this.options.classSpanCurrent));
         };
 
-        this.setMaxMessage = function (currentCountSpan,maxCountSpan) {
+        this.setMaxMessage = function (currentCountSpan, maxCountSpan) {
             var maxMessage = this.options.maxTemplateMessage.replace('|maxCurrent|', currentCountSpan);
             maxMessage = maxMessage.replace('|max|', maxCountSpan);
-            console.log(maxMessage);
             return maxMessage;
 
         };
 
-        this.counterLetters = function (elemForm) {
-            var spanCurrent = elemForm.nextSibling.firstChild;
-           elemForm.addEventListener('input', counter.bind(this));
-           function counter(e) {
-               spanCurrent.textContent = elemForm.value.length;
-              if (elemForm.value.length > elemForm.dataset.max) {
-                  this.showError.call(this,elemForm);
-              }
-           }
+        this.counterLetters = function (elemForm, spanCurrent) {
+            elemForm.addEventListener('input', function (e) {
+                counter.call(this, e, spanCurrent);
+            }.bind(this));
+
         };
 
-        this.showError = function (elemForm) {
-            var spanError = elemForm.nextSibling.nextSibling;
-            spanError.innerHTML = this.options.maxMessageError;
-            elemForm.style.borderColor = 'red';
+        this.showError = function (elemForm, spanError, errorMessage) {
+            var parentElem = elemForm.parentElement;
+            spanError.textContent = errorMessage;
+            this.setErrorClass(parentElem);
         };
 
-        this.showErrorRequire = function (elemForm) {
-            var spanError = elemForm.nextSibling;
-            console.log(elemForm.value.length);
-            elemForm.addEventListener('focus', checkField.bind(this));
-            function checkField (e) {
-              if (elemForm.value.length === 0){
-                  spanError.innerHTML = this.options.requireMessageError;
-                  elemForm.style.borderColor = 'red';
-              }
-            }
-        }
+        this.hiddenError = function (elemForm, spanError) {
+            elemForm.parentElement.classList.remove(this.options.errorClass);
+            spanError.textContent = "";
+        };
+
+        this.setErrorClass = function (elem) {
+            elem.classList.add(this.options.errorClass);
+        };
+
 
         this.setFormElemList = function () {
             this.formElemList = {};
