@@ -759,7 +759,7 @@ div.submenu {
     background-color: red;
     padding: 14px 40px 9px 18px;
     color: white;
-    border-radius: 8px 8px 0 0;
+    border-radius: 6px 6px 0 0;
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
@@ -776,7 +776,7 @@ div.submenu {
 .checkColor label {
     width: 30px;
     height: 30px;
-    border: 1px solid lightgrey;
+    border: 1px solid #E5E5E5;
     margin: 0 6px 8px 0;
     cursor: pointer;
 }
@@ -830,23 +830,28 @@ div.submenu {
 }
 
 .firstSection {
-    border: 1px solid #cccccc;
+    border: 1px solid #E5E5E5;
     padding-bottom: 20px;
     border-radius: 8px 8px 0 0;
 }
 
 .price p {
-    padding: 17px 0 0 22px;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
+}
+.range-wrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }
 
 .indicator {
     display: flex;
     flex-direction: row;
     position: relative;
-    padding: 15px;
+    padding: 15px 0;
+    width: 100%;
     cursor: pointer;
 }
 
@@ -855,17 +860,18 @@ div.submenu {
     height: 17px;
     border-radius: 100%;
     border: 3px solid black;
+    background-color: white;
     position: absolute;
     top: 55%;
-    left: 8%;
+    left: 0;
+    z-index: 2;
 }
 
 .indicator div:nth-child(2) {
     position: absolute;
     top: 77%;
     border-bottom: 5px solid red;
-    width: 74%;
-    margin-left: 22px;
+    width: 100%;
 }
 
 .indicator div:nth-child(3) {
@@ -873,9 +879,11 @@ div.submenu {
     height: 17px;
     border-radius: 100%;
     border: 3px solid black;
-    position: absolute;
     top: 55%;
-    left: 87%;
+    right: 0;
+    position: absolute;
+    background-color: white;
+    z-index: 2;
 }
 
 .rangePrice {
@@ -883,18 +891,25 @@ div.submenu {
     flex-direction: row;
     justify-content: center;
     margin-top: 20px;
+    flex-wrap: nowrap;
 }
 
 .rangePrice input {
-    margin-right: 2px;
     width: 50px;
     height: 35px;
-    border: 1px solid lightgrey;
+    border: 1px solid #E5E5E5;
     border-radius: 4px 4px 4px 4px;
+    padding: 5px;
 }
 
-.rangePrice .range-input {
-    margin-right: 15px;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
 }
 
 .titlePartAside {
@@ -908,15 +923,15 @@ div.submenu {
     padding: 10px 5px 0;
 }
 
-.price {
-    padding-bottom: 30px;
-    border: 1px solid #cccccc;
+.price-wrap {
+    padding:17px 20px 30px;
+    border: 1px solid #E5E5E5;
     border-top: none;
 }
 
 .listBrand {
     padding: 15px 0 25px 15px;
-    border: 1px solid lightgrey;
+    border: 1px solid #E5E5E5;
     border-bottom: none;
 }
 
@@ -968,8 +983,13 @@ div.submenu {
 
 .selectModel-tittle,
 .selectYear-tittle {
-    border: 1px solid lightgrey;
+    border: 1px solid #E5E5E5;
     border-bottom: none;
+}
+
+.selectYear-tittle {
+    border-radius: 0 0 6px 6px;
+    border-bottom: 1px solid #E5E5E5;
 }
 
 .selectModel-tittle p,
@@ -982,11 +1002,12 @@ div.submenu {
     display: inline-block;
     padding: 10px 12px;
     margin-left: 1px;
-    border: 1px solid lightgrey;
+    border: 1px solid #E5E5E5;
     border-radius: 5px;
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
+    cursor: pointer;
     transition: all 0.5s ease-in-out;
 }
 
@@ -994,7 +1015,6 @@ div.submenu {
 .selectYear li {
     list-style-type: none;
     margin: 2px 1px;
-    cursor: pointer;
 }
 
 .selectYear label:hover,
@@ -1009,31 +1029,40 @@ div.submenu {
 
 .compareProd p:nth-child(2),
 .compareProd p:nth-child(3) {
-    border-bottom: 1px solid lightgrey;
-    padding: 24px 14px 20px 23px;
+    border: 1px solid #E5E5E5;
+    padding: 24px 15px 20px 20px;
     font-weight: 400;
     font-size: 13px;
     line-height: 15px;
+    position: relative;
+}
+.compareProd p:nth-child(3) {
+    border-top: none;
+    border-bottom: none;
 }
 
 .compareProd {
-    border: 1px solid lightgrey;
-    border-top: none;
-    border-radius: 0 0 6px 6px;
+    margin: 40px 0;
 }
 
 .fa-times1 {
-    margin-left: 61px;
+   position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    cursor: pointer;
 }
 
 .compareBtn {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding: 21px 5px 20px 5px;
+    padding: 21px 10px 20px 20px;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    border: 1px solid #E5E5E5;
+    border-radius: 0 0 6px 6px;
 }
 
 .compareBtn button {
@@ -1047,11 +1076,12 @@ div.submenu {
     cursor: pointer;
 }
 
-.compareProd .compareBtn p {
+.compareProd .clearBtn {
     border-bottom: none;
-    padding: 8px 0 0 0;
     margin-left: 79px;
     cursor: pointer;
+    background-color: transparent;
+    color: black;
 }
 
 .sidebar_img {
@@ -1090,14 +1120,25 @@ div.submenu {
     width: 34px;
     height: 33px;
     font-size: 18px;
-    background-color: red;
+    background-color: white;
+    border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
 }
+.button-list.active,
+.button-grid.active {
+    background-color: red;
+    border-color: transparent;
+}
+
+.button-grid.active .icon-th,
+.button-list.active .icon-list {
+    color: white;
+}
 
 .icon-th {
-    color: white;
-    padding: 8px;
+    color: black;
+    padding: 7px;
 }
 
 .button-list {
@@ -1191,7 +1232,7 @@ input.sort_item {
     margin-left: 15px;
 }
 
-.new_prise {
+.new_price {
     color: red;
     font-weight: 500;
     font-size: 18px;
@@ -1300,6 +1341,7 @@ input.sort_item {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    transition: all .5s ease-in-out;
 }
 
 .hidden-add-cart {
@@ -1455,7 +1497,7 @@ input.sort_item {
 .row_item_product.grid .hidden-add-cart {
     padding: 10px 20px;
     order: 2;
-    margin-left: 200px;
+    margin-left: auto;
     flex-grow: 0;
 }
 
@@ -1558,16 +1600,8 @@ footer {
         margin-left: 10px;
     }
 
-    .fa-times1 {
-        display: none;
-    }
-
     .compareProd .compareBtn p {
         margin-left: 60px;
-    }
-
-    .row_item_product.grid .hidden-add-cart {
-        margin-left: 170px;
     }
 
 }
@@ -1607,20 +1641,14 @@ footer {
         margin-right: 17px;
     }
 
-    .row_item_product.grid .hidden-add-cart {
-        margin-left: 2px;
-    }
-
     .payments-icons img {
         margin-right: 5px;
     }
-
-
 }
 
 @media screen and (max-width: 767px) {
     .tabLang_tittle {
-        padding-right: 10px;
+        padding-right: 30px;
     }
 
     .logo img {
@@ -1870,7 +1898,15 @@ footer {
     .header_nav span {
         color: transparent;
     }
+    .tabLang .tabLang_list li a,
+    .currency .currency_list li a {
+       color: white;
+    }
 
+    .tabLang .tabLang_list a:hover,
+    .currency .currency_list a:hover {
+        color: red;
+    }
 
     .menu li > .submenu {
         width: 100%;
@@ -2061,16 +2097,10 @@ footer {
     }
 
     .row_item_product.grid .hidden-add-cart {
-        padding: 10px 10px;
+        padding: 5px 5px;
     }
-
-    .row_item_product.grid .hidden-content {
-        padding-left: 0;
-        margin-left: 20px;
-    }
-
-    .row_item_product.grid .product-sale {
-        align-items: center;
+    .row_item_product.grid .hidden-refresh {
+        margin-right: 1px;
     }
 
     .hidden-content .hidden-heart {
@@ -2183,8 +2213,11 @@ footer {
         font-size: 24px;
     }
 
-    .row_item_product.grid .hidden-content {
-        margin-left: -60px;
+   .row_item_product.grid .hidden-content {
+        margin-left: -70px;
+    }
+    .row_item_product.grid .product-sale {
+        align-items: center;
     }
 
     .payment-footer {

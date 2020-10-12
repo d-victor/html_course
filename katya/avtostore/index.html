@@ -10,6 +10,7 @@
              minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AutoStore</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/fontawesome/all.min.css">
     <link rel="stylesheet" href="css/normalize.css">
@@ -83,7 +84,7 @@
                             </div>
                             <div class="miniCart_price">
                                 <strong>Qty:</strong>
-                                <input type="number">
+                                <input type="number" min="1" max="95">
                                 <button>Update</button>
                                 <span>$250.00</span>
                             </div>
@@ -111,7 +112,7 @@
                             <a class="menu-item" href="#">ALL&nbspCATEGORIES<span></span></a>
                             <ul class="submenu1">
                                 <li><a href="#">Homepage 1</a></li>
-                                <li><a href="#">Homepage 2</a></li>
+                                <li><a href="page2.html">Homepage 2</a></li>
                                 <li><a href="#">Homepage 3</a></li>
                                 <li><a href="#">Homepage 4</a></li>
                                 <li><a href="#">Homepage 5</a></li>
@@ -494,8 +495,9 @@
                         </label>
                     </div>
                 </div>
-                <div class="price">
+                <div class="price-wrap">
                     <p class="titlePartAside">PRICE</p>
+                    <div class="range-wrap">
                     <div class="indicator">
                         <div></div>
                         <div></div>
@@ -503,9 +505,10 @@
                     </div>
                     <div class="rangePrice">
                         <p>$ </p>
-                        <input type="number">
-                        <p>- $ </p>
-                        <input class="range-input" type="number">
+                        <input type="number" min="25">
+                        <p>-&nbsp$ </p>
+                        <input class="range-input" type="number" max="95">
+                    </div>
                     </div>
                 </div>
                 <div class="listBrand">
@@ -551,7 +554,7 @@
                     <p>Radio Transmitter Adapter<i class="fas fa-times fa-times1"></i></p>
                     <div class="compareBtn">
                         <button>COMPARE</button>
-                        <p>Clear&nbspAll</p>
+                        <button class="clearBtn">Clear&nbspAll</button>
                     </div>
                 </div>
             <div class="sidebar_img"></div>
@@ -565,7 +568,7 @@
                         <span class="list-items">Items 1-15 of 18</span>
                         <label>
                             <span>Show</span>
-                            <input class="check_page" type="number">
+                            <input class="check_page" type="number" min="1" max="2">
                             <span>ptr page</span>
                         </label>
                         <label><span>Sort By</span>
@@ -576,10 +579,9 @@
                 </div>
                 <div class="row">
                     <ul class="row_item_product">
-                        <li class="item-product sale new">
+                       <li class="item-product sale new">
                             <div class="card">
                                 <span class="flag_sale">SALE</span>
-                                <span class="flag_new1">NEW</span>
                                 <img class="img-product" src="img/car_kit_hands_free_calling_2%201.png" alt="radio">
                                 <div class="wrapper-sale">
                                 <div class="hidden-content">
@@ -613,14 +615,13 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price"><span class="price">$55.00</span><del>$84.00</del></span>
                                 </div>
                                 </div>
                             </div>
                         </li>
                         <li class="item-product sale new">
                             <div class="card">
-                                <span class="flag_sale">SALE</span>
                                 <span class="flag_new1">NEW</span>
                                 <img class="img-product" src="img/design_in-car_fm_radio_3%201.png" alt="radio">
                                 <div class="wrapper-sale">
@@ -655,7 +656,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price price">$65.00</span>
                                 </div>
                                 </div>
                             </div>
@@ -697,7 +698,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price"><span class="price">$75.00</span><del>$84.00</del></span>
                                 </div>
                             </div>
                             </div>
@@ -705,7 +706,6 @@
                         <li class="item-product sale new">
                             <div class="card">
                                 <span class="flag_sale">SALE</span>
-                                <span class="flag_new1">NEW</span>
                                 <img class="img-product" src="img/car_kit_hands_free_calling_2%201.png" alt="radio">
                                 <div class="wrapper-sale">
                                 <div class="hidden-content">
@@ -739,14 +739,13 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price"><span class="price">$60.00</span><del>$88.00</del></span>
                                 </div>
                             </div>
                             </div>
                         </li>
                         <li class="item-product sale new">
                             <div class="card">
-                                <span class="flag_sale">SALE</span>
                                 <span class="flag_new1">NEW</span>
                                 <img class="img-product" src="img/design_in-car_fm_radio_3%201.png" alt="radio">
                                 <div class="wrapper-sale">
@@ -781,14 +780,13 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price price">$50.00</span>
                                 </div>
                             </div>
                             </div>
                         </li>
                         <li class="item-product sale new">
                             <div class="card">
-                                <span class="flag_sale">SALE</span>
                                 <span class="flag_new1">NEW</span>
                                 <img class="img-product" src="img/car_kit_hands_free_calling_2%201.png" alt="radio">
                                 <div class="wrapper-sale">
@@ -823,7 +821,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price price">$85.00</span>
                                 </div>
                             </div>
                             </div>
@@ -865,7 +863,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price"><span class="price">$35.00</span><del>$60.00</del></span>
                                 </div>
                             </div>
                             </div>
@@ -873,7 +871,6 @@
                         <li class="item-product sale new">
                             <div class="card">
                                 <span class="flag_sale">SALE</span>
-                                <span class="flag_new1">NEW</span>
                                 <img class="img-product" src="img/design_in-car_fm_radio_3%201.png" alt="radio">
                                 <div class="wrapper-sale">
                                 <div class="hidden-content">
@@ -907,14 +904,13 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price"><span class="price">$45.00</span><del>$60.00</del></span>
                                 </div>
                             </div>
                             </div>
                         </li>
                         <li class="item-product sale new">
                             <div class="card">
-                                <span class="flag_sale">SALE</span>
                                 <span class="flag_new1">NEW</span>
                                 <img class="img-product" src="img/car_kit_hands_free_calling_2%201.png" alt="radio">
                                 <div class="wrapper-sale">
@@ -949,7 +945,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price price">$25.00</span>
                                 </div>
                             </div>
                             </div>
@@ -957,7 +953,6 @@
                         <li class="item-product sale new">
                             <div class="card">
                                 <span class="flag_sale" sale new>SALE</span>
-                                <span class="flag_new1">NEW</span>
                                 <img class="img-product" src="img/car_kit_hands_free_calling_2%201.png" alt="radio">
                                 <div class="wrapper-sale">
                                     <div class="hidden-content">
@@ -991,14 +986,13 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price"><span class="price">$45.00</span><del>$60.00</del></span>
                                 </div>
                             </div>
                             </div>
                         </li>
                         <li class="item-product sale new">
                             <div class="card">
-                                <span class="flag_sale">SALE</span>
                                 <span class="flag_new1">NEW</span>
                                 <img class="img-product" src="img/design_in-car_fm_radio_3%201.png" alt="radio">
                                 <div class="wrapper-sale">
@@ -1033,14 +1027,13 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price price">$95.00</span>
                                 </div>
                             </div>
                             </div>
                         </li>
                         <li class="item-product sale new">
                             <div class="card">
-                                <span class="flag_sale">SALE</span>
                                 <span class="flag_new1">NEW</span>
                                 <img class="img-product" src="img/car_kit_hands_free_calling_2%201.png" alt="radio">
                                 <div class="wrapper-sale">
@@ -1075,7 +1068,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <span class="new_prise">$55.00<del>$84.00</del></span>
+                                    <span class="new_price price">$80.00</span>
                                 </div>
                                 </div>
                             </div>
