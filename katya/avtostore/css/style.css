@@ -1517,17 +1517,19 @@ input.sort_item {
     line-height: 23px;
     padding: 73px 10px 15px 10px;
 }
-
-.footer-location span,
-.footer-custom-service span,
-.footer-inform span {
-    display: block;
-    padding-bottom: 12px;
+.footer-list > li {
+    list-style-type: none;
+    padding: 10px 0;
+    position: relative;
 }
-
-.footer-contact span {
-    display: block;
-    padding-bottom: 24px;
+.footer-contact .footer-list li:nth-child(1) {
+    padding-left: 32px;
+}
+.marker {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
 }
 
 .footer-location {
