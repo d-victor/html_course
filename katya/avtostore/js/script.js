@@ -131,11 +131,12 @@
         var shiftMax = e.pageX - maxCoords.left;
         console.log(maxCoords,e.pageX)
         document.addEventListener('mousemove', onMouseMoveMax);
-        document.addEventListener('mousemove', onMouseUpMax);
+        document.addEventListener('mouseUp', onMouseUpMax);
 
         function onMouseMoveMax(e) {
 
             var newLeft = e.pageX - shiftMax - sliderCoords.left;
+            console.log(shiftMax)
 
             if (newLeft < 0) {
                 newLeft = 0;
@@ -153,7 +154,7 @@
             var step = rangeEnd - max;
             var percentMax =(step * 100) / rangeEnd;
             var incrementSumMax = Math.round((rangePrice * percentMax) / 100);
-            inputMin.value = maxPrice - incrementSumMax;
+            inputMax.value = maxPrice - incrementSumMax;
 
         }
 
