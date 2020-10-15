@@ -90,17 +90,17 @@
     var min = parseInt(getComputedStyle(minRange).left);
     var max = parseInt(getComputedStyle(maxRange).left);
 
-    minRange.addEventListener('mousedown', dragRange);
-    maxRange.addEventListener('mousedown',dragRange.bind(event,maxRange,maxPrice));
+    minRange.addEventListener('mousedown', dragRange.bind(minRange,minPrice,inputMin,max));
+    //maxRange.addEventListener('mousedown',dragRange);
 
-        function dragRange(event,minRange,minPrice) {
+        function dragRange(event) {
             var startCords = getCoordinates(minRange);
             var shiftX = event.pageX - startCords.left;
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
 
-            function onMouseMove(e) {
-                var coordinates = e.pageX - shiftX - sliderCoords.left;
+            function onMouseMove(event) {
+                var coordinates = event.pageX - shiftX - sliderCoords.left;
 
                 if (coordinates < 0) {
                     coordinates = 0;
@@ -118,7 +118,7 @@
 
             }
 
-            function onMouseUp(e) {
+            function onMouseUp(event) {
                 document.removeEventListener('mouseup', onMouseUp);
                 document.removeEventListener('mousemove', onMouseMove);
 
