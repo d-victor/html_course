@@ -90,46 +90,45 @@
     var min = parseInt(getComputedStyle(minRange).left);
     var max = parseInt(getComputedStyle(maxRange).left);
 
+    minRange.addEventListener('mousedown', dragRange);
+    maxRange.addEventListener('mousedown',dragRange.bind(event,maxRange,maxPrice));
 
-    minRange.addEventListener('mousedown', function (e) {
-        e.preventDefault();
-        var startCords = getCoordinates(minRange);
-        var shiftX = e.pageX - startCords.left;
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', onMouseUp);
+        function dragRange(event,minRange,minPrice) {
+            var startCords = getCoordinates(minRange);
+            var shiftX = event.pageX - startCords.left;
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
 
-        function onMouseMove(e) {
-            var newLeftMin = e.pageX - shiftX - sliderCoords.left;
+            function onMouseMove(e) {
+                var coordinates = e.pageX - shiftX - sliderCoords.left;
 
-            if (newLeftMin < 0) {
-                newLeftMin = 0;
+                if (coordinates < 0) {
+                    coordinates = 0;
+                }
+
+                if (coordinates > max - minRange.offsetWidth / 2) {
+                    coordinates = max - minRange.offsetWidth / 2;
+                }
+
+                minRange.style.left = coordinates + 'px';
+
+                var percent = (coordinates * 100) / rangeEnd;
+                var incrementSum = Math.round((rangePrice * percent) / 100);
+                inputMin.value = minPrice + incrementSum;
+
             }
 
-            if (newLeftMin > max - minRange.offsetWidth / 2) {
-                newLeftMin = max - minRange.offsetWidth / 2;
+            function onMouseUp(e) {
+                document.removeEventListener('mouseup', onMouseUp);
+                document.removeEventListener('mousemove', onMouseMove);
+
             }
-            min = newLeftMin;
-
-            minRange.style.left = newLeftMin + 'px';
-            var percent = (min * 100) / rangeEnd;
-            var incrementSum = Math.round((rangePrice * percent) / 100);
-            incrementSum = (incrementSum);
-            inputMin.value = minPrice + incrementSum;
-
         }
 
-        function onMouseUp(e) {
-            document.removeEventListener('mouseup', onMouseUp);
-            document.removeEventListener('mousemove', onMouseMove);
 
-        }
-
-    });
-
-    maxRange.addEventListener('mousedown', function (e) {
-        var maxCoords = getCoordinates(maxRange);
+       /* var maxCoords = getCoordinates(maxRange);
         var shiftMax = e.pageX - maxCoords.left;
-        console.log(maxCoords,e.pageX)
+
         document.addEventListener('mousemove', onMouseMoveMax);
         document.addEventListener('mouseUp', onMouseUpMax);
 
@@ -156,19 +155,13 @@
             var incrementSumMax = Math.round((rangePrice * percentMax) / 100);
             inputMax.value = maxPrice - incrementSumMax;
 
-        }
+        }*/
 
-        function onMouseUpMax(e) {
+     /*   function onMouseUpMax(e) {
             document.removeEventListener('mouseup', onMouseUpMax);
             document.removeEventListener('mousemove', onMouseMoveMax);
         }
-
-    });
-
-    minRange.ondragstart = function () {
-        return false;
-    }
-
+*/
 
     function getCoordinates(elem) {
         var box = elem.getBoundingClientRect();
