@@ -71,15 +71,18 @@
     var minRange = document.querySelector('.min-range');
     var maxRange = document.querySelector('.max-range');
     var range = document.querySelector('.range');
-    var priceList = [];
-    for (var i = 0; i < priceElements.length; i++) {
-        var price = priceElements[i].textContent.substring(1);
-        price = parseFloat(price);
-        priceList.push(price);
+    var minPrice = parseFloat(priceElements[0].textContent.substring(1));
+    var maxPrice = minPrice;
+
+    for (var i = 1; i < priceElements.length; i++) {
+        var price = parseFloat(priceElements[i].textContent.substring(1));
+        if (price < minPrice) {
+            minPrice = price;
+        }
+        if (price > maxPrice) {
+            maxPrice = price;
+        }
     }
-    priceList.sort();
-    var minPrice = priceList[0];
-    var maxPrice = priceList[priceList.length - 1];
     var rangePrice = maxPrice - minPrice;
     inputMin.value = minPrice;
     inputMax.value = maxPrice;
@@ -87,81 +90,70 @@
     var sliderCoords = getCoordinates(range);
     var rangeEnd = range.offsetWidth - minRange.offsetWidth;
 
-    var min = parseInt(getComputedStyle(minRange).left);
-    var max = parseInt(getComputedStyle(maxRange).left);
+    minRange.addEventListener('mousedown', function (event) {
+        dragRange(event, minRange, minPrice, inputMin);
+    });
 
-    minRange.addEventListener('mousedown', dragRange.bind(minRange,minPrice,inputMin,max));
-    //maxRange.addEventListener('mousedown',dragRange);
+    maxRange.addEventListener('mousedown', function (event) {
+        dragRange(event, maxRange, maxPrice, inputMax);
+    });
 
-        function dragRange(event) {
-            var startCords = getCoordinates(minRange);
-            var shiftX = event.pageX - startCords.left;
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
+    inputMin.addEventListener('input', checkInput);
+    inputMax.addEventListener('input', checkInput);
 
-            function onMouseMove(event) {
-                var coordinates = event.pageX - shiftX - sliderCoords.left;
+    function dragRange(event, minMaxRange, minMaxPrice, inputMinMax, max) {
 
-                if (coordinates < 0) {
-                    coordinates = 0;
-                }
+        var startCords = getCoordinates(minMaxRange);
+        var shiftX = event.pageX - startCords.left;
 
-                if (coordinates > max - minRange.offsetWidth / 2) {
-                    coordinates = max - minRange.offsetWidth / 2;
-                }
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
 
-                minRange.style.left = coordinates + 'px';
+        function onMouseMove(event) {
+            var coordinates = event.pageX - shiftX - sliderCoords.left;
 
+            if (coordinates < 0) {
+                coordinates = 0;
+            }
+            if (coordinates > rangeEnd) {
+                coordinates = rangeEnd;
+            }
+            minMaxRange.style.left = coordinates + 'px';
+
+            if (event.target === minRange) {
                 var percent = (coordinates * 100) / rangeEnd;
-                var incrementSum = Math.round((rangePrice * percent) / 100);
-                inputMin.value = minPrice + incrementSum;
-
-            }
-
-            function onMouseUp(event) {
-                document.removeEventListener('mouseup', onMouseUp);
-                document.removeEventListener('mousemove', onMouseMove);
-
+                var increment = Math.round((rangePrice * percent) / 100);
+                inputMinMax.value = minMaxPrice + increment;
+            } else if (event.target === maxRange) {
+                var step = rangeEnd - coordinates;
+                step = (step * 100) / rangeEnd;
+                var incrementSum = Math.round((rangePrice * step) / 100);
+                inputMax.value = maxPrice - incrementSum;
             }
         }
 
-
-       /* var maxCoords = getCoordinates(maxRange);
-        var shiftMax = e.pageX - maxCoords.left;
-
-        document.addEventListener('mousemove', onMouseMoveMax);
-        document.addEventListener('mouseUp', onMouseUpMax);
-
-        function onMouseMoveMax(e) {
-
-            var newLeft = e.pageX - shiftMax - sliderCoords.left;
-            console.log(shiftMax)
-
-            if (newLeft < 0) {
-                newLeft = 0;
-            }
-            if (newLeft < max - maxRange.offsetWidth / 2) {
-                newLeft = max - maxRange.offsetWidth / 2;
-            }
-
-            if (newLeft > rangeEnd) {
-                newLeft = rangeEnd;
-            }
-            max = newLeft;
-            maxRange.style.left = newLeft + 'px';
-
-            var step = rangeEnd - max;
-            var percentMax =(step * 100) / rangeEnd;
-            var incrementSumMax = Math.round((rangePrice * percentMax) / 100);
-            inputMax.value = maxPrice - incrementSumMax;
-
-        }*/
-
-     /*   function onMouseUpMax(e) {
-            document.removeEventListener('mouseup', onMouseUpMax);
-            document.removeEventListener('mousemove', onMouseMoveMax);
+        function onMouseUp(event) {
+            document.removeEventListener('mouseup', onMouseUp);
+            document.removeEventListener('mousemove', onMouseMove);
         }
-*/
+    }
+
+    function checkInput(e) {
+        if (e.target.value < minPrice || e.target.value > maxPrice) return;
+        if (e.target === inputMin) {
+            var stepMin = e.target.value - minPrice;
+            minRange.style.left = countStepInput(stepMin) + 'px'
+        } else if (e.target === inputMax) {
+            var stepMax = maxPrice - e.target.value;
+            maxRange.style.left = ((rangeEnd - countStepInput(stepMax)) + 'px');
+        }
+    }
+
+    function countStepInput(step) {
+        var increment = Math.round((100 * step) / rangePrice);
+        var stepNew = (rangeEnd * increment) / 100;
+        return stepNew;
+    }
 
     function getCoordinates(elem) {
         var box = elem.getBoundingClientRect();
