@@ -1830,7 +1830,6 @@ footer {
         z-index: 4;
     }
 
-
     .menu-item {
         padding: 12px 24px;
         color: black;
@@ -1865,9 +1864,9 @@ footer {
 
     .signElem {
         visibility: visible;
-        width: 100%;
-        height: 100%;
-        top: 10%;
+        width: 50%;
+        height: 400px;
+        top: 0;
         right: 0;
     }
 
@@ -1878,9 +1877,7 @@ footer {
     }
 
     .sign {
-        position: absolute;
-        top: 4%;
-        right: 10%;
+       display: none;
     }
 
     .elemHeader2 {
@@ -1982,10 +1979,10 @@ footer {
     .btn_aside {
         display: block;
         position: absolute;
-        top: 250px;
+        top: 240px;
         left: 0;
         width: 20px;
-        height: 40px;
+        height: 70px;
         cursor: pointer;
         z-index: 2;
         background-color: rgba(248, 8, 8, 0.945);
@@ -2033,7 +2030,6 @@ footer {
 
     #aside_toggle:checked ~ .btn_aside > span {
         transform: rotate(45deg);
-        background-color: white;
     }
 
     #aside_toggle:checked ~ .btn_aside > span::before {
@@ -2044,7 +2040,6 @@ footer {
     #aside_toggle:checked ~ .btn_aside > span::after {
         top: 0;
         transform: rotate(90deg);
-        background-color: white;
     }
 
     #aside_toggle:checked ~ .aside {
@@ -2057,11 +2052,7 @@ footer {
     #aside_toggle:checked:checked ~ .btn_aside {
         padding-left: 10px;
         position: fixed;
-        top: 65px;
-        left: 29%;
-        right: 50px;
         z-index: 3;
-        background-color: transparent;
     }
 
     .site_nav h4 {
@@ -2152,6 +2143,7 @@ footer {
         left: 0;
         right: 0;
         width: 100%;
+        height: 100vh;
         opacity: 0;
         transition: all .5s ease-in-out;
     }
@@ -2168,7 +2160,7 @@ footer {
         pointer-events: auto;
         opacity: 1;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         display: block;
         position: relative;
         z-index: 1;
