@@ -1,0 +1,31 @@
+@import "header/header";
+
+.menu {
+    &__item {
+        color: black;
+    }
+    
+    &__linck {
+    
+    }
+}
+
+a {
+    color: black;
+    
+    &:hover {
+        color: $red;
+    }
+    
+    & > .level-1 {
+        color: $red;
+    }
+}
+$translucent-red: rgba(255, 0, 0, 0.5);
+body {
+    .modal {
+        background-color: transparentize($translucent-red, 0.2) // opacify($translucent-red, 0.4);
+    }
+}
+
+

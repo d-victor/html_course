@@ -1,0 +1,26 @@
+header {
+    background-color: grey;
+    
+    .menu {
+        background-color: $red;
+        
+        .active & {
+            background: {
+                color: $black;
+                position: center;
+            }
+        }
+        
+        li {
+            color: black;
+        }
+    }
+}
+
+@media screen and (max-width: $mobile) {
+    header {
+        .menu {
+            background-color: gold;
+        }
+    }
+}

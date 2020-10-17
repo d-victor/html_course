@@ -1,0 +1,22 @@
+.error {
+    background-color: $red;
+}
+.modal {
+    //background-color: grey;
+   // background-image: url(#{$imgSrc}img_car.jpg);
+    padding: 12px;
+    @extend %position-center;
+}
+
+.d {
+    @extend %position-center;
+    background-size: auto;
+    @extend .error;
+}
+
+.owerflou {
+    @extend %position-fix;
+    @extend %full-window;
+}
+
+
