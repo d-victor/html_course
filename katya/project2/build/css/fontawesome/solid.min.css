@@ -1,0 +1,17 @@
+/*!
+ * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url(../webfonts/fa-solid-900.eot);
+  src: url(../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"), url(../webfonts/fa-solid-900.woff2) format("woff2"), url(../webfonts/fa-solid-900.woff) format("woff"), url(../webfonts/fa-solid-900.ttf) format("truetype"), url(../webfonts/fa-solid-900.svg#fontawesome) format("svg"); }
+
+.fa, .fas {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNvbGlkLm1pbi5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7OztHQUdHO0FBQ0g7RUFBVyxtQ0FBaUM7RUFBQyxtQkFBaUI7RUFBQyxpQkFBZTtFQUFDLG9CQUFrQjtFQUFDLHVDQUFxQztFQUFDLHFTQUErUixFQUFBOztBQUFDO0VBQVMsbUNBQWlDO0VBQUMsaUJBQWUsRUFBRSIsImZpbGUiOiJmb250YXdlc29tZS9zb2xpZC5taW4uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyohXG4gKiBGb250IEF3ZXNvbWUgRnJlZSA1LjE0LjAgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb21cbiAqIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgKEljb25zOiBDQyBCWSA0LjAsIEZvbnRzOiBTSUwgT0ZMIDEuMSwgQ29kZTogTUlUIExpY2Vuc2UpXG4gKi9cbkBmb250LWZhY2V7Zm9udC1mYW1pbHk6XCJGb250IEF3ZXNvbWUgNSBGcmVlXCI7Zm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6OTAwO2ZvbnQtZGlzcGxheTpibG9jaztzcmM6dXJsKC4uL3dlYmZvbnRzL2ZhLXNvbGlkLTkwMC5lb3QpO3NyYzp1cmwoLi4vd2ViZm9udHMvZmEtc29saWQtOTAwLmVvdD8jaWVmaXgpIGZvcm1hdChcImVtYmVkZGVkLW9wZW50eXBlXCIpLHVybCguLi93ZWJmb250cy9mYS1zb2xpZC05MDAud29mZjIpIGZvcm1hdChcIndvZmYyXCIpLHVybCguLi93ZWJmb250cy9mYS1zb2xpZC05MDAud29mZikgZm9ybWF0KFwid29mZlwiKSx1cmwoLi4vd2ViZm9udHMvZmEtc29saWQtOTAwLnR0ZikgZm9ybWF0KFwidHJ1ZXR5cGVcIiksdXJsKC4uL3dlYmZvbnRzL2ZhLXNvbGlkLTkwMC5zdmcjZm9udGF3ZXNvbWUpIGZvcm1hdChcInN2Z1wiKX0uZmEsLmZhc3tmb250LWZhbWlseTpcIkZvbnQgQXdlc29tZSA1IEZyZWVcIjtmb250LXdlaWdodDo5MDB9Il19 */
