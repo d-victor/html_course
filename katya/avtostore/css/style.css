@@ -1030,7 +1030,7 @@ input[type=number] {
 .compareProd p:nth-child(2),
 .compareProd p:nth-child(3) {
     border: 1px solid #E5E5E5;
-    padding: 24px 15px 20px 20px;
+    padding: 20px 15px 20px 20px;
     font-weight: 400;
     font-size: 13px;
     line-height: 15px;
@@ -1074,11 +1074,11 @@ input[type=number] {
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    flex-grow: 1;
 }
 
 .compareProd .clearBtn {
     border-bottom: none;
-    margin-left: 79px;
     cursor: pointer;
     background-color: transparent;
     color: black;
@@ -2143,14 +2143,12 @@ footer {
         left: 0;
         right: 0;
         width: 100%;
-        height: 100vh;
         opacity: 0;
         transition: all .5s ease-in-out;
     }
 
     .footer-menu h5 ~ .footer-list {
         overflow: hidden;
-        height: 100vh;
         width: 100%;
         transition: all .5s ease-in-out;
     }
