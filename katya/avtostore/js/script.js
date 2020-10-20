@@ -76,11 +76,12 @@
 
     for (var i = 1; i < priceElements.length; i++) {
         var price = parseFloat(priceElements[i].textContent.substring(1));
-        if (price < minPrice) {
-            minPrice = price;
-        }
         if (price > maxPrice) {
             maxPrice = price;
+            continue;
+        }
+        if (price < minPrice) {
+            minPrice = price;
         }
     }
     var rangePrice = maxPrice - minPrice;
@@ -101,9 +102,9 @@
     inputMin.addEventListener('input', checkInput);
     inputMax.addEventListener('input', checkInput);
 
-    function dragRange(event, minMaxRange, minMaxPrice, inputMinMax, max) {
+    function dragRange(event, range, price, inputMin) {
 
-        var startCords = getCoordinates(minMaxRange);
+        var startCords = getCoordinates(range);
         var shiftX = event.pageX - startCords.left;
 
         document.addEventListener('mousemove', onMouseMove);
@@ -118,12 +119,12 @@
             if (coordinates > rangeEnd) {
                 coordinates = rangeEnd;
             }
-            minMaxRange.style.left = coordinates + 'px';
+            range.style.left = coordinates + 'px';
 
             if (event.target === minRange) {
                 var percent = (coordinates * 100) / rangeEnd;
                 var increment = Math.round((rangePrice * percent) / 100);
-                inputMinMax.value = minMaxPrice + increment;
+                inputMin.value = price + increment;
             } else if (event.target === maxRange) {
                 var step = rangeEnd - coordinates;
                 step = (step * 100) / rangeEnd;
