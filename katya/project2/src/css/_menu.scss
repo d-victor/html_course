@@ -44,6 +44,10 @@
   line-height: 17px;
   display: block;
   padding: 18px 20px 17px 17px;
+  @media screen and (max-width: 992px) {
+    padding: 17px 5px 17px;
+  }
+
 }
 
 .angle-down3 {
@@ -98,6 +102,9 @@
   height: 2px;
   background-color: $white;
   display: inline-block;
+  @media screen and (max-width: 992px) {
+    right: 10px;
+  }
 }
 
 .allCategories span:after {
@@ -208,6 +215,11 @@ div.submenu {
 .submenu > ul {
   width: 50%;
   margin-top: 10px;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
 
 .submenu h4 {
@@ -228,4 +240,141 @@ div.submenu {
 
 #menu_toggle {
   opacity: 0;
+}
+@media screen and (max-width: 767px) {
+  .allCategories span {
+    top: 16px;
+  }
+
+  .allCategories {
+    width: 150px;
+  }
+
+  .menu_btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  .menu_btn > span,
+  .menu_btn > span::before,
+  .menu_btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: $lightgrey;
+  }
+
+  .menu_btn > span::before {
+    content: "";
+    top: -8px;
+  }
+
+  .menu_btn > span::after {
+    content: "";
+    top: 8px;
+  }
+
+  .menu {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    margin: 0;
+    padding: 50px 0;
+    text-align: left;
+    background-color: $white;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+    z-index: 4;
+  }
+
+  .menu-item {
+    padding: 12px 24px;
+    color: $black;
+    font-size: $fontSize;
+    line-height: 17px;
+    font-weight: 600;
+    width: 100%;
+  }
+
+  .menu li a {
+    padding: 15px 25px;
+  }
+
+  #menu_toggle:checked ~ .menu_btn > span {
+    transform: rotate(45deg);
+  }
+
+  #menu_toggle:checked ~ .menu_btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  #menu_toggle:checked ~ .menu_btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  #menu_toggle:checked ~ .menu {
+    visibility: visible;
+    left: 0;
+  }
+  .menu li > .submenu {
+    width: 100%;
+    height: 100vh;
+    padding-left: 5%;
+    z-index: 3;
+    overflow: auto;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: $white;
+  }
+
+  .menu li:hover > .submenu {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+  }
+
+
+  .allCategories li a {
+    padding: 8px 0 8px 5px;
+  }
+  .submenu1 {
+    top: 34px;
+    width: 200px;
+  }
+
+  .submenu h4 {
+    font-size: 16px;
+  }
+
+  .submenu li a {
+    padding: 7px 25px;
+  }
+
+  .first {
+    margin-top: 11px;
+    margin-left: 15px;
+  }
+
+  .first .menu-item {
+    font-size: 11px;
+  }
+
+  .allCategories span {
+    visibility: hidden;
+  }
 }
