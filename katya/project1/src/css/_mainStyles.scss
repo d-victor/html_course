@@ -4,3 +4,53 @@ body {
 .btn {
   border: $defaultBorder;
 }
+header{
+
+  .menu {
+
+    background-color: red;
+
+    .active & {
+      background-color: aqua;
+    }
+
+    li {
+      color: black;
+    }
+
+  }
+}
+.menu {
+  &__item {
+    color: red;
+  }
+  &__link {
+
+  }
+}
+a {
+  &:hover {
+    color: red;
+  }
+
+  a > .level-1 {
+    color: red;
+  }
+
+}
+%position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+body {
+  .modal {
+    width: (250px / 2);
+    background-color: green + #666;
+    background-color: opacify(&aaa, 0.5);
+    transparentize(&aaa, 0.3);
+
+  }
+  @extend .error;// this,,
+}

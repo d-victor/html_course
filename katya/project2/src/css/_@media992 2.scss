@@ -1,0 +1,39 @@
+@media screen and (max-width: 992px) {
+
+  .subHeader_search {
+    padding-left: 20px;
+  }
+
+  .cartValue,
+  .count {
+    display: none;
+  }
+
+  .shopping-basket {
+    border-right: none;
+  }
+
+  .menu li a {
+    padding: 17px 5px 17px;
+  }
+
+  .allCategories span {
+    right: 10px;
+  }
+
+  .rangePrice .range-input {
+    margin-right: 0;
+  }
+
+  .compareProd .compareBtn p {
+    margin-left: 30px;
+  }
+
+  .check_page ~ span {
+    margin-right: 17px;
+  }
+
+  .payments-icons img {
+    margin-right: 5px;
+  }
+}

@@ -1,0 +1,9 @@
+.modal {
+  padding: 12px;
+  @extend %position-center;
+  background-image: url(#{$imgSrc}img-cars.jpg) ;
+}
+.d {
+  @extend %position-fix;
+  @extend %fullWindow;
+}

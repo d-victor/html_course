@@ -1,0 +1,17 @@
+/*!
+ * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(../webfonts/fa-regular-400.eot);
+  src: url(../webfonts/fa-regular-400.eot?#iefix) format("embedded-opentype"), url(../webfonts/fa-regular-400.woff2) format("woff2"), url(../webfonts/fa-regular-400.woff) format("woff"), url(../webfonts/fa-regular-400.ttf) format("truetype"), url(../webfonts/fa-regular-400.svg#fontawesome) format("svg"); }
+
+.far {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlZ3VsYXIubWluLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7O0dBR0c7QUFDSDtFQUFXLG1DQUFpQztFQUFDLG1CQUFpQjtFQUFDLGlCQUFlO0VBQUMsb0JBQWtCO0VBQUMseUNBQXVDO0VBQUMsK1NBQXlTLEVBQUE7O0FBQUM7RUFBSyxtQ0FBaUM7RUFBQyxpQkFBZSxFQUFFIiwiZmlsZSI6ImZvbnRhd2Vzb21lL3JlZ3VsYXIubWluLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIVxuICogRm9udCBBd2Vzb21lIEZyZWUgNS4xNC4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tXG4gKiBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKVxuICovXG5AZm9udC1mYWNle2ZvbnQtZmFtaWx5OlwiRm9udCBBd2Vzb21lIDUgRnJlZVwiO2ZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtd2VpZ2h0OjQwMDtmb250LWRpc3BsYXk6YmxvY2s7c3JjOnVybCguLi93ZWJmb250cy9mYS1yZWd1bGFyLTQwMC5lb3QpO3NyYzp1cmwoLi4vd2ViZm9udHMvZmEtcmVndWxhci00MDAuZW90PyNpZWZpeCkgZm9ybWF0KFwiZW1iZWRkZWQtb3BlbnR5cGVcIiksdXJsKC4uL3dlYmZvbnRzL2ZhLXJlZ3VsYXItNDAwLndvZmYyKSBmb3JtYXQoXCJ3b2ZmMlwiKSx1cmwoLi4vd2ViZm9udHMvZmEtcmVndWxhci00MDAud29mZikgZm9ybWF0KFwid29mZlwiKSx1cmwoLi4vd2ViZm9udHMvZmEtcmVndWxhci00MDAudHRmKSBmb3JtYXQoXCJ0cnVldHlwZVwiKSx1cmwoLi4vd2ViZm9udHMvZmEtcmVndWxhci00MDAuc3ZnI2ZvbnRhd2Vzb21lKSBmb3JtYXQoXCJzdmdcIil9LmZhcntmb250LWZhbWlseTpcIkZvbnQgQXdlc29tZSA1IEZyZWVcIjtmb250LXdlaWdodDo0MDB9Il19 */

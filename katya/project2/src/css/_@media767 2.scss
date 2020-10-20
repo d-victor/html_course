@@ -1,0 +1,520 @@
+@media screen and (max-width: 767px) {
+  .tabLang_tittle {
+    padding-right: 30px;
+  }
+
+  .logo img {
+    width: 140px;
+    height: 45px;
+  }
+
+  .logo {
+    margin-top: 10px;
+    margin-left: 15px;
+  }
+
+  .cart {
+    height: 45px;
+  }
+
+  .search {
+    display: none;
+    position: absolute;
+    top: 130px;
+    right: 0;
+    left: 0;
+    max-width: none;
+    border-radius: 5px;
+    border-right: 2px solid $lightgrey;
+    height: 35px;
+  }
+
+  .subHeader {
+    position: relative;
+  }
+
+  .subHeader_btn-mobile {
+    visibility: visible;
+    height: 45px;
+    width: 45px;
+    background-color: $white;
+    border-radius: 5px;
+    border: 2px solid $lightgrey;
+    flex-grow: 0;
+    margin-left: -45px;
+  }
+
+  .subHeader_btn-mobile input {
+    visibility: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .header_row.open .search {
+    display: block;
+  }
+
+  .elemHeader2 {
+    padding-right: 38px;
+  }
+
+  .currency_tittle {
+    padding-right: 20px;
+  }
+
+  .tabLang span:before {
+    top: 0;
+    left: -30%;
+  }
+
+  button.subHeader_btn {
+    display: none;
+  }
+
+  .fa-search {
+    color: $grey;
+    font-size: 18px;
+    padding: 11px 10px 5px 11px;
+  }
+
+  .wishList {
+    height: 45px;
+    width: 45px;
+    border-radius: 5px;
+    border: 2px solid $lightgrey;
+    margin-left: 10px;
+    padding: 0;
+  }
+
+  .fa-heart {
+    font-size: 18px;
+    color: $black;
+    padding: 11px 10px 12px 12px;
+  }
+
+  .cartValue,
+  .count {
+    display: none;
+  }
+
+  .cart .shopping-basket {
+    border-right: none;
+    width: 40px;
+    height: 45px;
+  }
+
+  .cart {
+    margin-left: 10px;
+    margin-right: 30px;
+  }
+
+  .subHeader_btn:hover {
+    background: $white;
+    box-shadow: 0 2px 10px 3px;
+    color: $lightgrey;
+  }
+
+  .miniCart {
+    top: 43px;
+    right: 0;
+    padding: 25px;
+    width: 360px;
+  }
+
+  .allCategories span {
+    top: 16px;
+  }
+
+  .allCategories {
+    width: 150px;
+  }
+
+  .menu_btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  .menu_btn > span,
+  .menu_btn > span::before,
+  .menu_btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: $lightgrey;
+  }
+
+  .menu_btn > span::before {
+    content: "";
+    top: -8px;
+  }
+
+  .menu_btn > span::after {
+    content: "";
+    top: 8px;
+  }
+
+  .menu {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    margin: 0;
+    padding: 50px 0;
+    text-align: left;
+    background-color: $white;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+    z-index: 4;
+  }
+
+  .menu-item {
+    padding: 12px 24px;
+    color: $black;
+    font-size: $fontSize;
+    line-height: 17px;
+    font-weight: 600;
+    width: 100%;
+  }
+
+  .menu li a {
+    padding: 15px 25px;
+  }
+
+  #menu_toggle:checked ~ .menu_btn > span {
+    transform: rotate(45deg);
+  }
+
+  #menu_toggle:checked ~ .menu_btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  #menu_toggle:checked ~ .menu_btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  #menu_toggle:checked ~ .menu {
+    visibility: visible;
+    left: 0;
+  }
+
+  .signElem {
+    visibility: visible;
+    width: 50%;
+    height: 400px;
+    top: 0;
+    right: 0;
+  }
+
+  .elemHeader {
+    position: absolute;
+    top: 0;
+    right: 15%;
+  }
+
+  .sign {
+    display: none;
+  }
+
+  .elemHeader2 {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+
+  .fa-lock1 {
+    color: $black;
+  }
+
+  .header_nav li:first-child a {
+    color: $black;
+  }
+
+  .header_nav span {
+    color: transparent;
+  }
+  .tabLang .tabLang_list li a,
+  .currency .currency_list li a {
+    color: $white;
+  }
+
+  .tabLang .tabLang_list a:hover,
+  .currency .currency_list a:hover {
+    color: $red;
+  }
+
+  .menu li > .submenu {
+    width: 100%;
+    height: 100vh;
+    padding-left: 5%;
+    z-index: 3;
+    overflow: auto;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: $white;
+  }
+
+  .menu li:hover > .submenu {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+  }
+
+  .header_row {
+    margin: -10px -15px 0;
+  }
+
+  .allCategories li a {
+    padding: 8px 0 8px 5px;
+  }
+
+  .subHeader_wishList {
+    margin-top: 15px;
+  }
+
+  .subHeader_search {
+    margin-top: 15px;
+  }
+
+  .submenu1 {
+    top: 34px;
+    width: 200px;
+  }
+
+  .submenu h4 {
+    font-size: 16px;
+  }
+
+  .submenu li a {
+    padding: 7px 25px;
+  }
+
+  .first {
+    margin-top: 11px;
+    margin-left: 15px;
+  }
+
+  .first .menu-item {
+    font-size: 11px;
+  }
+
+  .allCategories span {
+    visibility: hidden;
+  }
+
+  .btn-aside-mob {
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 5;
+  }
+
+  .btn_aside {
+    display: block;
+    position: absolute;
+    top: 240px;
+    left: 0;
+    width: 20px;
+    height: 70px;
+    cursor: pointer;
+    z-index: 2;
+    background-color: rgba(248, 8, 8, 0.945);
+    border: $borderTransparent;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .btn_aside > span,
+  .btn_aside > span::before,
+  .btn_aside > span::after {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: transparent;
+  }
+
+  .btn_aside > span::before {
+    content: "";
+    top: -8px;
+  }
+
+  .btn_aside > span::after {
+    content: "";
+    top: 8px;
+  }
+
+  .aside {
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    top: 45px;
+    left: -100%;
+    width: 270px;
+    height: 100vh;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    background-color: $white;
+    box-shadow: 1px 0 6px rgba(0, 0, 0, .2);
+    transition: $transition;
+  }
+
+
+  #aside_toggle:checked ~ .btn_aside > span {
+    transform: rotate(45deg);
+  }
+
+  #aside_toggle:checked ~ .btn_aside > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  #aside_toggle:checked ~ .btn_aside > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  #aside_toggle:checked ~ .aside {
+    visibility: visible;
+    left: 0;
+    z-index: 2;
+    width: 270px;
+  }
+
+  #aside_toggle:checked:checked ~ .btn_aside {
+    padding-left: 10px;
+    position: fixed;
+    z-index: 3;
+  }
+
+  .site_nav h4 {
+    margin-left: 15px;
+    font-size: 26px;
+  }
+
+  div.col-3 {
+    width: 100%;
+  }
+
+  .item-product {
+    width: calc(100% / 2);
+  }
+
+  input.sort_item {
+    width: 80px;
+    height: auto;
+  }
+
+  .list-items {
+    margin: 5px 0 9px 2px;
+  }
+
+  input.check_page {
+    width: 20px;
+    height: auto;
+  }
+
+  .check_page ~ span {
+    margin-right: 5px;
+  }
+
+  .row_item_product.grid .product-sale {
+    padding-bottom: 80px;
+  }
+
+  .row_item_product.grid .hidden-add-cart {
+    padding: 5px 5px;
+  }
+  .row_item_product.grid .hidden-refresh {
+    margin-right: 1px;
+  }
+
+  .hidden-content .hidden-heart {
+    color: $white;
+  }
+
+  .payment-footer {
+    margin-top: 0;
+    padding: 10px 5px 0 5px;
+  }
+
+  .footer-content h5 {
+    font-size: $fontSize;
+    line-height: 20px;
+    padding-bottom: 10px;
+  }
+
+  .footer-content {
+    font-size: 12px;
+    line-height: 18px;
+    flex-direction: column;
+    padding-top: 30px;
+  }
+
+  .footer-contact span,
+  .footer-custom-service span,
+  .footer-inform span,
+  .footer-location span {
+    padding-bottom: 10px;
+  }
+
+  .footer-location,
+  .footer-custom-service {
+    padding-right: 20px;
+  }
+
+  .copyright {
+    font-size: 10px;
+    line-height: 18px;
+  }
+
+  .footer-menu h5 ~ .footer-list {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    transition: $transition;
+  }
+
+  .footer-menu h5 ~ .footer-list {
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    transition: $transition;
+  }
+
+  .footer-menu h5:hover ~ .footer-list {
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+    width: 100%;
+    height: 100vh;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+
+}
