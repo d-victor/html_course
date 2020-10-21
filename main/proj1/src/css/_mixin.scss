@@ -1,0 +1,19 @@
+@mixin large-text($size: 30px, $color: green) {
+    font-family: Arial;
+    font-size: $size;
+    font-weight: bold;
+    color: $color;
+}
+@mixin respons($max-width) {
+    @media screen and (max-width: $max-width) {
+        @content;
+    }
+}
+
+@mixin border($size: 1px, $type: solid, $color: grey) {
+    border: $size $type $color;
+}
+
+@mixin shadow($shadow...) {
+    box-shadow: $shadow;
+}
