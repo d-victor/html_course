@@ -14,11 +14,9 @@ header {
   padding: 15px;
 }
 .header_nav {
-  display: flex;
-  flex-direction: row;
+  @extend %displayFlex;
   justify-content: flex-end;
-  font-size: 13px;
-  line-height: 15px;
+  @include font-Options(13px,15px);
   font-weight: $fontWeight400;
   margin: 0 auto;
   position: relative;
@@ -104,37 +102,27 @@ header {
 
 .tabLang span:before {
   content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABASURBVHgB7cyhEQAQAIXhxxiqIVQjmEe2ghF0STWVILHAi+6U99f/7jPw9YAUg8NsiS2sXLD7oM/icQIFCvwCXisJCGg2Ed1nAAAAAElFTkSuQmCC");
-  position: absolute;
-  top: 0;
-  left: -25%;
+  @include position(absolute, 0, -25%);
 }
 
 .tabLang_list a:nth-child(1):before {
   content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI3SURBVHgBlZNdSFNhGMf/57iwpvtgEWTrwxamlkmGljBbpd1EU/oUklJaN64F1kWkQ+nCypEXu8m6ytTogyhqZXXRF+goIVErcU1oWmYLItHZrGBjve+THzuKR/zDczic533/7+99+B/h0/HKiP6MFX4xFrmHnOgfHEK0hpss8OQfo/fUR1ehLa6X9LdtSULNmhjEtbjBfcShRAN8tir64Gs9B2flAWjVizCX+BpHiRGXf3UjIfyHDhtYnQRx85W3uL42G6PudiIp3ZmCjmY7SvZnz2rGqZ6YV2HXCxdRaSpO4HxDCzLMF6DgCxz3O3F7+WK4bIVkuqSoANdqrdjONk4Xp8pvfwlVfBaWMiq3xw+LuQb9X39SX3j1xhuJ3rA1NQHBD17ErlxGFRgnn5hhjEYFBSveGw78RlfPgORAocdsiciMCqGRUYyxA7jiNiSToZyENm26rOF8pVAbM2UXhAJThMq0ZLqunNgMeyWEG9fpWSSUbI4feRthduXoGapzMvH3yzcqJRuB2/NdSphb5KSXRL0O9bXFiI+E8dl+EcH3XjRn7UBpXopkQ+O9NorUj5sPKb+6ipPYU9c6+UOI/HG2bDc6HtuxKTRCNH5xIWyqNJQ3vp5xpaOnm2BhFTp8kIgX3LiD5+kCyvdm/CfsZCFer9dg0HGJqJ7mFbBcdrFIjGE2NTDKB8/eEUgZM+W0R265sM+aA3FFXy+6TYUSKjmzCfEMnqq+C4OpCkGTEYa6auj6fPgHaHXaemZEN7AAAAAASUVORK5CYII=');
-  position: absolute;
-  top: 12%;
-  left: 14%;
+  @include position(absolute, 12%, 14%);
 }
 
 .tabLang_list .secondElem:before {
   content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA3SURBVHgB7dIxEQAgEAPBC/MFgtCMHByg5RFBCmb4FZAmJyAxapi9PxgTL+3vTok+sFKuCvvSAb6LBqUr9Pg8AAAAAElFTkSuQmCC");
-  position: absolute;
-  top: 35%;
-  left: 14%;
+  @include position(absolute, 35%, 14%);
 }
 
 .tabLang_list .thirdElem:before {
   content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA9SURBVHgB7cw7DQAgFMXQggK0MLEhC0t4wAViSBj4GHgjCcvt2uQ44GCUU6DVaC1Gmay+zed5nECBAr+AF//iCGhUs9r+AAAAAElFTkSuQmCC");
-  position: absolute;
-  top: 58%;
-  left: 14%;
+  @include position(absolute, 58%, 14%);
 }
 
 .tabLang_list .fourElem:before {
   content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABDSURBVHgB5dKxCQAgDETRi2RkpxI30REEsRVLwTI6xBUB3wBXfE5i7gaiADL/g9LmoTYUe0Dkv6GWscGkqS4wfXjsC0gOD9RMwzg+AAAAAElFTkSuQmCC");
-  position: absolute;
-  top: 81%;
-  left: 14%;
+  @include position(absolute, 81%, 14%);
 }
 
 .tabLang .tabLang_list li {
@@ -221,7 +209,7 @@ header {
 }
 
 form input {
-  height: 45px;
+  @include options(100%, 45px);
   border: $formInputBorder;
   border-radius: 4px;
   padding-left: 6px;
@@ -230,7 +218,6 @@ form input {
   font-size: 14px;
   font-weight: 400;
   flex-grow: 1;
-  width: 100%;
   cursor: pointer;
 }
 
@@ -239,8 +226,7 @@ form input:checked {
 }
 
 .subHeader_btn {
-  height: 45px;
-  width: 62px;
+  @include options(62px, 45px);
   background-color: $red;
   border-radius: 0 5px 5px 0;
   border: 1px solid $red;
@@ -333,8 +319,7 @@ form input:checked {
 
 .count {
   background-color: $red;
-  width: 25px;
-  height: 25px;
+  @include options(25px,25px);
   position: absolute;
   top: -29%;
   right: 67%;
@@ -372,9 +357,7 @@ form input:checked {
 }
 
 .miniCart_img {
-  position: absolute;
-  top: 8%;
-  left: 6%;
+  @include position(absolute,8%,6%)
 }
 
 .details_miniCart {
@@ -399,8 +382,7 @@ form input:checked {
 }
 
 .miniCart_price {
-  display: flex;
-  flex-direction: row;
+  @extend %displayFlex;
   flex-wrap: nowrap;
   margin-top: 22px;
   align-items: center;
@@ -418,13 +400,12 @@ form input:checked {
 }
 
 .miniCart_price input {
-  width: 75px;
-  height: 27px;
+  @include options(75px,27px);
+
   margin-right: 15px;
   margin-left: 10px;
   padding-left: 30px;
-  border-radius: 4px;
-  border: $defaultBorder;
+  @include default-border($defaultBorder,4px);
 }
 
 input:focus {
@@ -433,12 +414,10 @@ input:focus {
 }
 
 .miniCart_price button {
-  height: 27px;
-  width: 85px;
+  @include options(85px,27px);
   background-color: $red;
-  border-radius: 6px;
   color: $white;
-  border: none;
+  @include default-border(none,6px);
   margin-right: 20px;
   cursor: pointer;
 }
@@ -478,15 +457,13 @@ input:focus {
 }
 
 .miniCart_total_btn {
-  display: flex;
-  flex-direction: row;
+  @extend %displayFlex;
   margin-top: 16px;
   justify-content: space-between;
 }
 
 .miniCart_total_btn .view_cart {
-  width: 144px;
-  height: 30px;
+  @include options(144px,30px);
   background-color: $red;
   border-radius: 6px;
   color: $white;
@@ -494,8 +471,7 @@ input:focus {
 }
 
 .miniCart_total_btn .checkout {
-  width: 144px;
-  height: 30px;
+  @include options(144px,30px);
   background-color: $red;
   border-radius: 6px;
   color: $white;
@@ -504,8 +480,7 @@ input:focus {
 @media screen and (max-width: 767px) {
   .signElem {
     visibility: visible;
-    width: 50%;
-    height: 400px;
+    @include options(50%,400px);
     top: 0;
     right: 0;
   }
@@ -551,6 +526,7 @@ input:focus {
   }
 
   .logo img {
+    @include options(140px,45px);
     width: 140px;
     height: 45px;
   }
@@ -566,10 +542,8 @@ input:focus {
 
   .search {
     display: none;
-    position: absolute;
-    top: 130px;
+    @include position(absolute,130px,0);
     right: 0;
-    left: 0;
     max-width: none;
     border-radius: 5px;
     border-right: 2px solid $lightgrey;
@@ -582,8 +556,7 @@ input:focus {
 
   .subHeader_btn-mobile {
     visibility: visible;
-    height: 45px;
-    width: 45px;
+    @include options(45px,45px);
     background-color: $white;
     border-radius: 5px;
     border: 2px solid $lightgrey;
@@ -594,8 +567,7 @@ input:focus {
   .subHeader_btn-mobile input {
     visibility: hidden;
     position: absolute;
-    width: 0;
-    height: 0;
+    @include options(0,0);
     overflow: hidden;
   }
 
@@ -630,8 +602,7 @@ input:focus {
   }
 
   .wishList {
-    height: 45px;
-    width: 45px;
+    @include options(45px,45px);
     border-radius: 5px;
     border: 2px solid $lightgrey;
     margin-left: 10px;
@@ -658,8 +629,7 @@ input:focus {
 
   .cart .shopping-basket {
     border-right: none;
-    width: 40px;
-    height: 45px;
+    @include options(40px,45px);
   }
 
   .cart {

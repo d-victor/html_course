@@ -1,0 +1,21 @@
+%fonts {
+  font-weight: $fontWeight400;
+  font-size: 12px;
+  line-height: 14px;
+}
+%hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+%visible {
+  visibility: visible;
+  opacity: 1;
+}
+%displayFlex {
+  display: flex;
+  flex-direction: row;
+}
+%flexColumn {
+  display: flex;
+  flex-direction: column;
+}

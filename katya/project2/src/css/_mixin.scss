@@ -1,0 +1,30 @@
+@mixin options($width, $height) {
+  width: $width;
+  height: $height;
+}
+@mixin font-Options($size,$lineHeight) {
+  font-size: $size;
+  line-height: $lineHeight;
+}
+@mixin position($position,$top,$left) {
+  position: $position;
+  top: $top;
+  left: $left;
+}
+@mixin position-right($position,$top,$right) {
+  position: $position;
+  top: $top;
+  right: $right;
+}
+@mixin default-border($border,$borderRadius) {
+  border: $border;
+  border-radius: $borderRadius;
+}
+@mixin background-color($backgroundColor,$color) {
+  background-color: $backgroundColor;
+  color: $color;
+}
+@mixin baking ($margin,$padding) {
+  margin: $margin;
+  padding: $padding;
+}

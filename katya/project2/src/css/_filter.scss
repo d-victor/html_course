@@ -1,6 +1,5 @@
 .breadCramp {
-  display: flex;
-  flex-direction: row;
+  @extend %displayFlex;
   justify-content: flex-start;
   margin-bottom: 8px;
 }
@@ -21,26 +20,21 @@
 
 .buttonShop,
 .titleCompareProd {
-  background-color: $red;
+  @include background-color($red, $white);
   padding: 14px 40px 9px 18px;
-  color: $white;
   border-radius: 6px 6px 0 0;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
+  @include font-Options(18px,21px);
 }
 
 .color {
   padding: 18px 0 0 22px;
   font-weight: 500;
-  font-size: $fontSize;
-  line-height: 17px;
-
+  @include font-Options($fontSize,17px);
 }
 
 .checkColor label {
-  width: 30px;
-  height: 30px;
+  @include options(30px,30px);
   border: $defaultBorder;
   margin: 0 6px 8px 0;
   cursor: pointer;
@@ -48,8 +42,7 @@
 
 .checkColor {
   padding: 15px 2px 3px 24px;
-  display: flex;
-  flex-direction: row;
+  @extend %displayFlex;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
@@ -102,18 +95,15 @@
 
 .price p {
   font-weight: 500;
-  font-size: $fontSize;
-  line-height: 17px;
+  @include options($fontSize,17px);
 }
 .range-wrap {
-  display: flex;
-  flex-direction: column;
+  @extend %flexColumn;
   flex-wrap: nowrap;
 }
 
 .indicator {
-  display: flex;
-  flex-direction: row;
+  @extend %displayFlex;
   position: relative;
   padding: 15px 0;
   width: 100%;
@@ -121,14 +111,11 @@
 }
 
 .indicator div:nth-child(1) {
-  width: 17px;
-  height: 17px;
+  @include options(17px,17px);
   border-radius: 100%;
   border: 3px solid $black;
   background-color: $white;
-  position: absolute;
-  top: 55%;
-  left: 0;
+  @include position(absolute,55%,0);
   z-index: 2;
 }
 
@@ -140,33 +127,27 @@
 }
 
 .indicator div:nth-child(3) {
-  width: 17px;
-  height: 17px;
+  @include options(17px,17px);
   border-radius: 100%;
   border: 3px solid $black;
-  top: 55%;
-  right: 0;
-  position: absolute;
+  @include position-right(absolute,55%,0);
   background-color: $white;
   z-index: 2;
 }
 
 .rangePrice {
-  display: flex;
-  flex-direction: row;
+  @extend %displayFlex;
   justify-content: center;
   margin-top: 20px;
   flex-wrap: nowrap;
 }
 
 .rangePrice input {
-  width: 50px;
-  height: 35px;
+  @include options(50px,35px);
   border: $defaultBorder;
   border-radius: 4px 4px 4px 4px;
   padding: 5px;
 }
-
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -212,8 +193,7 @@ input[type=number] {
 .listBrand label {
   display: block;
   font-weight: $fontWeight400;
-  font-size: 13px;
-  line-height: 15px;
+  @include font-Options(13px,15px);
   padding: 6px 0;
   cursor: pointer;
   margin: 2px 0 0 5px;
@@ -225,8 +205,7 @@ input[type=number] {
 
 .selectModel,
 .selectYear {
-  display: flex;
-  flex-direction: row;
+  @extend %displayFlex;
   justify-content: flex-start;
   flex-wrap: wrap;
   padding: 0 15px 28px;
@@ -241,8 +220,7 @@ input[type=number] {
 .selectYear input {
   visibility: hidden;
   position: absolute;
-  width: 0;
-  height: 0;
+  @include options(0,0);
   overflow: hidden;
 }
 
@@ -270,8 +248,7 @@ input[type=number] {
   border: $defaultBorder;
   border-radius: 5px;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
+  @include options(12px,14px);
   cursor: pointer;
   transition: $transition;
 }
@@ -311,16 +288,13 @@ input[type=number] {
 }
 
 .fa-times1 {
-  position: absolute;
-  top: 50%;
+  @include position-right(absolute,50%,15px);
   transform: translateY(-50%);
-  right: 15px;
   cursor: pointer;
 }
 
 .compareBtn {
-  display: flex;
-  flex-direction: row;
+  @extend %displayFlex;
   justify-content: flex-start;
   padding: 21px 10px 20px 20px;
   line-height: 17px;
@@ -331,8 +305,7 @@ input[type=number] {
 .compareBtn button {
   color: $white;
   background-color: $red;
-  width: 103px;
-  height: 26px;
+  @include options(103px,26px);
   padding-top: 3px;
   border-radius: 5px;
   border: none;
@@ -343,15 +316,13 @@ input[type=number] {
   border-bottom: none;
   margin-left: 79px;
   cursor: pointer;
-  background-color: transparent;
-  color: black;
+  @include background-color(transparent,black);
 }
 
 .sidebar_img {
   background: url("../image/item-sidebar.jpg") center center /cover no-repeat;
   display: block;
-  height: 420px;
-  width: 100%;
+  @include options(420px,100%);
 }
 @media screen and (max-width: $breakPoint1200) {
 
@@ -370,8 +341,7 @@ input[type=number] {
   @media screen and (max-width: 992px) {
 
   .btn-aside-mob {
-    width: 100%;
-    height: 100%;
+    @include options(100%,100%);
     visibility: visible;
     overflow: hidden;
     opacity: 0;
@@ -380,11 +350,8 @@ input[type=number] {
 
   .btn_aside {
     display: block;
-    position: absolute;
-    top: 240px;
-    left: 0;
-    width: 20px;
-    height: 70px;
+    @include position(absolute,240px,0);
+    @include options(20px,70px);
     cursor: pointer;
     z-index: 2;
     background-color: rgba(248, 8, 8, 0.945);
@@ -397,8 +364,7 @@ input[type=number] {
   .btn_aside > span::after {
     display: block;
     position: absolute;
-    width: 20px;
-    height: 2px;
+    @include options(20px,2px);
     background-color: transparent;
   }
 
@@ -414,15 +380,11 @@ input[type=number] {
 
   .aside {
     display: block;
-    position: absolute;
+    @include position(absolute,45px,-100%);
     visibility: hidden;
-    top: 45px;
-    left: -100%;
-    width: 270px;
-    height: 100vh;
+    @include options(270px,100vh);
     overflow: auto;
-    margin: 0;
-    padding: 0;
+    @include baking(0,0);
     text-align: left;
     background-color: $white;
     box-shadow: 1px 0 6px rgba(0, 0, 0, .2);

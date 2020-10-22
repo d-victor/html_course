@@ -58,21 +58,17 @@
   list-style-type: none;
 }
 
-#menu_toggle1,
-#aside_toggle {
-  width: 0;
-  height: 0;
-  visibility: hidden;
+#menu_toggle1 {
+  @extend #aside_toggle;
+  @include options(0,0);
+  @extend %hidden;
   overflow: hidden;
-  opacity: 0;
 }
 
 .btn-aside-mob {
-  width: 0;
-  height: 0;
-  visibility: hidden;
+  @include options(0,0);
+  @extend %hidden;
   overflow: hidden;
-  opacity: 0;
 }
 
 .first {
@@ -98,6 +94,7 @@
 .allCategories span:before,
 .allCategories span:after {
   position: absolute;
+  @include options(15px,2px);
   width: 15px;
   height: 2px;
   background-color: $white;
@@ -140,8 +137,7 @@
 }
 
 .submenu1 {
-  opacity: 0;
-  visibility: hidden;
+  @extend %hidden;
   position: absolute;
   top: 51px;
   left: 0;
@@ -149,8 +145,7 @@
 }
 
 .first:hover .submenu1 {
-  opacity: 1;
-  visibility: visible;
+  @extend %visible;
   background: $white;
   box-shadow: 0 2px 10px 3px;
   color: $lightgrey;
@@ -173,9 +168,7 @@
 .submenu5 li a {
   list-style-type: none;
   color: $black;
-  font-weight: $fontWeight400;
-  font-size: 12px;
-  line-height: 14px;
+  @extend %fonts;
   padding: 8px;
 }
 
@@ -188,23 +181,18 @@
 }
 
 div.submenu {
-  display: flex;
-  flex-direction: row;
+  @extend %displayFlex;
   flex-wrap: wrap;
   overflow: auto;
-  /*height: calc(100vh - 210px);*/
   max-height: 508px;
   padding: 15px;
-  font-weight: $fontWeight400;
-  font-size: 12px;
-  line-height: 14px;
+  @extend %fonts;
   cursor: pointer;
   z-index: 3;
 }
 
 .submenu {
-  visibility: hidden;
-  opacity: 0;
+  @extend %hidden;
   position: absolute;
   top: 51px;
   left: 0;
@@ -228,8 +216,7 @@ div.submenu {
 }
 
 .menu li:hover .submenu {
-  visibility: visible;
-  opacity: 1;
+  @extend %visible;
   background: $white;
   box-shadow: $boxShadow;
 }
@@ -256,8 +243,7 @@ div.submenu {
     position: fixed;
     top: 10px;
     left: 20px;
-    width: 26px;
-    height: 26px;
+    @include options(26px,26px);
     cursor: pointer;
     z-index: 5;
   }
@@ -267,8 +253,7 @@ div.submenu {
   .menu_btn > span::after {
     display: block;
     position: absolute;
-    width: 100%;
-    height: 2px;
+    @include options(100%,2px);
     background-color: $lightgrey;
   }
 
@@ -286,6 +271,7 @@ div.submenu {
     display: block;
     position: fixed;
     visibility: hidden;
+    @include options(100%,100vh);
     top: 0;
     left: -100%;
     width: 100%;
@@ -331,8 +317,7 @@ div.submenu {
     left: 0;
   }
   .menu li > .submenu {
-    width: 100%;
-    height: 100vh;
+    @include options(100%,100vh);
     padding-left: 5%;
     z-index: 3;
     overflow: auto;
@@ -343,11 +328,9 @@ div.submenu {
 
   .menu li:hover > .submenu {
     top: 0;
-    width: 100%;
-    height: 100%;
+    @include options(100%,100%);
     padding-top: 30px;
   }
-
 
   .allCategories li a {
     padding: 8px 0 8px 5px;
