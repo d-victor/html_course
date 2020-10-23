@@ -30,6 +30,7 @@
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
+    cursor: pointer;
 }
 .slick-next {
      position: absolute;
@@ -37,11 +38,15 @@
      right: 20px;
     transform: translateY(-50%);
     z-index: 1;
+    cursor: pointer;
 }
 .slick-prev:hover,
 .slick-next:hover {
     color: white;
     background-color: red;
+}
+.slider__wrapper_img .active {
+    border: 1px solid red;
 }
 .description-product-block__inform {
     width: 50%;
@@ -104,7 +109,6 @@
 .description-product-block__select label {
    display: flex;
     flex-direction: column;
-    position: relative;
 }
 
 .description-product-block__select select {
@@ -116,12 +120,17 @@
     padding: 10px 56px 10px 30px;
     appearance: none;
     outline-color: grey;
+    cursor: pointer;
+}
+.select-wrap{
+    position: relative;
 }
 .description-product-block__select .select-arrow1,
 .description-product-block__select .select-arrow2{
     color: rgba(136, 136, 136, 1);
     position: absolute;
-    top: 60%;
+    top: 50%;
+    transform: translateY(-50%);
     right: 10px;
 }
 
@@ -160,6 +169,8 @@
     border: none;
     color: white;
     height: 40px;
+    outline: none;
+    cursor: pointer;
 }
 .btn-wish,
 .btn-refresh {
@@ -195,9 +206,18 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .card-feature-product {
-    display: flex;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 }
+.card-feature-product__wrap {
+    display: flex;
+    border-bottom: 1px solid #E5E5E5;
+    padding-bottom: 20px;
+}
+
+.card-feature-product__wrap:nth-last-child {
+    border-bottom: none;
+}
+
 .card-feature-product__content {
     display: flex;
     flex-direction: column;

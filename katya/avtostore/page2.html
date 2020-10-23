@@ -26,8 +26,8 @@
                 </li>
                 <li class="tabLang">
                     <span class="elemHeader3">
-                        <a class="tabLang_tittle" href="#">FRENCH</a><i
-                            class="fas fa-angle-down angle-down1"></i></span>
+                        <a class="tabLang_tittle" href="#">FRENCH</a>
+                        <i class="fas fa-angle-down angle-down1"></i></span>
                     <ul class="tabLang_list">
                         <li><a href="#">ENGLISH</a></li>
                         <li class="secondElem"><a href="#">GERMAN</a></li>
@@ -460,17 +460,17 @@
             <div class="col col-3">
                 <div class="description-product-block">
                     <div class="description-product-block__img">
-                        <img src="img/page2/acura_z38-1092_alternator_3%201.png" alt="carbon">
+                        <img class="main-img" src="img/page2/acura_z38-1092_alternator_3%201.png" alt="carbon">
                         <div class="description-product-block__slider">
-                            <div class="slider">
-                                <div class="slider__wrapper_img"><img src="img/page2/slide_1.png" alt="carbon"></div>
-                                <div class="slider__wrapper_img"><img src="img/page2/slide_2.png" alt="wheel"></div>
-                                <div class="slider__wrapper_img"><img src="img/page2/slide_3.png" alt="wheel"></div>
-                                <div class="slider__wrapper_img"><img src="img/page2/slider_4.png" alt="wheel"></div>
-                                <div class="slider__wrapper_img"><img src="img/page2/slide_1.png" alt="carbon"></div>
-                                <div class="slider__wrapper_img"><img src="img/page2/slide_2.png" alt="wheel"></div>
-                                <div class="slider__wrapper_img"><img src="img/page2/slide_3.png" alt="wheel"></div>
-                                <div class="slider__wrapper_img"><img src="img/page2/slider_4.png" alt="wheel"></div>
+                            <div class="slider slider-wrap">
+                                <div class="slider__wrapper_img"><img class="slide slide-1" src="img/page2/slide_1.png" alt="carbon"></div>
+                                <div class="slider__wrapper_img"><img class="slide slide-2" src="img/page2/slide_2.png" alt="wheel"></div>
+                                <div class="slider__wrapper_img"><img class="slide slide-3" src="img/page2/slide_3.png" alt="wheel"></div>
+                                <div class="slider__wrapper_img"><img class="slide slide-4" src="img/page2/slider_4.png" alt="wheel"></div>
+                                <div class="slider__wrapper_img"><img class="slide slide-5" src="img/page2/slide_1.png" alt="carbon"></div>
+                                <div class="slider__wrapper_img"><img class="slide slide-6" src="img/page2/slide_2.png" alt="wheel"></div>
+                                <div class="slider__wrapper_img"><img class="slide slide-7" src="img/page2/slide_3.png" alt="wheel"></div>
+                                <div class="slider__wrapper_img"><img class="slide slide-8" src="img/page2/slider_4.png" alt="wheel"></div>
                             </div>
                         </div>
                     </div>
@@ -522,20 +522,25 @@
                         <div class="description-product-block__select">
                             <form action="#" method="get">
                                 <label><span>Size<span class="icon-star">*</span></span>
-                                    <i class="fas fa-angle-down select-arrow1"></i>
-                                    <select name="size">
-                                        <option value="1">--Please Select--</option>
-                                        <option value="2">2</option>
-                                        <option value="2">3</option>
-                                    </select>
+                                    <div class="select-wrap">
+                                        <i class="fas fa-angle-down select-arrow1"></i>
+                                        <select name="size">
+                                            <option value="1">--Please Select--</option>
+                                            <option value="2">2</option>
+                                            <option value="2">3</option>
+                                        </select>
+                                    </div>
                                 </label>
                                 <label><span>Color<span class="icon-star">*</span></span>
-                                    <i class="fas fa-angle-down select-arrow2"></i>
-                                    <select name="color">
-                                        <option value="red">--Please Select--</option>
-                                        <option value="blue">blue</option>
-                                        <option value="black">black</option>
-                                    </select></label>
+                                    <div class="select-wrap">
+                                        <i class="fas fa-angle-down select-arrow2"></i>
+                                        <select name="color">
+                                            <option value="red">--Please Select--</option>
+                                            <option value="blue">blue</option>
+                                            <option value="black">black</option>
+                                        </select>
+                                    </div>
+                                </label>
                             </form>
                         </div>
                         <div class="description-product-block__button">
@@ -620,38 +625,42 @@
             <div class="col col-1">
                 <div class="product-list">
                     <div class="tittle_product">Featured Products</div>
-                    <div class="card-feature-product">
-                        <div class="card-feature-product__img"><img
-                                src="img/page2/car_precedent_led_headlight_2%201.png" alt="car"></div>
-                        <div class="card-feature-product__content"><p><a href="#">Car Precedent LED Headlight</a></p>
-                            <div class="review_stars_wrap">
-                                <div class="review_stars card-feature-product__review">
-                                    <input id="star-10" type="radio" name="stars">
-                                    <label for="star-10">
-                                        <i class="fas fa-star"></i>
-                                    </label>
-                                    <input id="star-9" type="radio" name="stars">
-                                    <label for="star-9">
-                                        <i class="fas fa-star"></i>
-                                    </label>
-                                    <input id="star-8" type="radio" name="stars">
-                                    <label for="star-8">
-                                        <i class="fas fa-star"></i>
-                                    </label>
-                                    <input id="star-7" type="radio" name="stars">
-                                    <label for="star-7">
-                                        <i class="fas fa-star"></i>
-                                    </label>
-                                    <input id="star-6" type="radio" name="stars">
-                                    <label for="star-6">
-                                        <i class="fas fa-star"></i>
-                                    </label>
+                        <div class="card-feature-product">
+                            <div class="card-feature-product__wrap">
+                                <div class="card-feature-product__img"><img
+                                    src="img/page2/car_precedent_led_headlight_2%201.png" alt="car"></div>
+                            <div class="card-feature-product__content"><p><a href="#">Car Precedent LED Headlight</a>
+                            </p>
+                                <div class="review_stars_wrap">
+                                    <div class="review_stars card-feature-product__review">
+                                        <input id="star-10" type="radio" name="stars">
+                                        <label for="star-10">
+                                            <i class="fas fa-star"></i>
+                                        </label>
+                                        <input id="star-9" type="radio" name="stars">
+                                        <label for="star-9">
+                                            <i class="fas fa-star"></i>
+                                        </label>
+                                        <input id="star-8" type="radio" name="stars">
+                                        <label for="star-8">
+                                            <i class="fas fa-star"></i>
+                                        </label>
+                                        <input id="star-7" type="radio" name="stars">
+                                        <label for="star-7">
+                                            <i class="fas fa-star"></i>
+                                        </label>
+                                        <input id="star-6" type="radio" name="stars">
+                                        <label for="star-6">
+                                            <i class="fas fa-star"></i>
+                                        </label>
+                                    </div>
                                 </div>
+                                <div class="card-feature-product__price">$86.00</div>
                             </div>
-                            <div class="card-feature-product__price">$86.00</div>
                         </div>
                     </div>
-                    <div class="card-feature-product">
+                <div class="card-feature-product">
+                    <div class="card-feature-product__wrap">
                         <div class="card-feature-product__img"><img
                                 src="img/page2/car_easy_installation_forland__1%201.png" alt="car"></div>
                         <div class="card-feature-product__content"><p><a href="#">Car Easy Installation</a></p>
@@ -682,7 +691,9 @@
                             <div class="card-feature-product__price">$120.00</div>
                         </div>
                     </div>
-                    <div class="card-feature-product">
+                </div>
+                <div class="card-feature-product">
+                    <div class="card-feature-product__wrap">
                         <div class="card-feature-product__img"><img
                                 src="img/page2/evolution_brake_kit_with_drilled%201.png" alt="evolution"></div>
                         <div class="card-feature-product__content"><p><a href="#">Evolution Brake Kit with Drilled</a>
@@ -714,7 +725,9 @@
                             <div class="card-feature-product__price">$59.00</div>
                         </div>
                     </div>
-                    <div class="card-feature-product">
+                </div>
+                <div class="card-feature-product">
+                    <div class="card-feature-product__wrap">
                         <div class="card-feature-product__img"><img
                                 src="img/page2/discount_starter_and_alternator_1%201.png" alt="starter"></div>
                         <div class="card-feature-product__content"><p><a href="#">Discount Starter and Alternator</a>
@@ -746,7 +759,9 @@
                             <div class="card-feature-product__price">$89.00</div>
                         </div>
                     </div>
-                    <div class="card-feature-product">
+                </div>
+                <div class="card-feature-product">
+                    <div class="card-feature-product__wrap">
                         <div class="card-feature-product__img"><img src="img/page2/db_electrical_alternator%201.png"
                                                                     alt="car"></div>
                         <div class="card-feature-product__content"><p><a href="#">DB Electrical Alternator</a></p>
@@ -779,9 +794,13 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <div class="sidebar_img"></div>
             </div>
+            </div>
         </div>
+    </div>
+    </div>
 </main>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
