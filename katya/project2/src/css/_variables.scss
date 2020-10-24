@@ -22,11 +22,6 @@ $breadCrambsColor: $darkGrey;
 $bgColorFlagNew: $lightblue;
 $boxShadow: 2px 3px 4px 2px $lightgrey;
 
-
-$defaultBorder: 1px solid $borderColor;
-$borderTransparent: 1px solid transparent;
-$fontsFamily: 'Rubik', Arial, Helvetica, sans-serif;
-$fontsFamilyFontAwesome: 'Font Awesome';
 $fontsFamilyRubik: 'Rubik';
 $pathFontRegular: '../fonts/Rubik-2/Rubik-Regular';
 $pathFontMedium: '../fonts/Rubik-2/Rubik-Medium';
@@ -35,6 +30,13 @@ $pathFontFontAwesome: '/webfonts/fa-brands-400.svg';
 $fontSize: 14px;
 $lineHeight: 23px;
 $fontWeight400: 400;
+$fontsFamily: $fontsFamilyRubik, Arial, Helvetica, sans-serif;
+$fontsFamilyFontAwesome: 'Font Awesome';
+
+$defaultBorder: 1px solid $borderColor;
+$borderTransparent: 1px solid transparent;
+
+
 $formInputBorder: 2px solid $middleGrey;
 $breakPoint1200: 1200px;
 $breakPoint992: 992px;

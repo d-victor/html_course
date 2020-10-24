@@ -1,14 +1,14 @@
 @font-face {
-    font-family: 'Rubik';
-    src: url('../fonts/Rubik-2/Rubik-Regular.eot');
-    src: url('../fonts/Rubik-2/Rubik-Regular.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Rubik-2/Rubik-Regular.woff') format('woff'),
-    url('../fonts/Rubik-2/Rubik-Regular.ttf') format('truetype');
+    font-family: $fontsFamilyRubik;
+    src: url('#{$pathFontRegular}.eot');
+    src: url('#{$pathFontRegular}.eot?#iefix') format('embedded-opentype'),
+    url('#{$pathFontRegular}.woff') format('woff'),
+    url('#{$pathFontRegular}.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Rubik';
+    font-family: $fontsFamilyRubik;
     src: url('../fonts/Rubik-2/Rubik-Medium.eot');
     src: url('../fonts/Rubik-2/Rubik-Medium.eot?#iefix') format('embedded-opentype'),
     url('../fonts/Rubik-2/Rubik-Medium.woff') format('woff'),
@@ -17,7 +17,7 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'Rubik';
+    font-family: $fontsFamilyRubik;
     src: url('../fonts/Rubik-2/Rubik-Bold.eot');
     src: url('../fonts/Rubik-2/Rubik-Bold.eot?#iefix') format('embedded-opentype'),
     url('../fonts/Rubik-2/Rubik-Bold.woff') format('woff'),
