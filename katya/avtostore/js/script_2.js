@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $('.slider').slick({
         infinite: true,
         speed: 300,
@@ -9,18 +9,30 @@ $(document).ready(function(){
     });
 });
 
+
 const sliderList = document.querySelectorAll('.slide');
 const mainImg = document.querySelector('.main-img');
-console.log(sliderList);
-    sliderList.forEach(function (elem) {
-        let selectedElem = false;
-        elem.addEventListener('click', function (e){
-            if (selectedElem === false) {
-                e.currentTarget.classList.add('active');
-                selectedElem = true;
-            } else {
 
-            }
+sliderList.forEach(function (elem) {
+    elem.addEventListener('click', checkImg);
+});
 
-        });
-    });
+function checkImg(e) {
+    const checkElem = e.currentTarget;
+    mainImg.src = checkElem.src;
+    mainImg.classList.add('change');
+}
+
+
+
+const tittleList = document.querySelectorAll('.tittle-text');
+const content = document.querySelectorAll('.content');
+console.log(tittleList,content);
+
+tittleList.forEach(function (elem) {
+    elem.addEventListener('click', toggleContent);
+});
+
+function toggleContent(e) {
+    console.log(e.target);
+}
