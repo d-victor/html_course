@@ -18,13 +18,15 @@
   padding: 6px 0 0 5px;
 }
 
-.buttonShop,
 .titleCompareProd {
   @include background-color($red, $white);
   padding: 14px 40px 9px 18px;
   border-radius: 6px 6px 0 0;
   font-weight: 500;
   @include font-Options(18px,21px);
+}
+.buttonShop {
+  @extend .titleCompareProd;
 }
 
 .color {
@@ -33,11 +35,13 @@
   @include font-Options($fontSize,17px);
 }
 
-.checkColor label {
-  @include options(30px,30px);
-  border: $defaultBorder;
-  margin: 0 6px 8px 0;
-  cursor: pointer;
+.checkColor {
+  label {
+    @include options(30px,30px);
+    border: $defaultBorder;
+    margin: 0 6px 8px 0;
+    cursor: pointer;
+  }
 }
 
 .checkColor {
@@ -93,10 +97,13 @@
   border-radius: 8px 8px 0 0;
 }
 
-.price p {
-  font-weight: 500;
-  @include options($fontSize,17px);
+.price {
+  p {
+    font-weight: 500;
+    @include options($fontSize,17px);
+  }
 }
+
 .range-wrap {
   @extend %flexColumn;
   flex-wrap: nowrap;
@@ -110,29 +117,35 @@
   cursor: pointer;
 }
 
-.indicator div:nth-child(1) {
-  @include options(17px,17px);
-  border-radius: 100%;
-  border: 3px solid $black;
-  background-color: $white;
-  @include position(absolute,55%,0);
-  z-index: 2;
+.indicator{
+  div:nth-child(1) {
+    @include options(17px,17px);
+    border-radius: 100%;
+    border: 3px solid $black;
+    background-color: $white;
+    @include position(absolute,55%,0);
+    z-index: 2;
+  }
 }
 
-.indicator div:nth-child(2) {
-  position: absolute;
-  top: 77%;
-  border-bottom: 5px solid $red;
-  width: 100%;
+.indicator {
+  div:nth-child(2) {
+    position: absolute;
+    top: 77%;
+    border-bottom: 5px solid $red;
+    width: 100%;
+  }
 }
 
-.indicator div:nth-child(3) {
-  @include options(17px,17px);
-  border-radius: 100%;
-  border: 3px solid $black;
-  @include position-right(absolute,55%,0);
-  background-color: $white;
-  z-index: 2;
+.indicator {
+  div:nth-child(3) {
+    @include options(17px, 17px);
+    border-radius: 100%;
+    border: 3px solid $black;
+    @include position-right(absolute, 55%, 0);
+    background-color: $white;
+    z-index: 2;
+  }
 }
 
 .rangePrice {
@@ -142,280 +155,305 @@
   flex-wrap: nowrap;
 }
 
-.rangePrice input {
-  @include options(50px,35px);
-  border: $defaultBorder;
-  border-radius: 4px 4px 4px 4px;
-  padding: 5px;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance:textfield;
-}
-
-.titlePartAside {
-  font-weight: 500;
-  line-height: 17px;
-}
-
-.rangePrice p:nth-child(1),
-.rangePrice p:nth-child(3) {
-  padding: 10px 5px 0;
-}
-
-.price-wrap {
-  padding:17px 20px 30px;
-  border: $defaultBorder;
-  border-top: none;
-}
-
-.listBrand {
-  padding: 15px 0 25px 15px;
-  border: $defaultBorder;
-  border-bottom: none;
-}
-
-.listBrand {
-  border-top: none;
-  text-align: left;
-}
-
-.listBrand p {
-  padding: 2px 0 15px 6px;
-}
-
-.listBrand label {
-  display: block;
-  font-weight: $fontWeight400;
-  @include font-Options(13px,15px);
-  padding: 6px 0;
-  cursor: pointer;
-  margin: 2px 0 0 5px;
-}
-
-.listBrand label:hover {
-  color: $red;
-}
-
-.selectModel,
-.selectYear {
-  @extend %displayFlex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  padding: 0 15px 28px;
-}
-
-.selectYear {
-  padding: 0 15px 27px;
-}
-
-.listBrand input,
-.selectModel input,
-.selectYear input {
-  visibility: hidden;
-  position: absolute;
-  @include options(0,0);
-  overflow: hidden;
-}
-
-.selectModel-tittle,
-.selectYear-tittle {
-  border: $defaultBorder;
-  border-bottom: none;
-}
-
-.selectYear-tittle {
-  border-radius: 0 0 6px 6px;
-  border-bottom: $defaultBorder;
-}
-
-.selectModel-tittle p,
-.selectYear-tittle p {
-  padding: 16px 0 14px 21px;
-}
-
-.selectModel label,
-.selectYear label {
-  display: inline-block;
-  padding: 10px 12px;
-  margin-left: 1px;
-  border: $defaultBorder;
-  border-radius: 5px;
-  font-weight: 400;
-  @include options(12px,14px);
-  cursor: pointer;
-  transition: $transition;
-}
-
-.selectModel li,
-.selectYear li {
-  list-style-type: none;
-  margin: 2px 1px;
-}
-
-.selectYear label:hover,
-.selectModel label:hover {
-  background-color: $red;
-}
-
-.selectYear label:hover,
-.selectModel label:hover {
-  color: $white;
-}
-
-.compareProd p:nth-child(2),
-.compareProd p:nth-child(3) {
-  border: $defaultBorder;
-  padding: 24px 15px 20px 20px;
-  font-weight: $fontWeight400;
-  font-size: 13px;
-  line-height: 15px;
-  position: relative;
-}
-.compareProd p:nth-child(3) {
-  border-top: none;
-  border-bottom: none;
-}
-
-.compareProd {
-  margin: 40px 0;
-}
-
-.fa-times1 {
-  @include position-right(absolute,50%,15px);
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-.compareBtn {
-  @extend %displayFlex;
-  justify-content: flex-start;
-  padding: 21px 10px 20px 20px;
-  line-height: 17px;
-  border: $defaultBorder;
-  border-radius: 0 0 6px 6px;
-}
-
-.compareBtn button {
-  color: $white;
-  background-color: $red;
-  @include options(103px,26px);
-  padding-top: 3px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
-
-.compareProd .clearBtn {
-  border-bottom: none;
-  margin-left: 79px;
-  cursor: pointer;
-  @include background-color(transparent,black);
-}
-
-.sidebar_img {
-  background: url("../image/item-sidebar.jpg") center center /cover no-repeat;
-  display: block;
-  @include options(420px,100%);
-}
-@media screen and (max-width: $breakPoint1200) {
-
-  .compareProd .compareBtn p {
-    margin-left: 60px;
-  }
-
-}
-
-@media screen and (max-width: 992px) {
-  .compareProd .compareBtn p {
-    margin-left: 30px;
+.rangePrice {
+  input {
+    @include options(50px, 35px);
+    border: $defaultBorder;
+    border-radius: 4px 4px 4px 4px;
+    padding: 5px;
   }
 }
 
-  @media screen and (max-width: 992px) {
-
-  .btn-aside-mob {
-    @include options(100%,100%);
-    visibility: visible;
-    overflow: hidden;
-    opacity: 0;
-    z-index: 5;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
-  .btn_aside {
-    display: block;
-    @include position(absolute,240px,0);
-    @include options(20px,70px);
-    cursor: pointer;
-    z-index: 2;
-    background-color: rgba(248, 8, 8, 0.945);
-    border: $borderTransparent;
-    border-radius: 0 4px 4px 0;
+  input[type=number] {
+    -moz-appearance:textfield;
   }
 
-  .btn_aside > span,
-  .btn_aside > span::before,
-  .btn_aside > span::after {
-    display: block;
-    position: absolute;
-    @include options(20px,2px);
-    background-color: transparent;
+  .titlePartAside {
+    font-weight: 500;
+    line-height: 17px;
   }
 
-  .btn_aside > span::before {
-    content: "";
-    top: -8px;
+  .rangePrice p:nth-child(1),
+  .rangePrice p:nth-child(3) {
+    padding: 10px 5px 0;
   }
 
-  .btn_aside > span::after {
-    content: "";
-    top: 8px;
+  .price-wrap {
+    padding:17px 20px 30px;
+    border: $defaultBorder;
+    border-top: none;
   }
 
-  .aside {
-    display: block;
-    @include position(absolute,45px,-100%);
-    visibility: hidden;
-    @include options(270px,100vh);
-    overflow: auto;
-    @include baking(0,0);
+  .listBrand {
+    padding: 15px 0 25px 15px;
+    border: $defaultBorder;
+    border-bottom: none;
+  }
+
+  .listBrand {
+    border-top: none;
     text-align: left;
-    background-color: $white;
-    box-shadow: 1px 0 6px rgba(0, 0, 0, .2);
+  }
+
+  .listBrand {
+    p {
+      padding: 2px 0 15px 6px;
+    }
+  }
+
+  .listBrand {
+    label {
+      display: block;
+      font-weight: $fontWeight400;
+      @include font-Options(13px, 15px);
+      padding: 6px 0;
+      cursor: pointer;
+      margin: 2px 0 0 5px;
+    }
+  }
+
+  .listBrand {
+    label:hover {
+      color: $red;
+    }
+  }
+
+  .selectYear {
+    @extend %displayFlex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0 15px 28px;
+  }
+
+  .selectModel {
+    @extend .selectYear;
+  }
+
+  .selectYear {
+    padding: 0 15px 27px;
+  }
+
+  .listBrand input,
+  .selectModel input,
+  .selectYear input {
+    visibility: hidden;
+    position: absolute;
+    @include options(0,0);
+    overflow: hidden;
+  }
+
+  .selectYear-tittle {
+    border: $defaultBorder;
+    border-bottom: none;
+  }
+
+  .selectModel-tittle {
+   @extend .selectYear-tittle;
+  }
+
+  .selectYear-tittle {
+    border-radius: 0 0 6px 6px;
+    border-bottom: $defaultBorder;
+  }
+
+  .selectModel-tittle p,
+  .selectYear-tittle p {
+    padding: 16px 0 14px 21px;
+  }
+
+  .selectModel label,
+  .selectYear label {
+    display: inline-block;
+    padding: 10px 12px;
+    margin-left: 1px;
+    border: $defaultBorder;
+    border-radius: 5px;
+    font-weight: 400;
+    @include options(12px,14px);
+    cursor: pointer;
     transition: $transition;
   }
 
-
-  #aside_toggle:checked ~ .btn_aside > span {
-    transform: rotate(45deg);
+  .selectModel li,
+  .selectYear li {
+    list-style-type: none;
+    margin: 2px 1px;
   }
 
-  #aside_toggle:checked ~ .btn_aside > span::before {
-    top: 0;
-    transform: rotate(0);
+  .selectYear label:hover,
+  .selectModel label:hover {
+    background-color: $red;
   }
 
-  #aside_toggle:checked ~ .btn_aside > span::after {
-    top: 0;
-    transform: rotate(90deg);
+  .selectYear label:hover,
+  .selectModel label:hover {
+    color: $white;
   }
 
-  #aside_toggle:checked ~ .aside {
-    visibility: visible;
-    left: 0;
-    z-index: 2;
-    width: 270px;
+  .compareProd p:nth-child(2),
+  .compareProd p:nth-child(3) {
+    border: $defaultBorder;
+    padding: 24px 15px 20px 20px;
+    font-weight: $fontWeight400;
+    font-size: 13px;
+    line-height: 15px;
+    position: relative;
+  }
+  .compareProd p:nth-child(3) {
+    border-top: none;
+    border-bottom: none;
   }
 
-  #aside_toggle:checked:checked ~ .btn_aside {
-    padding-left: 10px;
-    position: fixed;
-    z-index: 3;
+  .compareProd {
+    margin: 40px 0;
   }
-}
+
+  .fa-times1 {
+    @include position-right(absolute,50%,15px);
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .compareBtn {
+    @extend %displayFlex;
+    justify-content: flex-start;
+    padding: 21px 10px 20px 20px;
+    line-height: 17px;
+    border: $defaultBorder;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .compareBtn {
+    button {
+      color: $white;
+      background-color: $red;
+      @include options(103px, 26px);
+      padding-top: 3px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .compareProd {
+    .clearBtn {
+      border-bottom: none;
+      margin-left: 79px;
+      cursor: pointer;
+      @include background-color(transparent, black);
+    }
+  }
+
+  .sidebar_img {
+    background: url("../image/item-sidebar.jpg") center center /cover no-repeat;
+    display: block;
+    @include options(420px,100%);
+  }
+  @media screen and (max-width: $breakPoint1200) {
+
+    .compareProd .compareBtn p {
+      margin-left: 60px;
+    }
+
+  }
+
+  @media screen and (max-width: 992px) {
+    .compareProd .compareBtn p {
+      margin-left: 30px;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+
+    .btn-aside-mob {
+      @include options(100%,100%);
+      visibility: visible;
+      overflow: hidden;
+      opacity: 0;
+      z-index: 5;
+    }
+
+    .btn_aside {
+      display: block;
+      @include position(absolute,240px,0);
+      @include options(20px,70px);
+      cursor: pointer;
+      z-index: 2;
+      background-color: rgba(248, 8, 8, 0.945);
+      border: $borderTransparent;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .btn_aside > span,
+    .btn_aside > span::before,
+    .btn_aside > span::after {
+      display: block;
+      position: absolute;
+      @include options(20px,2px);
+      background-color: transparent;
+    }
+
+    .btn_aside {
+      > span::before {
+        content: "";
+        top: -8px;
+      }
+    }
+    .btn_aside {
+      > span::after {
+        content: "";
+        top: 8px;
+      }
+    }
+
+    .aside {
+      display: block;
+      @include position(absolute,45px,-100%);
+      visibility: hidden;
+      @include options(270px,100vh);
+      overflow: auto;
+      @include baking(0,0);
+      text-align: left;
+      background-color: $white;
+      box-shadow: 1px 0 6px rgba(0, 0, 0, .2);
+      transition: $transition;
+    }
+
+
+    #aside_toggle:checked ~ .btn_aside > span {
+      transform: rotate(45deg);
+    }
+
+    #aside_toggle:checked {
+      ~ .btn_aside {
+        > span::before {
+          top: 0;
+          transform: rotate(0);
+        }
+      }
+    }
+
+    #aside_toggle:checked ~ .btn_aside > span::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+
+    #aside_toggle:checked ~ .aside {
+      visibility: visible;
+      left: 0;
+      z-index: 2;
+      width: 270px;
+    }
+
+    #aside_toggle:checked:checked ~ .btn_aside {
+      padding-left: 10px;
+      position: fixed;
+      z-index: 3;
+    }
+  }

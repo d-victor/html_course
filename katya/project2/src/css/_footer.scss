@@ -6,156 +6,174 @@
   @include font-Options(14px,23px);
   padding: 73px 10px 15px 10px;
 }
-.footer-list > li {
-  list-style-type: none;
-  padding: 10px 0;
-  position: relative;
-}
-.footer-contact .footer-list li:nth-child(1) {
-  padding-left: 32px;
-}
-.marker {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-}
 
-.footer-location {
-  padding-right: 86px;
+.footer-list {
+  > li {
+    list-style-type: none;
+    padding: 10px 0;
+    position: relative;
+  }
 }
-
-.footer-custom-service {
-  padding-right: 53px;
-}
-
-.footer-inform {
-  padding-right: 13px;
-}
-
-.footer-contact i {
-  padding-right: 13px;
-  color: $red;
-  font-size: 22px;
-}
-
-.footer-contact .wrap {
-  padding-left: 24px;
-  padding-bottom: 0;
-}
-
-.footer-content h5 {
-  font-weight: 500;
-  @include font-Options(18px,23px);
-  padding-bottom: 20px;
-}
-
-footer {
-  margin-top: 15px;
-  background-color: rgba(10, 9, 9, 0.932);
-  color: #DDDDDD;
-}
-
-.payment-footer {
-  @extend %displayFlex;
-  margin-top: 40px;
-  height: 84px;
-  background-color: rgba(10, 9, 9, 0.979);
-  padding: 25px 10px 0 28px;
-
-  @media screen and (max-width: 480px) {
-    flex-direction: column;
+.footer-contact {
+  .footer-list {
+    li:nth-child(1) {
+    padding-left: 32px;
+    }
   }
 }
 
-.payments-icons img {
-  border: 1px solid #DDDDDD;
-  margin-right: 10px;
-  @media screen and (max-width: 992px) {
-    margin-right: 5px;
-  }
-  @media screen and (max-width: 480px) {
-    margin-right: 2px;
+  .marker {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
   }
 
-}
-
-.payments-icons {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  @media screen and (max-width: 480px) {
-    width: 100%;
+  .footer-location {
+    padding-right: 86px;
   }
-}
 
-.copyright {
-  text-align: center;
-  @include font-Options(13px,$lineHeight);
-  color: #BBBBBB;
-  @media screen and (max-width: 480px) {
-    font-size: 10px;
-    line-height: 14px;
+  .footer-custom-service {
+    padding-right: 53px;
   }
-}
-@media screen and (max-width: 767px) {
 
-.payment-footer {
-  margin-top: 0;
-  padding: 10px 5px 0 5px;
-}
+  .footer-inform {
+    padding-right: 13px;
+  }
 
-.footer-content h5 {
-  @include font-Options($fontSize,20px);
-  padding-bottom: 10px;
-}
+  .footer-contact {
+    i {
+      padding-right: 13px;
+      color: $red;
+      font-size: 22px;
+    }
+  }
+    .footer-contact {
+      .wrap {
+        padding-left: 24px;
+        padding-bottom: 0;
+      }
+    }
 
-.footer-content {
-  @include font-Options(12px,18px);
-  flex-direction: column;
-  padding-top: 30px;
-}
+    .footer-content {
+        h5 {
+        font-weight: 500;
+        @include font-Options(18px, 23px);
+        padding-bottom: 20px;
+      }
+    }
 
-.footer-contact span,
-.footer-custom-service span,
-.footer-inform span,
-.footer-location span {
-  padding-bottom: 10px;
-}
+    footer {
+      margin-top: 15px;
+      background-color: rgba(10, 9, 9, 0.932);
+      color: #DDDDDD;
+    }
 
-.footer-location,
-.footer-custom-service {
-  padding-right: 20px;
-}
+    .payment-footer {
+      @extend %displayFlex;
+      margin-top: 40px;
+      height: 84px;
+      background-color: rgba(10, 9, 9, 0.979);
+      padding: 25px 10px 0 28px;
 
-.copyright {
-  @include font-Options(10px,18px);
-}
+      @media screen and (max-width: 480px) {
+        flex-direction: column;
+      }
+    }
 
-.footer-menu h5 ~ .footer-list {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  left: 0;
-  right: 0;
-  @include options(100%,100vh);
-  transition: $transition;
-}
+    .payments-icons {
+    img {
+      border: 1px solid #DDDDDD;
+      margin-right: 10px;
+      @media screen and (max-width: 992px) {
+        margin-right: 5px;
+      }
+      @media screen and (max-width: 480px) {
+        margin-right: 2px;
+      }
+    }
+    }
 
-.footer-menu h5 ~ .footer-list {
-  overflow: hidden;
-  @include options(100%,100vh);
-  transition: $transition;
-}
+    .payments-icons {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-grow: 1;
+      @media screen and (max-width: 480px) {
+        width: 100%;
+      }
+    }
 
-.footer-menu h5:hover ~ .footer-list {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-  @include options(100%,100vh);
-  display: block;
-  position: relative;
-  z-index: 1;
-}
-}
+    .copyright {
+      text-align: center;
+      @include font-Options(13px,$lineHeight);
+      color: #BBBBBB;
+      @media screen and (max-width: 480px) {
+        font-size: 10px;
+        line-height: 14px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+
+      .payment-footer {
+        margin-top: 0;
+        padding: 10px 5px 0 5px;
+      }
+
+      .footer-content {
+        h5 {
+          @include font-Options($fontSize, 20px);
+          padding-bottom: 10px;
+        }
+      }
+
+      .footer-content {
+        @include font-Options(12px,18px);
+        flex-direction: column;
+        padding-top: 30px;
+      }
+
+      .footer-contact span,
+      .footer-custom-service span,
+      .footer-inform span,
+      .footer-location span {
+        padding-bottom: 10px;
+      }
+
+      .footer-custom-service,
+      .footer-location {
+        padding-right: 20px;
+      }
+
+      .copyright {
+        @include font-Options(10px,18px);
+      }
+
+      .footer-menu h5 ~ .footer-list {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        @include options(100%,100vh);
+        transition: $transition;
+      }
+
+      .footer-menu h5 ~ .footer-list {
+        overflow: hidden;
+        @include options(100%,100vh);
+        transition: $transition;
+      }
+
+      .footer-menu {
+        h5:hover ~ .footer-list {
+          visibility: visible;
+          opacity: 1;
+          pointer-events: auto;
+          @include options(100%, 100vh);
+          display: block;
+          position: relative;
+          z-index: 1;
+        }
+    }
+  }
