@@ -1,6 +1,6 @@
 const defaultOptions = {
     content: "",
-    title: "modal",
+    tittle: "modal",
 };
 
 export default defaultOptions;

@@ -3563,10 +3563,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-/*
-import alerts from "./lid/alert";
-alerts('asad');
-*/
 
 var modal = new _modal_modal__WEBPACK_IMPORTED_MODULE_12__["default"]({
   content: "Hello world",
@@ -3603,7 +3599,7 @@ function actionModal() {
 __webpack_require__.r(__webpack_exports__);
 var defaultOptions = {
   content: "",
-  title: "modal"
+  tittle: "modal"
 };
 /* harmony default export */ __webpack_exports__["default"] = (defaultOptions);
 
@@ -3623,7 +3619,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function render() {
-  var template = "\n    <section class=\"modal-wp\">\n        <div class=\"modal-bg\"></div>\n        <div class=\"modal\">\n            <header class=\"modal-header\">\n                <h3>".concat(this.options.title, "</h3>\n                <a href=\"#close\">Close</a>\n            </header>\n            <div class=\"modal-content\">\n                ").concat(this.options.content, "\n            </div>\n            <footer class=\"modal-footer\">\n                <a href=\"#close\">Ok</a>\n            </footer>\n        </div>\n    </section>\n    ");
+  var template = "\n    <section class=\"modal-wp\">\n        <div class=\"modal-bg\"></div>\n        <div class=\"modal\">\n            <header class=\"modal-header\">\n                <h3>".concat(this.options.tittle, "</h3>\n                <a href=\"#close\">Close</a>\n            </header>\n            <div class=\"modal-content\">\n                ").concat(this.options.content, "\n            </div>\n            <footer class=\"modal-footer\">\n                <a href=\"#close\">Ok</a>\n            </footer>\n        </div>\n    </section>\n    ");
   var el = document.createElement('div');
   el.innerHTML = template;
   return el.firstElementChild;
@@ -3637,10 +3633,83 @@ function render() {
 /*!****************************************!*\
   !*** ./src/js/modal/lib/setContent.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.symbol */ "./node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_symbol_description__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description */ "./node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var core_js_modules_es_symbol_description__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_symbol_iterator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator */ "./node_modules/core-js/modules/es.symbol.iterator.js");
+/* harmony import */ var core_js_modules_es_symbol_iterator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.for-each */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_array_from__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array.from */ "./node_modules/core-js/modules/es.array.from.js");
+/* harmony import */ var core_js_modules_es_array_from__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.array.iterator */ "./node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.array.slice */ "./node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.function.name */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.object.to-string */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var core_js_modules_es_regexp_to_string__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.regexp.to-string */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+/* harmony import */ var core_js_modules_es_regexp_to_string__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_to_string__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.string.iterator */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_12__);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function setContent() {
+  var inputList = _toConsumableArray(document.querySelectorAll('.modal-change'));
+
+  inputList.forEach(function (elem) {
+    elem.addEventListener('change', changeContent.bind(this));
+  }.bind(this));
+
+  function changeContent(e) {
+    var newTitle = this.modal.querySelector('h3');
+    var newContent = this.modal.querySelector('.modal-content');
+
+    if (e.currentTarget.hasAttribute(['data-title'])) {
+      newTitle.textContent = e.currentTarget.value;
+    } else if (e.currentTarget.hasAttribute(['data-content'])) {
+      newContent.textContent = e.currentTarget.value;
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (setContent);
 
 /***/ }),
 
@@ -3708,6 +3777,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_defaultOptions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./lib/defaultOptions */ "./src/js/modal/lib/defaultOptions.js");
 /* harmony import */ var _lib_render__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./lib/render */ "./src/js/modal/lib/render.js");
 /* harmony import */ var _lib_setEvents__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./lib/setEvents */ "./src/js/modal/lib/setEvents.js");
+/* harmony import */ var _lib_setContent__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./lib/setContent */ "./src/js/modal/lib/setContent.js");
 
 
 
@@ -3732,6 +3802,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
+
 var Modal = /*#__PURE__*/function () {
   function Modal(options) {
     _classCallCheck(this, Modal);
@@ -3739,6 +3810,7 @@ var Modal = /*#__PURE__*/function () {
     this.options = _objectSpread(_objectSpread({}, _lib_defaultOptions__WEBPACK_IMPORTED_MODULE_7__["default"]), options);
     this.modal = _lib_render__WEBPACK_IMPORTED_MODULE_8__["default"].apply(this);
     _lib_setEvents__WEBPACK_IMPORTED_MODULE_9__["default"].apply(this);
+    _lib_setContent__WEBPACK_IMPORTED_MODULE_10__["default"].apply(this);
     document.body.append(this.modal);
   }
 

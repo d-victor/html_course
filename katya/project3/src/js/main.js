@@ -1,8 +1,3 @@
-/*
-import alerts from "./lid/alert";
-alerts('asad');
-*/
-
 
 import Modal from "./modal/modal";
 

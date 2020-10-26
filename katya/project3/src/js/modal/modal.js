@@ -1,6 +1,7 @@
 import defaultOptions from "./lib/defaultOptions";
 import render from "./lib/render";
 import setEvents from "./lib/setEvents";
+import setContent from "./lib/setContent";
 
 class Modal {
     constructor(options) {
@@ -11,6 +12,7 @@ class Modal {
 
         this.modal = render.apply(this);
         setEvents.apply(this);
+        setContent.apply(this);
 
         document.body.append(this.modal);
     }

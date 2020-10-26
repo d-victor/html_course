@@ -4,7 +4,7 @@ function render() {
         <div class="modal-bg"></div>
         <div class="modal">
             <header class="modal-header">
-                <h3>${this.options.title}</h3>
+                <h3>${this.options.tittle}</h3>
                 <a href="#close">Close</a>
             </header>
             <div class="modal-content">
