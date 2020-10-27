@@ -1430,7 +1430,7 @@ input.sort_item {
 }
 
 .item-product:hover .product-sale {
-    transform: translateY(40px);
+   transform: translateY(40px);
     z-index: 1;
 }
 
@@ -2478,83 +2478,149 @@ footer {
 }
 .description-wrapper {
     margin-top: 70px;
-    position: relative;
-}
-.description-wrapper__content {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
-.description-tittle {
+.tab-header {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
     font-weight: bold;
     font-size: 18px;
     line-height: 21px;
     text-transform: uppercase;
-    width: 25%;
+
 }
-.description-content {
-    padding: 20px 20px 40px 20px;
-    width: 75%;
+.tab-header__item {
     border: 1px solid #E5E5E5;
-}
-/*.description-tittle h5 {
-    border: 1px solid #E5E5E5;
-    border-right: none;
-    border-top: none;
-}*/
-/*.description-tittle h5:nth-child(1) {
-    border-top: 1px solid #E5E5E5;
-}*/
-.description-tittle h5 a {
-    display: block;
-    color: black;
-    text-decoration: none;
     padding: 20px 50px 20px 30px;
-}
-.title1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border: 1px solid #E5E5E5;
     border-right: none;
-    width: 25%;
+    border-bottom: none;
 }
-.title2 {
-    position: absolute;
-    top: 8%;
-    left: 0;
-    border: 1px solid #E5E5E5;
-    border-top: none;
-    border-right: none;
-    width: 25%;
+.tab-header__item:nth-child(4) {
+    border-bottom:  1px solid #E5E5E5;
 }
-.title3 {
-    position: absolute;
-    top: 18%;
-    left: 0;
-    border: 1px solid #E5E5E5;
-    border-right: none;
-    border-top: none;
-    width: 25%;
-}
-.title4 {
-    position: absolute;
-    top: 26%;
-    left: 0;
-    border: 1px solid #E5E5E5;
-    border-right: none;
-    border-top: none;
-    width: 25%;
+.tab-header__item a {
+    text-decoration: none;
+    color: black;
 }
 
-
-.content2,
-.content3,
-.content4 {
+.tab-content {
+    list-style-type: none;
+    width: 75%;
+    padding: 20px 20px 40px 20px;
+    border: 1px solid #E5E5E5;
+}
+.tab-content__item {
     display: none;
 }
-
-.content2 .hidden,
-.content3 .hidden,
-.content4 .hidden {
+.tab-content__item.active {
     display: block;
+}
+.tab-header__item.active {
+    border-left: 4px solid red;
+}
+.wrapper-product-slider {
+    padding-top: 100px;
+    width: 100%;
+}
+.wrapper-product-slider__sub-title {
+   text-align: center;
+    color: red;
+    font-size: 17px;
+    padding-bottom: 10px;
+}
+.wrapper-product-slider__title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 23px;
+    padding-bottom: 15px;
+    position: relative;
+}
+.wrapper-product-slider__title:after {
+   content: "";
+    position: absolute;
+    top: 15%;
+    right: 32%;
+    width: 2px;
+    height: 2px;
+    background-color: red;
+    border-radius: 100%;
+    border-color: red;
+    border-style: solid;
+}
+.wrapper-product-slider__title:before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    left: 32%;
+    width: 2px;
+    height: 2px;
+    background-color: red;
+    border-radius: 100%;
+    border-color: red;
+    border-style: solid;
+}
+
+.wrapper-product-slider .hidden-content {
+    visibility: visible;
+    position: static;
+    transition: none;
+}
+.wrapper-product-slider .card {
+    box-shadow: 1px 0 6px rgba(0, 0, 0, .2);
+}
+.wrapper-product-slider .product-sale {
+    transform: none;
+    transition: none;
+}
+.wrapper-product-slider .card:before {
+    display: none;
+    bottom: 0;
+    transition: none;
+}
+
+.wrapper-product-slider .item-product:hover .product-sale {
+    transform: none;
+}
+.wrapper-product-slider .slick-prev,
+.wrapper-product-slider .slick-next,
+.btn-zoom {
+   border-radius: 100%;
+   background-color: red;
+    width: 45px;
+    height: 45px;
+    outline: none;
+    border: none;
+}
+.btn-zoom .fa-search {
+    padding: 0;
+}
+.btn-zoom {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.wrapper-product-slider .card.active {
+    transform: scale(1.2);
+}
+
+.wrapper-product-slider .slick-prev {
+    left: 20px;
+}
+.wrapper-product-slider .arrow-left,
+.wrapper-product-slider .arrow-right {
+  font-size: 20px;
+    color: white;
+}
+.wrapper-product-slider .product-sale .price {
+    font-size: 18px;
+}
+
+.footer-page2 {
+    margin-top: 65px;
 }
