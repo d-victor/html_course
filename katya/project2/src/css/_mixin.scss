@@ -24,7 +24,13 @@
   background-color: $backgroundColor;
   color: $color;
 }
-@mixin baking ($margin,$padding) {
+@mixin baking($margin,$padding) {
   margin: $margin;
   padding: $padding;
+}
+@mixin font($fontsFamily,$fontWeight,$fontStyle) {
+    font-family: $fontsFamily;
+    font-weight: $fontWeight;
+    font-style: $fontStyle;
+    @content;
 }
