@@ -3609,6 +3609,8 @@ openBtnList.map(function (btn) {
 
 function actionModal() {
   if (this.dataset.rel === 'open') {
+    modal.setTitle('dsdfsdfsdf');
+    modal.setContent('<p>lasghdflskghdlsghlsd fhg;idus</p>');
     modal.open();
   } else {
     modal.close();
@@ -3645,13 +3647,13 @@ var defaultOptions = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat */ "./node_modules/core-js/modules/es.array.concat.js");
 /* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _stringToHtml__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stringToHtml */ "./src/js/modal/lib/stringToHtml.js");
+
 
 
 function render() {
   var template = "\n    <section class=\"modal-wp\">\n        <div class=\"modal-bg\"></div>\n        <div class=\"modal\">\n            <header class=\"modal-header\">\n                <h3>".concat(this.options.title, "</h3>\n                <a href=\"#close\">Close</a>\n            </header>\n            <div class=\"modal-content\">\n                ").concat(this.options.content, "\n            </div>\n            <footer class=\"modal-footer\">\n                <a href=\"#close\">Ok</a>\n            </footer>\n        </div>\n    </section>\n    ");
-  var el = document.createElement('div');
-  el.innerHTML = template;
-  return el.firstElementChild;
+  return Object(_stringToHtml__WEBPACK_IMPORTED_MODULE_1__["default"])(template);
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (render);
@@ -3696,6 +3698,25 @@ function modalClose(e) {
 
 /***/ }),
 
+/***/ "./src/js/modal/lib/stringToHtml.js":
+/*!******************************************!*\
+  !*** ./src/js/modal/lib/stringToHtml.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var stringToHtml = function stringToHtml(stringHtml) {
+  var el = document.createElement('div');
+  el.innerHTML = stringHtml;
+  return el.firstElementChild;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (stringToHtml);
+
+/***/ }),
+
 /***/ "./src/js/modal/modal.js":
 /*!*******************************!*\
   !*** ./src/js/modal/modal.js ***!
@@ -3722,6 +3743,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_defaultOptions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./lib/defaultOptions */ "./src/js/modal/lib/defaultOptions.js");
 /* harmony import */ var _lib_render__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./lib/render */ "./src/js/modal/lib/render.js");
 /* harmony import */ var _lib_setEvents__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./lib/setEvents */ "./src/js/modal/lib/setEvents.js");
+/* harmony import */ var _lib_stringToHtml__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./lib/stringToHtml */ "./src/js/modal/lib/stringToHtml.js");
 
 
 
@@ -3746,12 +3768,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
+
 var Modal = /*#__PURE__*/function () {
   function Modal(options) {
     _classCallCheck(this, Modal);
 
     this.options = _objectSpread(_objectSpread({}, _lib_defaultOptions__WEBPACK_IMPORTED_MODULE_7__["default"]), options);
     this.modal = _lib_render__WEBPACK_IMPORTED_MODULE_8__["default"].apply(this);
+    this.modalContent = this.modal.querySelector('.modal-content');
+    this.modalTitle = this.modal.querySelector('.modal-header h3');
     _lib_setEvents__WEBPACK_IMPORTED_MODULE_9__["default"].apply(this);
     document.body.append(this.modal);
   }
@@ -3765,6 +3790,21 @@ var Modal = /*#__PURE__*/function () {
     key: "close",
     value: function close() {
       this.modal.classList.remove('open');
+    }
+  }, {
+    key: "setContent",
+    value: function setContent(content) {
+      if (!content) return;
+      this.options.content = Object(_lib_stringToHtml__WEBPACK_IMPORTED_MODULE_10__["default"])(content);
+      this.modalContent.innerHTML = '';
+      this.modalContent.append(this.options.content);
+    }
+  }, {
+    key: "setTitle",
+    value: function setTitle(title) {
+      if (!title) return;
+      this.options.title = title;
+      this.modalTitle.textContent = this.options.title;
     }
   }]);
 

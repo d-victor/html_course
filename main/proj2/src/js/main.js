@@ -25,6 +25,8 @@ openBtnList.map(btn => {
 
 function actionModal() {
     if (this.dataset.rel === 'open') {
+        modal.setTitle('dsdfsdfsdf');
+        modal.setContent('<p>lasghdflskghdlsghlsd fhg;idus</p>');
         modal.open();
     } else {
         modal.close();

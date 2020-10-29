@@ -1,3 +1,5 @@
+import stringToHtml from "./stringToHtml";
+
 function render() {
     const template = `
     <section class="modal-wp">
@@ -16,9 +18,8 @@ function render() {
         </div>
     </section>
     `;
-    const el = document.createElement('div');
-    el.innerHTML = template;
-    return el.firstElementChild;
+    
+    return stringToHtml(template);
 }
 
 export default render;
