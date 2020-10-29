@@ -83,7 +83,7 @@
                             </div>
                             <div class="miniCart_price">
                                 <strong>Qty:</strong>
-                                <input type="number">
+                                <input type="number" min="1" max="999" step="1">
                                 <button>Update</button>
                                 <span>$250.00</span>
                             </div>
@@ -552,7 +552,7 @@
                         </div>
                         <div class="description-product-block__button">
                             <form action="#" method="get">
-                                <label>Qty<input class="input-quantity" type="number" min="1"></label>
+                                <label>Qty<input class="input-quantity" type="number" min="1" max="999"></label>
                                 <button class="btn-add-cart">add to cart</button>
                                 <button class="btn-wish"><i class="fas fa-heart"></i></button>
                                 <button class="btn-refresh"><i class="fas fa-sync"></i></button>
@@ -615,7 +615,7 @@
                             labore et dolore magna aliqua. Duis auto mr reprehenderit in voluptateveli esse cillum
                             dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation
                             ullamc</p></li>
-                        <li class="tab-content__item" data-tab="2"><p>labore et dolore magna aliqua. Duis auto mr reprehenderit in voluptateveli esse cillum
+                        <li class="tab-content__item" data-tab="2"><p>Labore et dolore magna aliqua. Duis auto mr reprehenderit in voluptateveli esse cillum
                             dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation
                             ullamc
                             laboris nisi ut aliquip ex eacommod consequat. Duis reprehenderit iesse cillum dolore eu
@@ -646,7 +646,7 @@
                             ullamc
                             laboris nisi ut aliquip ex eacommod consequat. Duis reprehenderit iesse cillum dolore eu
                             fugiat nulla pariatur. Excepteur sintehende</p></li>
-                        <li class="tab-content__item" data-tab="3"> <p>pleasure and praising pain
+                        <li class="tab-content__item" data-tab="3"> <p>Pleasure and praising pain
                             was born and I will give you a complete account of the system, and expound the actual
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut</p><br>
@@ -719,7 +719,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="col col-1">
+            <input id="aside_toggle" type="checkbox">
+            <label class="btn_aside" for="aside_toggle">
+                <span></span>
+            </label>
+            <div class="col col-1 aside">
                 <div class="product-list">
                     <div class="tittle_product">Featured Products</div>
                     <div class="card-feature-product">
@@ -858,7 +862,7 @@
                         </div>
                     </div>
                     <div class="card-feature-product">
-                        <div class="card-feature-product__wrap">
+                        <div class="card-feature-product__wrap last-element">
                             <div class="card-feature-product__img"><img src="img/page2/db-electrical.png"
                                                                         alt="car"></div>
                             <div class="card-feature-product__content"><p><a href="#">DB Electrical Alternator</a></p>
@@ -896,7 +900,7 @@
             </div>
             <div class="wrapper-product-slider">
                 <p class="wrapper-product-slider__sub-title">YOU MAY LIKE THIS PRODUCTS</p>
-                <h3 class="wrapper-product-slider__title">RELATED PRODUCTS</h3>
+                <div class="wrapper-product-slider__title"><span class="dot"></span><h3>RELATED PRODUCTS</h3><span class="dot"></span></div>
                 <div class="product-slider">
                     <div class="item-product">
                         <div class="card card-slider" data-card="1">

@@ -15,6 +15,30 @@ $('.product-slider').slick({
     slidesToScroll: 3,
     prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-angle-left arrow-left"></i></button>',
     nextArrow: '<button type="button" class="slick-next"><i class="fas fa-angle-right arrow-right"></i></button>',
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+            }
+        },
+        {
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ]
 });
 
 (function (){
@@ -53,11 +77,14 @@ $('.product-slider').slick({
         content.classList.add('active');
     }
 
-    const btnZoomList = document.querySelectorAll('.btn-zoom');
+    const btnZoomList = document.querySelectorAll('.btn-zoom'),
+        cardList = document.querySelectorAll('.card-slider');
+
 
         btnZoomList.forEach(function (btn) {
        btn.addEventListener('click', zoomCard);
     });
+
 
     function zoomCard(e){
         let id = e.currentTarget.getAttribute('data-btn'),
