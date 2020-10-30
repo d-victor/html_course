@@ -1,4 +1,3 @@
-
 import Modal from "./modal/modal";
 
 const modal = new Modal({
@@ -17,7 +16,15 @@ openBtnList.map(btn => {
 
 function actionModal() {
     if (this.dataset.rel === 'open') {
+        const title = document.querySelector('.modal-change[name="title"]').value;
+        const content = document.querySelector('.modal-change[name="content"]').value;
+        if (title) modal.setTitle(title);
+        if (content){
+            modal.setContent('<p>' + content + '<p>');
+        }
+
         modal.open();
+
     } else {
         modal.close();
     }

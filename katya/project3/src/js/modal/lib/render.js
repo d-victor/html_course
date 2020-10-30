@@ -1,3 +1,4 @@
+import stringToHtml from "./_stringToHtml";
 function render() {
     const template = `
     <section class="modal-wp">
@@ -12,13 +13,15 @@ function render() {
             </div>
             <footer class="modal-footer">
                 <a href="#close">Ok</a>
+                <a class="cansel" href="#cansel">Cansel</a>
             </footer>
         </div>
     </section>
     `;
-    const el = document.createElement('div');
-    el.innerHTML = template;
-    return el.firstElementChild;
+    const element = document.createElement('p');
+    this.setContent(element);
+
+    return stringToHtml(template);
 }
 
 export default render;

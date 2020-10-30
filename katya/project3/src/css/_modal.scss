@@ -17,7 +17,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
     z-index: 1;
     cursor: pointer;
   }
@@ -29,5 +29,65 @@
     transform: translate(-50%, -50%);
     background-color: white;
     z-index: 100;
+    width: 300px;
+    border: 1px solid lightslategray;
+    border-radius: 6px;
+    padding: 15px;
+
+    & .modal-content {
+      padding: 30px;
+      text-align: center;
+      font-size: 18px;
+
+    }
+
+     .modal-header {
+       & h3 {
+         text-align: center;
+         text-transform: uppercase;
+         margin: 0;
+       }
+       & a {
+         text-decoration: none;
+         color: black;
+         border: 1px solid lightslategray;
+         border-radius: 6px;
+         padding: 5px;
+         display: block;
+         position: absolute;
+         bottom: 6%;
+         right: 5%;
+       }
+    }
+
+    .modal-footer {
+      & a {
+        text-decoration: none;
+        color: black;
+        border: 1px solid lightslategray;
+        border-radius: 6px;
+        padding: 5px;
+        position: relative;
+      }
+    }
+
   }
+}
+
+.modal-action {
+  width: 70px;
+  height: 30px;
+  background-color: mediumseagreen;
+  border: 1px solid mediumseagreen;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+}
+.modal-change {
+  width: 100px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid lightgrey;
+  outline: none;
+
 }
