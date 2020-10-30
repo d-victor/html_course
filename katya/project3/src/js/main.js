@@ -22,7 +22,7 @@ function actionModal() {
         if (content){
             modal.setContent('<p>' + content + '<p>');
         }
-
+        modal.mode();
         modal.open();
 
     } else {

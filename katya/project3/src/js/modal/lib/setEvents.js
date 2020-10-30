@@ -11,7 +11,6 @@ function setEvents() {
 
 function modalClose(e) {
     e.preventDefault();
-
     this.close();
 }
 

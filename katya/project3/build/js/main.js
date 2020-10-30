@@ -3588,6 +3588,7 @@ function actionModal() {
       modal.setContent('<p>' + content + '<p>');
     }
 
+    modal.mode();
     modal.open();
   } else {
     modal.close();
@@ -3600,10 +3601,34 @@ function actionModal() {
 /*!**************************************!*\
   !*** ./src/js/modal/lib/_confirm.js ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function setConfirm() {
+  var _this = this;
 
+  var elemFooter = this.modal.querySelector('.modal-footer');
+  elemFooter.insertAdjacentHTML("beforeend", '<a class="cansel" href="#cansel">Cansel</a>');
+  var btnCansel = this.modal.querySelector('[href="#cansel"]');
+  console.log(this.modal);
+  this.modalTitle.textContent = 'Confirm';
+  this.modalContent.textContent = 'Do you want point the backgroung in red color?';
+  console.log(this.modalTitle, this.modalContent);
+  elemFooter.firstElementChild.addEventListener('click', function (e) {
+    _this.setColorConfirm();
+  });
+  btnCansel.addEventListener('click', closeConfirm.bind(this));
+
+  function closeConfirm() {
+    this.close();
+  }
+
+  console.log(btnCansel);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (setConfirm);
 
 /***/ }),
 
@@ -3659,7 +3684,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function render() {
-  var template = "\n    <section class=\"modal-wp\">\n        <div class=\"modal-bg\"></div>\n        <div class=\"modal\">\n            <header class=\"modal-header\">\n                <h3>".concat(this.options.tittle, "</h3>\n                <a href=\"#close\">Close</a>\n            </header>\n            <div class=\"modal-content\">\n                ").concat(this.options.content, "\n            </div>\n            <footer class=\"modal-footer\">\n                <a href=\"#close\">Ok</a>\n                <a class=\"cansel\" href=\"#cansel\">Cansel</a>\n            </footer>\n        </div>\n    </section>\n    ");
+  var template = "\n    <section class=\"modal-wp\">\n        <div class=\"modal-bg\"></div>\n        <div class=\"modal\">\n            <header class=\"modal-header\">\n                <h3>".concat(this.options.tittle, "</h3>\n                <a href=\"#close\">Close</a>\n            </header>\n            <div class=\"modal-content\">\n                ").concat(this.options.content, "\n            </div>\n            <footer class=\"modal-footer\">\n                <a href=\"#close\">Ok</a>\n            </footer>\n        </div>\n    </section>\n    ");
   var element = document.createElement('p');
   this.setContent(element);
   return Object(_stringToHtml__WEBPACK_IMPORTED_MODULE_1__["default"])(template);
@@ -3745,6 +3770,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_render__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./lib/render */ "./src/js/modal/lib/render.js");
 /* harmony import */ var _lib_setEvents__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./lib/setEvents */ "./src/js/modal/lib/setEvents.js");
 /* harmony import */ var _lib_stringToHtml__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./lib/_stringToHtml */ "./src/js/modal/lib/_stringToHtml.js");
+/* harmony import */ var _lib_confirm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./lib/_confirm */ "./src/js/modal/lib/_confirm.js");
 
 
 
@@ -3771,6 +3797,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
+
 var Modal = /*#__PURE__*/function () {
   function Modal(options) {
     _classCallCheck(this, Modal);
@@ -3779,12 +3806,18 @@ var Modal = /*#__PURE__*/function () {
     this.modal = _lib_render__WEBPACK_IMPORTED_MODULE_8__["default"].apply(this);
     this.modalContent = this.modal.querySelector('.modal-content');
     this.modalTitle = this.modal.querySelector('.modal-header h3');
+    this.modalBackground = this.modal.querySelector('.modal-bg');
+    console.log(this.modalBackground);
     _lib_setEvents__WEBPACK_IMPORTED_MODULE_9__["default"].apply(this);
-    console.log(this.modalContent);
     document.body.append(this.modal);
   }
 
   _createClass(Modal, [{
+    key: "mode",
+    value: function mode() {
+      _lib_confirm__WEBPACK_IMPORTED_MODULE_11__["default"].apply(this);
+    }
+  }, {
     key: "open",
     value: function open() {
       this.modal.classList.add('open');
@@ -3797,10 +3830,8 @@ var Modal = /*#__PURE__*/function () {
   }, {
     key: "setContent",
     value: function setContent(content) {
-      console.log(this.modalContent);
       if (!content) return;
-      this.options.content = Object(_lib_stringToHtml__WEBPACK_IMPORTED_MODULE_10__["default"])(content);
-      console.log(this.options.content); //this.modalContent.innerText = '';
+      this.options.content = Object(_lib_stringToHtml__WEBPACK_IMPORTED_MODULE_10__["default"])(content); //this.modalContent.innerText = '';
       //this.modalContent.append(this.options.content);
     }
   }, {
@@ -3809,7 +3840,11 @@ var Modal = /*#__PURE__*/function () {
       if (!title) return;
       this.options.title = title;
       this.modalTitle.textContent = this.options.title;
-      console.log(this.modalTitle);
+    }
+  }, {
+    key: "setColorConfirm",
+    value: function setColorConfirm() {
+      this.modalBackground.style.backgroundColor = 'red';
     }
   }]);
 

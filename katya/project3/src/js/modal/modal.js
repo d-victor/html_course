@@ -3,6 +3,7 @@ import render from "./lib/render";
 import setEvents from "./lib/setEvents";
 //import setContent from "./lib/setContent";
 import stringToHtml from "./lib/_stringToHtml";
+import setConfirm from "./lib/_confirm";
 
 class Modal {
     constructor(options) {
@@ -14,10 +15,15 @@ class Modal {
         this.modal = render.apply(this);
         this.modalContent = this.modal.querySelector('.modal-content');
         this.modalTitle = this.modal.querySelector('.modal-header h3');
+        this.modalBackground = this.modal.querySelector('.modal-bg');
+        console.log(this.modalBackground)
         setEvents.apply(this);
-        console.log(this.modalContent)
+
         document.body.append(this.modal);
     }
+     mode() {
+        setConfirm.apply(this);
+     }
 
     open() {
         this.modal.classList.add('open');
@@ -28,10 +34,10 @@ class Modal {
     }
 
     setContent(content) {
-        console.log(this.modalContent)
+
         if (!content) return;
         this.options.content= stringToHtml(content);
-        console.log(this.options.content)
+
         //this.modalContent.innerText = '';
         //this.modalContent.append(this.options.content);
 
@@ -40,8 +46,13 @@ class Modal {
         if (!title) return;
         this.options.title = title;
         this.modalTitle.textContent = this.options.title;
-        console.log(this.modalTitle)
     }
+
+    setColorConfirm() {
+        this.modalBackground.style.backgroundColor = 'red';
+    }
+
+
 }
 
 export default Modal;

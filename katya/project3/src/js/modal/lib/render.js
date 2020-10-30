@@ -13,7 +13,6 @@ function render() {
             </div>
             <footer class="modal-footer">
                 <a href="#close">Ok</a>
-                <a class="cansel" href="#cansel">Cansel</a>
             </footer>
         </div>
     </section>
