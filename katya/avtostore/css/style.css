@@ -2294,6 +2294,13 @@ footer {
     color: white;
     background-color: red;
 }
+.slick-prev.slick-big-arrow,
+.slick-next.slick-big-arrow {
+    font-size: 30px;
+    border: none;
+    color: rgba(136, 136, 136, 1);
+    background-color: transparent;
+}
 
 .slider__wrapper_img img:hover {
     border-color: red;
@@ -2543,20 +2550,21 @@ footer {
 
 }
 
-.tab-header__item {
+.tab-header li {
     border: 1px solid #E5E5E5;
-    padding: 20px 50px 20px 30px;
     border-right: none;
     border-bottom: none;
 }
 
-.tab-header__item:nth-child(4) {
+.tab-header li:nth-child(4) {
     border-bottom: 1px solid #E5E5E5;
 }
 
-.tab-header__item a {
+.tab-header__item {
     text-decoration: none;
     color: black;
+    display: block;
+    padding: 20px 10px;
 }
 
 .tab-content {
@@ -2570,11 +2578,11 @@ footer {
     display: none;
 }
 
-.tab-content__item.active {
+.tab-content__item.activeTab {
     display: block;
 }
 
-.tab-header__item.active {
+.tab-header__item.activeTab {
     border-left: 4px solid red;
 }
 
@@ -2728,8 +2736,7 @@ footer {
     .tittle_product {
         font-size: 14px;
     }
-    .tab-header__item {
-        padding: 20px 10px 20px 10px;
+    .tab-header li{
         font-size: 14px;
     }
 }
@@ -2775,24 +2782,28 @@ footer {
         width: 100%;
         justify-content: stretch;
     }
-    .tab-header__item {
-        padding: 10px 5px;
+    .tab-header li {
+        padding: 0;
         border: 1px solid #E5E5E5;
         align-content: stretch;
         border-bottom: none;
         border-right: none;
         text-align: center;
     }
-    .tab-header__item:nth-child(1) {
+    .tab-header__item {
+    padding: 10px 5px;
+    }
+
+    .tab-header li:nth-child(1) {
         border-radius: 6px 0 0 0;
     }
-    .tab-header__item:nth-child(4) {
+    .tab-header li:nth-child(4) {
         border-radius: 0 6px 0 0;
         border-right: 1px solid #E5E5E5;
         border-bottom: none;
     }
 
-    .tab-header__item.active {
+    .tab-header__item.activeTab {
         border-left: 1px solid #E5E5E5;
         border-bottom: 4px solid red;
     }
@@ -2816,8 +2827,10 @@ footer {
     .description-product-block__button .btn-add-cart {
         width: 100px;
     }
-    .tab-header__item {
-        padding: 10px 5px;
+    .tab-header li {
         font-size: 12px;
+    }
+    .tab-header__item {
+        padding: 5px 2px;
     }
 }
