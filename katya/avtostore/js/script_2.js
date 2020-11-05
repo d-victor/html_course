@@ -5,7 +5,6 @@ $('.big-slider').slick({
     arrows: true,
     fade: true,
     asNavFor: '.slider',
-    focusOnSelect: true,
     prevArrow: '<button type="button" class="slick-prev slick-big-arrow"><i class="fas fa-angle-left"></i></button>',
     nextArrow: '<button type="button" class="slick-next slick-big-arrow"><i class="fas fa-angle-right"></i></button>',
 });
@@ -19,6 +18,88 @@ $('.slider').slick({
     nextArrow: '<button type="button" class="slick-next"><i class="fas fa-angle-right"></i></button>',
 });
 
+function activeSlide (id) {
+    let currentBigImg = document.querySelector(`[data-bigSlide = "${id}"]`);
+    currentBigImg.classList.add('active');
+}
+activeSlide(4);
+
+let currentImg;
+let currentBigImg = document.querySelector('.big-slide.active');
+console.log(currentBigImg);
+
+$('.big-slider').on('beforeChange', setActiveImg);
+
+function setActiveImg (event, slick, currentSlide, nextSlide){
+    let currentImgActive = document.querySelector(`[data-slide = "${currentSlide}"]`);
+    currentBigImg = document.querySelector(`[data-bigSlide = "${currentSlide}"]`);
+
+    if (currentImg) {
+        currentImg.classList.remove('activeSlide');
+    }
+    if (currentImgActive) {
+        currentImg = currentImgActive;
+        currentImg.classList.add('activeSlide');
+    }
+}
+
+magnify(currentBigImg,2);
+
+                 /*Zoom*/
+function magnify(img,zoom) {
+    let glass, w, h, bw;
+    console.log(img);
+    glass = document.createElement("DIV");
+    glass.setAttribute("class", "img-magnifier-glass");
+
+    img.parentElement.insertBefore(glass, img);
+
+    glass.style.backgroundImage = "url('" + img.src + "')";
+    glass.style.backgroundRepeat = "no-repeat";
+    glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+    bw = 3;
+    w = glass.offsetWidth / 2;
+    h = glass.offsetHeight / 2;
+
+    glass.addEventListener("mousemove", moveMagnifier);
+    img.addEventListener("mousemove", moveMagnifier);
+
+    function moveMagnifier(e) {
+        let pos, x, y;
+        e.preventDefault();
+
+        pos = getCursorPos(e);
+        x = pos.x;
+        y = pos.y;
+
+        if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+        if (x < w / zoom) {x = w / zoom;}
+        if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+        if (y < h / zoom) {y = h / zoom;}
+
+        glass.style.left = (x - w) + "px";
+        glass.style.top = (y - h) + "px";
+
+        glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+    }
+
+    function getCursorPos(e) {
+        let a, x = 0, y = 0;
+        e = e || window.event;
+        a = img.getBoundingClientRect();
+
+        x = e.pageX - a.left;
+        y = e.pageY - a.top;
+
+        x = x - window.pageXOffset;
+        y = y - window.pageYOffset;
+        return {x : x, y : y};
+    }
+}
+
+
+
+                 /*Product-slider*/
 
 $('.product-slider').on('init', function(event, slick){
 
@@ -75,25 +156,6 @@ $('.product-slider').slick({
         }
     ]
 });
-
-
-/*(function (){
-    const sliderList = document.querySelectorAll('[data-slide]');
-    const sliderBigList = document.querySelectorAll('[data-bigSlide]');
-    console.log(sliderList,sliderBigList)
-
-    sliderBigList.forEach(function (elem) {
-        elem.addEventListener('click', checkImg);
-    });
-
-    function checkImg(e) {
-        let currentSlide = $('.big-slider').slick('slickCurrentSlide');
-        console.log(currentSlide)
-
-    }
-})();*/
-
-
 
 (function (){
     const titleList = document.querySelectorAll('.tab-header__item');

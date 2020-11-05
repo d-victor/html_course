@@ -2260,6 +2260,10 @@ footer {
     border: 1px solid #E5E5E5;
     width: 100%;
 }
+.slider-wrap .slide.activeSlide {
+  border-color: red;
+}
+
 
 .slick-prev,
 .slick-next {
@@ -2302,12 +2306,25 @@ footer {
     background-color: transparent;
 }
 
+/*
 .slider__wrapper_img img:hover {
     border-color: red;
 }
+*/
 
 .main-img.change {
     width: 100%;
+}
+.wrapper-big-slider {
+    position: relative;
+}
+.img-magnifier-glass {
+    position: absolute;
+    border: 3px solid dimgrey;
+    border-radius: 50%;
+    cursor: none;
+    width: 150px;
+    height: 150px;
 }
 
 .description-product-block__inform {
