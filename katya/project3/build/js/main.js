@@ -151,6 +151,26 @@ module.exports = function (key) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/advance-string-index.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/advance-string-index.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var charAt = __webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/core-js/internals/string-multibyte.js").charAt;
+
+// `AdvanceStringIndex` abstract operation
+// https://tc39.github.io/ecma262/#sec-advancestringindex
+module.exports = function (S, index, unicode) {
+  return index + (unicode ? charAt(S, index).length : 1);
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/an-object.js":
 /*!*****************************************************!*\
   !*** ./node_modules/core-js/internals/an-object.js ***!
@@ -1098,6 +1118,143 @@ module.exports = function (exec) {
   } catch (error) {
     return true;
   }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// TODO: Remove from `core-js@4` since it's moved to entry points
+__webpack_require__(/*! ../modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var regexpExec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+
+var SPECIES = wellKnownSymbol('species');
+
+var REPLACE_SUPPORTS_NAMED_GROUPS = !fails(function () {
+  // #replace needs built-in support for named groups.
+  // #match works fine because it just return the exec results, even if it has
+  // a "grops" property.
+  var re = /./;
+  re.exec = function () {
+    var result = [];
+    result.groups = { a: '7' };
+    return result;
+  };
+  return ''.replace(re, '$<a>') !== '7';
+});
+
+// IE <= 11 replaces $0 with the whole match, as if it was $&
+// https://stackoverflow.com/questions/6024666/getting-ie-to-replace-a-regex-with-the-literal-string-0
+var REPLACE_KEEPS_$0 = (function () {
+  return 'a'.replace(/./, '$0') === '$0';
+})();
+
+var REPLACE = wellKnownSymbol('replace');
+// Safari <= 13.0.3(?) substitutes nth capture where n>m with an empty string
+var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = (function () {
+  if (/./[REPLACE]) {
+    return /./[REPLACE]('a', '$0') === '';
+  }
+  return false;
+})();
+
+// Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
+// Weex JS has frozen built-in prototypes, so use try / catch wrapper
+var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails(function () {
+  var re = /(?:)/;
+  var originalExec = re.exec;
+  re.exec = function () { return originalExec.apply(this, arguments); };
+  var result = 'ab'.split(re);
+  return result.length !== 2 || result[0] !== 'a' || result[1] !== 'b';
+});
+
+module.exports = function (KEY, length, exec, sham) {
+  var SYMBOL = wellKnownSymbol(KEY);
+
+  var DELEGATES_TO_SYMBOL = !fails(function () {
+    // String methods call symbol-named RegEp methods
+    var O = {};
+    O[SYMBOL] = function () { return 7; };
+    return ''[KEY](O) != 7;
+  });
+
+  var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails(function () {
+    // Symbol-named RegExp methods call .exec
+    var execCalled = false;
+    var re = /a/;
+
+    if (KEY === 'split') {
+      // We can't use real regex here since it causes deoptimization
+      // and serious performance degradation in V8
+      // https://github.com/zloirock/core-js/issues/306
+      re = {};
+      // RegExp[@@split] doesn't call the regex's exec method, but first creates
+      // a new one. We need to return the patched regex when creating the new one.
+      re.constructor = {};
+      re.constructor[SPECIES] = function () { return re; };
+      re.flags = '';
+      re[SYMBOL] = /./[SYMBOL];
+    }
+
+    re.exec = function () { execCalled = true; return null; };
+
+    re[SYMBOL]('');
+    return !execCalled;
+  });
+
+  if (
+    !DELEGATES_TO_SYMBOL ||
+    !DELEGATES_TO_EXEC ||
+    (KEY === 'replace' && !(
+      REPLACE_SUPPORTS_NAMED_GROUPS &&
+      REPLACE_KEEPS_$0 &&
+      !REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE
+    )) ||
+    (KEY === 'split' && !SPLIT_WORKS_WITH_OVERWRITTEN_EXEC)
+  ) {
+    var nativeRegExpMethod = /./[SYMBOL];
+    var methods = exec(SYMBOL, ''[KEY], function (nativeMethod, regexp, str, arg2, forceStringMethod) {
+      if (regexp.exec === regexpExec) {
+        if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
+          // The native String method already delegates to @@method (this
+          // polyfilled function), leasing to infinite recursion.
+          // We avoid it by directly calling the native @@method method.
+          return { done: true, value: nativeRegExpMethod.call(regexp, str, arg2) };
+        }
+        return { done: true, value: nativeMethod.call(str, regexp, arg2) };
+      }
+      return { done: false };
+    }, {
+      REPLACE_KEEPS_$0: REPLACE_KEEPS_$0,
+      REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE: REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE
+    });
+    var stringMethod = methods[0];
+    var regexMethod = methods[1];
+
+    redefine(String.prototype, KEY, stringMethod);
+    redefine(RegExp.prototype, SYMBOL, length == 2
+      // 21.2.5.8 RegExp.prototype[@@replace](string, replaceValue)
+      // 21.2.5.11 RegExp.prototype[@@split](string, limit)
+      ? function (string, arg) { return regexMethod.call(string, this, arg); }
+      // 21.2.5.6 RegExp.prototype[@@match](string)
+      // 21.2.5.9 RegExp.prototype[@@search](string)
+      : function (string) { return regexMethod.call(string, this); }
+    );
+  }
+
+  if (sham) createNonEnumerableProperty(RegExp.prototype[SYMBOL], 'sham', true);
 };
 
 
@@ -2063,6 +2220,138 @@ var TEMPLATE = String(String).split('String');
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/regexp-exec-abstract.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-exec-abstract.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var classof = __webpack_require__(/*! ./classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var regexpExec = __webpack_require__(/*! ./regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
+
+// `RegExpExec` abstract operation
+// https://tc39.github.io/ecma262/#sec-regexpexec
+module.exports = function (R, S) {
+  var exec = R.exec;
+  if (typeof exec === 'function') {
+    var result = exec.call(R, S);
+    if (typeof result !== 'object') {
+      throw TypeError('RegExp exec method returned something other than an Object or null');
+    }
+    return result;
+  }
+
+  if (classof(R) !== 'RegExp') {
+    throw TypeError('RegExp#exec called on incompatible receiver');
+  }
+
+  return regexpExec.call(R, S);
+};
+
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/regexp-exec.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-exec.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var regexpFlags = __webpack_require__(/*! ./regexp-flags */ "./node_modules/core-js/internals/regexp-flags.js");
+var stickyHelpers = __webpack_require__(/*! ./regexp-sticky-helpers */ "./node_modules/core-js/internals/regexp-sticky-helpers.js");
+
+var nativeExec = RegExp.prototype.exec;
+// This always refers to the native implementation, because the
+// String#replace polyfill uses ./fix-regexp-well-known-symbol-logic.js,
+// which loads this file before patching the method.
+var nativeReplace = String.prototype.replace;
+
+var patchedExec = nativeExec;
+
+var UPDATES_LAST_INDEX_WRONG = (function () {
+  var re1 = /a/;
+  var re2 = /b*/g;
+  nativeExec.call(re1, 'a');
+  nativeExec.call(re2, 'a');
+  return re1.lastIndex !== 0 || re2.lastIndex !== 0;
+})();
+
+var UNSUPPORTED_Y = stickyHelpers.UNSUPPORTED_Y || stickyHelpers.BROKEN_CARET;
+
+// nonparticipating capturing group, copied from es5-shim's String#split patch.
+var NPCG_INCLUDED = /()??/.exec('')[1] !== undefined;
+
+var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y;
+
+if (PATCH) {
+  patchedExec = function exec(str) {
+    var re = this;
+    var lastIndex, reCopy, match, i;
+    var sticky = UNSUPPORTED_Y && re.sticky;
+    var flags = regexpFlags.call(re);
+    var source = re.source;
+    var charsAdded = 0;
+    var strCopy = str;
+
+    if (sticky) {
+      flags = flags.replace('y', '');
+      if (flags.indexOf('g') === -1) {
+        flags += 'g';
+      }
+
+      strCopy = String(str).slice(re.lastIndex);
+      // Support anchored sticky behavior.
+      if (re.lastIndex > 0 && (!re.multiline || re.multiline && str[re.lastIndex - 1] !== '\n')) {
+        source = '(?: ' + source + ')';
+        strCopy = ' ' + strCopy;
+        charsAdded++;
+      }
+      // ^(? + rx + ) is needed, in combination with some str slicing, to
+      // simulate the 'y' flag.
+      reCopy = new RegExp('^(?:' + source + ')', flags);
+    }
+
+    if (NPCG_INCLUDED) {
+      reCopy = new RegExp('^' + source + '$(?!\\s)', flags);
+    }
+    if (UPDATES_LAST_INDEX_WRONG) lastIndex = re.lastIndex;
+
+    match = nativeExec.call(sticky ? reCopy : re, strCopy);
+
+    if (sticky) {
+      if (match) {
+        match.input = match.input.slice(charsAdded);
+        match[0] = match[0].slice(charsAdded);
+        match.index = re.lastIndex;
+        re.lastIndex += match[0].length;
+      } else re.lastIndex = 0;
+    } else if (UPDATES_LAST_INDEX_WRONG && match) {
+      re.lastIndex = re.global ? match.index + match[0].length : lastIndex;
+    }
+    if (NPCG_INCLUDED && match && match.length > 1) {
+      // Fix browsers whose `exec` methods don't consistently return `undefined`
+      // for NPCG, like IE8. NOTE: This doesn' work for /(.?)?/
+      nativeReplace.call(match[0], reCopy, function () {
+        for (i = 1; i < arguments.length - 2; i++) {
+          if (arguments[i] === undefined) match[i] = undefined;
+        }
+      });
+    }
+
+    return match;
+  };
+}
+
+module.exports = patchedExec;
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/regexp-flags.js":
 /*!********************************************************!*\
   !*** ./node_modules/core-js/internals/regexp-flags.js ***!
@@ -2087,6 +2376,41 @@ module.exports = function () {
   if (that.sticky) result += 'y';
   return result;
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/regexp-sticky-helpers.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-sticky-helpers.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var fails = __webpack_require__(/*! ./fails */ "./node_modules/core-js/internals/fails.js");
+
+// babel-minify transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError,
+// so we use an intermediate function.
+function RE(s, f) {
+  return RegExp(s, f);
+}
+
+exports.UNSUPPORTED_Y = fails(function () {
+  // babel-minify transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError
+  var re = RE('a', 'y');
+  re.lastIndex = 2;
+  return re.exec('abcd') != null;
+});
+
+exports.BROKEN_CARET = fails(function () {
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=773687
+  var re = RE('^r', 'gy');
+  re.lastIndex = 2;
+  return re.exec('str') != null;
+});
 
 
 /***/ }),
@@ -2909,6 +3233,25 @@ if (!TO_STRING_TAG_SUPPORT) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.regexp.exec.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.regexp.exec.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var exec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
+
+$({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
+  exec: exec
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.regexp.to-string.js":
 /*!*************************************************************!*\
   !*** ./node_modules/core-js/modules/es.regexp.to-string.js ***!
@@ -2982,6 +3325,153 @@ defineIterator(String, 'String', function (iterated) {
   point = charAt(string, index);
   state.index += point.length;
   return { value: point, done: false };
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.string.replace.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.replace.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
+var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js");
+
+var max = Math.max;
+var min = Math.min;
+var floor = Math.floor;
+var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d\d?|<[^>]*>)/g;
+var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d\d?)/g;
+
+var maybeToString = function (it) {
+  return it === undefined ? it : String(it);
+};
+
+// @@replace logic
+fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, maybeCallNative, reason) {
+  var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = reason.REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE;
+  var REPLACE_KEEPS_$0 = reason.REPLACE_KEEPS_$0;
+  var UNSAFE_SUBSTITUTE = REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE ? '$' : '$0';
+
+  return [
+    // `String.prototype.replace` method
+    // https://tc39.github.io/ecma262/#sec-string.prototype.replace
+    function replace(searchValue, replaceValue) {
+      var O = requireObjectCoercible(this);
+      var replacer = searchValue == undefined ? undefined : searchValue[REPLACE];
+      return replacer !== undefined
+        ? replacer.call(searchValue, O, replaceValue)
+        : nativeReplace.call(String(O), searchValue, replaceValue);
+    },
+    // `RegExp.prototype[@@replace]` method
+    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@replace
+    function (regexp, replaceValue) {
+      if (
+        (!REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE && REPLACE_KEEPS_$0) ||
+        (typeof replaceValue === 'string' && replaceValue.indexOf(UNSAFE_SUBSTITUTE) === -1)
+      ) {
+        var res = maybeCallNative(nativeReplace, regexp, this, replaceValue);
+        if (res.done) return res.value;
+      }
+
+      var rx = anObject(regexp);
+      var S = String(this);
+
+      var functionalReplace = typeof replaceValue === 'function';
+      if (!functionalReplace) replaceValue = String(replaceValue);
+
+      var global = rx.global;
+      if (global) {
+        var fullUnicode = rx.unicode;
+        rx.lastIndex = 0;
+      }
+      var results = [];
+      while (true) {
+        var result = regExpExec(rx, S);
+        if (result === null) break;
+
+        results.push(result);
+        if (!global) break;
+
+        var matchStr = String(result[0]);
+        if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
+      }
+
+      var accumulatedResult = '';
+      var nextSourcePosition = 0;
+      for (var i = 0; i < results.length; i++) {
+        result = results[i];
+
+        var matched = String(result[0]);
+        var position = max(min(toInteger(result.index), S.length), 0);
+        var captures = [];
+        // NOTE: This is equivalent to
+        //   captures = result.slice(1).map(maybeToString)
+        // but for some reason `nativeSlice.call(result, 1, result.length)` (called in
+        // the slice polyfill when slicing native arrays) "doesn't work" in safari 9 and
+        // causes a crash (https://pastebin.com/N21QzeQA) when trying to debug it.
+        for (var j = 1; j < result.length; j++) captures.push(maybeToString(result[j]));
+        var namedCaptures = result.groups;
+        if (functionalReplace) {
+          var replacerArgs = [matched].concat(captures, position, S);
+          if (namedCaptures !== undefined) replacerArgs.push(namedCaptures);
+          var replacement = String(replaceValue.apply(undefined, replacerArgs));
+        } else {
+          replacement = getSubstitution(matched, S, position, captures, namedCaptures, replaceValue);
+        }
+        if (position >= nextSourcePosition) {
+          accumulatedResult += S.slice(nextSourcePosition, position) + replacement;
+          nextSourcePosition = position + matched.length;
+        }
+      }
+      return accumulatedResult + S.slice(nextSourcePosition);
+    }
+  ];
+
+  // https://tc39.github.io/ecma262/#sec-getsubstitution
+  function getSubstitution(matched, str, position, captures, namedCaptures, replacement) {
+    var tailPos = position + matched.length;
+    var m = captures.length;
+    var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
+    if (namedCaptures !== undefined) {
+      namedCaptures = toObject(namedCaptures);
+      symbols = SUBSTITUTION_SYMBOLS;
+    }
+    return nativeReplace.call(replacement, symbols, function (match, ch) {
+      var capture;
+      switch (ch.charAt(0)) {
+        case '$': return '$';
+        case '&': return matched;
+        case '`': return str.slice(0, position);
+        case "'": return str.slice(tailPos);
+        case '<':
+          capture = namedCaptures[ch.slice(1, -1)];
+          break;
+        default: // \d\d?
+          var n = +ch;
+          if (n === 0) return match;
+          if (n > m) {
+            var f = floor(n / 10);
+            if (f === 0) return match;
+            if (f <= m) return captures[f - 1] === undefined ? ch.charAt(1) : captures[f - 1] + ch.charAt(1);
+            return match;
+          }
+          capture = captures[n - 1];
+      }
+      return capture === undefined ? '' : capture;
+    });
+  }
 });
 
 
@@ -3538,6 +4028,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
 /* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modal/modal */ "./src/js/modal/modal.js");
+/* harmony import */ var _modal_lib_isMode__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modal/lib/isMode */ "./src/js/modal/lib/isMode.js");
 
 
 
@@ -3564,11 +4055,19 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
+
 var modal = new _modal_modal__WEBPACK_IMPORTED_MODULE_12__["default"]({
-  content: "Hello world",
+  content: '<form><label><input type="text"></label></form>',
   title: "title modal",
   cc: {
     aa: 'ss'
+  },
+  mode: _modal_lib_isMode__WEBPACK_IMPORTED_MODULE_13__["modePromt"],
+  confirmHandler: function confirmHandler() {
+    document.body.style.backgroundColor = 'red';
+  },
+  promtHendler: function promtHendler(form, e) {
+    console.log(form, e);
   }
 }); //console.log(modal)
 
@@ -3585,69 +4084,14 @@ function actionModal() {
     if (title) modal.setTitle(title);
 
     if (content) {
-      modal.setContent('<p>' + content + '<p>');
+      modal.setContent(content);
     }
 
-    modal.mode();
     modal.open();
   } else {
     modal.close();
   }
 }
-
-/***/ }),
-
-/***/ "./src/js/modal/lib/_confirm.js":
-/*!**************************************!*\
-  !*** ./src/js/modal/lib/_confirm.js ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-function setConfirm() {
-  var _this = this;
-
-  var elemFooter = this.modal.querySelector('.modal-footer');
-  elemFooter.insertAdjacentHTML("beforeend", '<a class="cansel" href="#cansel">Cansel</a>');
-  var btnCansel = this.modal.querySelector('[href="#cansel"]');
-  console.log(this.modal);
-  this.modalTitle.textContent = 'Confirm';
-  this.modalContent.textContent = 'Do you want point the backgroung in red color?';
-  console.log(this.modalTitle, this.modalContent);
-  elemFooter.firstElementChild.addEventListener('click', function (e) {
-    _this.setColorConfirm();
-  });
-  btnCansel.addEventListener('click', closeConfirm.bind(this));
-
-  function closeConfirm() {
-    this.close();
-  }
-
-  console.log(btnCansel);
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (setConfirm);
-
-/***/ }),
-
-/***/ "./src/js/modal/lib/_stringToHtml.js":
-/*!*******************************************!*\
-  !*** ./src/js/modal/lib/_stringToHtml.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var stringToHtml = function stringToHtml(stringHtml) {
-  var el = document.createElement('div');
-  el.innerHTML = stringHtml;
-  return el.firstElementChild;
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (stringToHtml);
 
 /***/ }),
 
@@ -3662,9 +4106,60 @@ var stringToHtml = function stringToHtml(stringHtml) {
 __webpack_require__.r(__webpack_exports__);
 var defaultOptions = {
   content: "",
-  tittle: "modal"
+  tittle: "modal",
+  mode: "alert",
+  errorModeMessadge: 'Mode modal window referred did not right. Referred ::error::. Expected alert or promt or confirm'
 };
 /* harmony default export */ __webpack_exports__["default"] = (defaultOptions);
+
+/***/ }),
+
+/***/ "./src/js/modal/lib/getErrorModeMessadge.js":
+/*!**************************************************!*\
+  !*** ./src/js/modal/lib/getErrorModeMessadge.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.string.replace */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function getErrorModeMessadge(messadge, mode) {
+  return messadge.replace(/::error::/gi, mode);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getErrorModeMessadge);
+
+/***/ }),
+
+/***/ "./src/js/modal/lib/isMode.js":
+/*!************************************!*\
+  !*** ./src/js/modal/lib/isMode.js ***!
+  \************************************/
+/*! exports provided: modeAlert, modeConfirm, modePromt, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modeAlert", function() { return modeAlert; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modeConfirm", function() { return modeConfirm; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modePromt", function() { return modePromt; });
+var modeAlert = 'alert';
+var modeConfirm = 'confirm';
+var modePromt = 'promt';
+
+function isMode(mode) {
+  return mode === modeAlert || mode === modeConfirm || mode === modePromt;
+}
+
+
+/* harmony default export */ __webpack_exports__["default"] = (isMode);
 
 /***/ }),
 
@@ -3679,29 +4174,21 @@ var defaultOptions = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat */ "./node_modules/core-js/modules/es.array.concat.js");
 /* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _stringToHtml__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_stringToHtml */ "./src/js/modal/lib/_stringToHtml.js");
+/* harmony import */ var _isMode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isMode */ "./src/js/modal/lib/isMode.js");
+/* harmony import */ var _stringToHtml__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stringToHtml */ "./src/js/modal/lib/stringToHtml.js");
+
+
 
 
 
 function render() {
-  var template = "\n    <section class=\"modal-wp\">\n        <div class=\"modal-bg\"></div>\n        <div class=\"modal\">\n            <header class=\"modal-header\">\n                <h3>".concat(this.options.tittle, "</h3>\n                <a href=\"#close\">Close</a>\n            </header>\n            <div class=\"modal-content\">\n                ").concat(this.options.content, "\n            </div>\n            <footer class=\"modal-footer\">\n                <a href=\"#close\">Ok</a>\n            </footer>\n        </div>\n    </section>\n    ");
-  var element = document.createElement('p');
-  this.setContent(element);
-  return Object(_stringToHtml__WEBPACK_IMPORTED_MODULE_1__["default"])(template);
+  var btnModal = this.options.mode === _isMode__WEBPACK_IMPORTED_MODULE_1__["modeAlert"] ? '<a href="#close">Ok</a>' : this.options.mode === _isMode__WEBPACK_IMPORTED_MODULE_1__["modeConfirm"] ? '<a href="#true">Ok</a> <a href="#cansel">Cansel</a>' : '<a href="#submit">Ok</a> <a href="#cansel">Cansel</a>';
+  console.log(_isMode__WEBPACK_IMPORTED_MODULE_1__["modeAlert"]);
+  var template = "\n    <section class=\"modal-wp\">\n        <div class=\"modal-bg\"></div>\n        <div class=\"modal\">\n            <header class=\"modal-header\">\n                <h3>".concat(this.options.tittle, "</h3>\n                <a href=\"#close\">Close</a>\n            </header>\n            <div class=\"modal-content\">\n                ").concat(this.options.content, "\n            </div>\n            <footer class=\"modal-footer\">\n             ").concat(btnModal, "\n            </footer>\n        </div>\n    </section>\n    ");
+  return Object(_stringToHtml__WEBPACK_IMPORTED_MODULE_2__["default"])(template);
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (render);
-
-/***/ }),
-
-/***/ "./src/js/modal/lib/setContent.js":
-/*!****************************************!*\
-  !*** ./src/js/modal/lib/setContent.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 
@@ -3718,6 +4205,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _isMode__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isMode */ "./src/js/modal/lib/isMode.js");
+
 
 
 
@@ -3728,10 +4217,47 @@ function setEvents() {
       options = this.options;
   var modalBg = modal.querySelector('.modal-bg');
   var close = modal.querySelectorAll('[href="#close"]');
+  var cansel = modal.querySelector('[href="#cansel"]');
+  var promtSubmit;
+  var confirmSubmit;
+
+  if (options.mode === _isMode__WEBPACK_IMPORTED_MODULE_2__["modeConfirm"]) {
+    confirmSubmit = modal.querySelector('[href="#true"]');
+  }
+
+  if (options.mode === _isMode__WEBPACK_IMPORTED_MODULE_2__["modePromt"]) {
+    promtSubmit = modal.querySelector('[href="#submit"]');
+  }
+
+  console.log(promtSubmit, confirmSubmit);
   modalBg.addEventListener('click', this.close.bind(this));
   close.forEach(function (item) {
     item.addEventListener('click', modalClose.bind(_this));
   });
+  cansel.addEventListener('click', modalClose.bind(this));
+
+  if (confirmSubmit) {
+    confirmSubmit.addEventListener('click', submitConfirm.bind(this));
+  }
+
+  if (promtSubmit) {
+    promtSubmit.addEventListener('click', submitPromt.bind(this));
+  }
+}
+
+function submitPromt(e) {
+  var promtHendler = this.options.promtHendler;
+
+  if (promtHendler) {
+    promtHendler(this.options.content, e);
+  }
+}
+
+function submitConfirm(e) {
+  e.preventDefault();
+  var confirmHandler = this.options.confirmHandler;
+  if (confirmHandler) confirmHandler.apply(this);
+  this.close();
 }
 
 function modalClose(e) {
@@ -3740,6 +4266,25 @@ function modalClose(e) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (setEvents);
+
+/***/ }),
+
+/***/ "./src/js/modal/lib/stringToHtml.js":
+/*!******************************************!*\
+  !*** ./src/js/modal/lib/stringToHtml.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var stringToHtml = function stringToHtml(stringHtml) {
+  var el = document.createElement('div');
+  el.innerHTML = stringHtml;
+  return el.firstElementChild;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (stringToHtml);
 
 /***/ }),
 
@@ -3758,19 +4303,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.for-each */ "./node_modules/core-js/modules/es.array.for-each.js");
 /* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptor */ "./node_modules/core-js/modules/es.object.get-own-property-descriptor.js");
-/* harmony import */ var core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptors */ "./node_modules/core-js/modules/es.object.get-own-property-descriptors.js");
-/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.object.keys */ "./node_modules/core-js/modules/es.object.keys.js");
-/* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _lib_defaultOptions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./lib/defaultOptions */ "./src/js/modal/lib/defaultOptions.js");
-/* harmony import */ var _lib_render__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./lib/render */ "./src/js/modal/lib/render.js");
-/* harmony import */ var _lib_setEvents__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./lib/setEvents */ "./src/js/modal/lib/setEvents.js");
-/* harmony import */ var _lib_stringToHtml__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./lib/_stringToHtml */ "./src/js/modal/lib/_stringToHtml.js");
-/* harmony import */ var _lib_confirm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./lib/_confirm */ "./src/js/modal/lib/_confirm.js");
+/* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.function.name */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptor */ "./node_modules/core-js/modules/es.object.get-own-property-descriptor.js");
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptors */ "./node_modules/core-js/modules/es.object.get-own-property-descriptors.js");
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.object.keys */ "./node_modules/core-js/modules/es.object.keys.js");
+/* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _lib_defaultOptions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./lib/defaultOptions */ "./src/js/modal/lib/defaultOptions.js");
+/* harmony import */ var _lib_render__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./lib/render */ "./src/js/modal/lib/render.js");
+/* harmony import */ var _lib_setEvents__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./lib/setEvents */ "./src/js/modal/lib/setEvents.js");
+/* harmony import */ var _lib_stringToHtml__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./lib/stringToHtml */ "./src/js/modal/lib/stringToHtml.js");
+/* harmony import */ var _lib_isMode__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./lib/isMode */ "./src/js/modal/lib/isMode.js");
+/* harmony import */ var _lib_getErrorModeMessadge__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./lib/getErrorModeMessadge */ "./src/js/modal/lib/getErrorModeMessadge.js");
+
 
 
 
@@ -3798,26 +4347,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
+
 var Modal = /*#__PURE__*/function () {
   function Modal(options) {
     _classCallCheck(this, Modal);
 
-    this.options = _objectSpread(_objectSpread({}, _lib_defaultOptions__WEBPACK_IMPORTED_MODULE_7__["default"]), options);
-    this.modal = _lib_render__WEBPACK_IMPORTED_MODULE_8__["default"].apply(this);
+    this.options = _objectSpread(_objectSpread({}, _lib_defaultOptions__WEBPACK_IMPORTED_MODULE_8__["default"]), options);
+
+    if (!Object(_lib_isMode__WEBPACK_IMPORTED_MODULE_12__["default"])(this.options.mode)) {
+      try {
+        throw new Error(Object(_lib_getErrorModeMessadge__WEBPACK_IMPORTED_MODULE_13__["default"])(this.options.errorModeMessadge, this.options.mode));
+      } catch (e) {
+        console.error(e.name + ': ' + e.message);
+      }
+
+      return;
+    }
+
+    this.modal = _lib_render__WEBPACK_IMPORTED_MODULE_9__["default"].apply(this);
     this.modalContent = this.modal.querySelector('.modal-content');
     this.modalTitle = this.modal.querySelector('.modal-header h3');
     this.modalBackground = this.modal.querySelector('.modal-bg');
-    console.log(this.modalBackground);
-    _lib_setEvents__WEBPACK_IMPORTED_MODULE_9__["default"].apply(this);
+    console.log(this.modalContent);
+    _lib_setEvents__WEBPACK_IMPORTED_MODULE_10__["default"].apply(this);
     document.body.append(this.modal);
   }
 
   _createClass(Modal, [{
-    key: "mode",
-    value: function mode() {
-      _lib_confirm__WEBPACK_IMPORTED_MODULE_11__["default"].apply(this);
-    }
-  }, {
     key: "open",
     value: function open() {
       this.modal.classList.add('open');
@@ -3831,8 +4387,14 @@ var Modal = /*#__PURE__*/function () {
     key: "setContent",
     value: function setContent(content) {
       if (!content) return;
-      this.options.content = Object(_lib_stringToHtml__WEBPACK_IMPORTED_MODULE_10__["default"])(content); //this.modalContent.innerText = '';
-      //this.modalContent.append(this.options.content);
+      this.options.content = content;
+      this.modalContent.innerHTML = '';
+
+      if (typeof content === "string") {
+        this.modalContent.textContent = content;
+      } else {
+        this.modalContent.append(this.options.content);
+      }
     }
   }, {
     key: "setTitle",
@@ -3856,21 +4418,21 @@ var Modal = /*#__PURE__*/function () {
 /***/ }),
 
 /***/ 0:
-/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./src/js/main.js ./src/js/lid/alert.js ./src/js/modal/modal.js ./src/js/modal/lib/_confirm.js ./src/js/modal/lib/_stringToHtml.js ./src/js/modal/lib/defaultOptions.js ./src/js/modal/lib/render.js ./src/js/modal/lib/setContent.js ./src/js/modal/lib/setEvents.js ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./src/js/main.js ./src/js/lid/alert.js ./src/js/modal/modal.js ./src/js/modal/lib/defaultOptions.js ./src/js/modal/lib/getErrorModeMessadge.js ./src/js/modal/lib/isMode.js ./src/js/modal/lib/render.js ./src/js/modal/lib/setEvents.js ./src/js/modal/lib/stringToHtml.js ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/main.js */"./src/js/main.js");
 __webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/lid/alert.js */"./src/js/lid/alert.js");
 __webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/modal.js */"./src/js/modal/modal.js");
-__webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/lib/_confirm.js */"./src/js/modal/lib/_confirm.js");
-__webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/lib/_stringToHtml.js */"./src/js/modal/lib/_stringToHtml.js");
 __webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/lib/defaultOptions.js */"./src/js/modal/lib/defaultOptions.js");
+__webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/lib/getErrorModeMessadge.js */"./src/js/modal/lib/getErrorModeMessadge.js");
+__webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/lib/isMode.js */"./src/js/modal/lib/isMode.js");
 __webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/lib/render.js */"./src/js/modal/lib/render.js");
-__webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/lib/setContent.js */"./src/js/modal/lib/setContent.js");
-module.exports = __webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/lib/setEvents.js */"./src/js/modal/lib/setEvents.js");
+__webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/lib/setEvents.js */"./src/js/modal/lib/setEvents.js");
+module.exports = __webpack_require__(/*! /Users/Katerina/Documents/html_course/katya/project3/src/js/modal/lib/stringToHtml.js */"./src/js/modal/lib/stringToHtml.js");
 
 
 /***/ })

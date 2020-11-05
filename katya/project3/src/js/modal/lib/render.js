@@ -1,5 +1,14 @@
-import stringToHtml from "./_stringToHtml";
+import isMode from "./isMode";
+import {modeAlert,modeConfirm,modePromt} from "./isMode";
+import stringToHtml from "./stringToHtml";
 function render() {
+    const btnModal = this.options.mode === modeAlert ?
+        '<a href="#close">Ok</a>' :
+        this.options.mode === modeConfirm ?
+            '<a href="#true">Ok</a> <a href="#cansel">Cansel</a>' :
+            '<a href="#submit">Ok</a> <a href="#cansel">Cansel</a>';
+
+    console.log(modeAlert);
     const template = `
     <section class="modal-wp">
         <div class="modal-bg"></div>
@@ -12,13 +21,11 @@ function render() {
                 ${this.options.content}
             </div>
             <footer class="modal-footer">
-                <a href="#close">Ok</a>
+             ${btnModal}
             </footer>
         </div>
     </section>
     `;
-    const element = document.createElement('p');
-    this.setContent(element);
 
     return stringToHtml(template);
 }
